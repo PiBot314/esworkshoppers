@@ -1,0 +1,72 @@
+\section{Qualcomm QIDK Implementation}
+
+\subsection{Hardware Qualification}
+
+QIDK is a program and development target spanning premium Snapdragon Android platforms, not a single immutable SoC. Reproducibility therefore begins by recording the product identifier, board revision, SoC, CPU/GPU/Hexagon blocks, RAM, storage, Android build fingerprint and security patch, kernel, firmware, QAIRT/QNN version, thermal zones, power source, and device-management privileges~\cite{qualcomm_qidk}. The proposal will not transfer specifications from QCS6490 or RB5 to QIDK.
+
+The qualification suite determines supported operators, tensor layouts, static or dynamic shapes, precision, backend fallback, initialization time, sustained thermal performance, memory, reboot recovery, and background-execution behavior. Advertised TOPS are not used as a proxy for application latency or efficiency.
+
+\subsection{Software Components}
+
+The Android application uses Kotlin or Java for lifecycle, health, configuration, and operator status; C++ through NDK/JNI for the QNN runtime; an encrypted bounded local database; and mutually authenticated HTTPS or MQTT to the gateway. WorkManager is reserved for deferrable work, not deterministic control timing. Continuous operation uses the managed-device facilities and foreground-service mechanisms supported by the qualified Android version.
+
+The protocol gateway, not the application, hosts BACnet or Modbus authority. This reduces Android privileges and centralizes write-point enforcement. Application updates, models, safety policies, and feature schemas are separately signed and versioned. An atomic active/previous artifact arrangement supports rollback.
+
+\subsection{Model Toolchain}
+
+\begin{algorithm}[t]
+	\caption{Training and QIDK packaging}
+	\label{alg:packaging}
+	\begin{algorithmic}[1]
+		\State freeze chronological splits and feature schema
+		\State train simple baselines and candidate models with fixed seeds
+		\State calibrate uncertainty on validation data
+		\State export candidate from PyTorch to supported ONNX representation
+		\State verify framework and exported numerical outputs
+		\State quantize using representative training-only calibration samples
+		\State compile for available QNN targets and verify operator placement
+		\State compare FP32/FP16/INT8 task metrics and calibration
+		\State benchmark cold and steady latency, memory, temperature and energy
+		\State create manifest with hashes, runtime, SoC and safety eligibility
+		\State sign and deploy to shadow mode
+	\end{algorithmic}
+\end{algorithm}
+
+The preferred path is PyTorch $\rightarrow$ ONNX $\rightarrow$ AIMET post-training quantization (PTQ) or quantization-aware training (QAT) $\rightarrow$ QAIRT/QNN compilation $\rightarrow$ Hexagon NPU. The GPU is evaluated for supported FP16 models and the CPU for preprocessing, control flow, optimization, unsupported operations, and deterministic fallback. QNN DLC may remain hardware-agnostic at the Qualcomm-runtime level; context binaries are treated as SoC-specific~\cite{qualcomm_aihub_compile}. Cloud AI Hub is optional and cannot receive sensitive proprietary models or calibration data without governance approval.
+
+Representative calibration contains normal operations, peaks, low loads, season transitions, and known rare events. PTQ is attempted first. QAT is used only when PTQ violates an accuracy, calibration, or rare-event criterion~\cite{qualcomm_aihub_quant}. Mixed precision is not assumed to be supported by every Workbench or QNN release.
+
+\subsection{Backend and Power Benchmark}
+
+Each compatible backend and precision receives 100 warm-up executions and at least 1,000 measured batch-one executions. The report separates model initialization, cold inference, and thermal steady state. It includes median, p95, p99 and worst latency; peak resident memory; device temperature and frequency state; accelerator assignment; task error; and 24-hour stability.
+
+Device power is measured with a calibrated external DC power analyzer between the supply and device input where hardware access permits. A synchronized marker brackets inference. Total and idle-subtracted energy are both reported:
+\begin{equation}
+	e_{inf}=\frac{\int_{t_0}^{t_1}[P_{active}(t)-P_{idle}(t)]dt}{N}.
+\end{equation}
+Screen, radio, camera, charge state, ambient temperature, and background tasks are fixed. Battery fuel-gauge readings may support diagnostics but do not replace external instrumentation. If the QIDK enclosure prevents direct supply measurement, the limitation and alternate measurement uncertainty are reported.
+
+\begin{table}[t]
+	\centering
+	\caption{QIDK release gate for a model artifact.}
+	\label{tab:qidk-gate}
+	\begin{tabularx}{\columnwidth}{p{0.34\columnwidth}X}
+		\toprule
+		Gate          & Required evidence                                      \\
+		\midrule
+		Compatibility & SoC, QAIRT, firmware, schema and operator audit        \\
+		Correctness   & Framework/export/device numerical comparison           \\
+		Task quality  & Locked-test error, calibration and rare-event metrics  \\
+		Timing        & Cold and sustained p50/p95/p99 latency                 \\
+		Resources     & RAM, storage, initialization and thermal state         \\
+		Energy        & Total and idle-subtracted energy per inference         \\
+		Reliability   & 24-hour soak, reboot, WAN loss and corrupt-model tests \\
+		Security      & Signature, hash, storage permissions and SBOM          \\
+		Control       & Shadow evidence and safety approval                    \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\subsection{Resilience}
+
+The device caches at least 24 hours of approved schedules and the most recent valid external forecasts. Loss of WAN permits local inference and energy-only optimization only while cached inputs remain within freshness limits. Loss of the gateway, required sensor, model integrity, or time synchronization forces fallback. Reboot restores read-only operation until the service verifies artifacts, time, gateway identity, and current BMS state.

@@ -1,0 +1,23 @@
+\section{Reproducibility Protocol}
+
+The release supports five levels: regenerate all figures from released aggregates; retrain models on an approved anonymized or synthetic dataset; reproduce QIDK benchmarks on equivalent hardware; replay the controller against recorded telemetry; and conduct site-specific deployment only after a new safety review.
+
+\subsection{Hardware Manifest}
+
+The manifest records QIDK product and board identifiers, SoC, RAM and storage, power configuration, Android build fingerprint, security patch, kernel, firmware, gateway and meter models, sensor placement and calibration, network topology, and power-analyzer method. Diagrams omit credentials and exploitable addressing.
+
+\subsection{Software Manifest}
+
+The manifest records source revision, Android Gradle Plugin, SDK/NDK, Java/Kotlin and C++ toolchains, QAIRT/QNN and firmware versions, training lockfile or container digest, compiler flags, model and configuration hashes, feature schema, solver version, signed-package identifiers, SBOM, and licenses.
+
+\subsection{Data Manifest}
+
+The data dictionary identifies every point, Brick mapping, unit, source rate, aggregation, timezone and daylight-saving rule, missingness code, calibration period, intervention label, exclusion, privacy transformation, retention class, dataset version, and checksum. Raw identity-bearing data are not released. A synthetic or statistically protected substitute accompanies restricted operational data.
+
+\subsection{Experiment Manifest}
+
+The registered record includes randomization unit, blocks, seed and schedule; train/validation/test dates; hyperparameter search; final seeds; quantization calibration IDs; stopping and exclusion rules; primary and secondary outcomes; statistical formulas; software versions; intervention approvals; non-routine events; and exact commands required to regenerate tables and figures.
+
+\subsection{Final Audit Checklist}
+
+An independent reviewer must be able to determine from the artifacts: the exact claimed boundary; supporting meters; model inputs and outputs; permitted and prohibited actions; failure behavior; counterfactual baseline; experimental unit; comfort and IAQ protection; edge-energy treatment; carbon-factor provenance; artifact lineage; and conclusions that remain invalid without a complete annual trial. Failure to answer any item blocks final release.

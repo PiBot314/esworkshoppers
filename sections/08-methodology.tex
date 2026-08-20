@@ -1,0 +1,101 @@
+\section{Models and Optimization Methodology}
+
+\subsection{Data Preparation and Leakage Prevention}
+
+All model evaluation uses chronological splits. The final contiguous season or deployment period remains locked until model selection is complete. Scaling, missing-data models, feature selection, graph construction from statistical relationships, quantization calibration, and hyperparameter selection use training or validation data only. Weather inputs are the forecasts that would have been available at decision time, identified by issue timestamp; realized future weather is an oracle baseline, not a deployable feature.
+
+Features include calendar and timetable, recent meter and equipment histories, forecast weather, aggregate occupancy state, tariff, carbon signal, and static semantic attributes. Missingness and quality are explicit features. Personally identifiable information is excluded. Daylight-saving transitions are represented in local time while storage and joins use UTC.
+
+\subsection{Forecasting Candidates}
+
+The following hierarchy prevents weak comparisons:
+\begin{enumerate}[leftmargin=*]
+	\item persistence, same-time previous day, and same-time previous week;
+	\item regularized linear or generalized additive regression;
+	\item gradient-boosted trees with lag and calendar features;
+	\item compact TCN, N-BEATS, or TFT candidates;
+	\item PatchTST and graph-temporal candidates; and
+	\item frozen or fine-tuned Chronos, TimesFM, and Moirai challengers.
+\end{enumerate}
+
+For target $y$ and quantile $q$, models minimize pinball loss
+\begin{equation}
+	L_q(y,\hat y_q)=\max\{q(y-\hat y_q),(q-1)(y-\hat y_q)\}.
+	\label{eq:pinball}
+\end{equation}
+Reported metrics include mean absolute error (MAE), root-mean-square error (RMSE), WAPE, normalized mean bias error (NMBE), coefficient of variation of RMSE (CVRMSE), empirical interval coverage, and interval width. Mean absolute percentage error is avoided where true load approaches zero.
+
+\begin{align}
+	MAE    & = \frac{1}{n}\sum_i|y_i-\hat y_i|,                      \\
+	WAPE   & = 100\frac{\sum_i|y_i-\hat y_i|}{\sum_i|y_i|},          \\
+	NMBE   & =100\frac{\sum_i(y_i-\hat y_i)}{(n-p)\bar y},           \\
+	CVRMSE & =100\frac{\sqrt{\sum_i(y_i-\hat y_i)^2/(n-p)}}{\bar y}.
+\end{align}
+
+Forecast selection is based on downstream decision value as well as accuracy. A model that reduces WAPE but causes worse carbon, comfort, or actuator behavior in BOPTEST is rejected.
+
+\subsection{Multimodal Fusion}
+
+Meter, BMS, weather, and schedule features are aligned to a common interval and fused at feature level. Privacy-sensitive occupancy sensors produce local counts and confidence before fusion. Water and waste retain domain-specific temporal models because their event processes and sampling rates differ from HVAC. Campus graph nodes represent buildings, central plant, PV, battery, and shared meters; edges derive from documented physical or accounting relationships. A learned adjacency is allowed only as a labeled experiment.
+
+\subsection{Anomaly and Fault Detection}
+
+The first detector layer uses engineering tests: physical range, persistence, rate of change, redundant-sensor disagreement, energy balance, simultaneous heating/cooling, and command/status mismatch. The second layer uses standardized predictive residuals
+\begin{equation}
+	a_k=\frac{|y_k-\hat y_k|}{\hat\sigma_k+\epsilon}.
+	\label{eq:anomaly-score}
+\end{equation}
+An alert requires persistence across a configurable window and valid upstream data. Precision, recall, $F_1$, false alarms per device-day, time to detection, and operator-confirmed diagnostic yield are reported. A high anomaly score is not labeled as a fault until evidence identifies a physical cause.
+
+Water analytics detect improbable night flow, continuous flow, and main/submeter imbalance. Waste analytics forecast fill or collection demand and identify inconsistent weights or contamination records. These functions remain advisory in the pilot.
+
+\subsection{Thermal and Resource Models}
+
+A grey-box resistance-capacitance model is the primary thermal predictor because it is interpretable, compact, and suitable for MPC. Its discrete transition is
+\begin{equation}
+	\bm{x}_{k+1}=f_\theta(\bm{x}_k,\bm{u}_k,\bm{w}_k)+\bm{\epsilon}_k,
+	\label{eq:dynamics}
+\end{equation}
+where $\bm{x}$ contains zone and envelope states, $\bm{u}$ approved setpoints or operating modes, and $\bm{w}$ weather, occupancy, solar and internal-gain forecasts. A learned dynamics model is evaluated as a challenger. Both are calibrated on training periods and checked on held-out extremes. A model validated for monthly energy is not assumed valid for 15-minute control.
+
+\subsection{Carbon-Aware MPC}
+
+At interval $k$, the controller solves a horizon $H$ problem:
+\begin{align}
+	\min_{\bm{u},\bm{\xi}} \sum_{j=0}^{H-1} [ & w_E\tilde E_{k+j}+w_C\widetilde{\gamma E}_{k+j}
+	+w_P\tilde P_{k+j}^{peak}\nonumber                                                          \\
+	                                          & +w_T\xi_{T,k+j}+w_Q\xi_{Q,k+j}
+			+w_{\Delta u}\|\Delta\bm{u}_{k+j}\|_1].
+	\label{eq:mpc-objective}
+\end{align}
+Tildes denote dimensionless normalized terms so weights are interpretable. All scales and weights are published. The optimization is subject to the dynamics in \cref{eq:dynamics}, approved actuator and rate constraints,
+\begin{equation}
+	\bm{u}^{min}\le\bm{u}_k\le\bm{u}^{max},\quad
+	|\bm{u}_k-\bm{u}_{k-1}|\le\Delta\bm{u}^{max},
+	\label{eq:actuator}
+\end{equation}
+and occupied comfort and IAQ constraints,
+\begin{align}
+	T_k^{min}-\xi_{T,k} & \le T_k\le T_k^{max}+\xi_{T,k},               \\
+	c_k^{CO_2}          & \le c_k^{max}+\xi_{Q,k},\quad \bm{\xi}_k\ge0.
+	\label{eq:service-constraints}
+\end{align}
+Slack is heavily penalized and independently alarmed. Exact limits come from applicable standards, equipment requirements, building use, and facilities approval; a universal temperature or \COtwo{} threshold is not assumed.
+
+If a battery is present,
+\begin{equation}
+	s_{k+1}=s_k+\eta_cE_{ch,k}-\frac{E_{dis,k}}{\eta_d},
+\end{equation}
+with state-of-charge, reserve, power, efficiency, and cycling constraints. PV curtailment and export compensation are explicit rather than assumed.
+
+\subsection{Uncertainty and Abstention}
+
+Quantile forecasts, ensembles, or adaptive conformal residuals produce intervals. Scenario MPC evaluates sampled weather, occupancy, load, and PV trajectories. The controller abstains when empirical interval coverage falls below its validated bound, input shift exceeds threshold, required signals are stale, or the proposed trajectory reaches a prohibited state. Hard constraints remain active regardless of confidence.
+
+\subsection{Drift and Updating}
+
+Monitoring separates feature drift, missingness drift, residual drift, calibration drift, and physical outcome drift. A warning increases logging and forces advisory mode. Critical drift disables model control. Retraining is offline and cannot automatically overwrite the deployed champion. Every replacement receives chronological validation, numerical equivalence testing after conversion, artifact signing, and a new shadow period.
+
+\subsection{Optional Federated Extension}
+
+After two or more buildings have stable local models, personalized federated learning may share parameter updates without pooling raw occupancy or telemetry. The experiment compares local-only, pooled, FedAvg, and personalized heads. Secure aggregation and explicit client authentication are required. Differential privacy, if used, reports the complete $(\epsilon,\delta)$ budget and utility effect; the word ``private'' is not used merely because records remain local.

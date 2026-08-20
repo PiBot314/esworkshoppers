@@ -1,0 +1,125 @@
+\section{Definitions, Boundaries, and Accounting}
+
+This section fixes the vocabulary used throughout the proposal. Citations establish provenance, but the definitions below are sufficient to interpret the system without consulting the cited standards.
+
+\subsection{System and Control Terms}
+
+\textbf{Building Management System (BMS):} The existing automation system that acquires building points and runs equipment-level control loops, schedules, alarms, and operator interfaces. BACnet interoperability does not imply correct semantics, secure configuration, or efficient sequences.
+
+\textbf{Edge node:} A QIDK Android device located inside the campus network and physically or logically near the building. It can continue approved analytics during loss of wide-area connectivity.
+
+\textbf{Edge AI:} Machine-learning inference or training performed near the data source without requiring a remote service for each decision. Edge placement reduces data movement but is not inherently private or secure.
+
+\textbf{Supervisory control:} Adjustment of approved schedules, modes, or setpoints above local equipment loops. The BMS and equipment controllers retain low-level regulation and protection.
+
+\textbf{Digital twin:} A purpose-specific computational model linked to an identified physical asset and operational data, validated for a stated use such as virtual commissioning or short-horizon prediction. A dashboard or static three-dimensional model alone is not a predictive twin~\cite{fuller2020digital}.
+
+\textbf{Multimodal data:} Measurements with distinct physical or operational meanings, sampling rates, and noise processes, including meters, temperatures, humidity, \COtwo{}, particulate matter, equipment states, occupancy counts, schedules, weather, tariffs, carbon factors, and work orders. Fusion may occur at the raw-data, feature, decision, or hierarchical level~\cite{baltrusaitis2018multimodal}.
+
+\textbf{Shadow mode:} Live recommendations are computed and logged but cannot modify the BMS. \textbf{Advisory mode:} An operator may manually accept a recommendation. \textbf{Guarded closed-loop mode:} Approved actions may be issued automatically only after deterministic validation. \textbf{Fallback mode:} Control returns to an approved BMS schedule. \textbf{Safe stop:} The platform performs no writes.
+
+\textbf{Concept drift:} A change in the relationship between predictors and outcomes. \textbf{Distribution shift} is any relevant difference between development and deployment data. A changed input distribution need not reduce performance, and seasonal change must not automatically trigger retraining~\cite{gama2014drift}.
+
+\subsection{Net-Zero and GHG Terms}
+
+\textbf{Net zero:} A state declared for a specified entity, boundary, GHG set, scope, reporting period, and target year in which residual emissions after deep reductions are balanced by qualified removals. It is represented as
+\begin{equation}
+	E_{\mathrm{net\ GHG}}=E_{\mathrm{gross\ inventory}}-R_{\mathrm{qualified}}.
+	\label{eq:net-ghg}
+\end{equation}
+Renewable certificates, conventional offsets, and avoided emissions are not silently subtracted from the gross physical inventory.
+
+\textbf{Scope 1:} Direct emissions from sources owned or controlled by the reporting organization, including stationary combustion, controlled vehicles, processes, and refrigerant leakage. For activity $A_i$, gas-specific factor $EF_{i,g}$, and global-warming potential $GWP_g$,
+\begin{equation}
+	C_{S1}=\sum_{i,g}A_iEF_{i,g}GWP_g.
+\end{equation}
+
+\textbf{Scope 2:} Indirect emissions from purchased electricity, steam, heat, or cooling. The GHG Protocol requires location- and market-based totals where contractual instruments are available~\cite{ghg_scope2}.
+
+\textbf{Location-based Scope 2:} Emissions calculated using grid-average factors for the locations where consumption occurs:
+\begin{equation}
+	C_{S2,LB}=\sum_{r,k}E_{r,k}\gamma^{LB}_{r,k}.
+	\label{eq:location-carbon}
+\end{equation}
+
+\textbf{Market-based Scope 2:} Emissions calculated using qualifying contractual instruments and a residual mix for unmatched energy:
+\begin{equation}
+	C_{S2,MB}=\sum_jE_j\gamma_j^{contract}+\sum_lE_l\gamma_l^{residual}.
+	\label{eq:market-carbon}
+\end{equation}
+The platform never averages the two results.
+
+\textbf{Scope 3:} Other indirect value-chain emissions, including purchased goods, capital equipment, fuel- and energy-related activities, transport, waste, commuting, leased assets, product use and end-of-life, and investments. This proposal records material Scope 3 effects of added devices but does not imply a complete campus Scope 3 inventory.
+
+\textbf{Operational carbon:} Scope 1 and Scope 2 emissions attributable to operation. \textbf{Embodied carbon} comprises life-cycle emissions from materials, manufacture, transport, construction, maintenance, replacement, and end-of-life. Added sensors, gateways, and batteries have embodied impacts even when they save operational energy.
+
+\textbf{Avoided emissions:} A comparison between a reference and intervention scenario,
+\begin{equation}
+	C_{avoided}=C_{reference}-C_{intervention}.
+\end{equation}
+It is a counterfactual result and is reported outside the Scope 1--3 inventory.
+
+\subsection{Energy, Water, and Waste Metrics}
+
+With import power positive, interval energy is
+\begin{equation}
+	E_k=\int_{t_k}^{t_{k+1}}P(t)\,dt\approx \bar{P}_k\Delta t.
+\end{equation}
+The metered building balance is
+\begin{align}
+	E_{load,k}={} & E_{grid,in,k}-E_{grid,out,k}+E_{PV,k}\nonumber \\
+	              & +E_{bat,dis,k}-E_{bat,ch,k}.
+	\label{eq:energy-balance}
+\end{align}
+Terms that are not separately metered are not inferred without an uncertainty statement.
+
+\textbf{Annual net site energy} is
+\begin{equation}
+	E_{net}=\sum_{k\in\mathcal{Y}}(E_{grid,in,k}-E_{grid,out,k}).
+	\label{eq:net-site}
+\end{equation}
+Net-zero site energy requires $E_{net}\leq0$ over a complete declared year, subject to meter uncertainty and export rules. A short pilot can report progress or a normalized projection, not achieved annual net zero.
+
+\textbf{Energy Use Intensity (EUI)} is annual site energy divided by gross floor area $A$:
+\begin{equation}
+	EUI=\frac{E_{annual}}{A}\quad[\mathrm{kWh\,m^{-2}\,yr^{-1}}].
+\end{equation}
+Site and source EUI are not interchangeable.
+
+\textbf{Water Use Intensity (WUI)} is water volume divided by an explanatory service quantity. The proposal reports both area and occupant normalization:
+\begin{equation}
+	WUI_A=\frac{V_{water}}{A},\qquad WUI_O=\frac{V_{water}}{\text{occupant-days}}.
+\end{equation}
+WUI is a volumetric efficiency metric, not a complete ISO~14046 water-footprint impact assessment.
+
+\textbf{Waste diversion rate} is
+\begin{equation}
+	D_W=100\frac{M_{reuse}+M_{recycle}+M_{compost}}{M_{generated}}.
+\end{equation}
+Waste prevention, diversion, and waste-to-energy are reported separately; hazardous waste and rejected recycling loads are not hidden in a combined percentage.
+
+\subsection{Baselines and M\&V}
+
+\textbf{Baseline:} A counterfactual estimate of what energy use would have been without the intervention, normalized for routine conditions. Savings cannot be directly metered because they are an absence of consumption. The IPMVP form is~\cite{ipmvp2022}
+\begin{equation}
+	S_E=E_{baseline,adjusted}-E_{reporting}\pm A_{nonroutine}.
+	\label{eq:savings}
+\end{equation}
+Routine variables include weather, occupancy, and production. Non-routine adjustments include changed floor area, major equipment replacement, or an altered timetable.
+
+\textbf{M\&V:} The documented process that fixes the boundary, meters, baseline period, reporting period, adjustments, uncertainty, missing-data rules, and responsible reviewers before savings are assessed.
+
+\subsection{AI and System Metrics}
+
+\textbf{Inference latency} is elapsed time from a complete model input to an available output. The report uses median, 95th percentile, 99th percentile, and worst observed latency. \textbf{Inference energy} is idle-subtracted device energy per inference:
+\begin{equation}
+	e_{inf}=\frac{E_{active}-E_{idle}}{N_{inferences}}.
+	\label{eq:inference-energy}
+\end{equation}
+\textbf{Platform overhead} includes sensing, QIDK, gateway, storage, and attributable network energy. Net physical savings are
+\begin{equation}
+	S_{net}=S_E-E_{platform}.
+	\label{eq:net-savings}
+\end{equation}
+
+\textbf{Fail-safe} describes a transition to a known approved state after a detected fault. It does not mean that a learned policy is mathematically guaranteed safe. \textbf{Uncertainty gating} prevents model-based action when predictive intervals, out-of-distribution scores, data quality, or solver status exceed validated limits.

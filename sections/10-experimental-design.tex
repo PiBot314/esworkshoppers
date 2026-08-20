@@ -1,0 +1,65 @@
+\section{Experimental Design}
+
+\subsection{Stages and Experimental Units}
+
+Evaluation proceeds from low to high physical risk. Historical replay checks leakage and metrics. BOPTEST and a calibrated twin test weather extremes, sensor faults, unavailable equipment, and forecast error. Hardware-in-the-loop (HIL) connects the real QIDK and gateway to simulated equipment. Live shadow and advisory stages then establish timing, operator interpretation, and drift behavior before guarded control.
+
+The preferred field design uses comparable buildings or independently controlled zones in randomized week-long crossover blocks. Blocks are stratified by season, teaching versus vacation periods, and forecast weather. Washout is used when thermal or storage state carries treatment into the next block. If randomization is impossible, an interrupted time series with an untreated comparison building is used. Thousands of intervals from one building are not treated as thousands of independent experimental units.
+
+\begin{table}[t]
+	\centering
+	\caption{Indicative evaluation stages.}
+	\label{tab:stages}
+	\begin{tabularx}{\columnwidth}{p{0.25\columnwidth}p{0.19\columnwidth}X}
+		\toprule
+		Stage              & Duration        & Promotion evidence                           \\
+		\midrule
+		Commissioning      & 4 weeks         & Meter, semantics and control matrix accepted \\
+		Passive baseline   & 8--12 weeks     & Stable quality and baseline diagnostics      \\
+		Replay and HIL     & 4--8 weeks      & Twin fault injection and deadline tests pass \\
+		Shadow             & 4 weeks         & Reliable recommendations, no writes          \\
+		Advisory           & 4 weeks         & Operator acceptance and reason codes         \\
+		Closed-loop trial  & 12--24 weeks    & Registered sample and safety criteria        \\
+		Seasonal extension & Up to 12 months & Annual coverage or stated projection         \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\subsection{Comparison Arms}
+
+Forecasting comparisons include persistence, daily and weekly seasonal forecasts, regularized regression, gradient boosting, the selected compact neural model, graph variants, and available foundation-model challengers. Control comparisons include existing BMS operation, facilities-tuned high-performance rules, energy-only MPC, carbon-aware MPC, and an oracle using realized future disturbances in simulation only. RL is a simulation comparator, never the sole physical baseline.
+
+\subsection{Outcomes}
+
+Three primary outcomes limit multiplicity: adjusted HVAC or whole-building energy, location-based operational emissions, and occupied comfort violation rate. Secondary outcomes are peak demand, cost, market-based emissions, IAQ violation time, forecast error and coverage, fault-detection yield, availability, overrides, data volume, latency, thermal throttling, and edge energy.
+
+Occupied comfort violation rate is
+\begin{equation}
+	V_T=\frac{\sum_ko_k\mathbb{1}[T_k\notin[T_k^{min},T_k^{max}]]}{\sum_ko_k},
+\end{equation}
+where $o_k$ is an occupied indicator or weight. Peak reduction is
+\begin{equation}
+	R_{peak}=100\frac{P_{max}^{baseline}-P_{max}^{intervention}}{P_{max}^{baseline}}.
+\end{equation}
+The primary success condition is simultaneous improvement, not a weighted score that can hide harm:
+\begin{align}
+	\Delta E   & <0,          & \Delta C_{LB} & <0,          & S_E & >E_{platform},\nonumber \\
+	\Delta V_T & \le\delta_T, & \Delta V_Q    & \le\delta_Q. &     &
+\end{align}
+
+\subsection{Ablations}
+
+Offline and simulation ablations remove occupancy, weather forecast, carbon signal, uncertainty, graph edges, anomaly detection, drift gating, and the learned dynamics model. Hardware ablations compare CPU, GPU and NPU; FP32, FP16 and INT8; local and remote inference; forecast horizon; input resolution; and model size. Transfer ablations compare zero-shot, fine-tuned, building-specific, pooled, and personalized federated models. Safety gates are never removed in a physical closed-loop study.
+
+\subsection{Statistical Analysis}
+
+The randomization unit, seed, block schedule, exclusions, outcomes, model formulas, non-inferiority margins, and stopping conditions are registered before outcome unblinding. A fixed- or mixed-effects model estimates treatment effect:
+\begin{equation}
+	Y_{it}=\alpha_i+\lambda_t+\tau Z_{it}+\bm{\beta}^{\top}\bm{X}_{it}+\epsilon_{it},
+	\label{eq:treatment}
+\end{equation}
+where $i$ is building or zone, $t$ time block, $Z$ treatment, and $\bm{X}$ predeclared weather, occupancy, and calendar covariates. Standard errors are clustered at the randomization unit. Effect sizes and 95\% confidence intervals accompany $p$-values. Comfort and IAQ use non-inferiority tests; secondary outcomes use Holm or false-discovery-rate correction.
+
+Sensitivity checks include block bootstrap for autocorrelation, alternate weather specifications, complete-case and bounded missing-data treatments, placebo intervention dates, pre-trend tests, intention-to-treat and per-protocol effects, exclusion of approved non-routine events, and meter-uncertainty propagation.
+
+A prospective power analysis uses baseline daily variance, intra-class correlation, autocorrelation, expected compliance, and minimum important effect. If the available units and duration cannot detect the planned 8\% energy effect, the study is labeled a feasibility study rather than an efficacy trial.

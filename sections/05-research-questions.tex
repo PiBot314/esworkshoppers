@@ -1,0 +1,29 @@
+\section{Research Questions and Hypotheses}
+
+The primary research question is whether local, uncertainty-gated intelligence on QIDK can produce measurable operational benefit after accounting for compute overhead, without unacceptable service or safety cost.
+
+\textbf{\RQ{1}: Edge forecasting.} Can quantized edge models predict 15-minute load, PV, occupancy state, and zone conditions accurately enough for supervisory optimization?
+
+\HYP{1a}: The selected model reduces load weighted absolute percentage error (WAPE) by at least 10\% relative to seasonal persistence. \HYP{1b}: INT8 deployment increases task error by no more than 2\% relative while reducing median inference energy by at least 30\%. \HYP{1c}: 99th-percentile inference latency remains below 20\% of the control interval during thermal steady state.
+
+\textbf{\RQ{2}: Operational performance.} Does guarded edge control reduce energy and peak demand relative to existing operation?
+
+\HYP{2a}: Adjusted HVAC energy decreases by at least 8\%. \HYP{2b}: monthly peak demand decreases by at least 5\%. \HYP{2c}: savings remain positive after platform consumption is subtracted.
+
+\textbf{\RQ{3}: Carbon-aware operation.} Does adding time-varying carbon intensity reduce operational emissions beyond energy-only MPC?
+
+\HYP{3}: Location-based operational emissions decrease by at least 5\% relative to energy-only MPC without increasing total energy by more than 2\%.
+
+\textbf{\RQ{4}: Service and safety.} Can the intervention preserve comfort and IAQ?
+
+\HYP{4a}: occupied comfort violation time is non-inferior within a one-percentage-point margin. \HYP{4b}: \COtwo{}-limit violation time is non-inferior within the same margin. \HYP{4c}: no Severity-1 event is attributable to the platform.
+
+\textbf{\RQ{5}: Resilience and privacy.} Does edge execution reduce external data movement and maintain useful operation during WAN loss?
+
+\HYP{5a}: approved local operation continues for at least 24 hours without WAN connectivity. \HYP{5b}: no raw image, audio, device identifier, or individual trajectory leaves the edge. \HYP{5c}: externally transmitted data volume is at least 80\% lower than a raw-telemetry architecture.
+
+\textbf{\RQ{6}: Transferability.} How much target-building data are required after deployment to a second building?
+
+\HYP{6}: adaptation reaches within 5\% WAPE of a locally trained model using no more than 20\% of the target building's training period.
+
+These numerical thresholds are planning values, not foregone conclusions. They will be finalized through baseline variance analysis, facilities consultation, meter capability, and prospective power analysis before the field trial is registered.

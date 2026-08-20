@@ -1,0 +1,36 @@
+\section{Research Gap and Positioning}
+
+Existing work is strong in individual components but weak in their auditable integration. Building platforms provide telemetry and dashboards; forecasting research optimizes predictive metrics; MPC and RL studies often use simulation; TinyML work measures inference; and GHG standards define inventories. Few systems jointly demonstrate all of the following on a phone-class edge device:
+\begin{itemize}[leftmargin=*]
+	\item semantically mapped, multimodal campus telemetry with data-quality provenance;
+	\item probabilistic forecasting evaluated for control value rather than accuracy alone;
+	\item carbon-aware, safety-constrained supervisory optimization;
+	\item a hardware-specific Qualcomm deployment with measured thermal and energy overhead;
+	\item resilience under WAN loss without unrestricted OT write authority;
+	\item separate physical, location-based, and market-based ledgers; and
+	\item predeclared M\&V capable of distinguishing correlation from verified savings.
+\end{itemize}
+
+The proposed novelty is therefore systems-level and evidentiary. It is not a claim to invent a new transformer, RL algorithm, or accounting standard. The contribution is a reproducible architecture in which semantic interoperability, uncertainty, safety, accelerator deployment, governance, and counterfactual evaluation are jointly designed. This position avoids unsupported claims such as ``AI guarantees net zero,'' ``federated learning is private,'' or ``edge processing is automatically energy efficient.''
+
+Table~\ref{tab:gap} identifies how the proposal closes specific gaps.
+
+\begin{table*}[t]
+	\centering
+	\caption{Research gap and proposed response.}
+	\label{tab:gap}
+	\begin{tabularx}{\textwidth}{p{0.18\textwidth}X X}
+		\toprule
+		Area                     & Common limitation                                        & \system{} response                                                                        \\
+		\midrule
+		Sustainability platforms & Historical visualization without causal control evidence & Guarded MPC plus IPMVP-style counterfactual and uncertainty                               \\
+		Forecasting studies      & Random splits and accuracy-only comparison               & Chronological splits, simple baselines, calibration, and downstream-control evaluation    \\
+		Building control         & Simulation-only savings or opaque constraints            & BOPTEST/HIL progression, published limits, shadow mode, and randomized field blocks       \\
+		Edge AI                  & Peak TOPS or latency without complete energy accounting  & External power measurement, thermal steady-state tests, and platform-overhead subtraction \\
+		Carbon optimization      & Average and marginal factors conflated                   & Separate inventory and consequential signals with versioned provenance                    \\
+		Occupancy analytics      & Raw identity-bearing data leave the site                 & Local ephemeral features, aggregate counts, no facial recognition                         \\
+		MLOps                    & Cloud assumptions and unsafe automatic adaptation        & Signed artifacts, hardware compatibility, staged release, drift gating, and rollback      \\
+		Net-zero claims          & Energy balance, certificates, and offsets combined       & Four separate ledgers and explicit organizational, asset, temporal, and claims boundaries \\
+		\bottomrule
+	\end{tabularx}
+\end{table*}

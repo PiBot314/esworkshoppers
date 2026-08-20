@@ -1,0 +1,51 @@
+\section{Safety, Privacy, Security, and Governance}
+
+\subsection{Safety Case}
+
+The safety case argues from hazards to controls and evidence. Existing BMS and life-safety systems always override \system{}. The platform cannot write fire, smoke, emergency-power, access-control, elevator, or critical-process points. For permitted points, facilities staff approve absolute bounds, rate limits, minimum on/off periods, mode preconditions, priorities, and fallback values.
+
+The independent safety kernel contains no learned policy. It validates action authorization and current physical context after optimization. A local emergency disable and gateway-side lease ensure that expired commands relinquish authority. HIL tests inject stale values, impossible states, clock jumps, duplicated packets, actuator failures, solver timeouts, model corruption, WAN loss, QIDK overheating, and reboot. Closed-loop eligibility is reviewed after every model, feature-schema, runtime, safety-policy, or writable-point change.
+
+Incidents are classified by physical impact, service impact, security/privacy exposure, and recoverability. A Severity-1 event includes life-safety impact, equipment damage, or an uncontrolled prohibited action. Such an event stops the trial, preserves evidence, revokes write credentials, and requires independent review before any resumption.
+
+\subsection{Privacy}
+
+Privacy is based on minimization, purpose limitation, access restriction, and bounded retention rather than edge location alone. The data inventory records purpose, collection method, granularity, legal or ethical basis, access roles, storage location, retention, sharing, deletion, and consequences of error. Occupants receive understandable notice and a complaint channel.
+
+Occupancy uses non-identifying environmental, mmWave, doorway-count, or schedule features where practical. If vision is indispensable and separately approved, frames remain in volatile local processing, only aggregate counts leave the sensor process, frames are immediately discarded, demographic performance is evaluated, and facial recognition is prohibited. Attendance, productivity, disciplinary, and individual trajectory inference are out of scope.
+
+Fine-grained meter data can itself reveal occupancy and activity. External services therefore receive only the coarsest aggregate compatible with M\&V, and raw retention is shorter than KPI retention. Federated learning does not change these requirements.
+
+\subsection{Cybersecurity}
+
+The design follows OT principles from NIST SP 800-82 Rev. 3~\cite{nist80082}: network segmentation, least privilege, deny-by-default write access, authenticated devices, controlled remote access, secure configuration, monitoring, recovery, and attention to physical consequences. The QIDK, gateway, BMS, and campus services occupy separate network zones. Firewall rules identify exact peers, ports, and directions.
+
+Transport uses mutual authentication where supported. Secrets use Android Keystore or an equivalent hardware-backed facility verified on the actual QIDK. Local data are encrypted; logs avoid raw tensors and credentials. Debug access is disabled in production. Applications, models, configurations, and safety policies are signed, hash-checked, versioned, and protected against unauthorized rollback. A software bill of materials (SBOM), vulnerability process, patch window, credential-rotation procedure, and decommissioning checklist are maintained.
+
+The threat model covers malicious external feeds, replay, stale data, credential theft, rogue models, tampered updates, unauthorized BMS writes, denial of service, privacy inference, poisoned training data, federated clients, and physical access to the phone-class edge device. Secure boot or verified boot is used only if qualification confirms correct provisioning; its availability is not inferred from the Snapdragon brand.
+
+\subsection{AI Governance}
+
+Governance follows the NIST AI Risk Management Framework functions: Govern assigns authority and policy; Map documents context, affected people, and failure impact; Measure evaluates accuracy, calibration, drift, service and subgroup outcomes; Manage enforces release gates, monitoring, incident response, fallback and retirement~\cite{nistairmf}. ISO 50001 provides continual energy-performance management~\cite{iso50001}; ISO/IEC 42001 supplies an AI-management-system reference~\cite{iso42001}.
+
+Each model has a model card describing purpose, prohibited use, training period, features, groups and seasons evaluated, metrics, uncertainty, hardware, runtime, energy, limitations, drift criteria, owner, and retirement date. Each dataset has a data sheet documenting collection, consent or authority, semantics, transformations, exclusions, missingness, privacy, and maintenance~\cite{mitchell2019modelcards,gebru2021datasheets}.
+
+\begin{table*}[t]
+	\centering
+	\caption{Representative hazards, controls, and verification evidence.}
+	\label{tab:hazards}
+	\begin{tabularx}{\textwidth}{p{0.16\textwidth}p{0.26\textwidth}X p{0.18\textwidth}}
+		\toprule
+		Hazard                  & Preventive control                             & Detection and recovery                       & Evidence                           \\
+		\midrule
+		Unsafe setpoint         & Allow-list, hard range/rate, mode precondition & Gateway rejection, BMS override, fallback    & Boundary and fault-injection tests \\
+		Stale or false sensor   & Freshness, plausibility, redundancy            & Quality alarm, abstention, approved schedule & Recorded fault replay              \\
+		Model shift             & Locked operating envelope and no online update & Residual/coverage drift, shadow fallback     & Seasonal and OOD tests             \\
+		Solver failure          & Deadline and feasible fallback trajectory      & Timeout before write                         & Worst-case timing test             \\
+		WAN loss                & Cached approved inputs; no cloud dependency    & Freshness expiry, energy-only fallback       & 24-hour outage test                \\
+		Device compromise       & Segmentation, least privilege, signing         & Revocation, isolation, forensic log          & Penetration and recovery exercise  \\
+		Privacy leakage         & Local aggregation, retention limits            & Access audit and incident process            & Privacy impact assessment          \\
+		Correlated fleet update & Canary release and compatibility manifest      & Health monitor and rollback                  & Fleet rollback drill               \\
+		\bottomrule
+	\end{tabularx}
+\end{table*}

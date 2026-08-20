@@ -1,0 +1,39 @@
+\section{Notation and Metric Reference}
+
+\begin{table*}[h]
+	\centering
+	\caption{Principal notation.}
+	\label{tab:notation}
+	\begin{tabularx}{\textwidth}{p{0.12\textwidth}p{0.52\textwidth}X}
+		\toprule
+		Symbol                 & Meaning                                                   & Unit                \\
+		\midrule
+		$k,\Delta t$           & Interval index and duration                               & --, h               \\
+		$P,E$                  & Power and interval or accumulated energy                  & kW, kWh             \\
+		$E_{grid,in/out}$      & Grid import/export energy                                 & kWh                 \\
+		$E_{PV}$               & On-site photovoltaic generation                           & kWh                 \\
+		$E_{bat,ch/dis}$       & Battery charge/discharge energy                           & kWh                 \\
+		$A$                    & Gross floor area                                          & m$^2$               \\
+		$\gamma$               & Electricity emissions factor                              & kg\,\COtwoe/kWh     \\
+		$C_{S1},C_{S2}$        & Scope 1 and Scope 2 emissions                             & kg\,\COtwoe         \\
+		$S_E,S_{net}$          & Gross avoided energy and savings net of platform energy   & kWh                 \\
+		$\bm{x},\bm{u},\bm{w}$ & State, approved control and exogenous disturbance vectors & mixed               \\
+		$H$                    & MPC prediction horizon                                    & intervals           \\
+		$T,c^{CO_2}$           & Zone temperature and carbon-dioxide concentration         & $^\circ$C, ppm      \\
+		$\xi_T,\xi_Q$          & Penalized comfort and IAQ slack                           & corresponding units \\
+		$q$                    & Forecast quantile                                         & 0--1                \\
+		$a_k$                  & Standardized anomaly score                                & dimensionless       \\
+		$o_k$                  & Occupied indicator or weight                              & 0--1                \\
+		$e_{inf}$              & Idle-subtracted energy per inference                      & J/inference         \\
+		$u(\cdot)$             & Standard uncertainty                                      & corresponding units \\
+		\bottomrule
+	\end{tabularx}
+\end{table*}
+
+\subsection{Decision Threshold Register}
+
+Before field operation, the team will publish a versioned register containing meter completeness, sensor freshness, clock skew, physical ranges, rate limits, forecast coverage, drift thresholds, solver deadline, setpoint bounds, equipment minimum times, comfort and IAQ constraints, non-inferiority margins, availability, latency, and incident severity. Each value identifies its source, rationale, approving role, effective date, and applicable operating mode. No threshold is silently changed during outcome analysis.
+
+\subsection{Required Reporting Units}
+
+Energy is reported in kWh and MWh with interval duration; power in kW; emissions in kg or t \COtwoe with GWP basis; water in L or m$^3$; waste in kg or t by stream; temperature in $^\circ$C; relative humidity in percent; \COtwo{} in ppm; particulate matter in \si{\micro\gram\per\cubic\meter}; latency in ms; energy per inference in J; memory in MiB; network volume in bytes; and area-normalized indicators per m$^2$. Conversions are versioned and applied once.

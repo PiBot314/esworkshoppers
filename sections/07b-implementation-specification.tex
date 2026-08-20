@@ -1,0 +1,67 @@
+\section{Implementation Specification}
+
+This section converts the architecture into testable component contracts. The implementation is intentionally small: the QIDK application, protocol gateway, model toolchain, and campus reporting service communicate through versioned records rather than shared internal state.
+
+\subsection{Telemetry Contract}
+
+Every observation is represented by the tuple
+\begin{equation}
+	z=\langle id,t_s,t_r,v,u,q,n,p\rangle,
+\end{equation}
+where $id$ is a stable semantic point identifier, $t_s$ source time, $t_r$ receipt time, $v$ value, $u$ engineering unit, $q$ quality code, $n$ sequence number, and $p$ provenance. Quality codes distinguish measured, estimated, missing, stale, out-of-range, and manually corrected records. Corrections append a new version and never overwrite the original.
+
+The gateway converts source units to an agreed SI-oriented canonical form, while preserving the original value and unit for audit. A feature-schema manifest lists required and optional points, aggregation functions, look-back windows, permissible quality codes, normalization parameters, and feature order. A model cannot load if its feature-schema hash differs from the active manifest.
+
+Telemetry is ingested at least once and deduplicated by source identity, timestamp, and sequence. Control does not rely on eventual deduplication: the current-state cache accepts only monotonic sequence numbers inside the clock-skew bound. Aggregation computes count, valid fraction, mean or integral, minimum, maximum, and last valid time so a plausible average cannot hide a severe short excursion.
+
+\subsection{Forecast and Decision Contracts}
+
+A forecast response contains target, issue time, valid-time vector, quantiles, physical bounds, model hash, calibration version, input-quality summary, out-of-distribution score, runtime backend, and elapsed time. Quantiles must be monotonic after post-processing. Negative load, PV beyond qualified capacity, impossible occupancy, and thermodynamically invalid states are rejected rather than clipped without a record.
+
+The optimizer consumes only forecasts issued for the current cycle and returns a proposed trajectory, objective components before weighting, solver status, optimality or feasibility information, elapsed time, and fallback candidate. A single scalar objective is insufficient for audit because it can conceal a large service penalty behind an energy improvement.
+
+A control proposal is
+\begin{equation}
+	a=\langle point,value,unit,start,expiry,priority,reason,h\rangle,
+\end{equation}
+where $h$ binds the proposal to its observation, forecast, model, optimizer, and safety-policy hashes. The gateway verifies these fields, current BMS mode, bounds and lease before writing. It returns accepted, rejected, superseded, timed-out, or indeterminate status together with the observed post-write value. Indeterminate is treated as failure, not success.
+
+\subsection{Storage and Retention}
+
+The QIDK store separates a current-state cache, short-term raw intervals, derived features, decisions, health events, and immutable audit summaries. Capacity is bounded by age and bytes. When disconnected, eviction removes the oldest non-audit raw records first; it cannot delete unresolved incidents or the records necessary to explain a control action. Once connectivity returns, aggregate upload uses resumable sequence ranges and verifies checksums.
+
+Retention is purpose-specific. High-rate raw environmental and occupancy features receive the shortest operational period; aggregate resource intervals support M\&V; control and incident records remain for the approved audit period. Deletion is an explicit logged operation. Backups inherit the same expiry policy instead of retaining deleted personal data indefinitely.
+
+\subsection{Control Transaction}
+
+The write path uses a lease with a short expiry. At each cycle, the safety kernel evaluates the proposed action against point authorization, active building mode, manual override, physical and rate limits, minimum equipment times, data freshness, uncertainty, device health, and communication health. The gateway performs a conditional write only if the current BMS value and mode still match the state used by the optimizer. This prevents a delayed action from overwriting a recent operator command.
+
+After writing, the platform verifies protocol acknowledgement and the resulting point value. It then observes the physical response over a defined confirmation interval. Failure to acknowledge, unexpected priority behavior, or movement in the wrong direction revokes the lease and invokes fallback. The BMS default sequence is sufficient to continue operation if QIDK disappears completely.
+
+\subsection{Component Verification Matrix}
+
+\begin{table*}[t]
+	\centering
+	\caption{Implementation verification matrix.}
+	\label{tab:verification}
+	\begin{tabularx}{\textwidth}{p{0.17\textwidth}p{0.25\textwidth}X p{0.18\textwidth}}
+		\toprule
+		Component         & Contract tests                                          & Fault and performance tests                                     & Release artifact                  \\
+		\midrule
+		Protocol adapters & Unit, timestamp, sequence, quality and identity mapping & Duplicate, reordering, gap, disconnect and malformed packet     & Point map and conformance log     \\
+		Feature pipeline  & Deterministic replay and no-future-data check           & Missing channels, daylight-saving change and clock jump         & Schema and test vectors           \\
+		Forecast runtime  & Reference numerical output and quantile order           & OOD, rare events, thermal soak and backend fallback             & Signed model card                 \\
+		Optimizer         & Constraint and objective reconstruction                 & Infeasible state, timeout, forecast extremes and solver restart & Formulation and scenario suite    \\
+		Safety kernel     & Boundary-value and authorization tests                  & Stale data, mode race, replay, corrupt policy and override      & Signed policy and coverage report \\
+		Gateway writes    & Conditional write, lease and acknowledgement            & Lost acknowledgement, priority conflict and stale proposal      & Control matrix and HIL report     \\
+		Local store       & Schema migration, checksum and deletion                 & Full disk, abrupt reboot and prolonged disconnection            & Retention and recovery report     \\
+		M\&V ledger       & Meter and factor reconciliation                         & Missing intervals, factor revision and non-routine event        & Frozen ledger package             \\
+		\bottomrule
+	\end{tabularx}
+\end{table*}
+
+\subsection{Observability and Operations}
+
+Health metrics include acquisition lag, valid-point fraction, queue depth, storage headroom, inference and solver latency, model abstention, drift state, backend, device temperature, process restarts, gateway round-trip time, write acceptance, overrides, and fallback reason. Alerts are rate-limited and grouped by root condition to avoid turning one network failure into hundreds of equipment alarms.
+
+Operational dashboards distinguish measured physical outcomes from predictions and recommendations. They display active mode and authority, last successful cycle, current model and policy, data freshness, uncertainty, current constraints, recommended and issued actions, override state, and reason for fallback. A green status therefore means that a defined set of checks passed; it does not mean the building is net zero.

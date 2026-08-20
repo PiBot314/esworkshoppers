@@ -1,0 +1,60 @@
+\section{Measurement, Verification, and Net-Zero Ledger}
+
+\subsection{M\&V Plan}
+
+The M\&V plan is approved before closed-loop operation. It identifies the measure, boundary, baseline and reporting periods, meter models and calibration, independent variables, model, routine and non-routine adjustments, missing-data procedure, expected savings relative to noise, uncertainty, reporting frequency, and persons authorized to approve changes. Whole-building impact uses an IPMVP Option C-style method. Separately metered HVAC or other measures use Option B. Calibrated simulation, corresponding to Option D, supports prospective scenarios but does not silently replace available measured evidence~\cite{ipmvp2022}.
+
+The meter hierarchy is: utility revenue import/export; PV and battery; building main; HVAC, lighting, and plug-load submeters; QIDK and gateway power; then BMS points as secondary operational evidence. Interval totals are reconciled against utility bills. Data completeness is
+\begin{equation}
+	D_c=100\frac{N_{valid\ expected}}{N_{expected}},
+\end{equation}
+and submeter reconciliation error is
+\begin{equation}
+	R_e=100\frac{|\sum E_{submeters}-E_{main}|}{E_{main}}.
+\end{equation}
+Thresholds depend on meter criticality and are fixed during commissioning rather than borrowed as universal constants.
+
+\subsection{Adjusted Baseline}
+
+A baseline function estimates untreated energy using only causally prior variables:
+\begin{equation}
+	\hat E_k^{(0)}=f_\theta(T_k^{out},H_k,S_k,O_k,D_k,\tau_k),
+\end{equation}
+where $T^{out}$ is outdoor temperature, $H$ humidity, $S$ solar irradiance, $O$ occupancy proxy, $D$ day type, and $\tau$ time. The model is fitted before intervention analysis and checked for bias, CVRMSE, autocorrelation, heteroscedasticity, extreme-weather extrapolation, and seasonal residual patterns.
+
+Avoided energy is
+\begin{equation}
+	S_E=\sum_{k\in\mathcal R}(\hat E_k^{(0)}-E_k^{(1)})\pm A_{nonroutine}.
+\end{equation}
+Its uncertainty is approximated and then checked by bootstrap:
+\begin{equation}
+	u(S_E)=\sqrt{u^2(\hat E^{(0)})+u^2(E^{(1)})+u^2(A_{nonroutine})}.
+\end{equation}
+Savings smaller than the practical detection limit are reported as inconclusive, not rounded into a positive claim.
+
+Where a defensible comparison building exists, a difference-in-differences estimator is also reported:
+\begin{align}
+	\hat\tau_{DiD}={} & (\bar Y_{T,post}-\bar Y_{T,pre})\nonumber \\
+	                  & -(\bar Y_{C,post}-\bar Y_{C,pre}).
+\end{align}
+Pre-intervention parallel trends are examined; DiD is not used when that assumption is implausible.
+
+\subsection{Four Separate Ledgers}
+
+\textbf{Site-energy ledger:} gross load, PV, storage charge/discharge and losses, imports, exports, curtailment, and platform consumption. The balance follows \cref{eq:energy-balance,eq:net-site}.
+
+\textbf{Source-energy ledger:} site fuels multiplied by declared upstream conversion factors, if required by the institution. It is never labeled site energy.
+
+\textbf{Location-based carbon ledger:} interval electricity multiplied by grid-average factors with source, region, vintage, issue time and units. Scope 1 fuels and refrigerants are separate. Export credit, if any, is disclosed rather than assumed.
+
+\textbf{Market-based carbon ledger:} qualifying contractual electricity, residual mix, certificate serial numbers, technology, geography, vintage and retirement. It does not alter the physical energy ledger.
+
+Avoided emissions, offsets, removals, and embodied hardware impacts are additional disclosures outside these ledgers. The platform cannot claim whole-campus net zero if material boundary sources are omitted.
+
+\subsection{Water and Waste Verification}
+
+Water main and submeters are reconciled, and leak alerts are evaluated against confirmed repairs and avoided-flow baselines. Weather and occupancy normalize irrigation and sanitary comparisons. Waste records reconcile scale tickets, stream classifications, rejected loads, and destinations. The platform reports total generation and prevention alongside diversion so a higher diversion percentage cannot conceal increased total waste.
+
+\subsection{Factor Governance}
+
+Each energy, carbon, water, and waste conversion factor retains publisher, dataset, release, geography, applicable period, unit, gas coverage and GWP basis, average or marginal interpretation, uncertainty, and fallback rationale. Historical results are recalculated only under a published policy. Marginal carbon forecasts may guide scheduling but remain separate from the location-based annual inventory~\cite{hawkes2010marginal,ghg_scope2}.

@@ -1,0 +1,41 @@
+\section{State of the Art}
+
+\subsection{Semantic and Multimodal Building Data}
+
+Field performance is frequently limited by metadata and data quality rather than model architecture. Brick provides a graph-based metadata schema for building entities, points, and relationships, enabling applications to refer to equipment roles rather than site-specific point names~\cite{balaji2016brick,balaji2018brick}. Occupancy estimation research combines environmental, radio, vision, schedule, and access signals, but sensor placement, weak labels, privacy, and cross-building transfer remain persistent limitations~\cite{chen2018occupancy}. Accordingly, \system{} uses semantic identifiers, quality flags, and local feature extraction before learned fusion.
+
+Multimodal methods are commonly divided into early fusion of aligned inputs, late fusion of model outputs, and hybrid or hierarchical fusion~\cite{baltrusaitis2018multimodal}. Early fusion is efficient when channels share a clock and failure process. Late fusion better isolates missing modalities and permits privacy-sensitive data to be converted into ephemeral local features. The proposal therefore uses local late fusion for occupancy modalities and feature-level fusion for meter, weather, and equipment data.
+
+\subsection{Forecasting}
+
+Strong operational baselines remain seasonal persistence, linear or generalized additive models, and gradient-boosted trees. Neural methods are justified only if they improve chronological held-out accuracy or downstream control. The Temporal Fusion Transformer combines recurrent processing, attention, static covariates, and variable selection for multi-horizon forecasts~\cite{lim2021tft}; N-BEATS uses interpretable basis expansions~\cite{oreshkin2020nbeats}; PatchTST tokenizes time series into patches for efficient long-context attention~\cite{nie2023patchtst}.
+
+Recent time-series foundation models enable zero-shot or limited-data forecasting. Chronos tokenizes scaled observations and produces probabilistic samples~\cite{ansari2024chronos}; TimesFM is a decoder-only patch model~\cite{das2024timesfm}; Moirai trains a universal probabilistic transformer across domains, frequencies, and variate counts~\cite{woo2024moirai}. These models are current SOTA candidates in general forecasting, but none proves safe, carbon-optimal building control. They may also exceed phone-class memory or power budgets. The proposal therefore evaluates them as frozen baselines or teachers and deploys only models that pass hardware and control-value gates.
+
+Campus energy has spatial structure. Graph convolutional methods can represent buildings or zones as nodes and physical, functional, or statistical relationships as edges~\cite{hu2022gcn,liu2025buildstg}. Graph construction can leak future correlations or encode spurious proximity, so edges will be based first on documented plant and meter relationships, with learned edges evaluated as an ablation.
+
+\subsection{Fault Detection and Diagnostics}
+
+HVAC fault detection and diagnostics (FDD) spans engineering rules, statistical change detection, model residuals, supervised classification, and unsupervised anomaly detection~\cite{katipamula2005fdd,chen2022fdd}. An anomaly is not necessarily a physical fault, and laboratory fault-classification accuracy usually overstates field diagnostic precision. \system{} starts with deterministic checks for stale, stuck, implausible, and contradictory signals, then applies uncertainty-normalized residual scores. Operator confirmation and work-order outcomes provide labels for later diagnosis.
+
+\subsection{Control, Digital Twins, and RL}
+
+MPC repeatedly estimates the current state, predicts future behavior, solves a constrained horizon problem, applies the first action, and repeats. Building MPC can explicitly encode comfort, IAQ, equipment, storage, tariff, and carbon constraints, but its benefit depends on model fidelity, actuator authority, and commissioning~\cite{drgona2020mpc}. BOPTEST supplies reproducible simulated buildings and KPIs for comparing controllers before physical deployment~\cite{blum2021boptest}. CityLearn v2 extends community-scale study of flexibility, resilience, occupant objectives, storage, and carbon~\cite{nweye2024citylearn}.
+
+Reinforcement learning (RL) can optimize decisions without a fixed analytical model, but online exploration, reward misspecification, partial observability, and simulation-to-real mismatch create operational risk. Reviews find substantial simulation evidence but limited comparable field validation~\cite{vazquez2019rl}. Batch or offline approaches avoid active exploration, and constrained algorithms reduce observed violations, yet they do not guarantee safety under arbitrary distribution shift~\cite{zhang2022safehvac,garcia2015saferl,achiam2017cpo}. RL is therefore a simulation-only challenger or a bounded residual policy unless it passes the same deterministic safety kernel as MPC.
+
+\subsection{Uncertainty, Drift, and Federated Learning}
+
+Point forecasts hide risk relevant to control. Deep ensembles approximate epistemic uncertainty and often improve predictive calibration~\cite{lakshminarayanan2017ensembles}; adaptive conformal inference adjusts coverage under gradual shift, although temporal dependence weakens classical exchangeability assumptions~\cite{gibbs2021conformal}. Prediction intervals inform robust or scenario MPC but never replace hard equipment limits.
+
+Drift monitoring must separate sensor changes, legitimate seasons, schedule changes, equipment degradation, and harmful concept drift~\cite{gama2014drift,bifet2007adwin}. Automatic retraining can learn an undiagnosed fault as normal and invalidate an M\&V baseline. Retraining in \system{} therefore requires review, temporal holdout evaluation, artifact signing, and a new shadow period.
+
+Federated averaging permits decentralized training without pooling raw records~\cite{mcmahan2017fedavg}. Building-specific studies support adaptive and personalized federated forecasting under heterogeneous sites~\cite{wang2023federated,wang2024personalized}. Federated learning alone is not privacy preservation: updates can leak information, and secure aggregation can conceal malicious updates. It is an optional campus extension requiring a threat model, secure aggregation~\cite{bonawitz2017secureagg}, and, where justified, explicit differential-privacy accounting~\cite{dwork2006dp}.
+
+\subsection{On-Device AI}
+
+Quantization, pruning, and distillation reduce model size and arithmetic cost. Integer-only quantization is well established~\cite{jacob2018quantization}, but compression may disproportionately damage rare-event recall or calibration. MLPerf Mobile provides a reproducible pattern for reporting on-device latency, accuracy, and power rather than relying on peak hardware throughput~\cite{reddi2022mlperfmobile}. The QIDK workflow uses QAIRT/QNN conversion and profiling, representative calibration data, device-level numerical checks, and external power measurement~\cite{qualcomm_aihub_quant,qualcomm_aihub_profile}.
+
+\subsection{Carbon-Aware Operation}
+
+Annual inventories generally use average location-based factors, while shifting incremental load is a consequential decision for which marginal factors may be informative~\cite{hawkes2010marginal}. The two answer different questions. A low average-intensity interval is not necessarily the interval with the lowest marginal effect. \system{} therefore preserves source, geography, issue time, vintage, time resolution, and average/marginal classification for every carbon signal, and never substitutes a scheduling signal into the annual GHG inventory without disclosure.

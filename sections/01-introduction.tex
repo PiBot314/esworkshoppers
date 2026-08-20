@@ -1,0 +1,20 @@
+\section{Introduction}
+
+Buildings account for material direct and indirect energy use, greenhouse-gas (GHG) emissions, water withdrawals, and waste generation. A campus compounds the problem: buildings differ in construction, occupancy, schedules, plant topology, metering, and control maturity, while sharing utility connections, central plants, renewable generation, storage, and operational staff. Net-zero management is therefore a cyber-physical problem rather than a dashboard problem. It requires trustworthy measurements, an explicit accounting boundary, forecasts of future demand and conditions, safe decisions under uncertainty, and evidence that an intervention changed physical outcomes relative to what would otherwise have happened.
+
+Most sustainability management products collect data in a central or cloud platform. This is useful for portfolio reporting, but it creates four limitations. First, network delay and service interruption can prevent timely decisions. Second, continuously transmitting fine-grained occupancy or equipment data increases privacy and cybersecurity exposure. Third, centralized processing creates bandwidth and cloud-compute overhead. Fourth, a dashboard that reports consumption does not itself optimize a building or establish that reported savings are causal. Edge computing can address the first three limitations, but it addresses the fourth only when combined with sound control, measurement and verification (M\&V), and governance.
+
+This proposal introduces \system{}, a campus-building platform centered on a Qualcomm QIDK Android device. QIDK denotes the \emph{Qualcomm Innovators Development Kit}, not the QCS6490/RB3 or QRB5165/RB5 embedded platforms. The actual QIDK system-on-chip (SoC), Android build, accelerator generations, and runtime versions will be qualified and recorded before model selection. The design uses Qualcomm AI Runtime (QAIRT), including QNN/Qualcomm AI Engine Direct, to execute compatible quantized models on the available Hexagon neural-processing hardware. Official Qualcomm documentation, rather than nominal tera-operations-per-second figures, will determine supported operations and deployment formats~\cite{qualcomm_qidk,qualcomm_qairect,qualcomm_aihub_compile}.
+
+The research is deliberately energy-led. Electricity, HVAC, on-site photovoltaics (PV), and storage are candidates for guarded supervisory optimization. Water, waste, indoor air quality (IAQ), and occupancy are integrated as multimodal monitoring, prediction, constraint, and anomaly-detection domains. No learned model receives unrestricted building-management-system (BMS) write access. Existing local controllers retain regulation, equipment protection, and life-safety authority.
+
+The proposed contributions are:
+\begin{enumerate}[leftmargin=*]
+	\item a self-contained operational definition and ledger for campus net-zero energy and carbon that separates physical energy balance, location-based emissions, market-based emissions, avoided emissions, and edge-compute overhead;
+	\item a seven-layer edge architecture joining semantic building telemetry, local multimodal prediction, uncertainty and drift gates, constrained MPC, and independent deterministic safety controls;
+	\item a reproducible QIDK deployment workflow covering conversion, quantization, backend assignment, latency, thermal behavior, memory, and energy per inference;
+	\item an experimental design that compares edge intelligence against existing BMS sequences, engineered rules, and energy-only MPC through chronological evaluation and randomized or crossover field operation; and
+	\item governance, privacy, cybersecurity, rollback, and M\&V procedures suitable for operational technology (OT), where a model error may affect physical equipment and occupants.
+\end{enumerate}
+
+The proposal does not claim that edge execution, artificial intelligence, renewable procurement, or annual exports independently establish net zero. Each claim is tied to a declared boundary, meter, factor, baseline, uncertainty, and reporting period.

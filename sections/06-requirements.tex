@@ -1,0 +1,74 @@
+\section{Use Case and Requirements}
+
+\subsection{Pilot Boundary}
+
+The initial physical boundary is one mixed-use campus building, expandable to a campus district after validation. The electrical boundary contains the utility import/export meter, building main meter, HVAC submeter, lighting and plug-load meters where available, on-site PV, optional battery, and dedicated measurement of platform power. The control boundary contains only facilities-approved supervisory setpoints and schedules. Fire, smoke control, emergency power, access control, elevators, critical laboratories, and other life-safety or regulated systems are excluded.
+
+The nominal control interval is 15 minutes. Raw electrical and environmental data may be sampled at one minute or faster and aggregated with quality flags. Accounting is annual. A field trial shorter than one year cannot substantiate an achieved annual net-zero claim.
+
+\subsection{Stakeholders and Authority}
+
+\begin{table}[t]
+	\centering
+	\caption{Stakeholder authority and required evidence.}
+	\label{tab:stakeholders}
+	\begin{tabularx}{\columnwidth}{p{0.24\columnwidth}XX}
+		\toprule
+		Role                         & Authority                                      & Evidence                     \\
+		\midrule
+		Facilities control authority & Approves writable points, ranges, and fallback & Control matrix and sign-off  \\
+		Energy/M\&V lead             & Freezes baselines and adjustments              & M\&V plan and audit log      \\
+		Data steward                 & Approves purpose, access, and retention        & Data inventory               \\
+		Cybersecurity reviewer       & Approves network and credentials               & Threat model and test report \\
+		Privacy/ethics reviewer      & Reviews occupancy processing                   & Impact assessment            \\
+		Model owner                  & Trains and monitors models                     & Model card and lineage       \\
+		Safety approver              & Releases closed-loop operation                 & Hazard and HIL results       \\
+		Operator                     & Overrides actions and records reasons          & Immutable event record       \\
+		\bottomrule
+	\end{tabularx}
+\end{table}
+
+\subsection{Functional Requirements}
+
+The platform shall acquire typed, timestamped observations with source, unit, quality, and semantic identity. It shall forecast load, PV, occupancy state, and zone conditions; detect data and equipment anomalies; calculate resource and carbon KPIs; produce bounded recommendations; and retain a reproducible decision record. It shall operate without a WAN connection using cached weather, schedule, tariff, and carbon data. Water and waste functions shall be advisory unless separately engineered safety controls permit actuation.
+
+Every control record shall include observation-window identifier, feature-schema version, model and configuration hashes, uncertainty, optimization status, candidate action, safety-kernel result, issued action, BMS acknowledgement, operator override, and observed response. This record allows a reviewer to reconstruct why an action occurred.
+
+\subsection{Non-Functional Requirements}
+
+\textbf{Safety:} no action outside the approved control matrix; deterministic fallback after stale data, solver timeout, invalid state, communication loss, or excessive uncertainty.
+
+\textbf{Availability:} the analytics target is 99\% scheduled availability during the pilot. BMS operation cannot depend on that target being achieved.
+
+\textbf{Timing:} the complete acquire--infer--optimize--validate cycle shall finish within 20\% of the 15-minute interval in at least 99\% of cycles, leaving time for communication and recovery.
+
+\textbf{Privacy:} collect the minimum data needed for a declared purpose. Occupancy outputs are counts or coarse states, not identities. Raw camera or audio data are prohibited by default.
+
+\textbf{Security:} mutual authentication, least privilege, segmented networks, signed artifacts, encrypted storage and transport, credential rotation, event integrity, and a documented decommissioning process.
+
+\textbf{Auditability:} all reported metrics can be traced to immutable source intervals, conversion tables, emission-factor versions, model versions, and adjustment approvals.
+
+\textbf{Portability:} point semantics and model interfaces are independent of vendor-specific BMS names. Hardware-specific compiled QNN contexts remain explicitly tied to the qualified QIDK SoC.
+
+\subsection{Data Inventory}
+
+\begin{table*}[t]
+	\centering
+	\caption{Minimum data inventory. Rates are planning values and will be adjusted to meter capability.}
+	\label{tab:data-inventory}
+	\begin{tabularx}{\textwidth}{p{0.13\textwidth}p{0.17\textwidth}p{0.12\textwidth}p{0.12\textwidth}X}
+		\toprule
+		Domain      & Variables                                          & Native rate & Control aggregate & Required quality controls                               \\
+		\midrule
+		Electricity & Import/export, building, HVAC, lighting, plugs     & 1--60 s     & 15 min            & Meter class, sign, hierarchy reconciliation, gaps       \\
+		DER         & PV power, battery state and flow                   & 1--60 s     & 15 min            & Direction, efficiency, state bounds, inverter status    \\
+		HVAC        & Modes, setpoints, valves, fans, temperatures, flow & 10--60 s    & 5--15 min         & Range, persistence, command/status agreement            \\
+		Environment & Temperature, RH, \COtwo{}, PM2.5, VOC              & 30--60 s    & 5--15 min         & Calibration, location, cross-sensor agreement           \\
+		Occupancy   & Aggregate count/state, timetable                   & 1--15 min   & 15 min            & No identity, confidence, missingness, schedule mismatch \\
+		Water       & Main/submeter flow and volume                      & 1--15 min   & 15--60 min        & Continuous-flow and hierarchy checks                    \\
+		Waste       & Weight, fill, stream, haul ticket                  & Event/daily & Daily             & Scale calibration, contamination, destination evidence  \\
+		External    & Weather, forecast, tariff, carbon signal           & 5--60 min   & 15--60 min        & Issue time, horizon, source, geography, version         \\
+		Governance  & Overrides, work orders, incidents                  & Event       & Event             & Named role, timestamp, reason, append-only retention    \\
+		\bottomrule
+	\end{tabularx}
+\end{table*}

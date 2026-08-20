@@ -1,0 +1,84 @@
+\documentclass[conference]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs,tabularx,array,multirow}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit}
+\usepackage{siunitx}
+\usepackage{csquotes}
+\usepackage[hidelinks]{hyperref}
+\makeatletter
+\renewcommand*{\theHALG@line}{\thealgorithm.\arabic{ALG@line}}
+\makeatother
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage[
+  backend=biber,
+  style=ieee,
+  sorting=none,
+  giveninits=true,
+  doi=true,
+  url=true,
+  isbn=false,
+  maxnames=8,
+  minnames=3
+]{biblatex}
+\addbibresource{references.bib}
+
+\newcommand{\system}{NZ-Edge}
+\newcommand{\COtwo}{CO\textsubscript{2}}
+\newcommand{\COtwoe}{CO\textsubscript{2}e}
+\newcommand{\RQ}[1]{\textbf{RQ#1}}
+\newcommand{\HYP}[1]{\textbf{H#1}}
+\newcommand{\code}[1]{\texttt{#1}}
+\DeclareSIUnit\coTwoEquivalent{kg\,CO_2e}
+
+\title{Edge AI-Enabled Net Zero Management for Campus Buildings Using Qualcomm QIDK: A Research and Implementation Proposal}
+
+\author{\IEEEauthorblockN{Team: esworkingshoppers}
+\IEEEauthorblockA{Embedded Systems Workshop\\
+Nitya Joshi: 2025111023\\
+Teja Pudi: 2025111021\\}}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+	\input{sections/00-abstract}
+\end{abstract}
+
+\begin{IEEEkeywords}
+	edge AI, net zero, building energy management, model predictive control, Qualcomm QIDK, carbon-aware computing, fault detection, measurement and verification
+\end{IEEEkeywords}
+
+\input{sections/01-introduction}
+\input{sections/02-definitions}
+\input{sections/03-related-work}
+\input{sections/04-research-gap}
+\input{sections/05-research-questions}
+\input{sections/06-requirements}
+\input{sections/07-architecture}
+\input{sections/07b-implementation-specification}
+\input{sections/08-methodology}
+\input{sections/09-qidk-implementation}
+\input{sections/10-experimental-design}
+\input{sections/11-measurement-verification}
+\input{sections/12-security-privacy-safety}
+\input{sections/13-work-packages}
+\input{sections/14-risks-impact}
+
+\printbibliography
+
+\appendices
+\input{appendices/notation-equations}
+\input{appendices/reproducibility}
+
+\end{document}

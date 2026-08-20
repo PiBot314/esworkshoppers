@@ -1,0 +1,37 @@
+\section{Risks, Limitations, and Expected Impact}
+
+\begin{table*}[t]
+	\centering
+	\caption{Principal project risks and mitigations.}
+	\label{tab:risks}
+	\begin{tabularx}{\textwidth}{p{0.24\textwidth}p{0.11\textwidth}X}
+		\toprule
+		Risk                                               & Rating     & Mitigation                                                                   \\
+		\midrule
+		Required model operations unsupported on QIDK NPU  & M/M        & Operator audit, replacement, smaller model, graph partitioning, CPU fallback \\
+		Android terminates long-running service            & M/H        & Managed device, supported foreground service, watchdog and restart test      \\
+		Meter boundary cannot isolate impact               & H/H        & Commission early, add submetering, narrow claims to measured boundary        \\
+		Short trial is mistaken for annual net zero        & H/H        & Label normalized projections; require complete ledger for achieved claim     \\
+		Weather, timetable or operator confounding         & H/H        & Randomized blocks, comparison units, adjustments and override logs           \\
+		Sensor drift or clock error                        & H/H        & Calibration, quality flags, cross-checks and time monitoring                 \\
+		Occupancy processing creates privacy harm          & M/H        & Aggregate non-identifying sensors, local processing, impact review           \\
+		Unsafe action                                      & L/Critical & Independent hard limits, BMS authority, HIL and staged release               \\
+		Thermal throttling misses deadline                 & M/M        & Steady-state benchmark, cooling, compact model and CPU fallback              \\
+		Carbon signal unavailable or inappropriate         & M/M        & Provenance and freshness checks; energy-only fallback                        \\
+		Model drift                                        & H/M        & Coverage/residual monitoring, fallback and reviewed retraining               \\
+		Savings below platform overhead or detection limit & L/M        & Measure overhead, simplify system and report inconclusive outcome            \\
+		Cyber compromise                                   & L/Critical & Segmentation, least privilege, signed updates and incident exercise          \\
+		Insufficient statistical power                     & M/H        & Prospective analysis, longer trial, more zones or feasibility classification \\
+		\bottomrule
+	\end{tabularx}
+\end{table*}
+
+The proposal has several inherent limitations. One campus cannot establish universal transferability. BOPTEST and a digital twin cannot prove field safety or savings. QIDK phones may not expose industrial power rails, long-term Android support, or the deterministic behavior of an embedded controller. Occupancy proxies may be biased or incomplete. Carbon-intensity data may be geographically coarse and revised after publication. A short pilot cannot assess full annual net-zero status or all Scope 3 emissions. These limitations are reported rather than concealed through broad claims.
+
+If successful, the project contributes a reference pattern for resilient sustainability intelligence: data remain local where possible; cloud services become optional for immediate operation; predictive uncertainty affects authority; physical safety remains outside learned models; and environmental outcomes are measured against an auditable counterfactual. Operational deliverables can reduce energy, peak demand, emissions, water loss, false alarms, and external data movement. Scientific deliverables clarify when current forecasting SOTA adds control value on constrained edge hardware and whether its benefit exceeds compute energy and integration cost.
+
+The project will not claim to be the first AI net-zero platform, guarantee emissions reduction, equate low average grid intensity with marginal impact, call federated learning private without additional controls, call a visualization a digital twin, or call simulation production validation. Its defensible contribution is the measured and governed integration of existing methods.
+
+\section{Conclusion}
+
+\system{} replaces a cloud-dependent monitoring-only model with distributed, bounded intelligence while retaining the BMS as physical authority. The proposed sequence begins with boundaries, meters, semantics, and deterministic checks; proceeds through forecasts, calibrated twins, and constrained MPC; and reaches physical control only after replay, HIL, shadow, advisory, and safety review. QIDK deployment is treated as a measured engineering problem involving model compatibility, quantization, thermal behavior, power, and recovery. The evaluation separates predictive accuracy from operational causality and separates site energy, location-based carbon, market-based carbon, and avoided emissions. This structure makes a negative or inconclusive result scientifically useful and prevents AI performance from being mistaken for verified net-zero progress.

@@ -1,0 +1,85 @@
+\section{Proposed Architecture}
+
+\subsection{Layered Design}
+
+Figure~\ref{fig:architecture} shows the seven-layer architecture. Separation of concerns is a safety mechanism: learned components cannot bypass protocol, authorization, or physical-limit layers.
+
+\begin{figure*}[t]
+	\centering
+	\begin{tikzpicture}[
+		node distance=4mm,
+		box/.style={draw,rounded corners,minimum height=8mm,text width=0.84\textwidth,align=center,fill=blue!5},
+		arrow/.style={-{Latex[length=2mm]},thick}
+		]
+		\node[box] (physical) {1. Physical systems: meters, PV, battery, HVAC, lighting, plug loads, water, IAQ, occupancy and waste sensors};
+		\node[box,above=of physical] (gateway) {2. Protocol and trust gateway: BACnet/Modbus/MQTT adapters, Brick identities, read-only acquisition, allow-listed write proxy};
+		\node[box,above=of gateway] (android) {3. QIDK Android runtime: managed service, QAIRT/QNN adapter, encrypted local store, watchdog and signed packages};
+		\node[box,above=of android] (quality) {4. Data quality: time alignment, units, provenance, missingness, range, rate, persistence and reconciliation};
+		\node[box,above=of quality] (ai) {5. Edge intelligence: forecasts, occupancy state, anomaly residuals, predictive uncertainty, drift and OOD detection};
+		\node[box,above=of ai] (decision) {6. Decision and safety: constrained MPC, action allow-list, hard bounds, confidence gate, fallback and acknowledgement};
+		\node[box,above=of decision] (campus) {7. Campus services: aggregate dashboard, registry, M\&V warehouse, audit, governance and approved updates};
+		\draw[arrow] (physical)--(gateway);
+		\draw[arrow] (gateway)--(android);
+		\draw[arrow] (android)--(quality);
+		\draw[arrow] (quality)--(ai);
+		\draw[arrow] (ai)--(decision);
+		\draw[arrow] (decision)--(campus);
+	\end{tikzpicture}
+	\caption{\system{} architecture. Physical control remains in the existing BMS. Validated supervisory actions return from Layer 6 through the allow-listed Layer 2 gateway only in guarded closed-loop mode.}
+	\label{fig:architecture}
+\end{figure*}
+
+\textbf{Layer 1, physical systems:} Revenue and building meters establish accounting boundaries. BMS points describe equipment operation but are not treated as revenue-grade energy evidence unless calibrated. Sensor placement, accuracy class, commissioning date, and maintenance status are retained.
+
+\textbf{Layer 2, protocol and gateway:} A dedicated industrial gateway terminates BACnet/IP, BACnet/SC where available, Modbus, MQTT, and vendor interfaces. Shadow mode credentials are read-only. Closed-loop credentials can write only enumerated objects within priority and range rules. The QIDK device cannot directly scan or control the wider OT network. Brick classes and relationships map vendor point names to stable semantic identities~\cite{balaji2018brick}.
+
+\textbf{Layer 3, Android runtime:} A managed foreground service coordinates acquisition, local storage, inference, scheduling, and health. Native C++ through the Android NDK/JNI hosts QNN. Android Keystore protects client credentials where the actual platform supports hardware-backed keys. A bounded local store permits at least 24 hours of disconnected operation and uses explicit retention classes.
+
+\textbf{Layer 4, quality processing:} Every sample receives a source timestamp, receipt timestamp, engineering unit, quality code, and sequence number. Checks cover future timestamps, clock skew, impossible values, excessive rate of change, stuck sensors, duplicates, gaps, command/status disagreement, and meter hierarchy. Missingness indicators accompany imputation; no estimated interval is silently presented as measured.
+
+\textbf{Layer 5, edge intelligence:} Separate model heads produce quantile forecasts of load, PV, occupancy, and thermal state. Deterministic and residual anomaly detectors operate before fusion. A drift service monitors input distributions, forecast residuals, missingness, and service outcomes. Models abstain outside the validated operating envelope.
+
+\textbf{Layer 6, decisions and safety:} MPC proposes an action. A separate, non-learned kernel verifies data freshness, confidence, point authorization, physical range, rate, equipment state, minimum on/off times, and control mode. The gateway then performs a compare-and-write transaction and returns acknowledgement. A missing or inconsistent acknowledgement triggers fallback.
+
+\textbf{Layer 7, campus services:} Cloud or campus servers may aggregate de-identified KPIs, train challengers, host a signed registry, and support M\&V. The real-time control path does not depend on these services.
+
+\subsection{Operating-State Machine}
+
+The deployment progresses monotonically only after review: \emph{replay} uses historical records; \emph{shadow} uses live data without visible action; \emph{advisory} exposes recommendations to operators; \emph{guarded closed loop} permits automatic bounded writes. Any stage may transition to fallback or safe stop. Model replacement returns the affected function to shadow mode, even if a previous model had closed-loop authorization.
+
+\subsection{Trust Boundaries}
+
+Four trust zones are defined: OT/BMS, the protocol gateway, QIDK analytics, and campus/cloud services. The gateway is the only component bridging QIDK and OT. External weather and carbon feeds are untrusted inputs: they are authenticated where possible, sanity-checked, timestamped, cached, and never permitted to override hard constraints. Model files are untrusted until signature, hash, schema, target-SoC, and runtime compatibility checks succeed.
+
+\subsection{Edge Control Cycle}
+
+\begin{algorithm}[t]
+	\caption{Uncertainty-gated edge control cycle}
+	\label{alg:control-cycle}
+	\begin{algorithmic}[1]
+		\Require telemetry $z_k$, safety policy $\Pi$, model $M$, previous action $u_{k-1}$
+		\State validate signature, freshness, units, ranges and required channels
+		\If{mandatory data invalid or platform not authorized}
+		\State enter fallback and record reason
+		\Else
+		\State compute forecasts, intervals, anomaly and drift scores with $M$
+		\If{uncertainty, drift or OOD exceeds validated threshold}
+		\State enter fallback and record reason
+		\Else
+		\State solve constrained horizon problem for candidate $u_k^*$
+		\State $u_k \gets \Pi(u_k^*,u_{k-1},z_k)$
+		\If{$u_k$ rejected or solver deadline missed}
+		\State enter fallback and record reason
+		\ElsIf{mode is shadow}
+		\State log $u_k$ without transmitting
+		\ElsIf{mode is advisory}
+		\State request operator approval
+		\Else
+		\State send $u_k$ through allow-listed gateway
+		\State verify acknowledgement and observed response
+		\EndIf
+		\EndIf
+		\EndIf
+		\State append input, artifact hashes, decision and outcome to audit log
+	\end{algorithmic}
+\end{algorithm}
