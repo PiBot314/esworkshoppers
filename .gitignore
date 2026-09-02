@@ -1,0 +1,4 @@
+eswData/esw-ogdata
+eswData/Sorted_Parquet
+!eswData/Sorted_Parquet/masterPower.parquet
+!esworkshoppers/eswData/Sorted_Parquet/masterPower.parquet

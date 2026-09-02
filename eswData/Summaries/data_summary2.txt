@@ -1,0 +1,57 @@
+==================================================================
+       PANDAS DATA FRAME COMPREHENSIVE EDA (kW SCALED)            
+==================================================================
+
+--- 1. SHAPE & INDEX INFO ---
+Index Range: 2024-12-31 18:00:00+00:00 to 2025-12-31 18:00:00+00:00
+Total Rows: 8,761 | Total Columns: 3
+
+--- 2. MISSINGNESS AUDIT (df.isna() / df.notna()) ---
+                Valid_Count (notna)  Missing_Count (isna)  Missing_Percent (%)
+Grid_Draw_kW                   8693                    68                 0.78
+Solar_Yield_kW                 8760                     1                 0.01
+Room_Demand_kW                 7257                  1504                17.17
+
+--- 3. DESCRIPTIVE STATISTICS IN kW (df.describe()) ---
+                   mean      std    min     1%      50%      99%      max  skewness
+Grid_Draw_kW    137.309  118.880 -0.001  0.000  115.063  608.415  763.026     2.113
+Solar_Yield_kW    1.156    3.387  0.000  0.000    0.000    9.069   84.757    12.942
+Room_Demand_kW    2.360    2.010  0.157  0.205    1.808    8.201    9.873     1.058
+
+--- 4. ZERO-VALUE & INACTIVITY AUDIT ---
+                Zero_Value_Count  Zero_Percent (%)
+Grid_Draw_kW                 233              2.66
+Solar_Yield_kW              5073             57.90
+Room_Demand_kW                 0              0.00
+
+--- 5. PEARSON CORRELATION MATRIX (df.corr()) ---
+                Grid_Draw_kW  Solar_Yield_kW  Room_Demand_kW
+Grid_Draw_kW          1.0000          0.0303          0.1713
+Solar_Yield_kW        0.0303          1.0000          0.0489
+Room_Demand_kW        0.1713          0.0489          1.0000
+
+==================================================================
+              CAMPUS NET-ZERO & ENERGY BALANCE REPORT             
+==================================================================
+Analysis Window: 2025-01-02 07:00:00+00:00 to 2025-12-31 18:00:00+00:00
+Total Evaluated Hours: 7,213 hours
+
+--- 6. TOTAL ANNUAL ENERGY TOTALS (kWh) ---
+Total Solar Generation:       8,163.97 kWh
+Total Room Demand:          17,100.38 kWh
+Total Campus Grid Draw:     897,334.20 kWh
+
+--- 7. NET POWER BALANCE HOURLY BREAKDOWN ---
+Deficit Hours (Demand > Solar) : 5,926 hrs (82.2%)
+Surplus Hours (Solar > Demand) : 1,287 hrs (17.8%)
+Zero Net Hours                 :     0 hrs (0.0%)
+
+--- 8. KEY NET-ZERO PERFORMANCE METRICS ---
+Solar Self-Consumption Rate: 45.55%
+Room Solar Coverage Ratio:   21.75%
+Max Hourly Solar Surplus:    79.53 kW
+Max Hourly Power Deficit:    9.87 kW
+
+==================================================================
+Pipeline Finished Successfully! Full report saved to: data_summary2.txt
+==================================================================

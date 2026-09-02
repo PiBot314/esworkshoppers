@@ -1,0 +1,43 @@
+Loading dataset: ../Sorted_Parquet/masterPower.parquet...
+
+==================================================================
+       MASTER POWER PARQUET: COMPREHENSIVE EDA & NaN AUDIT        
+==================================================================
+
+--- 1. SHAPE & INDEX INFO ---
+Index Range: 2024-12-31 18:00:00+00:00 to 2025-12-31 18:00:00+00:00
+Total Rows: 8,761 | Total Columns: 3
+
+--- 2. GLOBAL MISSINGNESS AUDIT ---
+                Valid_Count  Missing_Count  Missing_Percent (%)
+Grid_Draw_kW           8706             55                 0.63
+Solar_Yield_kW         8761              0                 0.00
+Room_Demand_kW         7298           1463                16.70
+
+--- 3. TEMPORAL NaN DISTRIBUTION (WHERE ARE THE GAPS?) ---
+Monthly count of missing records per column:
+           Grid_Draw_kW  Solar_Yield_kW  Room_Demand_kW
+Timestamp                                              
+2024-12               6               0               0
+2025-01              31               0               0
+2025-04               0               0              43
+2025-05               0               0             394
+2025-07               0               0              10
+2025-10               5               0             698
+2025-11              13               0             318
+
+--- 4. DESCRIPTIVE STATISTICS ---
+                      mean         std        min         1%         50%         99%         max  skewness
+Grid_Draw_kW    137445.228  119098.919     -0.746      0.000  115041.747  608740.784  763026.128     2.112
+Solar_Yield_kW   -1631.882    4302.476 -97106.774 -12929.730      -0.018       3.332       9.501   -10.122
+Room_Demand_kW    4212.479    3621.142      2.830    332.419    3194.515   14883.027   19880.206     1.100
+
+--- 5. ZERO-VALUE AUDIT ---
+                Zero_Value_Count  Zero_Percent (%)
+Grid_Draw_kW                 233              2.66
+Solar_Yield_kW                 0              0.00
+Room_Demand_kW                 0              0.00
+
+==================================================================
+Pipeline Finished Successfully! Full report saved to: master_summary.txt
+==================================================================
