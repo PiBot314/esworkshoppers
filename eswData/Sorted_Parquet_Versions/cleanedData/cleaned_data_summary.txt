@@ -1,0 +1,84 @@
+==================================================================
+       CLEANED DATASETS COMPREHENSIVE STATISTICAL AUDIT           
+==================================================================
+
+--- CAMPUS GRID (EM_cleaned.parquet) ---
+Index Range: 2025-01-02 07:00:00+00:00 to 2025-12-31 18:00:00+00:00
+Total Rows: 8,724 | Total Columns: 7
+
+[Missingness & Zero-Value Profile]
+                          Valid_Count  Missing_Count  Missing (%)  Zero_Count  Zero (%)
+GDPower_raw                      8680             44          0.5        5044     57.82
+T1Current_raw                    8680             44          0.5        5135     58.86
+GDPower_Factor_raw               8593            131          1.5           2      0.02
+GDTotal_Energy_kWh               8724              0          0.0           0      0.00
+GDPower_reconstructed_kW         8724              0          0.0           0      0.00
+T1Current_corrected_A            8724              0          0.0           0      0.00
+GDPower_Factor_corrected         8724              0          0.0           2      0.02
+
+[Descriptive Statistics]
+                                 mean          std    min       1%       50%          99%          max  skewness
+GDPower_raw                   148.695      226.177 -0.000    0.000     0.000      716.800      850.060     1.076
+T1Current_raw              202765.975   717690.557  0.000    0.000     0.000  3427590.912  4202900.659     3.776
+GDPower_Factor_raw              1.848       47.160 -0.991    0.094     1.000        8.274     3148.091    65.425
+GDTotal_Energy_kWh        1417427.399  2214108.105  0.001    0.001  2035.131  6633680.603  6792352.362     1.123
+GDPower_reconstructed_kW      444.357       76.741  0.505  268.469   438.188      716.144      850.060     0.641
+T1Current_corrected_A          25.143       86.936  0.001    8.341    15.714      599.345     1406.118    10.116
+GDPower_Factor_corrected        0.895        0.263  0.000    0.100     1.000        1.000        1.000    -2.559
+
+--- SOLAR INVERTER (SL_cleaned.parquet) ---
+Index Range: 2024-12-31 18:00:00+00:00 to 2025-12-31 18:00:00+00:00
+Total Rows: 8,761 | Total Columns: 4
+
+[Missingness & Zero-Value Profile]
+                   Valid_Count  Missing_Count  Missing (%)  Zero_Count  Zero (%)
+3_Active_power_kW         8761              0          0.0        3650     41.66
+PF_Avg                    8761              0          0.0         134      1.53
+Eac_today_kWh             8761              0          0.0          30      0.34
+Eac_total_kWh             8761              0          0.0           0      0.00
+
+[Descriptive Statistics]
+                         mean        std      min        1%         50%         99%         max  skewness
+3_Active_power_kW     830.391   3148.901      0.0       0.0       0.089    8731.775   84757.008    14.995
+PF_Avg                  0.377      0.333      0.0       0.0       0.198       1.000       1.000     0.534
+Eac_today_kWh         437.240     50.634      0.0     281.5     447.182     481.421     525.025    -3.313
+Eac_total_kWh      198777.334  24481.104  69211.6  105263.2  195921.344  231993.995  256620.450    -1.542
+
+--- ROOM SUBMETER (SR-EM_cleaned.parquet) ---
+Index Range: 2024-12-31 18:00:00+00:00 to 2025-12-31 18:00:00+00:00
+Total Rows: 8,761 | Total Columns: 6
+
+[Missingness & Zero-Value Profile]
+                   Valid_Count  Missing_Count  Missing (%)  Zero_Count  Zero (%)
+Power_raw                 7257           1504        17.17           0       0.0
+Current_raw               7257           1504        17.17           0       0.0
+Energy_raw                7257           1504        17.17           0       0.0
+Room_Demand_kW            8761              0         0.00           0       0.0
+Voltage_derived_V         8761              0         0.00           0       0.0
+Energy_kWh                8761              0         0.00           0       0.0
+
+[Descriptive Statistics]
+                           mean          std           min            1%           50%           99%           max  skewness
+Power_raw          2.360324e+03     2010.039  1.573920e+02  2.053900e+02  1.807940e+03  8.201214e+03  9.873367e+03     1.058
+Current_raw        1.615150e+02        3.845  8.829700e+01  1.525850e+02  1.616640e+02  1.697690e+02  1.761640e+02    -1.627
+Energy_raw         1.849152e+08  8779428.359  1.515868e+08  1.708112e+08  1.865060e+08  1.982373e+08  3.677109e+08     2.034
+Room_Demand_kW     2.315000e+00        1.879  1.570000e-01  2.060000e-01  1.936000e+00  8.131000e+00  9.873000e+00     1.124
+Voltage_derived_V  1.607760e+02        4.609  8.829700e+01  1.482190e+02  1.612220e+02  1.694810e+02  1.761640e+02    -2.050
+Energy_kWh         1.871694e+05    11302.989  1.515869e+05  1.708512e+05  1.875935e+05  2.224536e+05  3.677109e+05     2.189
+
+==================================================================
+             CAMPUS NET-ZERO & ENERGY BALANCE REPORT              
+==================================================================
+Total Evaluated Hours: 8,724 hours
+Total Solar Generation:   7,275,019.55 kWh
+Total Room Demand:           20,257.55 kWh
+Total Campus Grid Draw:   3,876,572.22 kWh
+Deficit Hours (Demand > Solar) : 5,962 hrs (68.3%)
+Surplus Hours (Solar > Demand) : 2,762 hrs (31.7%)
+Solar Self-Consumption Rate: 0.14%
+Room Solar Coverage Ratio:   48.52%
+Max Hourly Solar Surplus:    84751.64 kW
+Max Hourly Power Deficit:    9.24 kW
+==================================================================
+
+Report written to: cleaned_data_summary.txt

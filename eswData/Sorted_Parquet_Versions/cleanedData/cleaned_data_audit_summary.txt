@@ -1,0 +1,37 @@
+==================================================================
+               CLEANED DATASETS MISSING DATA AUDIT                
+==================================================================
+
+--- AUDIT: EM (./EM_cleaned.parquet) ---
+                  Column  Total_Rows  Valid_Rows  Missing_Rows  Completeness (%)
+             GDPower_raw        8724        8680            44              99.5
+           T1Current_raw        8724        8680            44              99.5
+      GDPower_Factor_raw        8724        8593           131              98.5
+      GDTotal_Energy_kWh        8724        8724             0             100.0
+GDPower_reconstructed_kW        8724        8724             0             100.0
+   T1Current_corrected_A        8724        8724             0             100.0
+GDPower_Factor_corrected        8724        8724             0             100.0
+Plots generated: cleaned_audit_missingno/EM_cleaned_missing_matrix.png, cleaned_audit_missingno/EM_cleaned_missing_bar.png
+
+--- AUDIT: SL (./SL_cleaned.parquet) ---
+           Column  Total_Rows  Valid_Rows  Missing_Rows  Completeness (%)
+3_Active_power_kW        8761        8761             0             100.0
+           PF_Avg        8761        8761             0             100.0
+    Eac_today_kWh        8761        8761             0             100.0
+    Eac_total_kWh        8761        8761             0             100.0
+Plots generated: cleaned_audit_missingno/SL_cleaned_missing_matrix.png, cleaned_audit_missingno/SL_cleaned_missing_bar.png
+
+--- AUDIT: SREM (./SR-EM_cleaned.parquet) ---
+           Column  Total_Rows  Valid_Rows  Missing_Rows  Completeness (%)
+        Power_raw        8761        7257          1504             82.83
+      Current_raw        8761        7257          1504             82.83
+       Energy_raw        8761        7257          1504             82.83
+   Room_Demand_kW        8761        8761             0            100.00
+Voltage_derived_V        8761        8761             0            100.00
+       Energy_kWh        8761        8761             0            100.00
+Plots generated: cleaned_audit_missingno/SREM_cleaned_missing_matrix.png, cleaned_audit_missingno/SREM_cleaned_missing_bar.png
+
+==================================================================
+Missingness audit summary successfully exported to: cleaned_data_audit_summary.txt
+Visualizations saved to folder: ./cleaned_audit_missingno/
+==================================================================

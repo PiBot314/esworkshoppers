@@ -1,0 +1,177 @@
+================================================================================
+ DATASET AUDIT: CAMPUS GRID METER (EM) (EM.parquet)
+================================================================================
+Total Rows: 1,048,575 | Total Columns: 40
+
+--- PARAMETER ACTIVITY & NUMERICAL RANGES ---
+          Column   Dtype  NonZero_Count  Active(%)  Missing(%)            Min        Median           Max
+              id   int64        1048575      100.0         0.0         458853      983240.0       1653204
+         Node_id  object        1048575      100.0         0.0              -             -             -
+       Timestamp  object        1048575      100.0         0.0              -             -             -
+         Version  object        1048575      100.0         0.0              -             -             -
+Sensor_Timestamp   int64        1048575      100.0         0.0             16  1748927785.0    1767205718
+           GDVLL float64         354490       33.8         0.0            0.0           0.0      11606.69
+           GDVLN float64         354490       33.8         0.0            0.0           0.0       6768.59
+       GDCurrent float64         354540       33.8         0.0            0.0           0.0        357.36
+     GDFrequency float64         354487       33.8         0.0            0.0           0.0         51.61
+         GDPower float64         354539       33.8         0.0          -5.54           0.0     896437.94
+  GDPower Factor float64        1034479       98.7         1.5           -1.0           1.0     512982.03
+  GDTotal Energy float64        1043437       99.5         1.5           -1.0    2035130.62  6808193024.0
+           T1VLL float64         354489       33.8         0.3            0.0           0.0      11624.36
+           T1VLN float64         354488       33.8         0.3            0.0           0.0        6768.5
+       T1Current float64         335365       32.0         0.0            0.0           0.0     4208342.0
+     T1Frequency float64         349382       33.3         3.4            0.0           0.0       6251.24
+         T1Power float64         334885       31.9         3.4            0.0           0.0     761205.88
+  T1Power Factor float64        1033003       98.5         4.9           -1.0           1.0     1074568.0
+  T1Total Energy float64        1043472       99.5         4.9           -1.0    1818371.88  9607511040.0
+           T2VLL float64        1043511       99.5        69.6            0.0       10922.8      11634.93
+           T2VLN float64        1040161       99.2        69.6            0.0       6309.06  8648189952.0
+       T2Current float64        1040331       99.2        69.6            0.0         16.34         64.04
+     T2Frequency float64        1040709       99.2        69.6            0.0          50.0         52.05
+         T2Power float64        1043427       99.5        69.6            0.0     306247.06     749928.94
+  T2Power Factor float64        1043644       99.5        69.6           -1.0           1.0        6624.2
+  T2Total Energy float64        1048575      100.0        71.4   6815613952.0  8028307968.0  9213287424.0
+          LT1VLL float64        1048575      100.0        69.9         379.19        411.17         441.8
+          LT1VLN float64        1039269       99.1        69.6            0.0        237.22        255.07
+      LT1Current float64        1025232       97.8        69.6            0.0        366.47       1072.67
+    LT1Frequency float64        1039979       99.2        69.6            0.0          50.0          51.2
+        LT1Power float64        1029207       98.2        69.6            0.0     256639.44     748461.06
+ LT1Power Factor float64        1035729       98.8        69.6           -1.0           1.0     461140.06
+ LT1Total Energy float64        1048575      100.0        69.6  5716765938.58  9243079680.0  9673395200.0
+          LT2VLL float64        1029729       98.2        69.6            0.0        409.78         445.0
+          LT2VLN float64        1048575      100.0        71.0         218.62        237.02        256.92
+      LT2Current float64        1003976       95.7        69.6            0.0        428.62       1622.99
+    LT2Frequency float64        1048575      100.0        71.0          49.43          50.0          51.2
+        LT2Power float64        1003687       95.7        69.6            0.0     302418.64     737737.12
+ LT2Power Factor float64        1018807       97.2        69.6           -1.0           1.0        423.97
+ LT2Total Energy float64        1048575      100.0        69.6   7958631526.4  7958631526.4  8350148096.0
+
+--- SAMPLE ROW 0 ---
+{'id': 647848, 'Node_id': 'EM-CR-KH95-00', 'Timestamp': '2025-12-31 18:28:38+00:00', 'Version': 'V2.0.0', 'Sensor_Timestamp': 1007849, 'GDVLL': 233.23, 'GDVLN': 0.1, 'GDCurrent': 0.1, 'GDFrequency': 0.54, 'GDPower': 0.1, 'GDPower Factor': 0.1, 'GDTotal Energy': 114.65, 'T1VLL': 50.01, 'T1VLN': 0.95, 'T1Current': 858256.56, 'T1Frequency': nan, 'T1Power': nan, 'T1Power Factor': nan, 'T1Total Energy': nan, 'T2VLL': nan, 'T2VLN': nan, 'T2Current': nan, 'T2Frequency': nan, 'T2Power': nan, 'T2Power Factor': nan, 'T2Total Energy': nan, 'LT1VLL': nan, 'LT1VLN': nan, 'LT1Current': nan, 'LT1Frequency': nan, 'LT1Power': nan, 'LT1Power Factor': nan, 'LT1Total Energy': nan, 'LT2VLL': nan, 'LT2VLN': nan, 'LT2Current': nan, 'LT2Frequency': nan, 'LT2Power': nan, 'LT2Power Factor': nan, 'LT2Total Energy': nan}
+
+--- SAMPLE HIGHLY ACTIVE ROW (Index: 35837) ---
+{'id': 596074, 'Node_id': 'EM-CR-SB00-00', 'Timestamp': '2025-11-27 11:12:01+00:00', 'Version': 'V2.0.0', 'Sensor_Timestamp': 1739775893, 'GDVLL': 10786.363, 'GDVLN': 6229.829, 'GDCurrent': 26.743, 'GDFrequency': 49.973, 'GDPower': 472299.094, 'GDPower Factor': 0.944, 'GDTotal Energy': 3219853824.0, 'T1VLL': 10806.901, 'T1VLN': 6241.815, 'T1Current': 15.822, 'T1Frequency': 49.965, 'T1Power': 272732.969, 'T1Power Factor': 0.929, 'T1Total Energy': 8114880512.0, 'T2VLL': 10813.113, 'T2VLN': 6245.548, 'T2Current': 16.587, 'T2Frequency': 49.969, 'T2Power': 283453.781, 'T2Power Factor': 0.915, 'T2Total Energy': 6905124864.0, 'LT1VLL': 401.055, 'LT1VLN': 231.551, 'LT1Current': 418.757, 'LT1Frequency': 49.976, 'LT1Power': 269556.875, 'LT1Power Factor': 0.938, 'LT1Total Energy': 7943458816.0, 'LT2VLL': 400.408, 'LT2VLN': 231.177, 'LT2Current': 435.191, 'LT2Frequency': 49.977, 'LT2Power': 275578.719, 'LT2Power Factor': 0.914, 'LT2Total Energy': 7958631526.4}
+
+################################################################################
+
+================================================================================
+ DATASET AUDIT: SOLAR INVERTER (SL) (SL.parquet)
+================================================================================
+Total Rows: 1,821,928 | Total Columns: 78
+
+--- PARAMETER ACTIVITY & NUMERICAL RANGES ---
+          Column   Dtype  NonZero_Count  Active(%)  Missing(%)        Min        Median           Max
+              id   int64        1821928      100.0         0.0    3658147     4574541.5       5758233
+         Node_id  object        1821928      100.0         0.0          -             -             -
+       Timestamp  object        1821928      100.0         0.0          -             -             -
+         Version  object        1821928      100.0         0.0          -             -             -
+Sensor_Timestamp float64        1821925      100.0         0.0        0.0  1751541180.0  1767205800.0
+      VoltageR_N float64        1814194       99.6        61.5        0.0        233.32        443.93
+      VoltageY_N float64        1813827       99.6        61.6        0.0         233.5        415.04
+      VoltageB_N float64        1813831       99.6        61.6        0.0        232.75        416.29
+     Voltage_avg float64        1813837       99.6        61.6        0.0         233.1        357.82
+      VoltageR_Y float64        1813650       99.5        61.5   -6537.31         403.9        433.98
+      VoltageY_B float64        1813649       99.5        61.5    -6726.1         403.7        760.99
+      VoltageB_R float64        1813532       99.5        61.5   -6470.53         403.5        437.71
+        RPhaseLC float64        1821918      100.0        61.5        0.0          0.63         223.7
+        YPhaseLC float64        1797786       98.7        61.5       -1.0          1.25         224.1
+        BPhaseLC float64        1797786       98.7        61.6        0.0          0.74         224.1
+        NPhaseLC float64        1600901       87.9        61.5        0.0          0.07         725.0
+      RPhaseactC float64        1543831       84.7        61.5     -97.61           0.0      57612.74
+      YPhaseactC float64        1627505       89.3        61.5      -97.5           0.0      19883.16
+      BPhaseactC float64        1627697       89.3        61.5     -142.9           0.0      19146.78
+     RPhaseRactC float64        1811204       99.4        61.5    -132.18           0.3      18521.34
+     YPhaseRactC float64        1813601       99.5        61.8    -185.67           0.3        166.55
+     BPhaseRactC float64        1811744       99.4        61.5      -3.62           0.3      19898.25
+            Q1PF float64        1603753       88.0        61.5       -1.0          0.01           1.0
+            Q2PF float64        1650289       90.6        61.5       -1.0          0.09           1.0
+            Q3PF float64        1811167       99.4        61.5       -1.0          0.12           1.0
+          PF_Avg float64        1654137       90.8        61.5       -1.0          0.12           1.0
+  R_Active_power float64        1509518       82.9        61.5  -43405.27           0.0        211.02
+  Y_Active_power float64        1546786       84.9        61.5  -45223.04           0.0         121.7
+  B_Active_power float64        1622169       89.0        61.5  -42192.17           0.0        117.18
+  3_Active_power float64        1797574       98.7        61.5 -130800.44           0.2        359.36
+R_Reactive_power float64        1792077       98.4        61.5   -1369.62           0.1        166.15
+Y_Reactive_power float64        1796762       98.6        61.5   -1808.06           0.1        164.63
+B_Reactive_power float64        1794467       98.5        61.5   -1661.72           0.1        129.56
+3_Reactive_power float64        1625844       89.2        61.5   -4800.46           0.0        332.91
+R_Apparent_power float64        1797753       98.7        61.5        0.0          0.14      43422.01
+Y_Apparent_power float64        1797765       98.7        61.5        0.0          0.28       45259.5
+B_Apparent_power float64        1797766       98.7        61.5        0.0          0.18      42237.27
+3_Apparent_power float64        1797781       98.7        61.5        0.0          0.42     130923.71
+       RY_ph_ang float64        1780034       97.7        61.7        0.0         120.0        243.16
+       YB_ph_ang float64        1814125       99.6        61.5        0.0         120.6         359.8
+       BR_ph_ang float64        1814015       99.6        61.5        0.0         120.4        330.19
+       Frequency float64        1802492       98.9        32.2        0.0          50.0         120.2
+             TEI float64        1813999       99.6        61.5        0.0     1090321.0     1348810.0
+             TEE float64        1821928      100.0        61.5      245.0         293.0      336484.5
+       Eac_today float64        1821923      100.0        70.7        0.0         442.3         552.6
+       Eac_total float64        1821928      100.0        70.6    69211.6     212776.56      265175.6
+     ActivePower float64        1797401       98.7        70.6        0.0       20491.8      106857.6
+      Voltage_RS float64        1810384       99.4        70.7        0.0         411.2         670.6
+      Voltage_ST float64        1810342       99.4        70.7        0.0         410.3         526.0
+      Voltage_TR float64        1810268       99.4        70.7        0.0         410.8         448.3
+    Power Factor float64        1810053       99.3        70.7        0.0           2.0         782.5
+        Voltage1 float64        1810455       99.4        70.7        0.0         237.0         378.2
+        Current1 float64        1795355       98.5        70.6        0.0          28.7         110.8
+          Power1 float64        1794213       98.5        70.6        0.0        6698.5       27337.7
+        Voltage2 float64        1810304       99.4        70.7        0.0         237.4         258.9
+        Current2 float64        1793333       98.4        70.6        0.0          28.6         111.3
+          Power2 float64        1794617       98.5        70.6        0.0        6675.7       27186.7
+        Voltage3 float64        1810299       99.4        70.7        0.0         237.1      522872.6
+        Current3 float64        1798212       98.7        70.6        0.0          28.6         111.5
+          Power3 float64        1789247       98.2        70.6        0.0        6671.8       27366.3
+      PV1Voltage float64        1810259       99.4        70.7        0.0         709.5       76860.0
+      PV1Current float64        1771109       97.2        70.6        0.0           4.5          51.2
+        PV1Power float64        1770596       97.2        70.6        0.0        3258.5     1410400.0
+      PV2Voltage float64        1810253       99.4        70.7        0.0         714.8        1108.0
+      PV2Current float64        1770802       97.2        70.6        0.0           4.6          51.2
+        PV2Power float64        1768564       97.1        70.6        0.0       3361.05       14587.1
+      PV3Voltage float64        1810250       99.4        70.7        0.0         728.8      484838.4
+      PV3Current float64        1765276       96.9        70.6        0.0           4.8          51.2
+        PV3Power float64        1767738       97.0        70.6        0.0        3585.3       41732.2
+      PV4Voltage float64        1810157       99.4        70.7        0.0         748.6        2728.8
+      PV4Current float64        1766440       97.0        70.6        0.0           4.8          51.2
+        PV4Power float64        1764052       96.8        70.6        0.0        3666.5    1453200.12
+      PV5Voltage float64        1810129       99.4        70.7        0.0         751.0        2000.0
+      PV5Current float64        1761977       96.7        70.6        0.0           3.8        2000.0
+        PV5Power float64        1761706       96.7        70.6        0.0        2868.2       15068.4
+      PV6Voltage float64        1821928      100.0        70.7        0.0         753.9         985.0
+      PV6Current float64        1769333       97.1        70.6        0.0           4.8          51.2
+        PV6Power float64        1764511       96.8        70.6        0.0        3699.8      41149.44
+
+--- SAMPLE ROW 0 ---
+{'id': 5485988, 'Node_id': 'SL-VN95-00', 'Timestamp': '2025-12-31 18:30:00+00:00', 'Version': 'V3.0.0', 'Sensor_Timestamp': 1767205800.0, 'VoltageR_N': 239.0, 'VoltageY_N': 239.4, 'VoltageB_N': 240.9, 'Voltage_avg': 239.8, 'VoltageR_Y': 412.8, 'VoltageY_B': 417.4, 'VoltageB_R': 415.8, 'RPhaseLC': 0.2999999999999971, 'YPhaseLC': 0.3, 'BPhaseLC': 0.3, 'NPhaseLC': 0.0, 'RPhaseactC': 0.0, 'YPhaseactC': 0.0, 'BPhaseactC': 0.0, 'RPhaseRactC': 0.3, 'YPhaseRactC': 0.3, 'BPhaseRactC': 0.3, 'Q1PF': 0.0, 'Q2PF': 0.0, 'Q3PF': -0.1, 'PF_Avg': 0.0, 'R_Active_power': 0.0, 'Y_Active_power': 0.0, 'B_Active_power': 0.0, '3_Active_power': 0.2, 'R_Reactive_power': 0.1, 'Y_Reactive_power': 0.0999999999999999, 'B_Reactive_power': 0.1, '3_Reactive_power': 0.0, 'R_Apparent_power': 0.0999999999999996, 'Y_Apparent_power': 0.0999999999999996, 'B_Apparent_power': 0.1, '3_Apparent_power': 0.1999999999999957, 'RY_ph_ang': 119.5, 'YB_ph_ang': 120.5, 'BR_ph_ang': 120.1, 'Frequency': 50.1, 'TEI': 1348810.0, 'TEE': 295.0, 'Eac_today': nan, 'Eac_total': nan, 'ActivePower': nan, 'Voltage_RS': nan, 'Voltage_ST': nan, 'Voltage_TR': nan, 'Power Factor': nan, 'Voltage1': nan, 'Current1': nan, 'Power1': nan, 'Voltage2': nan, 'Current2': nan, 'Power2': nan, 'Voltage3': nan, 'Current3': nan, 'Power3': nan, 'PV1Voltage': nan, 'PV1Current': nan, 'PV1Power': nan, 'PV2Voltage': nan, 'PV2Current': nan, 'PV2Power': nan, 'PV3Voltage': nan, 'PV3Current': nan, 'PV3Power': nan, 'PV4Voltage': nan, 'PV4Current': nan, 'PV4Power': nan, 'PV5Voltage': nan, 'PV5Current': nan, 'PV5Power': nan, 'PV6Voltage': nan, 'PV6Current': nan, 'PV6Power': nan}
+
+--- SAMPLE HIGHLY ACTIVE ROW (Index: 1106) ---
+{'id': 5484887, 'Node_id': 'SL-VN95-00', 'Timestamp': '2025-12-31 11:58:00+00:00', 'Version': 'V3.0.0', 'Sensor_Timestamp': 1767182280.0, 'VoltageR_N': 234.7, 'VoltageY_N': 235.0, 'VoltageB_N': 236.9, 'Voltage_avg': 235.6, 'VoltageR_Y': 405.7, 'VoltageY_B': 409.6, 'VoltageB_R': 408.9, 'RPhaseLC': 5.5, 'YPhaseLC': 5.5, 'BPhaseLC': 5.8, 'NPhaseLC': 0.1, 'RPhaseactC': 4.2, 'YPhaseactC': 4.4, 'BPhaseactC': 4.5, 'RPhaseRactC': 3.6, 'YPhaseRactC': 3.4, 'BPhaseRactC': 3.7, 'Q1PF': 0.8, 'Q2PF': 0.8, 'Q3PF': 0.8, 'PF_Avg': 0.8, 'R_Active_power': 1.0, 'Y_Active_power': 1.0, 'B_Active_power': 1.0999999999999996, '3_Active_power': 2.5, 'R_Reactive_power': 0.9, 'Y_Reactive_power': 0.8, 'B_Reactive_power': 0.9, '3_Reactive_power': 3.1, 'R_Apparent_power': 1.3000000000000007, 'Y_Apparent_power': 1.3000000000000007, 'B_Apparent_power': 1.4, '3_Apparent_power': 4.0, 'RY_ph_ang': 119.6, 'YB_ph_ang': 120.2, 'BR_ph_ang': 120.2, 'Frequency': 50.1, 'TEI': 1348810.0, 'TEE': 295.0, 'Eac_today': nan, 'Eac_total': nan, 'ActivePower': nan, 'Voltage_RS': nan, 'Voltage_ST': nan, 'Voltage_TR': nan, 'Power Factor': nan, 'Voltage1': nan, 'Current1': nan, 'Power1': nan, 'Voltage2': nan, 'Current2': nan, 'Power2': nan, 'Voltage3': nan, 'Current3': nan, 'Power3': nan, 'PV1Voltage': nan, 'PV1Current': nan, 'PV1Power': nan, 'PV2Voltage': nan, 'PV2Current': nan, 'PV2Power': nan, 'PV3Voltage': nan, 'PV3Current': nan, 'PV3Power': nan, 'PV4Voltage': nan, 'PV4Current': nan, 'PV4Power': nan, 'PV5Voltage': nan, 'PV5Current': nan, 'PV5Power': nan, 'PV6Voltage': nan, 'PV6Current': nan, 'PV6Power': nan}
+
+################################################################################
+
+================================================================================
+ DATASET AUDIT: ROOM SUBMETER (SR-EM) (SR-EM.parquet)
+================================================================================
+Total Rows: 724,810 | Total Columns: 10
+
+--- PARAMETER ACTIVITY & NUMERICAL RANGES ---
+          Column   Dtype  NonZero_Count  Active(%)  Missing(%)        Min        Median          Max
+              id   int64         724810      100.0         0.0    2517526     2882826.5      3398662
+         Node_id  object         724810      100.0         0.0          -             -            -
+       Timestamp  object         724810      100.0         0.0          -             -            -
+         Version  object         724810      100.0         0.0          -             -            -
+Sensor_Timestamp   int64         724810      100.0         0.0 1735669800  1749417600.0   1767205725
+          Energy float64         724810      100.0         0.0  360505.53      533708.0  588590208.0
+           Power float64         724087       99.9         0.0        0.0          3.18     30882.95
+         Current float64         724810      100.0         0.0        0.0        232.16       254.42
+       Frequency float64         724079       99.9        33.4        0.0          0.02         0.25
+    Power Factor float64         724810      100.0        33.4      48.76          50.0        51.43
+
+--- SAMPLE ROW 0 ---
+{'id': 3245350, 'Node_id': 'SR-EM-KH04-01', 'Timestamp': '2025-12-31 18:28:45+00:00', 'Version': 'V2.0.0', 'Sensor_Timestamp': 1767205725, 'Energy': 592203.5, 'Power': 2.927, 'Current': 239.865, 'Frequency': 0.016, 'Power Factor': 50.071}
+
+--- SAMPLE HIGHLY ACTIVE ROW (Index: 0) ---
+{'id': 3245350, 'Node_id': 'SR-EM-KH04-01', 'Timestamp': '2025-12-31 18:28:45+00:00', 'Version': 'V2.0.0', 'Sensor_Timestamp': 1767205725, 'Energy': 592203.5, 'Power': 2.927, 'Current': 239.865, 'Frequency': 0.016, 'Power Factor': 50.071}
+
+################################################################################
+
+Diagnostic complete! Saved full report to: diagnostic.txt
