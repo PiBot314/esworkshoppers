@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ * Copyright (c) 2016 Qualcomm Technologies, Inc.
+ * All Rights Reserved.
+ * Confidential and Proprietary - Qualcomm Technologies, Inc.
+-->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="YOLO NAS Object Detection"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="40dp"/>
+
+    <!-- Runtime selection row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="24dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Select Runtime :"
+            android:textSize="16sp"/>
+
+        <RadioGroup
+            android:id="@+id/rg1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/CPU"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CPU"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/DSP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DSP"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <!-- Performance profile row: only shown when DSP is selected -->
+    <LinearLayout
+        android:id="@+id/perf_row"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="40dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_dropdown_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select performance :"
+            android:textSize="16sp"
+            android:layout_gravity="start"
+            android:paddingBottom="8dp"/>
+
+        <Spinner
+            android:id="@+id/options_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:text="Start Camera"
+        android:onClick="startManinCameraActivity"/>
+
+</LinearLayout>
