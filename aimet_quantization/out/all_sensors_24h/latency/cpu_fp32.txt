@@ -1,0 +1,58 @@
+Input Log File Location: all_sensors_24h/lat_cpu_fp32/qnn-profiling-data_0.log
+Log File Created: Mon Oct  5 05:05:19 2026
+Time Scale: 1e-06
+Epoch Timestamp: 1791176719804571 Steady Clock Timestamp: 19601492566
+Generated using: 
+qnn-profile-viewer: v2.47.0.260601114230
+qnn-net-run: v2.47.0.260601114230
+Backend: v2.47.0.260601114230
+
+Qnn Init/Prepare/Finalize/De-Init/Execute/Lib-Load Statistics:
+------------------------------------------------------------
+Init Stats:
+-----------
+    NetRun: 102236 us
+
+Compose Graphs Stats:
+--------------
+    NetRun: 89645 us
+
+Finalize Stats:
+---------------
+Graph 0 (fp32):
+    NetRun: 12578 us
+    Backend (GRAPH_FINALIZE): 12575 us
+
+De-Init Stats:
+--------------
+    NetRun: 7629 us
+    Backend (null): 0 us
+
+Execute Stats (Overall):
+------------------------
+    NetRun IPS (includes IO and misc. time): 31.9730 inf/sec 
+
+Execute Stats (Average):
+------------------------
+Total Inference Time: 
+---------------------
+Graph 0 (fp32):
+    NetRun: 31235 us
+    Backend (GRAPH_EXECUTE): 31232 us
+
+Execute Stats (Min):
+------------------------
+Total Inference Time: 
+---------------------
+Graph 0 (fp32):
+    NetRun: 29186 us
+    Backend (GRAPH_EXECUTE): 29183 us
+
+Execute Stats (Max):
+------------------------
+Total Inference Time: 
+---------------------
+Graph 0 (fp32):
+    NetRun: 66238 us
+    Backend (GRAPH_EXECUTE): 66229 us
+

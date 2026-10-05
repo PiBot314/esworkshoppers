@@ -1,0 +1,68 @@
+{
+  "all_sensors_1h": {
+    "cpu_fp32": {
+      "accel_ms": null,
+      "qnn_execute_ms": null,
+      "ips": 60.1576
+    },
+    "htp_aimet_w8a16": {
+      "accel_ms": 3.419,
+      "qnn_execute_ms": 5.109,
+      "ips": 168.595
+    },
+    "htp_aimet_w8a8": {
+      "accel_ms": 2.508,
+      "qnn_execute_ms": 4.153,
+      "ips": 208.0507
+    },
+    "htp_qairt_w8a16": {
+      "accel_ms": 3.41,
+      "qnn_execute_ms": 5.083,
+      "ips": 170.3886
+    }
+  },
+  "all_sensors_24h": {
+    "cpu_fp32": {
+      "accel_ms": null,
+      "qnn_execute_ms": null,
+      "ips": 31.973
+    },
+    "htp_aimet_w8a16": {
+      "accel_ms": 3.441,
+      "qnn_execute_ms": 5.105,
+      "ips": 169.7748
+    },
+    "htp_aimet_w8a8": {
+      "accel_ms": 2.794,
+      "qnn_execute_ms": 4.376,
+      "ips": 196.5887
+    },
+    "htp_qairt_w8a16": {
+      "accel_ms": 3.431,
+      "qnn_execute_ms": 5.112,
+      "ips": 169.2143
+    }
+  },
+  "single_node": {
+    "cpu_fp32": {
+      "accel_ms": null,
+      "qnn_execute_ms": null,
+      "ips": 68.1816
+    },
+    "htp_aimet_w8a16": {
+      "accel_ms": 3.929,
+      "qnn_execute_ms": 5.481,
+      "ips": 165.2321
+    },
+    "htp_aimet_w8a8": {
+      "accel_ms": 1.844,
+      "qnn_execute_ms": 3.268,
+      "ips": 263.5213
+    },
+    "htp_qairt_w8a16": {
+      "accel_ms": 3.89,
+      "qnn_execute_ms": 5.441,
+      "ips": 164.5445
+    }
+  }
+}

@@ -1,0 +1,3 @@
+FROM qairt:latest
+# onnx 1.16.1 in the base image needs protobuf>=3.20.2; base ships 3.19.6 (breaks qairt-converter)
+RUN . /usr/venv/bin/activate && pip install --no-cache-dir "protobuf==3.20.3"

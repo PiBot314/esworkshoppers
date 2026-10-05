@@ -1,0 +1,35 @@
+{
+    "fc1.weight": [
+        {
+            "bitwidth": 8,
+            "dtype": "int",
+            "is_symmetric": "True",
+            "max": 0.38890737295150757,
+            "min": -0.3919696357306533,
+            "offset": -128,
+            "scale": 0.003062262779145729
+        }
+    ],
+    "fc2.weight": [
+        {
+            "bitwidth": 8,
+            "dtype": "int",
+            "is_symmetric": "True",
+            "max": 0.24248966574668884,
+            "min": -0.24439903319351317,
+            "offset": -128,
+            "scale": 0.0019093674468243216
+        }
+    ],
+    "val_41": [
+        {
+            "bitwidth": 8,
+            "dtype": "int",
+            "is_symmetric": "True",
+            "max": 0.6484642028808594,
+            "min": -0.653570220226378,
+            "offset": -128,
+            "scale": 0.005106017345518578
+        }
+    ]
+}

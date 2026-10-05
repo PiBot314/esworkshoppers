@@ -1,0 +1,24 @@
+{
+    "fc1.weight": [
+        {
+            "bitwidth": 8,
+            "dtype": "int",
+            "is_symmetric": "True",
+            "max": 0.2511870265007019,
+            "min": -0.2531648874282837,
+            "offset": -128,
+            "scale": 0.0019778506830334663
+        }
+    ],
+    "fc2.weight": [
+        {
+            "bitwidth": 8,
+            "dtype": "int",
+            "is_symmetric": "True",
+            "max": 0.2509874403476715,
+            "min": -0.25296372175216675,
+            "offset": -128,
+            "scale": 0.0019762790761888027
+        }
+    ]
+}

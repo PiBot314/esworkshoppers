@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <style>
+        text {
+            font-family: Arial;
+        }
+        text.node-label {
+            font-size: 12px;
+        }
+        text.edge-label {
+            font-size: 12px;
+            fill: #D5D8DC; /* light grey */
+        }
+        rect {
+            width: 140px;
+            height: 40px;
+            fill: #FFFFFF;
+            stroke: #D5D8DC; /* light grey */
+        }
+        polygon.diamond {
+            fill: #FFFFFF;
+            stroke: #D5D8DC; /* light grey */
+        }
+        path {
+            stroke: #D5D8DC; /* light grey */
+        }
+        polygon.arrow-tip {
+            stroke: #D5D8DC; /* light grey */
+            fill: #D5D8DC; /* light grey */
+        }
+
+        [data-visited="true"] {
+            stroke: #000000;
+        }
+        polygon.arrow-tip[data-visited="true"] {
+            stroke: #000000;
+            fill: #000000;
+        }
+        polygon.diamond[data-visited="true"] {
+            stroke: #000000;
+        }
+        text.edge-label[data-visited="true"] {
+            fill: #000000;
+        }
+
+        rect[data-stage-result="discarded"] {
+            fill: #CECECE; /* grey */
+        }
+        rect[data-stage-result="success"] {
+            fill: #2ECC71; /* green */
+        }
+        rect[data-stage-result="error-ignored"] {
+            fill: #F9FF3B; /* yellow */
+        }
+        rect[data-stage-result="error-failed"] {
+            fill: #F94D4D; /* red */
+        }
+        rect.result-success[data-visited="true"] {
+            fill: #2ECC71; /* green */
+        }
+        rect.result-fail[data-visited="true"] {
+            fill: #F94D4D; /* red */
+        }
+
+        rect.legend {
+            width: 135px;
+            height: 150px;
+            fill: #FFFFFF;
+            stroke: #000000;
+        }
+
+        rect.legend-item {
+            width: 20px;
+            height: 10px;
+        }
+        text.legend-label {
+            font-size: 10px;
+        }
+    </style>
+  </head>
+
+  <body>
+    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600">
+      <g transform="translate(128 100) rotate(90)">
+        <path data-visited="true" stroke-linecap="square" d="M0 0 h43"/>
+        <polygon data-visited="true" class="arrow-tip" points="32,7.5 32,-7.5 48,0"/>
+      </g>
+
+      <g transform="translate(60 150)">
+        <rect id='node_quant_scheme_selection' data-visited="true" data-stage-result="success"/>
+        <text class="node-label" lengthAdjust="spacing" textLength= "130" >
+          <tspan x="5" y="25">QuantScheme Selection</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(128 190) rotate(90)">
+        <path data-visited="true" stroke-linecap="square" d="M0 0 h37"/>
+        <polygon data-visited="true" class="arrow-tip" points="23,7.5 23,-7.5 39,0"/>
+      </g>
+
+      <g transform="translate(30 230)">
+        <polygon id='node_test_w32_eval_score' data-visited="true" class="diamond" points="0,30 97,60 194,30 97,0"/>
+          <text class="node-label" lengthAdjust="spacing" textLength= "130" >
+            <tspan x="35" y="32">W32 eval score >= target?</tspan>
+          </text>
+        <polygon/>
+      </g>
+
+      <g transform="translate(225 260)">
+        <path  stroke-linecap="square" d="M0 0 h280"/>
+        <polygon  class="arrow-tip" points="276,7.5 276,-7.5 292,0"/>
+        <text class="edge-label" >
+          <tspan x="-10" y="20">no</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(128 290)">
+        <g transform="rotate(90)">
+          <path data-visited="true" stroke-linecap="square" d="M0 0 h37"/>
+          <polygon data-visited="true" class="arrow-tip" points="23,7.5 23,-7.5 39,0"/>
+        </g>
+        <text class="edge-label" data-visited="true">
+          <tspan x="10" y="10">yes</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(60 330)">
+        <rect id='node_batchnorm_folding' data-visited="true" data-stage-result="success"/>
+        <text class="node-label">
+          <tspan x="15" y="25">BatchNorm Folding</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(128 370) rotate(90)">
+        <path data-visited="true" stroke-linecap="square" d="M0 0 h37"/>
+        <polygon data-visited="true" class="arrow-tip" points="23,7.5 23,-7.5 39,0"/>
+      </g>
+
+      <g transform="translate(30 410)">
+        <polygon id='node_test_batchnorm_folding' data-visited="true" class="diamond" points="0,30 97,60 194,30 97,0"/>
+          <text class="node-label" lengthAdjust="spacing" textLength= "130" >
+            <tspan x="40" y="32">eval score >= target?</tspan>
+          </text>
+        <polygon/>
+      </g>
+
+      <g transform="translate(162 420)">
+        <g transform="rotate(335)">
+          <path data-visited="true" stroke-linecap="square" d="M0 0 h135"/>
+          <polygon data-visited="true" class="arrow-tip" points="123,7.5 123,-7.5 139,0"/>
+        </g>
+        <text class="edge-label" data-visited="true">
+          <tspan x="0" y="-10">no</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(170 457)">
+        <g transform="rotate(25)">
+          <path  stroke-linecap="square" d="M0 0 h135"/>
+          <polygon  class="arrow-tip" points="121,7.5 121,-7.5 137,0"/>
+        </g>
+        <text class="edge-label" >
+          <tspan x="0" y="20">yes</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(290 330)">
+        <rect id='node_cross_layer_equalization' data-visited="true" data-stage-result="discarded"/>
+        <text class="node-label">
+          <tspan x="55" y="25">CLE</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(357 370) rotate(90)">
+        <path data-visited="true" stroke-linecap="square" d="M0 0 h37"/>
+        <polygon data-visited="true" class="arrow-tip" points="23,7.5 23,-7.5 39,0"/>
+      </g>
+
+      <g transform="translate(260 410)">
+        <polygon id='node_test_cross_layer_equalization' data-visited="true" class="diamond" points="0,30 97,60 194,30 97,0"/>
+          <text class="node-label" lengthAdjust="spacing" textLength= "130" >
+            <tspan x="40" y="32">eval score >= target?</tspan>
+          </text>
+        <polygon/>
+      </g>
+
+      <g transform="translate(398 422)">
+        <g transform="rotate(335)">
+          <path data-visited="true" stroke-linecap="square" d="M0 0 h128"/>
+          <polygon data-visited="true" class="arrow-tip" points="116,7.5 116,-7.5 132,0"/>
+          <text class="edge-label" data-visited="true">
+            <tspan x="30" y="15">no</tspan>
+          </text>
+        </g>
+      </g>
+
+      <g transform="translate(357 470)">
+        <g transform="rotate(90)">
+          <path  stroke-linecap="square" d="M0 0 h37"/>
+          <polygon  class="arrow-tip" points="23,7.5 23,-7.5 39,0"/>
+        </g>
+        <text class="edge-label" >
+          <tspan x="5" y="15">yes</tspan>
+        </text>
+      </g>
+
+
+      <g transform="translate(520 330)">
+        <rect id='node_adaround' data-visited="true" data-stage-result="success"/>
+        <text class="node-label">
+          <tspan x="35" y="25">AdaRound</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(587 370)">
+        <g transform="rotate(90)">
+          <path data-visited="true" stroke-linecap="square" d="M0 0 h37"/>
+          <polygon data-visited="true" class="arrow-tip" points="23,7.5 23,-7.5 39,0"/>
+        </g>
+      </g>
+
+      <g transform="translate(490 410)">
+        <polygon id='node_test_adaround' data-visited="true" class="diamond" points="0,30 97,60 194,30 97,0"/>
+          <text class="node-label" lengthAdjust="spacing" textLength= "130" >
+            <tspan x="40" y="32">eval score >= target?</tspan>
+          </text>
+        <polygon/>
+      </g>
+
+      <g transform="translate(685 440)">
+        <path data-visited="true" stroke-linecap="square" d="M0 0 h37 v-180 h-50" fill="none"/>
+        <polygon data-visited="true" class="arrow-tip" points="-7,-187.5 -7,-172.5 -23,-180"/>
+        <text class="edge-label" data-visited="true">
+          <tspan x="5" y="15">no</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(545 457)">
+        <g transform="rotate(155)">
+            <path  stroke-linecap="square" d="M0 0 h130"/>
+            <polygon  class="arrow-tip" points="116,7.5 116,-7.5 132,0"/>
+        </g>
+        <text class="edge-label" >
+          <tspan x="-10" y="20">yes</tspan>
+        </text>
+      </g>
+
+
+      <g transform="translate(520 240)">
+        <rect id='node_result_fail' data-visited="true" class="result-fail" rx="20"/>
+        <text class="node-label" lengthAdjust="spacing" textLength= "130" >
+          <tspan x="5" y="25">Target accuracy not achieved</tspan>
+        </text>
+      </g>
+
+      <g transform="translate(290 510)">
+        <rect id='node_result_success'  class="result-success" rx="20"/>
+        <text class="node-label" lengthAdjust="spacing" textLength= "130" >
+          <tspan x="5" y="25">Target accuracy achieved</tspan>
+        </text>
+      </g>
+
+      <!---------------------- Legend ---------------------->
+
+      <g transform="translate(560 0)">
+        <rect  class="legend" />
+        <text class="legend-title" >
+          <tspan x="40" y="25">Legend</tspan>
+        </text>
+
+        <g transform="translate(10 40)">
+          <rect class="legend-item" />
+          <text class="legend-label">
+            <tspan x="23" y="8">: not visited</tspan>
+          </text>
+        </g>
+
+        <g transform="translate(10 55)">
+          <rect class="legend-item" data-visited="true" data-stage-result="success" />
+          <text class="legend-label">
+            <tspan x="23" y="8">: applied successfully </tspan>
+          </text>
+        </g>
+
+        <g transform="translate(10 70)">
+          <rect class="legend-item" data-visited="true" data-stage-result="discarded" />
+          <text class="legend-label">
+            <tspan x="23" y="8">: discarded </tspan>
+          </text>
+        </g>
+
+        <g transform="translate(10 85)">
+          <rect class="legend-item" data-visited="true" data-stage-result="error-failed" />
+          <text class="legend-label">
+            <tspan x="23" y="8">: failed with error </tspan>
+          </text>
+        </g>
+
+        <g transform="translate(10 100)">
+          <rect class="legend-item" data-visited="true" data-stage-result="error-ignored" />
+          <text class="legend-label">
+            <tspan x="23" y="8">: error ignored </tspan>
+          </text>
+        </g>
+
+        <g transform="translate(10 120)">
+          <path stroke-linecap="square" d="M0 0 h15" />
+          <polygon class="arrow-tip" points="15,3 15,-3 20,0" />
+          <text class="legend-label">
+            <tspan x="23" y="3">: not visited </tspan>
+          </text>
+        </g>
+
+        <g transform="translate(10 135)">
+          <path stroke-linecap="square" d="M0 0 h15" data-visited="true"/>
+          <polygon class="arrow-tip" points="15,3 15,-3 20,0" data-visited="true"/>
+          <text class="legend-label">
+            <tspan x="23" y="3">: visited </tspan>
+          </text>
+        </g>
+      </g>
+      <!-------------------- Legend End -------------------->
+
+    </svg>
+
+    <h1> QuantScheme Selection </h1>
+<div> 2026-10-05 09:46:41,654 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75<br/>
+2026-10-05 09:46:45,150 - AutoQuant - INFO - Evaluation finished: W@tf / A@tf (eval score: 47.558203)<br/>
+2026-10-05 09:46:45,174 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75<br/>
+2026-10-05 09:46:49,429 - AutoQuant - INFO - Evaluation finished: W@tf-enhanced / A@tf (eval score: 48.298411)<br/>
+2026-10-05 09:46:49,430 - AutoQuant - INFO - Best Quant Scheme: W@tf-enhanced / A@tf<br/>
+ </div>
+<h1> W32 Evaluation </h1>
+<div> 2026-10-05 09:46:49,638 - Quant - WARNING - Exporting {dtype} quantization to onnx graph is not supported<br/>
+2026-10-05 09:46:49,658 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75<br/>
+2026-10-05 09:46:52,341 - AutoQuant - INFO - Evaluation finished: W32A16 (eval score: 92.553339)<br/>
+ </div>
+<h1> Batchnorm Folding </h1>
+<div> 2026-10-05 09:46:52,663 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75<br/>
+2026-10-05 09:46:56,850 - AutoQuant - INFO - The results of Batchnorm Folding is saved in /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/all_sensors_1h/autoquant/.trace/batchnorm_folding.onnx and /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/all_sensors_1h/autoquant/.trace/batchnorm_folding.encodings.<br/>
+2026-10-05 09:46:56,851 - AutoQuant - INFO - Session finished: Batchnorm Folding. (eval score: 48.298411). Applied techniques: batchnorm_folding<br/>
+ </div>
+<h1> Cross-Layer Equalization </h1>
+<div> 2026-10-05 09:46:57,148 - Quant - INFO - High Bias folding is not supported for models without BatchNorm Layers<br/>
+2026-10-05 09:46:57,169 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75<br/>
+2026-10-05 09:47:01,414 - AutoQuant - INFO - The results of Cross-Layer Equalization is saved in /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/all_sensors_1h/autoquant/.trace/cross_layer_equalization.onnx and /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/all_sensors_1h/autoquant/.trace/cross_layer_equalization.encodings.<br/>
+2026-10-05 09:47:01,415 - AutoQuant - INFO - Session finished: Cross-Layer Equalization. (eval score: 48.298411). Applied techniques: cross_layer_equalization<br/>
+ </div>
+<h1> AdaRound </h1>
+<div> 2026-10-05 09:47:01,673 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75<br/>
+2026-10-05 09:47:07,734 - Utils - INFO - Caching 1024 batches from data loader at path location: /tmp/tmp2y80998f<br/>
+2026-10-05 09:47:07,736 - Quant - INFO - Started Optimizing weight rounding of module: node_linear<br/>
+2026-10-05 09:47:09,393 - Quant - WARNING - CUDAExecutionProvider not in ort available providers. use_cuda is set to False<br/>
+2026-10-05 09:47:41,033 - Quant - INFO - Started Optimizing weight rounding of module: node_linear_1<br/>
+2026-10-05 09:47:41,035 - Quant - WARNING - CUDAExecutionProvider not in ort available providers. use_cuda is set to False<br/>
+2026-10-05 09:47:52,076 - Quant - INFO - Completed Adarounding Model<br/>
+2026-10-05 09:47:52,104 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75<br/>
+2026-10-05 09:48:01,646 - AutoQuant - INFO - The results of AdaRound is saved in /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/all_sensors_1h/autoquant/.trace/adaround.onnx and /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/all_sensors_1h/autoquant/.trace/adaround.encodings.<br/>
+2026-10-05 09:48:01,649 - AutoQuant - INFO - Session finished: AdaRound. (eval score: 50.299273). Applied techniques: batchnorm_folding adaround<br/>
+ </div>
+
+
+  </body>
+</html>

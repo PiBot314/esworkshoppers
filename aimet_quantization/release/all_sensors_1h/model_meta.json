@@ -1,0 +1,105 @@
+{
+  "model_type": "All_Sensors_Campus_Forecaster",
+  "input_tensor_name": "input_sequence_all_sensors",
+  "input_shape": [
+    1,
+    96,
+    58
+  ],
+  "output_tensor_name": "forecast_all_pillars",
+  "output_shape": [
+    1,
+    12
+  ],
+  "feature_count": 58,
+  "feature_names": [
+    "SR-EM-KH04-00__power_W",
+    "SR-EM-KH04-00__was_imputed",
+    "SR-EM-KH04-01__power_W",
+    "SR-EM-KH04-01__voltage_V",
+    "SR-EM-KH04-01__current_A",
+    "SR-EM-KH04-01__frequency_Hz",
+    "SR-EM-KH04-01__was_imputed",
+    "SR-EM-KH04-02__power_W",
+    "SR-EM-KH04-02__voltage_V",
+    "SR-EM-KH04-02__current_A",
+    "SR-EM-KH04-02__frequency_Hz",
+    "SR-EM-KH04-02__was_imputed",
+    "EM-CR-KH95-00__power_total_W",
+    "EM-CR-KH95-00__power_R_W",
+    "EM-CR-KH95-00__power_B_W",
+    "EM-CR-KH95-00__voltage_V",
+    "EM-CR-KH95-00__power_factor",
+    "EM-CR-KH95-00__was_imputed",
+    "EM-CR-SB00-00__gd_power_W",
+    "EM-CR-SB00-00__t1_power_W",
+    "EM-CR-SB00-00__t2_power_W",
+    "EM-CR-SB00-00__hv_voltage_VLL",
+    "EM-CR-SB00-00__lt1_voltage_VLN",
+    "EM-CR-SB00-00__lt2_voltage_VLN",
+    "EM-CR-SB00-00__was_imputed",
+    "SL-PL00-00__active_power_W",
+    "SL-PL00-00__reactive_power_VAr",
+    "SL-PL00-00__voltage_avg_V",
+    "SL-PL00-00__neutral_current_A",
+    "SL-PL00-00__was_imputed",
+    "SL-VN95-00__active_power_W",
+    "SL-VN95-00__reactive_power_VAr",
+    "SL-VN95-00__voltage_avg_V",
+    "SL-VN95-00__neutral_current_A",
+    "SL-VN95-00__was_imputed",
+    "SL-NI01-00__active_power_W",
+    "SL-NI01-00__reactive_power_VAr",
+    "SL-NI01-00__voltage_avg_V",
+    "SL-NI01-00__neutral_current_A",
+    "SL-NI01-00__was_imputed",
+    "SL-NI03-00__active_power_W",
+    "SL-NI03-00__ac_voltage_avg_V",
+    "SL-NI03-00__pv_voltage_avg_V",
+    "SL-NI03-00__was_imputed",
+    "SL-NI03-01__active_power_W",
+    "SL-NI03-01__ac_voltage_avg_V",
+    "SL-NI03-01__pv_voltage_avg_V",
+    "SL-NI03-01__was_imputed",
+    "SL-VN02-01__active_power_W",
+    "SL-VN02-01__ac_voltage_avg_V",
+    "SL-VN02-01__pv_voltage_avg_V",
+    "SL-VN02-01__was_imputed",
+    "hod_sin",
+    "hod_cos",
+    "dow_sin",
+    "dow_cos",
+    "doy_sin",
+    "doy_cos"
+  ],
+  "domains": [
+    "Solar",
+    "Grid",
+    "Demand"
+  ],
+  "capacities_W": {
+    "solar_max_W": 546010.2593596554,
+    "grid_max_W": 887250.7668833333,
+    "demand_max_W": 30045.697428571428
+  },
+  "evaluation_summary": {
+    "Solar": {
+      "MAE_W": 19646.484375,
+      "RMSE_W": 31900.248046875,
+      "nMAE_pct": 3.5981896014263195,
+      "R2": 0.9553765058517456
+    },
+    "Grid": {
+      "MAE_W": 31252.244140625,
+      "RMSE_W": 46127.00390625,
+      "nMAE_pct": 3.522368794383294,
+      "R2": 0.7940381169319153
+    },
+    "Demand": {
+      "MAE_W": 1867.377685546875,
+      "RMSE_W": 2373.055419921875,
+      "nMAE_pct": 6.2151251106294,
+      "R2": -0.34145402908325195
+    }
+  }
+}

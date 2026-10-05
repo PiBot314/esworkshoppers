@@ -1,0 +1,17 @@
+---
+timestamp: 18030219806
+command: ./bin/qnn-net-run --backend lib/libQnnCpu.so --model all_sensors_1h/models/libfp32.so --input_list all_sensors_1h/test_list.txt --output_dir all_sensors_1h/out_cpu_fp32 --perf_profile burst --profiling_level basic
+execution_mode: synchronous
+inferences_completed: 4832
+graphs:
+  - graph_name: fp32
+    input_tensors:
+    - tensor_name: input_sequence_all_sensors
+      id: 1
+      datatype: QNN_DATATYPE_FLOAT_32
+      dimensions: [1,96,58]
+    output_tensors:
+    - tensor_name: forecast_all_pillars
+      id: 5031
+      datatype: QNN_DATATYPE_FLOAT_32
+      dimensions: [1,12]

@@ -1,0 +1,39 @@
+{
+  "freq": "15min",
+  "nodes": {
+    "SR-EM-KH04-00": {
+      "target": "power_W"
+    },
+    "SR-EM-KH04-01": {
+      "target": "power_W"
+    },
+    "SR-EM-KH04-02": {
+      "target": "power_W"
+    },
+    "EM-CR-KH95-00": {
+      "target": "power_total_W"
+    },
+    "EM-CR-SB00-00": {
+      "target": "gd_power_W"
+    },
+    "SL-PL00-00": {
+      "target": "active_power_kW"
+    },
+    "SL-VN95-00": {
+      "target": "active_power_kW"
+    },
+    "SL-NI01-00": {
+      "target": "active_power_W"
+    },
+    "SL-NI03-00": {
+      "target": "active_power_W"
+    },
+    "SL-NI03-01": {
+      "target": "active_power_W"
+    },
+    "SL-VN02-01": {
+      "target": "active_power_W"
+    }
+  },
+  "excluded": {}
+}

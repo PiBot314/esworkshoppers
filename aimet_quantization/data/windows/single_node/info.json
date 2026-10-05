@@ -1,0 +1,22 @@
+{
+  "n_train": 23041,
+  "n_val": 4859,
+  "n_test": 4861,
+  "n_calib": 1024,
+  "horizon": 4,
+  "feature_order": [
+    "active_power_W",
+    "reactive_power_VAr",
+    "voltage_avg_V",
+    "neutral_current_A",
+    "hod_sin",
+    "hod_cos",
+    "dow_sin",
+    "dow_cos",
+    "doy_sin",
+    "doy_cos"
+  ],
+  "scaler_min_W": 0.0,
+  "scaler_max_W": 64246.00000000001,
+  "test_start": "2025-11-10 02:30:00+00:00"
+}

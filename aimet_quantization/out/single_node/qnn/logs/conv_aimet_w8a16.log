@@ -1,0 +1,2604 @@
+2026-10-05 10:02:55,499 - 278 - INFO - Processing user provided quantization encodings: 
+2026-10-05 10:02:55,500 - 278 - INFO - Input shape info 
+2026-10-05 10:02:55,500 - 283 - WARNING - Can't simplify the model when custom ops, quantization overrides or dynamic input shapes are specified, converting without simplification.
+2026-10-05 10:02:55,502 - 283 - WARNING - Skipping Native checker in Defer Loading and ONNX Simplification not invoked
+2026-10-05 10:02:55,552 - 283 - WARNING - GEMM operation is not supported in the general case, attempting to interpret as FC
+2026-10-05 10:02:55,558 - 283 - WARNING - GEMM operation is not supported in the general case, attempting to interpret as FC
+2026-10-05 10:02:55,583 - 278 - INFO - Processed 12 quantization encodings
+2026-10-05 10:02:55,607 - 283 - WARNING - Can only merge 1 encoding for src op: fc1.weight_permute w/tensor: fc1.weight, but found 0
+2026-10-05 10:02:55,610 - 283 - WARNING - Can only merge 1 encoding for src op: fc2.weight_permute w/tensor: fc2.weight, but found 0
+reEvalMacsParams: Re-evaluated graph statistics after IrOptimizer optimization passes:
+reEvalMacsParams: Total MACs: 23297
+reEvalMacsParams: Total Params Count: 2212
+IrQuantizer: Param Quantizer should be set to symmetric for 32 bit biases. Will ignore param quantizer option: tf for biases
+     5.3ms [  INFO ] Inferences will run in sync mode
+Processing inference input(s):
+/local/aimet_quantization/data/raw/single_node/calib/00000.raw
+/local/aimet_quantization/data/raw/single_node/calib/00001.raw
+/local/aimet_quantization/data/raw/single_node/calib/00002.raw
+/local/aimet_quantization/data/raw/single_node/calib/00003.raw
+/local/aimet_quantization/data/raw/single_node/calib/00004.raw
+/local/aimet_quantization/data/raw/single_node/calib/00005.raw
+/local/aimet_quantization/data/raw/single_node/calib/00006.raw
+/local/aimet_quantization/data/raw/single_node/calib/00007.raw
+/local/aimet_quantization/data/raw/single_node/calib/00008.raw
+/local/aimet_quantization/data/raw/single_node/calib/00009.raw
+/local/aimet_quantization/data/raw/single_node/calib/00010.raw
+/local/aimet_quantization/data/raw/single_node/calib/00011.raw
+/local/aimet_quantization/data/raw/single_node/calib/00012.raw
+/local/aimet_quantization/data/raw/single_node/calib/00013.raw
+/local/aimet_quantization/data/raw/single_node/calib/00014.raw
+/local/aimet_quantization/data/raw/single_node/calib/00015.raw
+/local/aimet_quantization/data/raw/single_node/calib/00016.raw
+/local/aimet_quantization/data/raw/single_node/calib/00017.raw
+/local/aimet_quantization/data/raw/single_node/calib/00018.raw
+/local/aimet_quantization/data/raw/single_node/calib/00019.raw
+/local/aimet_quantization/data/raw/single_node/calib/00020.raw
+/local/aimet_quantization/data/raw/single_node/calib/00021.raw
+/local/aimet_quantization/data/raw/single_node/calib/00022.raw
+/local/aimet_quantization/data/raw/single_node/calib/00023.raw
+/local/aimet_quantization/data/raw/single_node/calib/00024.raw
+/local/aimet_quantization/data/raw/single_node/calib/00025.raw
+/local/aimet_quantization/data/raw/single_node/calib/00026.raw
+/local/aimet_quantization/data/raw/single_node/calib/00027.raw
+/local/aimet_quantization/data/raw/single_node/calib/00028.raw
+/local/aimet_quantization/data/raw/single_node/calib/00029.raw
+/local/aimet_quantization/data/raw/single_node/calib/00030.raw
+/local/aimet_quantization/data/raw/single_node/calib/00031.raw
+/local/aimet_quantization/data/raw/single_node/calib/00032.raw
+/local/aimet_quantization/data/raw/single_node/calib/00033.raw
+/local/aimet_quantization/data/raw/single_node/calib/00034.raw
+/local/aimet_quantization/data/raw/single_node/calib/00035.raw
+/local/aimet_quantization/data/raw/single_node/calib/00036.raw
+/local/aimet_quantization/data/raw/single_node/calib/00037.raw
+/local/aimet_quantization/data/raw/single_node/calib/00038.raw
+/local/aimet_quantization/data/raw/single_node/calib/00039.raw
+/local/aimet_quantization/data/raw/single_node/calib/00040.raw
+/local/aimet_quantization/data/raw/single_node/calib/00041.raw
+/local/aimet_quantization/data/raw/single_node/calib/00042.raw
+/local/aimet_quantization/data/raw/single_node/calib/00043.raw
+/local/aimet_quantization/data/raw/single_node/calib/00044.raw
+/local/aimet_quantization/data/raw/single_node/calib/00045.raw
+/local/aimet_quantization/data/raw/single_node/calib/00046.raw
+/local/aimet_quantization/data/raw/single_node/calib/00047.raw
+/local/aimet_quantization/data/raw/single_node/calib/00048.raw
+/local/aimet_quantization/data/raw/single_node/calib/00049.raw
+/local/aimet_quantization/data/raw/single_node/calib/00050.raw
+/local/aimet_quantization/data/raw/single_node/calib/00051.raw
+/local/aimet_quantization/data/raw/single_node/calib/00052.raw
+/local/aimet_quantization/data/raw/single_node/calib/00053.raw
+/local/aimet_quantization/data/raw/single_node/calib/00054.raw
+/local/aimet_quantization/data/raw/single_node/calib/00055.raw
+/local/aimet_quantization/data/raw/single_node/calib/00056.raw
+/local/aimet_quantization/data/raw/single_node/calib/00057.raw
+/local/aimet_quantization/data/raw/single_node/calib/00058.raw
+/local/aimet_quantization/data/raw/single_node/calib/00059.raw
+/local/aimet_quantization/data/raw/single_node/calib/00060.raw
+/local/aimet_quantization/data/raw/single_node/calib/00061.raw
+/local/aimet_quantization/data/raw/single_node/calib/00062.raw
+/local/aimet_quantization/data/raw/single_node/calib/00063.raw
+/local/aimet_quantization/data/raw/single_node/calib/00064.raw
+/local/aimet_quantization/data/raw/single_node/calib/00065.raw
+/local/aimet_quantization/data/raw/single_node/calib/00066.raw
+/local/aimet_quantization/data/raw/single_node/calib/00067.raw
+/local/aimet_quantization/data/raw/single_node/calib/00068.raw
+/local/aimet_quantization/data/raw/single_node/calib/00069.raw
+/local/aimet_quantization/data/raw/single_node/calib/00070.raw
+/local/aimet_quantization/data/raw/single_node/calib/00071.raw
+/local/aimet_quantization/data/raw/single_node/calib/00072.raw
+/local/aimet_quantization/data/raw/single_node/calib/00073.raw
+/local/aimet_quantization/data/raw/single_node/calib/00074.raw
+/local/aimet_quantization/data/raw/single_node/calib/00075.raw
+/local/aimet_quantization/data/raw/single_node/calib/00076.raw
+/local/aimet_quantization/data/raw/single_node/calib/00077.raw
+/local/aimet_quantization/data/raw/single_node/calib/00078.raw
+/local/aimet_quantization/data/raw/single_node/calib/00079.raw
+/local/aimet_quantization/data/raw/single_node/calib/00080.raw
+/local/aimet_quantization/data/raw/single_node/calib/00081.raw
+/local/aimet_quantization/data/raw/single_node/calib/00082.raw
+/local/aimet_quantization/data/raw/single_node/calib/00083.raw
+/local/aimet_quantization/data/raw/single_node/calib/00084.raw
+/local/aimet_quantization/data/raw/single_node/calib/00085.raw
+/local/aimet_quantization/data/raw/single_node/calib/00086.raw
+/local/aimet_quantization/data/raw/single_node/calib/00087.raw
+/local/aimet_quantization/data/raw/single_node/calib/00088.raw
+/local/aimet_quantization/data/raw/single_node/calib/00089.raw
+/local/aimet_quantization/data/raw/single_node/calib/00090.raw
+/local/aimet_quantization/data/raw/single_node/calib/00091.raw
+/local/aimet_quantization/data/raw/single_node/calib/00092.raw
+/local/aimet_quantization/data/raw/single_node/calib/00093.raw
+/local/aimet_quantization/data/raw/single_node/calib/00094.raw
+/local/aimet_quantization/data/raw/single_node/calib/00095.raw
+/local/aimet_quantization/data/raw/single_node/calib/00096.raw
+/local/aimet_quantization/data/raw/single_node/calib/00097.raw
+/local/aimet_quantization/data/raw/single_node/calib/00098.raw
+/local/aimet_quantization/data/raw/single_node/calib/00099.raw
+/local/aimet_quantization/data/raw/single_node/calib/00100.raw
+/local/aimet_quantization/data/raw/single_node/calib/00101.raw
+/local/aimet_quantization/data/raw/single_node/calib/00102.raw
+/local/aimet_quantization/data/raw/single_node/calib/00103.raw
+/local/aimet_quantization/data/raw/single_node/calib/00104.raw
+/local/aimet_quantization/data/raw/single_node/calib/00105.raw
+/local/aimet_quantization/data/raw/single_node/calib/00106.raw
+/local/aimet_quantization/data/raw/single_node/calib/00107.raw
+/local/aimet_quantization/data/raw/single_node/calib/00108.raw
+/local/aimet_quantization/data/raw/single_node/calib/00109.raw
+/local/aimet_quantization/data/raw/single_node/calib/00110.raw
+/local/aimet_quantization/data/raw/single_node/calib/00111.raw
+/local/aimet_quantization/data/raw/single_node/calib/00112.raw
+/local/aimet_quantization/data/raw/single_node/calib/00113.raw
+/local/aimet_quantization/data/raw/single_node/calib/00114.raw
+/local/aimet_quantization/data/raw/single_node/calib/00115.raw
+/local/aimet_quantization/data/raw/single_node/calib/00116.raw
+/local/aimet_quantization/data/raw/single_node/calib/00117.raw
+/local/aimet_quantization/data/raw/single_node/calib/00118.raw
+/local/aimet_quantization/data/raw/single_node/calib/00119.raw
+/local/aimet_quantization/data/raw/single_node/calib/00120.raw
+/local/aimet_quantization/data/raw/single_node/calib/00121.raw
+/local/aimet_quantization/data/raw/single_node/calib/00122.raw
+/local/aimet_quantization/data/raw/single_node/calib/00123.raw
+/local/aimet_quantization/data/raw/single_node/calib/00124.raw
+/local/aimet_quantization/data/raw/single_node/calib/00125.raw
+/local/aimet_quantization/data/raw/single_node/calib/00126.raw
+/local/aimet_quantization/data/raw/single_node/calib/00127.raw
+/local/aimet_quantization/data/raw/single_node/calib/00128.raw
+/local/aimet_quantization/data/raw/single_node/calib/00129.raw
+/local/aimet_quantization/data/raw/single_node/calib/00130.raw
+/local/aimet_quantization/data/raw/single_node/calib/00131.raw
+/local/aimet_quantization/data/raw/single_node/calib/00132.raw
+/local/aimet_quantization/data/raw/single_node/calib/00133.raw
+/local/aimet_quantization/data/raw/single_node/calib/00134.raw
+/local/aimet_quantization/data/raw/single_node/calib/00135.raw
+/local/aimet_quantization/data/raw/single_node/calib/00136.raw
+/local/aimet_quantization/data/raw/single_node/calib/00137.raw
+/local/aimet_quantization/data/raw/single_node/calib/00138.raw
+/local/aimet_quantization/data/raw/single_node/calib/00139.raw
+/local/aimet_quantization/data/raw/single_node/calib/00140.raw
+/local/aimet_quantization/data/raw/single_node/calib/00141.raw
+/local/aimet_quantization/data/raw/single_node/calib/00142.raw
+/local/aimet_quantization/data/raw/single_node/calib/00143.raw
+/local/aimet_quantization/data/raw/single_node/calib/00144.raw
+/local/aimet_quantization/data/raw/single_node/calib/00145.raw
+/local/aimet_quantization/data/raw/single_node/calib/00146.raw
+/local/aimet_quantization/data/raw/single_node/calib/00147.raw
+/local/aimet_quantization/data/raw/single_node/calib/00148.raw
+/local/aimet_quantization/data/raw/single_node/calib/00149.raw
+/local/aimet_quantization/data/raw/single_node/calib/00150.raw
+/local/aimet_quantization/data/raw/single_node/calib/00151.raw
+/local/aimet_quantization/data/raw/single_node/calib/00152.raw
+/local/aimet_quantization/data/raw/single_node/calib/00153.raw
+/local/aimet_quantization/data/raw/single_node/calib/00154.raw
+/local/aimet_quantization/data/raw/single_node/calib/00155.raw
+/local/aimet_quantization/data/raw/single_node/calib/00156.raw
+/local/aimet_quantization/data/raw/single_node/calib/00157.raw
+/local/aimet_quantization/data/raw/single_node/calib/00158.raw
+/local/aimet_quantization/data/raw/single_node/calib/00159.raw
+/local/aimet_quantization/data/raw/single_node/calib/00160.raw
+/local/aimet_quantization/data/raw/single_node/calib/00161.raw
+/local/aimet_quantization/data/raw/single_node/calib/00162.raw
+/local/aimet_quantization/data/raw/single_node/calib/00163.raw
+/local/aimet_quantization/data/raw/single_node/calib/00164.raw
+/local/aimet_quantization/data/raw/single_node/calib/00165.raw
+/local/aimet_quantization/data/raw/single_node/calib/00166.raw
+/local/aimet_quantization/data/raw/single_node/calib/00167.raw
+/local/aimet_quantization/data/raw/single_node/calib/00168.raw
+/local/aimet_quantization/data/raw/single_node/calib/00169.raw
+/local/aimet_quantization/data/raw/single_node/calib/00170.raw
+/local/aimet_quantization/data/raw/single_node/calib/00171.raw
+/local/aimet_quantization/data/raw/single_node/calib/00172.raw
+/local/aimet_quantization/data/raw/single_node/calib/00173.raw
+/local/aimet_quantization/data/raw/single_node/calib/00174.raw
+/local/aimet_quantization/data/raw/single_node/calib/00175.raw
+/local/aimet_quantization/data/raw/single_node/calib/00176.raw
+/local/aimet_quantization/data/raw/single_node/calib/00177.raw
+/local/aimet_quantization/data/raw/single_node/calib/00178.raw
+/local/aimet_quantization/data/raw/single_node/calib/00179.raw
+/local/aimet_quantization/data/raw/single_node/calib/00180.raw
+/local/aimet_quantization/data/raw/single_node/calib/00181.raw
+/local/aimet_quantization/data/raw/single_node/calib/00182.raw
+/local/aimet_quantization/data/raw/single_node/calib/00183.raw
+/local/aimet_quantization/data/raw/single_node/calib/00184.raw
+/local/aimet_quantization/data/raw/single_node/calib/00185.raw
+/local/aimet_quantization/data/raw/single_node/calib/00186.raw
+/local/aimet_quantization/data/raw/single_node/calib/00187.raw
+/local/aimet_quantization/data/raw/single_node/calib/00188.raw
+/local/aimet_quantization/data/raw/single_node/calib/00189.raw
+/local/aimet_quantization/data/raw/single_node/calib/00190.raw
+/local/aimet_quantization/data/raw/single_node/calib/00191.raw
+/local/aimet_quantization/data/raw/single_node/calib/00192.raw
+/local/aimet_quantization/data/raw/single_node/calib/00193.raw
+/local/aimet_quantization/data/raw/single_node/calib/00194.raw
+/local/aimet_quantization/data/raw/single_node/calib/00195.raw
+/local/aimet_quantization/data/raw/single_node/calib/00196.raw
+/local/aimet_quantization/data/raw/single_node/calib/00197.raw
+/local/aimet_quantization/data/raw/single_node/calib/00198.raw
+/local/aimet_quantization/data/raw/single_node/calib/00199.raw
+/local/aimet_quantization/data/raw/single_node/calib/00200.raw
+/local/aimet_quantization/data/raw/single_node/calib/00201.raw
+/local/aimet_quantization/data/raw/single_node/calib/00202.raw
+/local/aimet_quantization/data/raw/single_node/calib/00203.raw
+/local/aimet_quantization/data/raw/single_node/calib/00204.raw
+/local/aimet_quantization/data/raw/single_node/calib/00205.raw
+/local/aimet_quantization/data/raw/single_node/calib/00206.raw
+/local/aimet_quantization/data/raw/single_node/calib/00207.raw
+/local/aimet_quantization/data/raw/single_node/calib/00208.raw
+/local/aimet_quantization/data/raw/single_node/calib/00209.raw
+/local/aimet_quantization/data/raw/single_node/calib/00210.raw
+/local/aimet_quantization/data/raw/single_node/calib/00211.raw
+/local/aimet_quantization/data/raw/single_node/calib/00212.raw
+/local/aimet_quantization/data/raw/single_node/calib/00213.raw
+/local/aimet_quantization/data/raw/single_node/calib/00214.raw
+/local/aimet_quantization/data/raw/single_node/calib/00215.raw
+/local/aimet_quantization/data/raw/single_node/calib/00216.raw
+/local/aimet_quantization/data/raw/single_node/calib/00217.raw
+/local/aimet_quantization/data/raw/single_node/calib/00218.raw
+/local/aimet_quantization/data/raw/single_node/calib/00219.raw
+/local/aimet_quantization/data/raw/single_node/calib/00220.raw
+/local/aimet_quantization/data/raw/single_node/calib/00221.raw
+/local/aimet_quantization/data/raw/single_node/calib/00222.raw
+/local/aimet_quantization/data/raw/single_node/calib/00223.raw
+/local/aimet_quantization/data/raw/single_node/calib/00224.raw
+/local/aimet_quantization/data/raw/single_node/calib/00225.raw
+/local/aimet_quantization/data/raw/single_node/calib/00226.raw
+/local/aimet_quantization/data/raw/single_node/calib/00227.raw
+/local/aimet_quantization/data/raw/single_node/calib/00228.raw
+/local/aimet_quantization/data/raw/single_node/calib/00229.raw
+/local/aimet_quantization/data/raw/single_node/calib/00230.raw
+/local/aimet_quantization/data/raw/single_node/calib/00231.raw
+/local/aimet_quantization/data/raw/single_node/calib/00232.raw
+/local/aimet_quantization/data/raw/single_node/calib/00233.raw
+/local/aimet_quantization/data/raw/single_node/calib/00234.raw
+/local/aimet_quantization/data/raw/single_node/calib/00235.raw
+/local/aimet_quantization/data/raw/single_node/calib/00236.raw
+/local/aimet_quantization/data/raw/single_node/calib/00237.raw
+/local/aimet_quantization/data/raw/single_node/calib/00238.raw
+/local/aimet_quantization/data/raw/single_node/calib/00239.raw
+/local/aimet_quantization/data/raw/single_node/calib/00240.raw
+/local/aimet_quantization/data/raw/single_node/calib/00241.raw
+/local/aimet_quantization/data/raw/single_node/calib/00242.raw
+/local/aimet_quantization/data/raw/single_node/calib/00243.raw
+/local/aimet_quantization/data/raw/single_node/calib/00244.raw
+/local/aimet_quantization/data/raw/single_node/calib/00245.raw
+/local/aimet_quantization/data/raw/single_node/calib/00246.raw
+/local/aimet_quantization/data/raw/single_node/calib/00247.raw
+/local/aimet_quantization/data/raw/single_node/calib/00248.raw
+/local/aimet_quantization/data/raw/single_node/calib/00249.raw
+/local/aimet_quantization/data/raw/single_node/calib/00250.raw
+/local/aimet_quantization/data/raw/single_node/calib/00251.raw
+/local/aimet_quantization/data/raw/single_node/calib/00252.raw
+/local/aimet_quantization/data/raw/single_node/calib/00253.raw
+/local/aimet_quantization/data/raw/single_node/calib/00254.raw
+/local/aimet_quantization/data/raw/single_node/calib/00255.raw
+/local/aimet_quantization/data/raw/single_node/calib/00256.raw
+/local/aimet_quantization/data/raw/single_node/calib/00257.raw
+/local/aimet_quantization/data/raw/single_node/calib/00258.raw
+/local/aimet_quantization/data/raw/single_node/calib/00259.raw
+/local/aimet_quantization/data/raw/single_node/calib/00260.raw
+/local/aimet_quantization/data/raw/single_node/calib/00261.raw
+/local/aimet_quantization/data/raw/single_node/calib/00262.raw
+/local/aimet_quantization/data/raw/single_node/calib/00263.raw
+/local/aimet_quantization/data/raw/single_node/calib/00264.raw
+/local/aimet_quantization/data/raw/single_node/calib/00265.raw
+/local/aimet_quantization/data/raw/single_node/calib/00266.raw
+/local/aimet_quantization/data/raw/single_node/calib/00267.raw
+/local/aimet_quantization/data/raw/single_node/calib/00268.raw
+/local/aimet_quantization/data/raw/single_node/calib/00269.raw
+/local/aimet_quantization/data/raw/single_node/calib/00270.raw
+/local/aimet_quantization/data/raw/single_node/calib/00271.raw
+/local/aimet_quantization/data/raw/single_node/calib/00272.raw
+/local/aimet_quantization/data/raw/single_node/calib/00273.raw
+/local/aimet_quantization/data/raw/single_node/calib/00274.raw
+/local/aimet_quantization/data/raw/single_node/calib/00275.raw
+/local/aimet_quantization/data/raw/single_node/calib/00276.raw
+/local/aimet_quantization/data/raw/single_node/calib/00277.raw
+/local/aimet_quantization/data/raw/single_node/calib/00278.raw
+/local/aimet_quantization/data/raw/single_node/calib/00279.raw
+/local/aimet_quantization/data/raw/single_node/calib/00280.raw
+/local/aimet_quantization/data/raw/single_node/calib/00281.raw
+/local/aimet_quantization/data/raw/single_node/calib/00282.raw
+/local/aimet_quantization/data/raw/single_node/calib/00283.raw
+/local/aimet_quantization/data/raw/single_node/calib/00284.raw
+/local/aimet_quantization/data/raw/single_node/calib/00285.raw
+/local/aimet_quantization/data/raw/single_node/calib/00286.raw
+/local/aimet_quantization/data/raw/single_node/calib/00287.raw
+/local/aimet_quantization/data/raw/single_node/calib/00288.raw
+/local/aimet_quantization/data/raw/single_node/calib/00289.raw
+/local/aimet_quantization/data/raw/single_node/calib/00290.raw
+/local/aimet_quantization/data/raw/single_node/calib/00291.raw
+/local/aimet_quantization/data/raw/single_node/calib/00292.raw
+/local/aimet_quantization/data/raw/single_node/calib/00293.raw
+/local/aimet_quantization/data/raw/single_node/calib/00294.raw
+/local/aimet_quantization/data/raw/single_node/calib/00295.raw
+/local/aimet_quantization/data/raw/single_node/calib/00296.raw
+/local/aimet_quantization/data/raw/single_node/calib/00297.raw
+/local/aimet_quantization/data/raw/single_node/calib/00298.raw
+/local/aimet_quantization/data/raw/single_node/calib/00299.raw
+/local/aimet_quantization/data/raw/single_node/calib/00300.raw
+/local/aimet_quantization/data/raw/single_node/calib/00301.raw
+/local/aimet_quantization/data/raw/single_node/calib/00302.raw
+/local/aimet_quantization/data/raw/single_node/calib/00303.raw
+/local/aimet_quantization/data/raw/single_node/calib/00304.raw
+/local/aimet_quantization/data/raw/single_node/calib/00305.raw
+/local/aimet_quantization/data/raw/single_node/calib/00306.raw
+/local/aimet_quantization/data/raw/single_node/calib/00307.raw
+/local/aimet_quantization/data/raw/single_node/calib/00308.raw
+/local/aimet_quantization/data/raw/single_node/calib/00309.raw
+/local/aimet_quantization/data/raw/single_node/calib/00310.raw
+/local/aimet_quantization/data/raw/single_node/calib/00311.raw
+/local/aimet_quantization/data/raw/single_node/calib/00312.raw
+/local/aimet_quantization/data/raw/single_node/calib/00313.raw
+/local/aimet_quantization/data/raw/single_node/calib/00314.raw
+/local/aimet_quantization/data/raw/single_node/calib/00315.raw
+/local/aimet_quantization/data/raw/single_node/calib/00316.raw
+/local/aimet_quantization/data/raw/single_node/calib/00317.raw
+/local/aimet_quantization/data/raw/single_node/calib/00318.raw
+/local/aimet_quantization/data/raw/single_node/calib/00319.raw
+/local/aimet_quantization/data/raw/single_node/calib/00320.raw
+/local/aimet_quantization/data/raw/single_node/calib/00321.raw
+/local/aimet_quantization/data/raw/single_node/calib/00322.raw
+/local/aimet_quantization/data/raw/single_node/calib/00323.raw
+/local/aimet_quantization/data/raw/single_node/calib/00324.raw
+/local/aimet_quantization/data/raw/single_node/calib/00325.raw
+/local/aimet_quantization/data/raw/single_node/calib/00326.raw
+/local/aimet_quantization/data/raw/single_node/calib/00327.raw
+/local/aimet_quantization/data/raw/single_node/calib/00328.raw
+/local/aimet_quantization/data/raw/single_node/calib/00329.raw
+/local/aimet_quantization/data/raw/single_node/calib/00330.raw
+/local/aimet_quantization/data/raw/single_node/calib/00331.raw
+/local/aimet_quantization/data/raw/single_node/calib/00332.raw
+/local/aimet_quantization/data/raw/single_node/calib/00333.raw
+/local/aimet_quantization/data/raw/single_node/calib/00334.raw
+/local/aimet_quantization/data/raw/single_node/calib/00335.raw
+/local/aimet_quantization/data/raw/single_node/calib/00336.raw
+/local/aimet_quantization/data/raw/single_node/calib/00337.raw
+/local/aimet_quantization/data/raw/single_node/calib/00338.raw
+/local/aimet_quantization/data/raw/single_node/calib/00339.raw
+/local/aimet_quantization/data/raw/single_node/calib/00340.raw
+/local/aimet_quantization/data/raw/single_node/calib/00341.raw
+/local/aimet_quantization/data/raw/single_node/calib/00342.raw
+/local/aimet_quantization/data/raw/single_node/calib/00343.raw
+/local/aimet_quantization/data/raw/single_node/calib/00344.raw
+/local/aimet_quantization/data/raw/single_node/calib/00345.raw
+/local/aimet_quantization/data/raw/single_node/calib/00346.raw
+/local/aimet_quantization/data/raw/single_node/calib/00347.raw
+/local/aimet_quantization/data/raw/single_node/calib/00348.raw
+/local/aimet_quantization/data/raw/single_node/calib/00349.raw
+/local/aimet_quantization/data/raw/single_node/calib/00350.raw
+/local/aimet_quantization/data/raw/single_node/calib/00351.raw
+/local/aimet_quantization/data/raw/single_node/calib/00352.raw
+/local/aimet_quantization/data/raw/single_node/calib/00353.raw
+/local/aimet_quantization/data/raw/single_node/calib/00354.raw
+/local/aimet_quantization/data/raw/single_node/calib/00355.raw
+/local/aimet_quantization/data/raw/single_node/calib/00356.raw
+/local/aimet_quantization/data/raw/single_node/calib/00357.raw
+/local/aimet_quantization/data/raw/single_node/calib/00358.raw
+/local/aimet_quantization/data/raw/single_node/calib/00359.raw
+/local/aimet_quantization/data/raw/single_node/calib/00360.raw
+/local/aimet_quantization/data/raw/single_node/calib/00361.raw
+/local/aimet_quantization/data/raw/single_node/calib/00362.raw
+/local/aimet_quantization/data/raw/single_node/calib/00363.raw
+/local/aimet_quantization/data/raw/single_node/calib/00364.raw
+/local/aimet_quantization/data/raw/single_node/calib/00365.raw
+/local/aimet_quantization/data/raw/single_node/calib/00366.raw
+/local/aimet_quantization/data/raw/single_node/calib/00367.raw
+/local/aimet_quantization/data/raw/single_node/calib/00368.raw
+/local/aimet_quantization/data/raw/single_node/calib/00369.raw
+/local/aimet_quantization/data/raw/single_node/calib/00370.raw
+/local/aimet_quantization/data/raw/single_node/calib/00371.raw
+/local/aimet_quantization/data/raw/single_node/calib/00372.raw
+/local/aimet_quantization/data/raw/single_node/calib/00373.raw
+/local/aimet_quantization/data/raw/single_node/calib/00374.raw
+/local/aimet_quantization/data/raw/single_node/calib/00375.raw
+/local/aimet_quantization/data/raw/single_node/calib/00376.raw
+/local/aimet_quantization/data/raw/single_node/calib/00377.raw
+/local/aimet_quantization/data/raw/single_node/calib/00378.raw
+/local/aimet_quantization/data/raw/single_node/calib/00379.raw
+/local/aimet_quantization/data/raw/single_node/calib/00380.raw
+/local/aimet_quantization/data/raw/single_node/calib/00381.raw
+/local/aimet_quantization/data/raw/single_node/calib/00382.raw
+/local/aimet_quantization/data/raw/single_node/calib/00383.raw
+/local/aimet_quantization/data/raw/single_node/calib/00384.raw
+/local/aimet_quantization/data/raw/single_node/calib/00385.raw
+/local/aimet_quantization/data/raw/single_node/calib/00386.raw
+/local/aimet_quantization/data/raw/single_node/calib/00387.raw
+/local/aimet_quantization/data/raw/single_node/calib/00388.raw
+/local/aimet_quantization/data/raw/single_node/calib/00389.raw
+/local/aimet_quantization/data/raw/single_node/calib/00390.raw
+/local/aimet_quantization/data/raw/single_node/calib/00391.raw
+/local/aimet_quantization/data/raw/single_node/calib/00392.raw
+/local/aimet_quantization/data/raw/single_node/calib/00393.raw
+/local/aimet_quantization/data/raw/single_node/calib/00394.raw
+/local/aimet_quantization/data/raw/single_node/calib/00395.raw
+/local/aimet_quantization/data/raw/single_node/calib/00396.raw
+/local/aimet_quantization/data/raw/single_node/calib/00397.raw
+/local/aimet_quantization/data/raw/single_node/calib/00398.raw
+/local/aimet_quantization/data/raw/single_node/calib/00399.raw
+/local/aimet_quantization/data/raw/single_node/calib/00400.raw
+/local/aimet_quantization/data/raw/single_node/calib/00401.raw
+/local/aimet_quantization/data/raw/single_node/calib/00402.raw
+/local/aimet_quantization/data/raw/single_node/calib/00403.raw
+/local/aimet_quantization/data/raw/single_node/calib/00404.raw
+/local/aimet_quantization/data/raw/single_node/calib/00405.raw
+/local/aimet_quantization/data/raw/single_node/calib/00406.raw
+/local/aimet_quantization/data/raw/single_node/calib/00407.raw
+/local/aimet_quantization/data/raw/single_node/calib/00408.raw
+/local/aimet_quantization/data/raw/single_node/calib/00409.raw
+/local/aimet_quantization/data/raw/single_node/calib/00410.raw
+/local/aimet_quantization/data/raw/single_node/calib/00411.raw
+/local/aimet_quantization/data/raw/single_node/calib/00412.raw
+/local/aimet_quantization/data/raw/single_node/calib/00413.raw
+/local/aimet_quantization/data/raw/single_node/calib/00414.raw
+/local/aimet_quantization/data/raw/single_node/calib/00415.raw
+/local/aimet_quantization/data/raw/single_node/calib/00416.raw
+/local/aimet_quantization/data/raw/single_node/calib/00417.raw
+/local/aimet_quantization/data/raw/single_node/calib/00418.raw
+/local/aimet_quantization/data/raw/single_node/calib/00419.raw
+/local/aimet_quantization/data/raw/single_node/calib/00420.raw
+/local/aimet_quantization/data/raw/single_node/calib/00421.raw
+/local/aimet_quantization/data/raw/single_node/calib/00422.raw
+/local/aimet_quantization/data/raw/single_node/calib/00423.raw
+/local/aimet_quantization/data/raw/single_node/calib/00424.raw
+/local/aimet_quantization/data/raw/single_node/calib/00425.raw
+/local/aimet_quantization/data/raw/single_node/calib/00426.raw
+/local/aimet_quantization/data/raw/single_node/calib/00427.raw
+/local/aimet_quantization/data/raw/single_node/calib/00428.raw
+/local/aimet_quantization/data/raw/single_node/calib/00429.raw
+/local/aimet_quantization/data/raw/single_node/calib/00430.raw
+/local/aimet_quantization/data/raw/single_node/calib/00431.raw
+/local/aimet_quantization/data/raw/single_node/calib/00432.raw
+/local/aimet_quantization/data/raw/single_node/calib/00433.raw
+/local/aimet_quantization/data/raw/single_node/calib/00434.raw
+/local/aimet_quantization/data/raw/single_node/calib/00435.raw
+/local/aimet_quantization/data/raw/single_node/calib/00436.raw
+/local/aimet_quantization/data/raw/single_node/calib/00437.raw
+/local/aimet_quantization/data/raw/single_node/calib/00438.raw
+/local/aimet_quantization/data/raw/single_node/calib/00439.raw
+/local/aimet_quantization/data/raw/single_node/calib/00440.raw
+/local/aimet_quantization/data/raw/single_node/calib/00441.raw
+/local/aimet_quantization/data/raw/single_node/calib/00442.raw
+/local/aimet_quantization/data/raw/single_node/calib/00443.raw
+/local/aimet_quantization/data/raw/single_node/calib/00444.raw
+/local/aimet_quantization/data/raw/single_node/calib/00445.raw
+/local/aimet_quantization/data/raw/single_node/calib/00446.raw
+/local/aimet_quantization/data/raw/single_node/calib/00447.raw
+/local/aimet_quantization/data/raw/single_node/calib/00448.raw
+/local/aimet_quantization/data/raw/single_node/calib/00449.raw
+/local/aimet_quantization/data/raw/single_node/calib/00450.raw
+/local/aimet_quantization/data/raw/single_node/calib/00451.raw
+/local/aimet_quantization/data/raw/single_node/calib/00452.raw
+/local/aimet_quantization/data/raw/single_node/calib/00453.raw
+/local/aimet_quantization/data/raw/single_node/calib/00454.raw
+/local/aimet_quantization/data/raw/single_node/calib/00455.raw
+/local/aimet_quantization/data/raw/single_node/calib/00456.raw
+/local/aimet_quantization/data/raw/single_node/calib/00457.raw
+/local/aimet_quantization/data/raw/single_node/calib/00458.raw
+/local/aimet_quantization/data/raw/single_node/calib/00459.raw
+/local/aimet_quantization/data/raw/single_node/calib/00460.raw
+/local/aimet_quantization/data/raw/single_node/calib/00461.raw
+/local/aimet_quantization/data/raw/single_node/calib/00462.raw
+/local/aimet_quantization/data/raw/single_node/calib/00463.raw
+/local/aimet_quantization/data/raw/single_node/calib/00464.raw
+/local/aimet_quantization/data/raw/single_node/calib/00465.raw
+/local/aimet_quantization/data/raw/single_node/calib/00466.raw
+/local/aimet_quantization/data/raw/single_node/calib/00467.raw
+/local/aimet_quantization/data/raw/single_node/calib/00468.raw
+/local/aimet_quantization/data/raw/single_node/calib/00469.raw
+/local/aimet_quantization/data/raw/single_node/calib/00470.raw
+/local/aimet_quantization/data/raw/single_node/calib/00471.raw
+/local/aimet_quantization/data/raw/single_node/calib/00472.raw
+/local/aimet_quantization/data/raw/single_node/calib/00473.raw
+/local/aimet_quantization/data/raw/single_node/calib/00474.raw
+/local/aimet_quantization/data/raw/single_node/calib/00475.raw
+/local/aimet_quantization/data/raw/single_node/calib/00476.raw
+/local/aimet_quantization/data/raw/single_node/calib/00477.raw
+/local/aimet_quantization/data/raw/single_node/calib/00478.raw
+/local/aimet_quantization/data/raw/single_node/calib/00479.raw
+/local/aimet_quantization/data/raw/single_node/calib/00480.raw
+/local/aimet_quantization/data/raw/single_node/calib/00481.raw
+/local/aimet_quantization/data/raw/single_node/calib/00482.raw
+/local/aimet_quantization/data/raw/single_node/calib/00483.raw
+/local/aimet_quantization/data/raw/single_node/calib/00484.raw
+/local/aimet_quantization/data/raw/single_node/calib/00485.raw
+/local/aimet_quantization/data/raw/single_node/calib/00486.raw
+/local/aimet_quantization/data/raw/single_node/calib/00487.raw
+/local/aimet_quantization/data/raw/single_node/calib/00488.raw
+/local/aimet_quantization/data/raw/single_node/calib/00489.raw
+/local/aimet_quantization/data/raw/single_node/calib/00490.raw
+/local/aimet_quantization/data/raw/single_node/calib/00491.raw
+/local/aimet_quantization/data/raw/single_node/calib/00492.raw
+/local/aimet_quantization/data/raw/single_node/calib/00493.raw
+/local/aimet_quantization/data/raw/single_node/calib/00494.raw
+/local/aimet_quantization/data/raw/single_node/calib/00495.raw
+/local/aimet_quantization/data/raw/single_node/calib/00496.raw
+/local/aimet_quantization/data/raw/single_node/calib/00497.raw
+/local/aimet_quantization/data/raw/single_node/calib/00498.raw
+/local/aimet_quantization/data/raw/single_node/calib/00499.raw
+/local/aimet_quantization/data/raw/single_node/calib/00500.raw
+/local/aimet_quantization/data/raw/single_node/calib/00501.raw
+/local/aimet_quantization/data/raw/single_node/calib/00502.raw
+/local/aimet_quantization/data/raw/single_node/calib/00503.raw
+/local/aimet_quantization/data/raw/single_node/calib/00504.raw
+/local/aimet_quantization/data/raw/single_node/calib/00505.raw
+/local/aimet_quantization/data/raw/single_node/calib/00506.raw
+/local/aimet_quantization/data/raw/single_node/calib/00507.raw
+/local/aimet_quantization/data/raw/single_node/calib/00508.raw
+/local/aimet_quantization/data/raw/single_node/calib/00509.raw
+/local/aimet_quantization/data/raw/single_node/calib/00510.raw
+/local/aimet_quantization/data/raw/single_node/calib/00511.raw
+     7.9ms [  INFO ] No BackendExtensions lib provided;initializing NetRunBackend Interface
+     7.9ms [  INFO ] No platform-specific callback implementation available
+     1.5ms [  INFO ] [QNN_CPU] CpuBackend creation start
+     1.5ms [  INFO ] [QNN_CPU] CpuBackend creation end
+     9.4ms [WARNING] Unable to find a device with NetRunDeviceKeyDefault in Library NetRunBackendLibKeyDefault
+     9.4ms [WARNING] Profile Logger with name = defaultKey doesn't exist! Returning nullptr
+     1.5ms [  INFO ] [QNN_CPU] QnnContext create start
+     1.5ms [  INFO ] [QNN_CPU] QnnContext create end
+    10.9ms [  INFO ] Entering QuantizeRuntimeApp flow
+    10.9ms [WARNING] Profile Logger with name = defaultKey doesn't exist! Returning nullptr
+     4.0ms [  INFO ] [QNN_CPU] CpuGraph creation start
+     4.0ms [  INFO ] [QNN_CPU] CpuGraph creation end
+     4.0ms [  INFO ] [QNN_CPU] QnnGraph create end
+   106.0ms [  INFO ] [QNN_CPU] QnnGraph finalize start
+   120.4ms [  INFO ] [QNN_CPU] QnnGraph finalize end
+   125.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   161.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   158.8ms [  INFO ] cleaning up resources for input tensors
+   158.8ms [  INFO ] cleaning up resources for output tensors
+   162.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   191.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   188.4ms [  INFO ] cleaning up resources for input tensors
+   188.4ms [  INFO ] cleaning up resources for output tensors
+   192.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   221.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   218.1ms [  INFO ] cleaning up resources for input tensors
+   218.1ms [  INFO ] cleaning up resources for output tensors
+   221.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   248.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   245.6ms [  INFO ] cleaning up resources for input tensors
+   245.6ms [  INFO ] cleaning up resources for output tensors
+   249.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   275.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   272.3ms [  INFO ] cleaning up resources for input tensors
+   272.3ms [  INFO ] cleaning up resources for output tensors
+   276.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   300.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   297.7ms [  INFO ] cleaning up resources for input tensors
+   297.7ms [  INFO ] cleaning up resources for output tensors
+   301.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   327.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   324.6ms [  INFO ] cleaning up resources for input tensors
+   324.6ms [  INFO ] cleaning up resources for output tensors
+   328.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   357.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   354.8ms [  INFO ] cleaning up resources for input tensors
+   354.8ms [  INFO ] cleaning up resources for output tensors
+   358.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   385.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   382.8ms [  INFO ] cleaning up resources for input tensors
+   382.8ms [  INFO ] cleaning up resources for output tensors
+   386.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   412.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   409.6ms [  INFO ] cleaning up resources for input tensors
+   409.6ms [  INFO ] cleaning up resources for output tensors
+   413.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   439.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   436.0ms [  INFO ] cleaning up resources for input tensors
+   436.0ms [  INFO ] cleaning up resources for output tensors
+   439.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   466.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   463.9ms [  INFO ] cleaning up resources for input tensors
+   463.9ms [  INFO ] cleaning up resources for output tensors
+   467.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   495.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   492.8ms [  INFO ] cleaning up resources for input tensors
+   492.8ms [  INFO ] cleaning up resources for output tensors
+   496.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   523.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   520.5ms [  INFO ] cleaning up resources for input tensors
+   520.6ms [  INFO ] cleaning up resources for output tensors
+   524.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   550.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   547.5ms [  INFO ] cleaning up resources for input tensors
+   547.5ms [  INFO ] cleaning up resources for output tensors
+   558.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   584.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   581.5ms [  INFO ] cleaning up resources for input tensors
+   581.5ms [  INFO ] cleaning up resources for output tensors
+   585.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   611.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   608.0ms [  INFO ] cleaning up resources for input tensors
+   608.0ms [  INFO ] cleaning up resources for output tensors
+   611.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   637.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   634.8ms [  INFO ] cleaning up resources for input tensors
+   634.8ms [  INFO ] cleaning up resources for output tensors
+   638.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   663.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   660.0ms [  INFO ] cleaning up resources for input tensors
+   660.0ms [  INFO ] cleaning up resources for output tensors
+   663.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   690.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   687.7ms [  INFO ] cleaning up resources for input tensors
+   687.7ms [  INFO ] cleaning up resources for output tensors
+   691.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   719.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   717.0ms [  INFO ] cleaning up resources for input tensors
+   717.0ms [  INFO ] cleaning up resources for output tensors
+   720.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   750.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   747.4ms [  INFO ] cleaning up resources for input tensors
+   747.4ms [  INFO ] cleaning up resources for output tensors
+   751.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   779.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   776.9ms [  INFO ] cleaning up resources for input tensors
+   776.9ms [  INFO ] cleaning up resources for output tensors
+   780.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   807.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   804.7ms [  INFO ] cleaning up resources for input tensors
+   804.7ms [  INFO ] cleaning up resources for output tensors
+   808.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   837.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   834.0ms [  INFO ] cleaning up resources for input tensors
+   834.0ms [  INFO ] cleaning up resources for output tensors
+   837.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   865.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   862.5ms [  INFO ] cleaning up resources for input tensors
+   862.6ms [  INFO ] cleaning up resources for output tensors
+   866.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   892.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   889.5ms [  INFO ] cleaning up resources for input tensors
+   889.5ms [  INFO ] cleaning up resources for output tensors
+   893.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   918.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   915.2ms [  INFO ] cleaning up resources for input tensors
+   915.2ms [  INFO ] cleaning up resources for output tensors
+   918.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   945.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   942.8ms [  INFO ] cleaning up resources for input tensors
+   942.8ms [  INFO ] cleaning up resources for output tensors
+   954.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+   981.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+   978.4ms [  INFO ] cleaning up resources for input tensors
+   978.4ms [  INFO ] cleaning up resources for output tensors
+   982.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1007.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1004.5ms [  INFO ] cleaning up resources for input tensors
+  1004.5ms [  INFO ] cleaning up resources for output tensors
+  1008.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1033.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1030.2ms [  INFO ] cleaning up resources for input tensors
+  1030.2ms [  INFO ] cleaning up resources for output tensors
+  1033.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1060.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1057.5ms [  INFO ] cleaning up resources for input tensors
+  1057.5ms [  INFO ] cleaning up resources for output tensors
+  1061.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1088.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1085.0ms [  INFO ] cleaning up resources for input tensors
+  1085.0ms [  INFO ] cleaning up resources for output tensors
+  1088.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1117.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1114.7ms [  INFO ] cleaning up resources for input tensors
+  1114.8ms [  INFO ] cleaning up resources for output tensors
+  1118.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1144.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1141.2ms [  INFO ] cleaning up resources for input tensors
+  1141.2ms [  INFO ] cleaning up resources for output tensors
+  1152.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1180.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1177.6ms [  INFO ] cleaning up resources for input tensors
+  1177.6ms [  INFO ] cleaning up resources for output tensors
+  1181.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1210.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1207.7ms [  INFO ] cleaning up resources for input tensors
+  1207.7ms [  INFO ] cleaning up resources for output tensors
+  1211.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1241.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1238.4ms [  INFO ] cleaning up resources for input tensors
+  1238.4ms [  INFO ] cleaning up resources for output tensors
+  1242.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1271.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1268.5ms [  INFO ] cleaning up resources for input tensors
+  1268.5ms [  INFO ] cleaning up resources for output tensors
+  1272.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1300.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1297.9ms [  INFO ] cleaning up resources for input tensors
+  1297.9ms [  INFO ] cleaning up resources for output tensors
+  1301.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1329.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1326.0ms [  INFO ] cleaning up resources for input tensors
+  1326.0ms [  INFO ] cleaning up resources for output tensors
+  1329.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1357.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1354.7ms [  INFO ] cleaning up resources for input tensors
+  1354.7ms [  INFO ] cleaning up resources for output tensors
+  1366.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1394.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1391.6ms [  INFO ] cleaning up resources for input tensors
+  1391.6ms [  INFO ] cleaning up resources for output tensors
+  1395.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1423.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1420.4ms [  INFO ] cleaning up resources for input tensors
+  1420.4ms [  INFO ] cleaning up resources for output tensors
+  1424.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1452.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1449.3ms [  INFO ] cleaning up resources for input tensors
+  1449.3ms [  INFO ] cleaning up resources for output tensors
+  1453.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1481.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1478.8ms [  INFO ] cleaning up resources for input tensors
+  1478.8ms [  INFO ] cleaning up resources for output tensors
+  1482.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1511.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1508.7ms [  INFO ] cleaning up resources for input tensors
+  1508.7ms [  INFO ] cleaning up resources for output tensors
+  1512.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1540.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1537.8ms [  INFO ] cleaning up resources for input tensors
+  1537.8ms [  INFO ] cleaning up resources for output tensors
+  1541.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1572.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1569.5ms [  INFO ] cleaning up resources for input tensors
+  1569.5ms [  INFO ] cleaning up resources for output tensors
+  1573.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1602.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1599.4ms [  INFO ] cleaning up resources for input tensors
+  1599.4ms [  INFO ] cleaning up resources for output tensors
+  1610.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1640.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1637.7ms [  INFO ] cleaning up resources for input tensors
+  1637.7ms [  INFO ] cleaning up resources for output tensors
+  1641.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1669.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1666.3ms [  INFO ] cleaning up resources for input tensors
+  1666.3ms [  INFO ] cleaning up resources for output tensors
+  1670.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1701.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1698.3ms [  INFO ] cleaning up resources for input tensors
+  1698.3ms [  INFO ] cleaning up resources for output tensors
+  1702.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1735.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1732.5ms [  INFO ] cleaning up resources for input tensors
+  1732.5ms [  INFO ] cleaning up resources for output tensors
+  1736.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1766.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1763.0ms [  INFO ] cleaning up resources for input tensors
+  1763.0ms [  INFO ] cleaning up resources for output tensors
+  1774.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1806.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1803.8ms [  INFO ] cleaning up resources for input tensors
+  1803.8ms [  INFO ] cleaning up resources for output tensors
+  1807.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1839.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1836.2ms [  INFO ] cleaning up resources for input tensors
+  1836.2ms [  INFO ] cleaning up resources for output tensors
+  1840.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1870.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1867.8ms [  INFO ] cleaning up resources for input tensors
+  1867.8ms [  INFO ] cleaning up resources for output tensors
+  1872.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1902.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1899.3ms [  INFO ] cleaning up resources for input tensors
+  1899.3ms [  INFO ] cleaning up resources for output tensors
+  1903.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1933.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1930.8ms [  INFO ] cleaning up resources for input tensors
+  1930.8ms [  INFO ] cleaning up resources for output tensors
+  1934.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1965.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1962.7ms [  INFO ] cleaning up resources for input tensors
+  1962.7ms [  INFO ] cleaning up resources for output tensors
+  1967.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  1997.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  1994.1ms [  INFO ] cleaning up resources for input tensors
+  1994.1ms [  INFO ] cleaning up resources for output tensors
+  1997.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2027.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2024.1ms [  INFO ] cleaning up resources for input tensors
+  2024.1ms [  INFO ] cleaning up resources for output tensors
+  2027.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2057.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2054.7ms [  INFO ] cleaning up resources for input tensors
+  2054.7ms [  INFO ] cleaning up resources for output tensors
+  2058.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2087.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2084.7ms [  INFO ] cleaning up resources for input tensors
+  2084.8ms [  INFO ] cleaning up resources for output tensors
+  2088.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2115.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2112.9ms [  INFO ] cleaning up resources for input tensors
+  2112.9ms [  INFO ] cleaning up resources for output tensors
+  2116.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2144.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2141.2ms [  INFO ] cleaning up resources for input tensors
+  2141.2ms [  INFO ] cleaning up resources for output tensors
+  2145.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2180.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2177.7ms [  INFO ] cleaning up resources for input tensors
+  2177.7ms [  INFO ] cleaning up resources for output tensors
+  2189.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2220.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2217.9ms [  INFO ] cleaning up resources for input tensors
+  2217.9ms [  INFO ] cleaning up resources for output tensors
+  2221.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2250.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2247.8ms [  INFO ] cleaning up resources for input tensors
+  2247.8ms [  INFO ] cleaning up resources for output tensors
+  2251.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2280.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2277.9ms [  INFO ] cleaning up resources for input tensors
+  2277.9ms [  INFO ] cleaning up resources for output tensors
+  2281.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2311.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2308.9ms [  INFO ] cleaning up resources for input tensors
+  2308.9ms [  INFO ] cleaning up resources for output tensors
+  2312.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2344.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2341.7ms [  INFO ] cleaning up resources for input tensors
+  2341.7ms [  INFO ] cleaning up resources for output tensors
+  2345.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2376.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2373.0ms [  INFO ] cleaning up resources for input tensors
+  2373.0ms [  INFO ] cleaning up resources for output tensors
+  2376.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2408.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2405.4ms [  INFO ] cleaning up resources for input tensors
+  2405.4ms [  INFO ] cleaning up resources for output tensors
+  2409.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2443.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2440.3ms [  INFO ] cleaning up resources for input tensors
+  2440.3ms [  INFO ] cleaning up resources for output tensors
+  2444.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2477.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2474.7ms [  INFO ] cleaning up resources for input tensors
+  2474.7ms [  INFO ] cleaning up resources for output tensors
+  2478.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2511.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2508.1ms [  INFO ] cleaning up resources for input tensors
+  2508.1ms [  INFO ] cleaning up resources for output tensors
+  2512.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2544.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2541.7ms [  INFO ] cleaning up resources for input tensors
+  2541.7ms [  INFO ] cleaning up resources for output tensors
+  2545.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2576.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2573.5ms [  INFO ] cleaning up resources for input tensors
+  2573.5ms [  INFO ] cleaning up resources for output tensors
+  2577.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2607.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2604.7ms [  INFO ] cleaning up resources for input tensors
+  2604.7ms [  INFO ] cleaning up resources for output tensors
+  2608.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2639.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2636.3ms [  INFO ] cleaning up resources for input tensors
+  2636.3ms [  INFO ] cleaning up resources for output tensors
+  2647.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2676.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2673.2ms [  INFO ] cleaning up resources for input tensors
+  2673.2ms [  INFO ] cleaning up resources for output tensors
+  2677.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2705.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2702.6ms [  INFO ] cleaning up resources for input tensors
+  2702.6ms [  INFO ] cleaning up resources for output tensors
+  2706.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2734.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2731.5ms [  INFO ] cleaning up resources for input tensors
+  2731.5ms [  INFO ] cleaning up resources for output tensors
+  2735.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2762.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2759.9ms [  INFO ] cleaning up resources for input tensors
+  2759.9ms [  INFO ] cleaning up resources for output tensors
+  2763.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2791.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2788.8ms [  INFO ] cleaning up resources for input tensors
+  2788.8ms [  INFO ] cleaning up resources for output tensors
+  2792.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2819.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2816.8ms [  INFO ] cleaning up resources for input tensors
+  2816.8ms [  INFO ] cleaning up resources for output tensors
+  2820.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2849.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2846.1ms [  INFO ] cleaning up resources for input tensors
+  2846.1ms [  INFO ] cleaning up resources for output tensors
+  2857.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2887.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2884.0ms [  INFO ] cleaning up resources for input tensors
+  2884.0ms [  INFO ] cleaning up resources for output tensors
+  2887.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2915.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2912.2ms [  INFO ] cleaning up resources for input tensors
+  2912.2ms [  INFO ] cleaning up resources for output tensors
+  2915.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2942.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2939.7ms [  INFO ] cleaning up resources for input tensors
+  2939.7ms [  INFO ] cleaning up resources for output tensors
+  2943.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  2972.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2969.0ms [  INFO ] cleaning up resources for input tensors
+  2969.0ms [  INFO ] cleaning up resources for output tensors
+  2972.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3001.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  2998.4ms [  INFO ] cleaning up resources for input tensors
+  2998.4ms [  INFO ] cleaning up resources for output tensors
+  3002.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3029.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3026.3ms [  INFO ] cleaning up resources for input tensors
+  3026.3ms [  INFO ] cleaning up resources for output tensors
+  3037.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3064.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3061.1ms [  INFO ] cleaning up resources for input tensors
+  3061.1ms [  INFO ] cleaning up resources for output tensors
+  3064.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3090.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3088.0ms [  INFO ] cleaning up resources for input tensors
+  3088.0ms [  INFO ] cleaning up resources for output tensors
+  3091.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3119.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3116.4ms [  INFO ] cleaning up resources for input tensors
+  3116.4ms [  INFO ] cleaning up resources for output tensors
+  3120.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3146.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3143.4ms [  INFO ] cleaning up resources for input tensors
+  3143.4ms [  INFO ] cleaning up resources for output tensors
+  3147.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3172.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3169.8ms [  INFO ] cleaning up resources for input tensors
+  3169.8ms [  INFO ] cleaning up resources for output tensors
+  3173.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3199.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3196.4ms [  INFO ] cleaning up resources for input tensors
+  3196.4ms [  INFO ] cleaning up resources for output tensors
+  3200.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3228.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3225.5ms [  INFO ] cleaning up resources for input tensors
+  3225.5ms [  INFO ] cleaning up resources for output tensors
+  3236.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3263.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3260.6ms [  INFO ] cleaning up resources for input tensors
+  3260.6ms [  INFO ] cleaning up resources for output tensors
+  3264.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3290.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3287.1ms [  INFO ] cleaning up resources for input tensors
+  3287.1ms [  INFO ] cleaning up resources for output tensors
+  3290.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3316.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3313.5ms [  INFO ] cleaning up resources for input tensors
+  3313.5ms [  INFO ] cleaning up resources for output tensors
+  3317.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3345.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3342.0ms [  INFO ] cleaning up resources for input tensors
+  3342.0ms [  INFO ] cleaning up resources for output tensors
+  3345.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3372.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3369.9ms [  INFO ] cleaning up resources for input tensors
+  3369.9ms [  INFO ] cleaning up resources for output tensors
+  3373.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3399.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3396.7ms [  INFO ] cleaning up resources for input tensors
+  3396.7ms [  INFO ] cleaning up resources for output tensors
+  3400.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3426.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3423.5ms [  INFO ] cleaning up resources for input tensors
+  3423.5ms [  INFO ] cleaning up resources for output tensors
+  3427.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3453.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3450.3ms [  INFO ] cleaning up resources for input tensors
+  3450.3ms [  INFO ] cleaning up resources for output tensors
+  3453.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3479.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3477.0ms [  INFO ] cleaning up resources for input tensors
+  3477.0ms [  INFO ] cleaning up resources for output tensors
+  3480.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3506.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3503.5ms [  INFO ] cleaning up resources for input tensors
+  3503.5ms [  INFO ] cleaning up resources for output tensors
+  3507.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3533.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3530.7ms [  INFO ] cleaning up resources for input tensors
+  3530.7ms [  INFO ] cleaning up resources for output tensors
+  3534.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3561.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3558.4ms [  INFO ] cleaning up resources for input tensors
+  3558.4ms [  INFO ] cleaning up resources for output tensors
+  3562.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3589.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3586.7ms [  INFO ] cleaning up resources for input tensors
+  3586.7ms [  INFO ] cleaning up resources for output tensors
+  3590.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3617.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3614.5ms [  INFO ] cleaning up resources for input tensors
+  3614.5ms [  INFO ] cleaning up resources for output tensors
+  3618.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3644.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3641.0ms [  INFO ] cleaning up resources for input tensors
+  3641.0ms [  INFO ] cleaning up resources for output tensors
+  3644.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3671.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3668.9ms [  INFO ] cleaning up resources for input tensors
+  3668.9ms [  INFO ] cleaning up resources for output tensors
+  3672.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3698.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3695.8ms [  INFO ] cleaning up resources for input tensors
+  3695.8ms [  INFO ] cleaning up resources for output tensors
+  3699.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3726.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3723.9ms [  INFO ] cleaning up resources for input tensors
+  3723.9ms [  INFO ] cleaning up resources for output tensors
+  3727.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3754.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3751.6ms [  INFO ] cleaning up resources for input tensors
+  3751.6ms [  INFO ] cleaning up resources for output tensors
+  3755.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3782.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3779.5ms [  INFO ] cleaning up resources for input tensors
+  3779.5ms [  INFO ] cleaning up resources for output tensors
+  3783.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3810.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3807.4ms [  INFO ] cleaning up resources for input tensors
+  3807.4ms [  INFO ] cleaning up resources for output tensors
+  3811.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3838.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3835.7ms [  INFO ] cleaning up resources for input tensors
+  3835.7ms [  INFO ] cleaning up resources for output tensors
+  3839.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3866.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3863.1ms [  INFO ] cleaning up resources for input tensors
+  3863.1ms [  INFO ] cleaning up resources for output tensors
+  3866.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3892.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3889.9ms [  INFO ] cleaning up resources for input tensors
+  3889.9ms [  INFO ] cleaning up resources for output tensors
+  3893.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3919.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3916.7ms [  INFO ] cleaning up resources for input tensors
+  3916.7ms [  INFO ] cleaning up resources for output tensors
+  3920.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3948.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3945.5ms [  INFO ] cleaning up resources for input tensors
+  3945.5ms [  INFO ] cleaning up resources for output tensors
+  3949.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  3980.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  3977.6ms [  INFO ] cleaning up resources for input tensors
+  3977.6ms [  INFO ] cleaning up resources for output tensors
+  3982.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4020.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4017.6ms [  INFO ] cleaning up resources for input tensors
+  4017.6ms [  INFO ] cleaning up resources for output tensors
+  4021.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4052.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4049.3ms [  INFO ] cleaning up resources for input tensors
+  4049.3ms [  INFO ] cleaning up resources for output tensors
+  4053.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4082.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4079.8ms [  INFO ] cleaning up resources for input tensors
+  4079.8ms [  INFO ] cleaning up resources for output tensors
+  4083.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4112.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4109.2ms [  INFO ] cleaning up resources for input tensors
+  4109.2ms [  INFO ] cleaning up resources for output tensors
+  4112.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4141.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4138.2ms [  INFO ] cleaning up resources for input tensors
+  4138.2ms [  INFO ] cleaning up resources for output tensors
+  4141.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4170.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4167.7ms [  INFO ] cleaning up resources for input tensors
+  4167.7ms [  INFO ] cleaning up resources for output tensors
+  4171.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4212.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4209.8ms [  INFO ] cleaning up resources for input tensors
+  4209.8ms [  INFO ] cleaning up resources for output tensors
+  4213.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4243.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4240.0ms [  INFO ] cleaning up resources for input tensors
+  4240.0ms [  INFO ] cleaning up resources for output tensors
+  4243.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4272.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4269.5ms [  INFO ] cleaning up resources for input tensors
+  4269.5ms [  INFO ] cleaning up resources for output tensors
+  4273.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4301.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4299.0ms [  INFO ] cleaning up resources for input tensors
+  4299.0ms [  INFO ] cleaning up resources for output tensors
+  4302.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4332.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4329.3ms [  INFO ] cleaning up resources for input tensors
+  4329.3ms [  INFO ] cleaning up resources for output tensors
+  4333.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4360.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4357.9ms [  INFO ] cleaning up resources for input tensors
+  4357.9ms [  INFO ] cleaning up resources for output tensors
+  4361.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4389.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4386.3ms [  INFO ] cleaning up resources for input tensors
+  4386.3ms [  INFO ] cleaning up resources for output tensors
+  4390.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4418.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4415.4ms [  INFO ] cleaning up resources for input tensors
+  4415.4ms [  INFO ] cleaning up resources for output tensors
+  4419.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4447.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4444.9ms [  INFO ] cleaning up resources for input tensors
+  4444.9ms [  INFO ] cleaning up resources for output tensors
+  4448.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4476.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4473.0ms [  INFO ] cleaning up resources for input tensors
+  4473.0ms [  INFO ] cleaning up resources for output tensors
+  4476.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4505.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4502.8ms [  INFO ] cleaning up resources for input tensors
+  4502.8ms [  INFO ] cleaning up resources for output tensors
+  4506.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4538.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4535.8ms [  INFO ] cleaning up resources for input tensors
+  4535.8ms [  INFO ] cleaning up resources for output tensors
+  4539.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4568.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4566.0ms [  INFO ] cleaning up resources for input tensors
+  4566.0ms [  INFO ] cleaning up resources for output tensors
+  4569.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4598.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4596.0ms [  INFO ] cleaning up resources for input tensors
+  4596.0ms [  INFO ] cleaning up resources for output tensors
+  4600.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4628.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4625.8ms [  INFO ] cleaning up resources for input tensors
+  4625.8ms [  INFO ] cleaning up resources for output tensors
+  4629.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4658.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4655.0ms [  INFO ] cleaning up resources for input tensors
+  4655.0ms [  INFO ] cleaning up resources for output tensors
+  4658.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4688.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4685.0ms [  INFO ] cleaning up resources for input tensors
+  4685.0ms [  INFO ] cleaning up resources for output tensors
+  4688.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4717.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4714.1ms [  INFO ] cleaning up resources for input tensors
+  4714.1ms [  INFO ] cleaning up resources for output tensors
+  4717.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4745.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4742.2ms [  INFO ] cleaning up resources for input tensors
+  4742.2ms [  INFO ] cleaning up resources for output tensors
+  4745.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4773.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4770.8ms [  INFO ] cleaning up resources for input tensors
+  4770.8ms [  INFO ] cleaning up resources for output tensors
+  4774.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4803.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4800.4ms [  INFO ] cleaning up resources for input tensors
+  4800.5ms [  INFO ] cleaning up resources for output tensors
+  4804.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4831.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4828.8ms [  INFO ] cleaning up resources for input tensors
+  4828.8ms [  INFO ] cleaning up resources for output tensors
+  4832.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4859.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4856.6ms [  INFO ] cleaning up resources for input tensors
+  4856.6ms [  INFO ] cleaning up resources for output tensors
+  4860.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4887.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4884.6ms [  INFO ] cleaning up resources for input tensors
+  4884.6ms [  INFO ] cleaning up resources for output tensors
+  4888.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4915.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4912.1ms [  INFO ] cleaning up resources for input tensors
+  4912.1ms [  INFO ] cleaning up resources for output tensors
+  4915.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4942.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4939.5ms [  INFO ] cleaning up resources for input tensors
+  4939.5ms [  INFO ] cleaning up resources for output tensors
+  4943.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4971.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4968.2ms [  INFO ] cleaning up resources for input tensors
+  4968.2ms [  INFO ] cleaning up resources for output tensors
+  4971.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  4998.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  4995.0ms [  INFO ] cleaning up resources for input tensors
+  4995.0ms [  INFO ] cleaning up resources for output tensors
+  4998.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5025.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5022.8ms [  INFO ] cleaning up resources for input tensors
+  5022.8ms [  INFO ] cleaning up resources for output tensors
+  5026.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5055.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5052.5ms [  INFO ] cleaning up resources for input tensors
+  5052.5ms [  INFO ] cleaning up resources for output tensors
+  5056.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5084.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5081.2ms [  INFO ] cleaning up resources for input tensors
+  5081.2ms [  INFO ] cleaning up resources for output tensors
+  5084.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5112.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5109.0ms [  INFO ] cleaning up resources for input tensors
+  5109.0ms [  INFO ] cleaning up resources for output tensors
+  5112.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5139.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5136.4ms [  INFO ] cleaning up resources for input tensors
+  5136.4ms [  INFO ] cleaning up resources for output tensors
+  5140.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5169.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5166.4ms [  INFO ] cleaning up resources for input tensors
+  5166.4ms [  INFO ] cleaning up resources for output tensors
+  5170.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5197.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5194.4ms [  INFO ] cleaning up resources for input tensors
+  5194.4ms [  INFO ] cleaning up resources for output tensors
+  5198.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5225.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5222.6ms [  INFO ] cleaning up resources for input tensors
+  5222.6ms [  INFO ] cleaning up resources for output tensors
+  5226.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5253.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5250.3ms [  INFO ] cleaning up resources for input tensors
+  5250.3ms [  INFO ] cleaning up resources for output tensors
+  5254.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5281.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5278.8ms [  INFO ] cleaning up resources for input tensors
+  5278.8ms [  INFO ] cleaning up resources for output tensors
+  5282.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5309.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5306.8ms [  INFO ] cleaning up resources for input tensors
+  5306.9ms [  INFO ] cleaning up resources for output tensors
+  5310.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5338.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5335.4ms [  INFO ] cleaning up resources for input tensors
+  5335.4ms [  INFO ] cleaning up resources for output tensors
+  5338.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5365.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5362.7ms [  INFO ] cleaning up resources for input tensors
+  5362.7ms [  INFO ] cleaning up resources for output tensors
+  5366.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5395.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5392.9ms [  INFO ] cleaning up resources for input tensors
+  5392.9ms [  INFO ] cleaning up resources for output tensors
+  5396.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5425.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5422.7ms [  INFO ] cleaning up resources for input tensors
+  5422.7ms [  INFO ] cleaning up resources for output tensors
+  5426.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5454.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5451.9ms [  INFO ] cleaning up resources for input tensors
+  5451.9ms [  INFO ] cleaning up resources for output tensors
+  5455.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5484.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5481.6ms [  INFO ] cleaning up resources for input tensors
+  5481.6ms [  INFO ] cleaning up resources for output tensors
+  5485.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5514.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5511.7ms [  INFO ] cleaning up resources for input tensors
+  5511.7ms [  INFO ] cleaning up resources for output tensors
+  5515.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5543.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5540.4ms [  INFO ] cleaning up resources for input tensors
+  5540.4ms [  INFO ] cleaning up resources for output tensors
+  5544.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5571.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5568.2ms [  INFO ] cleaning up resources for input tensors
+  5568.2ms [  INFO ] cleaning up resources for output tensors
+  5571.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5598.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5595.9ms [  INFO ] cleaning up resources for input tensors
+  5595.9ms [  INFO ] cleaning up resources for output tensors
+  5599.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5627.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5624.2ms [  INFO ] cleaning up resources for input tensors
+  5624.2ms [  INFO ] cleaning up resources for output tensors
+  5627.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5654.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5651.7ms [  INFO ] cleaning up resources for input tensors
+  5651.7ms [  INFO ] cleaning up resources for output tensors
+  5655.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5681.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5678.9ms [  INFO ] cleaning up resources for input tensors
+  5678.9ms [  INFO ] cleaning up resources for output tensors
+  5682.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5709.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5706.6ms [  INFO ] cleaning up resources for input tensors
+  5706.6ms [  INFO ] cleaning up resources for output tensors
+  5710.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5737.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5734.8ms [  INFO ] cleaning up resources for input tensors
+  5734.9ms [  INFO ] cleaning up resources for output tensors
+  5738.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5766.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5763.8ms [  INFO ] cleaning up resources for input tensors
+  5763.8ms [  INFO ] cleaning up resources for output tensors
+  5767.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5794.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5791.8ms [  INFO ] cleaning up resources for input tensors
+  5791.8ms [  INFO ] cleaning up resources for output tensors
+  5795.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5823.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5820.8ms [  INFO ] cleaning up resources for input tensors
+  5820.8ms [  INFO ] cleaning up resources for output tensors
+  5824.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5851.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5848.0ms [  INFO ] cleaning up resources for input tensors
+  5848.0ms [  INFO ] cleaning up resources for output tensors
+  5851.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5879.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5876.6ms [  INFO ] cleaning up resources for input tensors
+  5876.7ms [  INFO ] cleaning up resources for output tensors
+  5880.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5907.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5904.4ms [  INFO ] cleaning up resources for input tensors
+  5904.4ms [  INFO ] cleaning up resources for output tensors
+  5908.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5934.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5931.4ms [  INFO ] cleaning up resources for input tensors
+  5931.4ms [  INFO ] cleaning up resources for output tensors
+  5935.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5963.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5961.0ms [  INFO ] cleaning up resources for input tensors
+  5961.0ms [  INFO ] cleaning up resources for output tensors
+  5965.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  5993.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  5990.9ms [  INFO ] cleaning up resources for input tensors
+  5990.9ms [  INFO ] cleaning up resources for output tensors
+  5994.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6024.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6021.2ms [  INFO ] cleaning up resources for input tensors
+  6021.2ms [  INFO ] cleaning up resources for output tensors
+  6024.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6053.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6050.6ms [  INFO ] cleaning up resources for input tensors
+  6050.6ms [  INFO ] cleaning up resources for output tensors
+  6054.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6084.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6081.4ms [  INFO ] cleaning up resources for input tensors
+  6081.4ms [  INFO ] cleaning up resources for output tensors
+  6085.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6118.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6115.2ms [  INFO ] cleaning up resources for input tensors
+  6115.2ms [  INFO ] cleaning up resources for output tensors
+  6119.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6151.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6148.5ms [  INFO ] cleaning up resources for input tensors
+  6148.5ms [  INFO ] cleaning up resources for output tensors
+  6152.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6185.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6182.2ms [  INFO ] cleaning up resources for input tensors
+  6182.2ms [  INFO ] cleaning up resources for output tensors
+  6186.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6220.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6217.7ms [  INFO ] cleaning up resources for input tensors
+  6217.7ms [  INFO ] cleaning up resources for output tensors
+  6221.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6253.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6250.8ms [  INFO ] cleaning up resources for input tensors
+  6250.8ms [  INFO ] cleaning up resources for output tensors
+  6254.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6287.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6284.7ms [  INFO ] cleaning up resources for input tensors
+  6284.7ms [  INFO ] cleaning up resources for output tensors
+  6288.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6319.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6316.5ms [  INFO ] cleaning up resources for input tensors
+  6316.5ms [  INFO ] cleaning up resources for output tensors
+  6320.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6352.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6349.1ms [  INFO ] cleaning up resources for input tensors
+  6349.1ms [  INFO ] cleaning up resources for output tensors
+  6353.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6383.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6380.1ms [  INFO ] cleaning up resources for input tensors
+  6380.1ms [  INFO ] cleaning up resources for output tensors
+  6383.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6413.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6410.9ms [  INFO ] cleaning up resources for input tensors
+  6410.9ms [  INFO ] cleaning up resources for output tensors
+  6415.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6446.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6443.3ms [  INFO ] cleaning up resources for input tensors
+  6443.3ms [  INFO ] cleaning up resources for output tensors
+  6447.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6478.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6475.7ms [  INFO ] cleaning up resources for input tensors
+  6475.7ms [  INFO ] cleaning up resources for output tensors
+  6479.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6510.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6507.2ms [  INFO ] cleaning up resources for input tensors
+  6507.2ms [  INFO ] cleaning up resources for output tensors
+  6511.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6541.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6538.6ms [  INFO ] cleaning up resources for input tensors
+  6538.6ms [  INFO ] cleaning up resources for output tensors
+  6542.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6572.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6569.5ms [  INFO ] cleaning up resources for input tensors
+  6569.5ms [  INFO ] cleaning up resources for output tensors
+  6573.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6603.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6600.7ms [  INFO ] cleaning up resources for input tensors
+  6600.7ms [  INFO ] cleaning up resources for output tensors
+  6604.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6635.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6632.8ms [  INFO ] cleaning up resources for input tensors
+  6632.8ms [  INFO ] cleaning up resources for output tensors
+  6636.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6667.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6664.5ms [  INFO ] cleaning up resources for input tensors
+  6664.5ms [  INFO ] cleaning up resources for output tensors
+  6668.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6698.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6695.9ms [  INFO ] cleaning up resources for input tensors
+  6695.9ms [  INFO ] cleaning up resources for output tensors
+  6699.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6730.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6727.4ms [  INFO ] cleaning up resources for input tensors
+  6727.4ms [  INFO ] cleaning up resources for output tensors
+  6731.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6761.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6758.2ms [  INFO ] cleaning up resources for input tensors
+  6758.2ms [  INFO ] cleaning up resources for output tensors
+  6761.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6791.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6788.1ms [  INFO ] cleaning up resources for input tensors
+  6788.1ms [  INFO ] cleaning up resources for output tensors
+  6792.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6821.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6818.8ms [  INFO ] cleaning up resources for input tensors
+  6818.8ms [  INFO ] cleaning up resources for output tensors
+  6822.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6852.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6849.0ms [  INFO ] cleaning up resources for input tensors
+  6849.0ms [  INFO ] cleaning up resources for output tensors
+  6853.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6883.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6880.2ms [  INFO ] cleaning up resources for input tensors
+  6880.2ms [  INFO ] cleaning up resources for output tensors
+  6884.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6914.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6911.7ms [  INFO ] cleaning up resources for input tensors
+  6911.7ms [  INFO ] cleaning up resources for output tensors
+  6915.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6947.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6944.3ms [  INFO ] cleaning up resources for input tensors
+  6944.3ms [  INFO ] cleaning up resources for output tensors
+  6948.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  6978.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  6975.4ms [  INFO ] cleaning up resources for input tensors
+  6975.4ms [  INFO ] cleaning up resources for output tensors
+  6979.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7008.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7005.6ms [  INFO ] cleaning up resources for input tensors
+  7005.6ms [  INFO ] cleaning up resources for output tensors
+  7009.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7038.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7035.6ms [  INFO ] cleaning up resources for input tensors
+  7035.6ms [  INFO ] cleaning up resources for output tensors
+  7039.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7068.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7065.1ms [  INFO ] cleaning up resources for input tensors
+  7065.2ms [  INFO ] cleaning up resources for output tensors
+  7069.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7099.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7096.6ms [  INFO ] cleaning up resources for input tensors
+  7096.6ms [  INFO ] cleaning up resources for output tensors
+  7100.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7129.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7126.5ms [  INFO ] cleaning up resources for input tensors
+  7126.5ms [  INFO ] cleaning up resources for output tensors
+  7130.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7158.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7155.3ms [  INFO ] cleaning up resources for input tensors
+  7155.3ms [  INFO ] cleaning up resources for output tensors
+  7159.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7188.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7185.4ms [  INFO ] cleaning up resources for input tensors
+  7185.4ms [  INFO ] cleaning up resources for output tensors
+  7189.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7218.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7215.0ms [  INFO ] cleaning up resources for input tensors
+  7215.0ms [  INFO ] cleaning up resources for output tensors
+  7218.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7246.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7243.5ms [  INFO ] cleaning up resources for input tensors
+  7243.5ms [  INFO ] cleaning up resources for output tensors
+  7247.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7274.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7271.1ms [  INFO ] cleaning up resources for input tensors
+  7271.1ms [  INFO ] cleaning up resources for output tensors
+  7275.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7302.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7299.7ms [  INFO ] cleaning up resources for input tensors
+  7299.7ms [  INFO ] cleaning up resources for output tensors
+  7303.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7333.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7330.2ms [  INFO ] cleaning up resources for input tensors
+  7330.2ms [  INFO ] cleaning up resources for output tensors
+  7334.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7362.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7359.0ms [  INFO ] cleaning up resources for input tensors
+  7359.0ms [  INFO ] cleaning up resources for output tensors
+  7362.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7390.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7387.2ms [  INFO ] cleaning up resources for input tensors
+  7387.2ms [  INFO ] cleaning up resources for output tensors
+  7390.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7418.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7415.4ms [  INFO ] cleaning up resources for input tensors
+  7415.4ms [  INFO ] cleaning up resources for output tensors
+  7419.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7447.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7444.4ms [  INFO ] cleaning up resources for input tensors
+  7444.4ms [  INFO ] cleaning up resources for output tensors
+  7448.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7476.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7473.1ms [  INFO ] cleaning up resources for input tensors
+  7473.1ms [  INFO ] cleaning up resources for output tensors
+  7476.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7503.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7500.8ms [  INFO ] cleaning up resources for input tensors
+  7500.8ms [  INFO ] cleaning up resources for output tensors
+  7504.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7532.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7529.7ms [  INFO ] cleaning up resources for input tensors
+  7529.7ms [  INFO ] cleaning up resources for output tensors
+  7533.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7561.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7558.4ms [  INFO ] cleaning up resources for input tensors
+  7558.4ms [  INFO ] cleaning up resources for output tensors
+  7562.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7589.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7586.1ms [  INFO ] cleaning up resources for input tensors
+  7586.1ms [  INFO ] cleaning up resources for output tensors
+  7589.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7615.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7613.0ms [  INFO ] cleaning up resources for input tensors
+  7613.0ms [  INFO ] cleaning up resources for output tensors
+  7616.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7644.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7641.6ms [  INFO ] cleaning up resources for input tensors
+  7641.6ms [  INFO ] cleaning up resources for output tensors
+  7645.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7673.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7670.7ms [  INFO ] cleaning up resources for input tensors
+  7670.7ms [  INFO ] cleaning up resources for output tensors
+  7674.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7701.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7698.8ms [  INFO ] cleaning up resources for input tensors
+  7698.8ms [  INFO ] cleaning up resources for output tensors
+  7702.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7728.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7725.8ms [  INFO ] cleaning up resources for input tensors
+  7725.8ms [  INFO ] cleaning up resources for output tensors
+  7729.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7756.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7753.5ms [  INFO ] cleaning up resources for input tensors
+  7753.5ms [  INFO ] cleaning up resources for output tensors
+  7757.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7786.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7783.3ms [  INFO ] cleaning up resources for input tensors
+  7783.3ms [  INFO ] cleaning up resources for output tensors
+  7787.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7814.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7811.2ms [  INFO ] cleaning up resources for input tensors
+  7811.2ms [  INFO ] cleaning up resources for output tensors
+  7814.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7841.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7838.6ms [  INFO ] cleaning up resources for input tensors
+  7838.6ms [  INFO ] cleaning up resources for output tensors
+  7843.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7870.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7867.5ms [  INFO ] cleaning up resources for input tensors
+  7867.5ms [  INFO ] cleaning up resources for output tensors
+  7871.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7899.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7896.1ms [  INFO ] cleaning up resources for input tensors
+  7896.1ms [  INFO ] cleaning up resources for output tensors
+  7900.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7927.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7924.4ms [  INFO ] cleaning up resources for input tensors
+  7924.4ms [  INFO ] cleaning up resources for output tensors
+  7928.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7955.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7952.2ms [  INFO ] cleaning up resources for input tensors
+  7952.2ms [  INFO ] cleaning up resources for output tensors
+  7956.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  7982.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  7979.3ms [  INFO ] cleaning up resources for input tensors
+  7979.3ms [  INFO ] cleaning up resources for output tensors
+  7982.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8010.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8007.3ms [  INFO ] cleaning up resources for input tensors
+  8007.3ms [  INFO ] cleaning up resources for output tensors
+  8011.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8038.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8035.8ms [  INFO ] cleaning up resources for input tensors
+  8035.8ms [  INFO ] cleaning up resources for output tensors
+  8039.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8066.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8063.3ms [  INFO ] cleaning up resources for input tensors
+  8063.3ms [  INFO ] cleaning up resources for output tensors
+  8067.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8093.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8090.6ms [  INFO ] cleaning up resources for input tensors
+  8090.6ms [  INFO ] cleaning up resources for output tensors
+  8094.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8120.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8117.6ms [  INFO ] cleaning up resources for input tensors
+  8117.6ms [  INFO ] cleaning up resources for output tensors
+  8121.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8148.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8145.6ms [  INFO ] cleaning up resources for input tensors
+  8145.6ms [  INFO ] cleaning up resources for output tensors
+  8149.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8176.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8173.6ms [  INFO ] cleaning up resources for input tensors
+  8173.6ms [  INFO ] cleaning up resources for output tensors
+  8177.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8227.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8224.5ms [  INFO ] cleaning up resources for input tensors
+  8224.5ms [  INFO ] cleaning up resources for output tensors
+  8228.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8256.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8253.3ms [  INFO ] cleaning up resources for input tensors
+  8253.3ms [  INFO ] cleaning up resources for output tensors
+  8257.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8285.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8282.3ms [  INFO ] cleaning up resources for input tensors
+  8282.3ms [  INFO ] cleaning up resources for output tensors
+  8286.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8314.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8311.0ms [  INFO ] cleaning up resources for input tensors
+  8311.0ms [  INFO ] cleaning up resources for output tensors
+  8314.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8345.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8342.0ms [  INFO ] cleaning up resources for input tensors
+  8342.0ms [  INFO ] cleaning up resources for output tensors
+  8345.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8374.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8371.5ms [  INFO ] cleaning up resources for input tensors
+  8371.5ms [  INFO ] cleaning up resources for output tensors
+  8375.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8403.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8400.9ms [  INFO ] cleaning up resources for input tensors
+  8400.9ms [  INFO ] cleaning up resources for output tensors
+  8404.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8432.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8429.1ms [  INFO ] cleaning up resources for input tensors
+  8429.1ms [  INFO ] cleaning up resources for output tensors
+  8432.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8459.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8457.0ms [  INFO ] cleaning up resources for input tensors
+  8457.0ms [  INFO ] cleaning up resources for output tensors
+  8460.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8487.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8484.8ms [  INFO ] cleaning up resources for input tensors
+  8484.8ms [  INFO ] cleaning up resources for output tensors
+  8488.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8515.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8512.7ms [  INFO ] cleaning up resources for input tensors
+  8512.7ms [  INFO ] cleaning up resources for output tensors
+  8516.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8543.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8540.7ms [  INFO ] cleaning up resources for input tensors
+  8540.7ms [  INFO ] cleaning up resources for output tensors
+  8544.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8571.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8568.3ms [  INFO ] cleaning up resources for input tensors
+  8568.3ms [  INFO ] cleaning up resources for output tensors
+  8572.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8599.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8596.1ms [  INFO ] cleaning up resources for input tensors
+  8596.1ms [  INFO ] cleaning up resources for output tensors
+  8599.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8627.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8624.1ms [  INFO ] cleaning up resources for input tensors
+  8624.1ms [  INFO ] cleaning up resources for output tensors
+  8628.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8655.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8652.7ms [  INFO ] cleaning up resources for input tensors
+  8652.7ms [  INFO ] cleaning up resources for output tensors
+  8656.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8686.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8683.7ms [  INFO ] cleaning up resources for input tensors
+  8683.7ms [  INFO ] cleaning up resources for output tensors
+  8687.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8721.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8718.4ms [  INFO ] cleaning up resources for input tensors
+  8718.4ms [  INFO ] cleaning up resources for output tensors
+  8722.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8754.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8751.2ms [  INFO ] cleaning up resources for input tensors
+  8751.2ms [  INFO ] cleaning up resources for output tensors
+  8755.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8788.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8785.8ms [  INFO ] cleaning up resources for input tensors
+  8785.8ms [  INFO ] cleaning up resources for output tensors
+  8789.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8826.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8823.4ms [  INFO ] cleaning up resources for input tensors
+  8823.4ms [  INFO ] cleaning up resources for output tensors
+  8827.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8860.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8857.7ms [  INFO ] cleaning up resources for input tensors
+  8857.7ms [  INFO ] cleaning up resources for output tensors
+  8862.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8894.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8891.0ms [  INFO ] cleaning up resources for input tensors
+  8891.0ms [  INFO ] cleaning up resources for output tensors
+  8894.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8925.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8922.7ms [  INFO ] cleaning up resources for input tensors
+  8922.7ms [  INFO ] cleaning up resources for output tensors
+  8926.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8956.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8953.9ms [  INFO ] cleaning up resources for input tensors
+  8953.9ms [  INFO ] cleaning up resources for output tensors
+  8957.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  8988.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  8986.0ms [  INFO ] cleaning up resources for input tensors
+  8986.0ms [  INFO ] cleaning up resources for output tensors
+  8989.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9020.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9017.1ms [  INFO ] cleaning up resources for input tensors
+  9017.1ms [  INFO ] cleaning up resources for output tensors
+  9020.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9049.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9046.8ms [  INFO ] cleaning up resources for input tensors
+  9046.9ms [  INFO ] cleaning up resources for output tensors
+  9050.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9079.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9076.0ms [  INFO ] cleaning up resources for input tensors
+  9076.0ms [  INFO ] cleaning up resources for output tensors
+  9079.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9109.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9106.4ms [  INFO ] cleaning up resources for input tensors
+  9106.4ms [  INFO ] cleaning up resources for output tensors
+  9110.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9140.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9137.7ms [  INFO ] cleaning up resources for input tensors
+  9137.7ms [  INFO ] cleaning up resources for output tensors
+  9141.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9171.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9168.1ms [  INFO ] cleaning up resources for input tensors
+  9168.1ms [  INFO ] cleaning up resources for output tensors
+  9171.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9203.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9200.7ms [  INFO ] cleaning up resources for input tensors
+  9200.7ms [  INFO ] cleaning up resources for output tensors
+  9204.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9235.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9232.7ms [  INFO ] cleaning up resources for input tensors
+  9232.7ms [  INFO ] cleaning up resources for output tensors
+  9236.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9268.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9265.1ms [  INFO ] cleaning up resources for input tensors
+  9265.1ms [  INFO ] cleaning up resources for output tensors
+  9269.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9298.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9295.9ms [  INFO ] cleaning up resources for input tensors
+  9295.9ms [  INFO ] cleaning up resources for output tensors
+  9300.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9329.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9326.7ms [  INFO ] cleaning up resources for input tensors
+  9326.7ms [  INFO ] cleaning up resources for output tensors
+  9330.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9361.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9358.9ms [  INFO ] cleaning up resources for input tensors
+  9358.9ms [  INFO ] cleaning up resources for output tensors
+  9362.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9391.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9388.1ms [  INFO ] cleaning up resources for input tensors
+  9388.1ms [  INFO ] cleaning up resources for output tensors
+  9391.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9420.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9417.2ms [  INFO ] cleaning up resources for input tensors
+  9417.2ms [  INFO ] cleaning up resources for output tensors
+  9420.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9448.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9445.5ms [  INFO ] cleaning up resources for input tensors
+  9445.5ms [  INFO ] cleaning up resources for output tensors
+  9449.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9479.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9476.1ms [  INFO ] cleaning up resources for input tensors
+  9476.1ms [  INFO ] cleaning up resources for output tensors
+  9480.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9509.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9506.7ms [  INFO ] cleaning up resources for input tensors
+  9506.7ms [  INFO ] cleaning up resources for output tensors
+  9511.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9544.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9542.0ms [  INFO ] cleaning up resources for input tensors
+  9542.0ms [  INFO ] cleaning up resources for output tensors
+  9545.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9575.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9572.5ms [  INFO ] cleaning up resources for input tensors
+  9572.5ms [  INFO ] cleaning up resources for output tensors
+  9576.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9605.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9602.7ms [  INFO ] cleaning up resources for input tensors
+  9602.8ms [  INFO ] cleaning up resources for output tensors
+  9606.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9634.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9631.7ms [  INFO ] cleaning up resources for input tensors
+  9631.7ms [  INFO ] cleaning up resources for output tensors
+  9635.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9662.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9659.2ms [  INFO ] cleaning up resources for input tensors
+  9659.2ms [  INFO ] cleaning up resources for output tensors
+  9662.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9690.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9687.7ms [  INFO ] cleaning up resources for input tensors
+  9687.7ms [  INFO ] cleaning up resources for output tensors
+  9691.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9720.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9717.1ms [  INFO ] cleaning up resources for input tensors
+  9717.1ms [  INFO ] cleaning up resources for output tensors
+  9721.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9748.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9745.8ms [  INFO ] cleaning up resources for input tensors
+  9745.8ms [  INFO ] cleaning up resources for output tensors
+  9749.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9776.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9773.7ms [  INFO ] cleaning up resources for input tensors
+  9773.7ms [  INFO ] cleaning up resources for output tensors
+  9777.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9804.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9801.5ms [  INFO ] cleaning up resources for input tensors
+  9801.5ms [  INFO ] cleaning up resources for output tensors
+  9805.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9834.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9831.3ms [  INFO ] cleaning up resources for input tensors
+  9831.3ms [  INFO ] cleaning up resources for output tensors
+  9835.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9865.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9862.5ms [  INFO ] cleaning up resources for input tensors
+  9862.5ms [  INFO ] cleaning up resources for output tensors
+  9866.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9893.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9890.7ms [  INFO ] cleaning up resources for input tensors
+  9890.7ms [  INFO ] cleaning up resources for output tensors
+  9894.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9921.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9918.9ms [  INFO ] cleaning up resources for input tensors
+  9918.9ms [  INFO ] cleaning up resources for output tensors
+  9922.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9949.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9946.5ms [  INFO ] cleaning up resources for input tensors
+  9946.5ms [  INFO ] cleaning up resources for output tensors
+  9950.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+  9976.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+  9973.7ms [  INFO ] cleaning up resources for input tensors
+  9973.7ms [  INFO ] cleaning up resources for output tensors
+  9977.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10003.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10000.3ms [  INFO ] cleaning up resources for input tensors
+ 10000.3ms [  INFO ] cleaning up resources for output tensors
+ 10003.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10030.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10027.0ms [  INFO ] cleaning up resources for input tensors
+ 10027.0ms [  INFO ] cleaning up resources for output tensors
+ 10030.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10057.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10054.7ms [  INFO ] cleaning up resources for input tensors
+ 10054.7ms [  INFO ] cleaning up resources for output tensors
+ 10058.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10086.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10083.0ms [  INFO ] cleaning up resources for input tensors
+ 10083.0ms [  INFO ] cleaning up resources for output tensors
+ 10086.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10113.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10110.6ms [  INFO ] cleaning up resources for input tensors
+ 10110.6ms [  INFO ] cleaning up resources for output tensors
+ 10114.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10140.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10137.4ms [  INFO ] cleaning up resources for input tensors
+ 10137.4ms [  INFO ] cleaning up resources for output tensors
+ 10141.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10167.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10164.4ms [  INFO ] cleaning up resources for input tensors
+ 10164.4ms [  INFO ] cleaning up resources for output tensors
+ 10168.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10197.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10194.5ms [  INFO ] cleaning up resources for input tensors
+ 10194.5ms [  INFO ] cleaning up resources for output tensors
+ 10198.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10226.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10223.2ms [  INFO ] cleaning up resources for input tensors
+ 10223.2ms [  INFO ] cleaning up resources for output tensors
+ 10227.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10254.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10251.7ms [  INFO ] cleaning up resources for input tensors
+ 10251.7ms [  INFO ] cleaning up resources for output tensors
+ 10255.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10284.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10281.0ms [  INFO ] cleaning up resources for input tensors
+ 10281.0ms [  INFO ] cleaning up resources for output tensors
+ 10284.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10313.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10311.0ms [  INFO ] cleaning up resources for input tensors
+ 10311.0ms [  INFO ] cleaning up resources for output tensors
+ 10314.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10342.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10339.0ms [  INFO ] cleaning up resources for input tensors
+ 10339.0ms [  INFO ] cleaning up resources for output tensors
+ 10343.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10369.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10366.9ms [  INFO ] cleaning up resources for input tensors
+ 10366.9ms [  INFO ] cleaning up resources for output tensors
+ 10370.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10397.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10394.6ms [  INFO ] cleaning up resources for input tensors
+ 10394.6ms [  INFO ] cleaning up resources for output tensors
+ 10398.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10425.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10422.9ms [  INFO ] cleaning up resources for input tensors
+ 10422.9ms [  INFO ] cleaning up resources for output tensors
+ 10426.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10454.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10451.5ms [  INFO ] cleaning up resources for input tensors
+ 10451.5ms [  INFO ] cleaning up resources for output tensors
+ 10455.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10483.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10480.1ms [  INFO ] cleaning up resources for input tensors
+ 10480.1ms [  INFO ] cleaning up resources for output tensors
+ 10484.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10512.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10509.4ms [  INFO ] cleaning up resources for input tensors
+ 10509.4ms [  INFO ] cleaning up resources for output tensors
+ 10513.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10543.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10540.6ms [  INFO ] cleaning up resources for input tensors
+ 10540.6ms [  INFO ] cleaning up resources for output tensors
+ 10544.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10575.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10572.7ms [  INFO ] cleaning up resources for input tensors
+ 10572.7ms [  INFO ] cleaning up resources for output tensors
+ 10576.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10606.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10603.4ms [  INFO ] cleaning up resources for input tensors
+ 10603.4ms [  INFO ] cleaning up resources for output tensors
+ 10607.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10636.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10633.6ms [  INFO ] cleaning up resources for input tensors
+ 10633.6ms [  INFO ] cleaning up resources for output tensors
+ 10637.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10665.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10662.9ms [  INFO ] cleaning up resources for input tensors
+ 10662.9ms [  INFO ] cleaning up resources for output tensors
+ 10666.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10696.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10693.5ms [  INFO ] cleaning up resources for input tensors
+ 10693.5ms [  INFO ] cleaning up resources for output tensors
+ 10697.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10727.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10724.5ms [  INFO ] cleaning up resources for input tensors
+ 10724.5ms [  INFO ] cleaning up resources for output tensors
+ 10728.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10758.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10755.1ms [  INFO ] cleaning up resources for input tensors
+ 10755.1ms [  INFO ] cleaning up resources for output tensors
+ 10759.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10789.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10786.9ms [  INFO ] cleaning up resources for input tensors
+ 10786.9ms [  INFO ] cleaning up resources for output tensors
+ 10790.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10820.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10817.4ms [  INFO ] cleaning up resources for input tensors
+ 10817.4ms [  INFO ] cleaning up resources for output tensors
+ 10821.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10849.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10846.0ms [  INFO ] cleaning up resources for input tensors
+ 10846.0ms [  INFO ] cleaning up resources for output tensors
+ 10849.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10877.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10874.6ms [  INFO ] cleaning up resources for input tensors
+ 10874.6ms [  INFO ] cleaning up resources for output tensors
+ 10878.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10907.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10904.7ms [  INFO ] cleaning up resources for input tensors
+ 10904.7ms [  INFO ] cleaning up resources for output tensors
+ 10908.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10939.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10936.0ms [  INFO ] cleaning up resources for input tensors
+ 10936.0ms [  INFO ] cleaning up resources for output tensors
+ 10939.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10967.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10964.7ms [  INFO ] cleaning up resources for input tensors
+ 10964.7ms [  INFO ] cleaning up resources for output tensors
+ 10968.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 10995.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 10992.7ms [  INFO ] cleaning up resources for input tensors
+ 10992.7ms [  INFO ] cleaning up resources for output tensors
+ 10996.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11026.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11023.8ms [  INFO ] cleaning up resources for input tensors
+ 11023.8ms [  INFO ] cleaning up resources for output tensors
+ 11027.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11055.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11052.7ms [  INFO ] cleaning up resources for input tensors
+ 11052.7ms [  INFO ] cleaning up resources for output tensors
+ 11056.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11083.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11080.6ms [  INFO ] cleaning up resources for input tensors
+ 11080.6ms [  INFO ] cleaning up resources for output tensors
+ 11084.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11111.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11108.1ms [  INFO ] cleaning up resources for input tensors
+ 11108.1ms [  INFO ] cleaning up resources for output tensors
+ 11111.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11140.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11137.1ms [  INFO ] cleaning up resources for input tensors
+ 11137.1ms [  INFO ] cleaning up resources for output tensors
+ 11140.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11169.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11166.1ms [  INFO ] cleaning up resources for input tensors
+ 11166.1ms [  INFO ] cleaning up resources for output tensors
+ 11170.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11197.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11194.2ms [  INFO ] cleaning up resources for input tensors
+ 11194.3ms [  INFO ] cleaning up resources for output tensors
+ 11198.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11224.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11221.5ms [  INFO ] cleaning up resources for input tensors
+ 11221.5ms [  INFO ] cleaning up resources for output tensors
+ 11225.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11252.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11249.9ms [  INFO ] cleaning up resources for input tensors
+ 11250.0ms [  INFO ] cleaning up resources for output tensors
+ 11253.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11281.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11278.9ms [  INFO ] cleaning up resources for input tensors
+ 11278.9ms [  INFO ] cleaning up resources for output tensors
+ 11282.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11310.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11307.7ms [  INFO ] cleaning up resources for input tensors
+ 11307.7ms [  INFO ] cleaning up resources for output tensors
+ 11311.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11339.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11336.2ms [  INFO ] cleaning up resources for input tensors
+ 11336.2ms [  INFO ] cleaning up resources for output tensors
+ 11340.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11367.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11364.7ms [  INFO ] cleaning up resources for input tensors
+ 11364.7ms [  INFO ] cleaning up resources for output tensors
+ 11368.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11396.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11393.8ms [  INFO ] cleaning up resources for input tensors
+ 11393.8ms [  INFO ] cleaning up resources for output tensors
+ 11397.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11425.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11422.1ms [  INFO ] cleaning up resources for input tensors
+ 11422.1ms [  INFO ] cleaning up resources for output tensors
+ 11426.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11453.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11450.4ms [  INFO ] cleaning up resources for input tensors
+ 11450.4ms [  INFO ] cleaning up resources for output tensors
+ 11454.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11481.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11478.8ms [  INFO ] cleaning up resources for input tensors
+ 11478.8ms [  INFO ] cleaning up resources for output tensors
+ 11482.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11512.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11509.7ms [  INFO ] cleaning up resources for input tensors
+ 11509.7ms [  INFO ] cleaning up resources for output tensors
+ 11513.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11543.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11540.3ms [  INFO ] cleaning up resources for input tensors
+ 11540.3ms [  INFO ] cleaning up resources for output tensors
+ 11544.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11572.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11569.9ms [  INFO ] cleaning up resources for input tensors
+ 11569.9ms [  INFO ] cleaning up resources for output tensors
+ 11573.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11603.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11600.1ms [  INFO ] cleaning up resources for input tensors
+ 11600.1ms [  INFO ] cleaning up resources for output tensors
+ 11603.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11632.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11629.7ms [  INFO ] cleaning up resources for input tensors
+ 11629.7ms [  INFO ] cleaning up resources for output tensors
+ 11633.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11663.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11660.7ms [  INFO ] cleaning up resources for input tensors
+ 11660.7ms [  INFO ] cleaning up resources for output tensors
+ 11664.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11692.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11690.0ms [  INFO ] cleaning up resources for input tensors
+ 11690.0ms [  INFO ] cleaning up resources for output tensors
+ 11693.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11722.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11719.7ms [  INFO ] cleaning up resources for input tensors
+ 11719.7ms [  INFO ] cleaning up resources for output tensors
+ 11723.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11752.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11749.9ms [  INFO ] cleaning up resources for input tensors
+ 11749.9ms [  INFO ] cleaning up resources for output tensors
+ 11753.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11783.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11780.2ms [  INFO ] cleaning up resources for input tensors
+ 11780.2ms [  INFO ] cleaning up resources for output tensors
+ 11784.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11813.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11810.8ms [  INFO ] cleaning up resources for input tensors
+ 11810.8ms [  INFO ] cleaning up resources for output tensors
+ 11814.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11844.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11841.2ms [  INFO ] cleaning up resources for input tensors
+ 11841.2ms [  INFO ] cleaning up resources for output tensors
+ 11845.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11875.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11872.7ms [  INFO ] cleaning up resources for input tensors
+ 11872.7ms [  INFO ] cleaning up resources for output tensors
+ 11876.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11905.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11902.4ms [  INFO ] cleaning up resources for input tensors
+ 11902.4ms [  INFO ] cleaning up resources for output tensors
+ 11906.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11934.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11931.8ms [  INFO ] cleaning up resources for input tensors
+ 11931.8ms [  INFO ] cleaning up resources for output tensors
+ 11935.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11964.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11961.7ms [  INFO ] cleaning up resources for input tensors
+ 11961.7ms [  INFO ] cleaning up resources for output tensors
+ 11965.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 11994.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 11991.8ms [  INFO ] cleaning up resources for input tensors
+ 11991.8ms [  INFO ] cleaning up resources for output tensors
+ 11995.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12024.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12021.3ms [  INFO ] cleaning up resources for input tensors
+ 12021.3ms [  INFO ] cleaning up resources for output tensors
+ 12025.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12054.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12051.1ms [  INFO ] cleaning up resources for input tensors
+ 12051.1ms [  INFO ] cleaning up resources for output tensors
+ 12054.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12084.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12081.3ms [  INFO ] cleaning up resources for input tensors
+ 12081.3ms [  INFO ] cleaning up resources for output tensors
+ 12085.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12113.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12110.0ms [  INFO ] cleaning up resources for input tensors
+ 12110.0ms [  INFO ] cleaning up resources for output tensors
+ 12113.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12140.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12138.0ms [  INFO ] cleaning up resources for input tensors
+ 12138.0ms [  INFO ] cleaning up resources for output tensors
+ 12141.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12169.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12166.5ms [  INFO ] cleaning up resources for input tensors
+ 12166.5ms [  INFO ] cleaning up resources for output tensors
+ 12170.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12197.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12194.5ms [  INFO ] cleaning up resources for input tensors
+ 12194.5ms [  INFO ] cleaning up resources for output tensors
+ 12198.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12226.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12223.7ms [  INFO ] cleaning up resources for input tensors
+ 12223.7ms [  INFO ] cleaning up resources for output tensors
+ 12227.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12256.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12253.4ms [  INFO ] cleaning up resources for input tensors
+ 12253.4ms [  INFO ] cleaning up resources for output tensors
+ 12257.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12286.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12283.2ms [  INFO ] cleaning up resources for input tensors
+ 12283.2ms [  INFO ] cleaning up resources for output tensors
+ 12286.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12314.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12311.5ms [  INFO ] cleaning up resources for input tensors
+ 12311.5ms [  INFO ] cleaning up resources for output tensors
+ 12315.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12346.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12343.2ms [  INFO ] cleaning up resources for input tensors
+ 12343.2ms [  INFO ] cleaning up resources for output tensors
+ 12347.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12375.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12372.5ms [  INFO ] cleaning up resources for input tensors
+ 12372.5ms [  INFO ] cleaning up resources for output tensors
+ 12376.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12404.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12401.4ms [  INFO ] cleaning up resources for input tensors
+ 12401.4ms [  INFO ] cleaning up resources for output tensors
+ 12405.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12432.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12429.3ms [  INFO ] cleaning up resources for input tensors
+ 12429.3ms [  INFO ] cleaning up resources for output tensors
+ 12433.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12459.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12456.7ms [  INFO ] cleaning up resources for input tensors
+ 12456.7ms [  INFO ] cleaning up resources for output tensors
+ 12460.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12488.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12485.1ms [  INFO ] cleaning up resources for input tensors
+ 12485.1ms [  INFO ] cleaning up resources for output tensors
+ 12488.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12517.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12514.1ms [  INFO ] cleaning up resources for input tensors
+ 12514.1ms [  INFO ] cleaning up resources for output tensors
+ 12517.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12544.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12541.2ms [  INFO ] cleaning up resources for input tensors
+ 12541.2ms [  INFO ] cleaning up resources for output tensors
+ 12544.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12571.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12568.4ms [  INFO ] cleaning up resources for input tensors
+ 12568.4ms [  INFO ] cleaning up resources for output tensors
+ 12572.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12599.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12596.1ms [  INFO ] cleaning up resources for input tensors
+ 12596.1ms [  INFO ] cleaning up resources for output tensors
+ 12599.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12625.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12622.7ms [  INFO ] cleaning up resources for input tensors
+ 12622.7ms [  INFO ] cleaning up resources for output tensors
+ 12626.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12651.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12648.8ms [  INFO ] cleaning up resources for input tensors
+ 12648.8ms [  INFO ] cleaning up resources for output tensors
+ 12652.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12678.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12675.0ms [  INFO ] cleaning up resources for input tensors
+ 12675.0ms [  INFO ] cleaning up resources for output tensors
+ 12678.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12705.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12702.5ms [  INFO ] cleaning up resources for input tensors
+ 12702.6ms [  INFO ] cleaning up resources for output tensors
+ 12706.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12734.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12731.4ms [  INFO ] cleaning up resources for input tensors
+ 12731.4ms [  INFO ] cleaning up resources for output tensors
+ 12735.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12762.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12759.4ms [  INFO ] cleaning up resources for input tensors
+ 12759.4ms [  INFO ] cleaning up resources for output tensors
+ 12763.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12789.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12786.8ms [  INFO ] cleaning up resources for input tensors
+ 12786.8ms [  INFO ] cleaning up resources for output tensors
+ 12790.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12816.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12813.9ms [  INFO ] cleaning up resources for input tensors
+ 12813.9ms [  INFO ] cleaning up resources for output tensors
+ 12817.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12843.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12840.9ms [  INFO ] cleaning up resources for input tensors
+ 12840.9ms [  INFO ] cleaning up resources for output tensors
+ 12844.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12870.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12867.8ms [  INFO ] cleaning up resources for input tensors
+ 12867.8ms [  INFO ] cleaning up resources for output tensors
+ 12871.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12899.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12896.4ms [  INFO ] cleaning up resources for input tensors
+ 12896.4ms [  INFO ] cleaning up resources for output tensors
+ 12900.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12928.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12925.7ms [  INFO ] cleaning up resources for input tensors
+ 12925.7ms [  INFO ] cleaning up resources for output tensors
+ 12929.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12960.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12957.4ms [  INFO ] cleaning up resources for input tensors
+ 12957.4ms [  INFO ] cleaning up resources for output tensors
+ 12961.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 12989.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 12986.6ms [  INFO ] cleaning up resources for input tensors
+ 12986.6ms [  INFO ] cleaning up resources for output tensors
+ 12990.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13017.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13014.9ms [  INFO ] cleaning up resources for input tensors
+ 13014.9ms [  INFO ] cleaning up resources for output tensors
+ 13018.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13045.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13042.7ms [  INFO ] cleaning up resources for input tensors
+ 13042.7ms [  INFO ] cleaning up resources for output tensors
+ 13046.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13074.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13071.1ms [  INFO ] cleaning up resources for input tensors
+ 13071.1ms [  INFO ] cleaning up resources for output tensors
+ 13075.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13101.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13098.8ms [  INFO ] cleaning up resources for input tensors
+ 13098.8ms [  INFO ] cleaning up resources for output tensors
+ 13102.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13128.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13125.7ms [  INFO ] cleaning up resources for input tensors
+ 13125.7ms [  INFO ] cleaning up resources for output tensors
+ 13129.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13155.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13152.6ms [  INFO ] cleaning up resources for input tensors
+ 13152.6ms [  INFO ] cleaning up resources for output tensors
+ 13156.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13183.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13180.6ms [  INFO ] cleaning up resources for input tensors
+ 13180.6ms [  INFO ] cleaning up resources for output tensors
+ 13184.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13211.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13208.9ms [  INFO ] cleaning up resources for input tensors
+ 13208.9ms [  INFO ] cleaning up resources for output tensors
+ 13212.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13239.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13236.3ms [  INFO ] cleaning up resources for input tensors
+ 13236.3ms [  INFO ] cleaning up resources for output tensors
+ 13239.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13265.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13262.9ms [  INFO ] cleaning up resources for input tensors
+ 13262.9ms [  INFO ] cleaning up resources for output tensors
+ 13266.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13293.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13290.3ms [  INFO ] cleaning up resources for input tensors
+ 13290.3ms [  INFO ] cleaning up resources for output tensors
+ 13294.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13320.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13317.6ms [  INFO ] cleaning up resources for input tensors
+ 13317.6ms [  INFO ] cleaning up resources for output tensors
+ 13321.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13347.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13344.1ms [  INFO ] cleaning up resources for input tensors
+ 13344.1ms [  INFO ] cleaning up resources for output tensors
+ 13347.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13373.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13370.4ms [  INFO ] cleaning up resources for input tensors
+ 13370.5ms [  INFO ] cleaning up resources for output tensors
+ 13374.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13400.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13397.5ms [  INFO ] cleaning up resources for input tensors
+ 13397.5ms [  INFO ] cleaning up resources for output tensors
+ 13401.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13427.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13424.9ms [  INFO ] cleaning up resources for input tensors
+ 13424.9ms [  INFO ] cleaning up resources for output tensors
+ 13428.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13454.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13451.9ms [  INFO ] cleaning up resources for input tensors
+ 13451.9ms [  INFO ] cleaning up resources for output tensors
+ 13455.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13481.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13478.6ms [  INFO ] cleaning up resources for input tensors
+ 13478.6ms [  INFO ] cleaning up resources for output tensors
+ 13482.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13507.8ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13504.8ms [  INFO ] cleaning up resources for input tensors
+ 13504.8ms [  INFO ] cleaning up resources for output tensors
+ 13508.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13534.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13531.1ms [  INFO ] cleaning up resources for input tensors
+ 13531.1ms [  INFO ] cleaning up resources for output tensors
+ 13534.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13560.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13557.6ms [  INFO ] cleaning up resources for input tensors
+ 13557.6ms [  INFO ] cleaning up resources for output tensors
+ 13561.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13586.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13583.7ms [  INFO ] cleaning up resources for input tensors
+ 13583.7ms [  INFO ] cleaning up resources for output tensors
+ 13587.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13613.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13610.7ms [  INFO ] cleaning up resources for input tensors
+ 13610.7ms [  INFO ] cleaning up resources for output tensors
+ 13614.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13642.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13639.6ms [  INFO ] cleaning up resources for input tensors
+ 13639.6ms [  INFO ] cleaning up resources for output tensors
+ 13643.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13671.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13668.6ms [  INFO ] cleaning up resources for input tensors
+ 13668.6ms [  INFO ] cleaning up resources for output tensors
+ 13672.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13699.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13696.9ms [  INFO ] cleaning up resources for input tensors
+ 13697.0ms [  INFO ] cleaning up resources for output tensors
+ 13700.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13727.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13724.6ms [  INFO ] cleaning up resources for input tensors
+ 13724.6ms [  INFO ] cleaning up resources for output tensors
+ 13728.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13755.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13752.1ms [  INFO ] cleaning up resources for input tensors
+ 13752.1ms [  INFO ] cleaning up resources for output tensors
+ 13755.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13783.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13780.5ms [  INFO ] cleaning up resources for input tensors
+ 13780.5ms [  INFO ] cleaning up resources for output tensors
+ 13784.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13812.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13809.6ms [  INFO ] cleaning up resources for input tensors
+ 13809.6ms [  INFO ] cleaning up resources for output tensors
+ 13813.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13840.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13837.2ms [  INFO ] cleaning up resources for input tensors
+ 13837.2ms [  INFO ] cleaning up resources for output tensors
+ 13840.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13867.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13864.7ms [  INFO ] cleaning up resources for input tensors
+ 13864.7ms [  INFO ] cleaning up resources for output tensors
+ 13868.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13895.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13892.5ms [  INFO ] cleaning up resources for input tensors
+ 13892.5ms [  INFO ] cleaning up resources for output tensors
+ 13896.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13925.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13922.0ms [  INFO ] cleaning up resources for input tensors
+ 13922.0ms [  INFO ] cleaning up resources for output tensors
+ 13925.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13953.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13950.2ms [  INFO ] cleaning up resources for input tensors
+ 13950.3ms [  INFO ] cleaning up resources for output tensors
+ 13954.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 13980.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 13978.0ms [  INFO ] cleaning up resources for input tensors
+ 13978.0ms [  INFO ] cleaning up resources for output tensors
+ 13981.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14008.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14005.2ms [  INFO ] cleaning up resources for input tensors
+ 14005.2ms [  INFO ] cleaning up resources for output tensors
+ 14009.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14037.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14034.1ms [  INFO ] cleaning up resources for input tensors
+ 14034.1ms [  INFO ] cleaning up resources for output tensors
+ 14037.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14064.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14061.7ms [  INFO ] cleaning up resources for input tensors
+ 14061.7ms [  INFO ] cleaning up resources for output tensors
+ 14065.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14092.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14089.3ms [  INFO ] cleaning up resources for input tensors
+ 14089.3ms [  INFO ] cleaning up resources for output tensors
+ 14093.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14119.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14116.2ms [  INFO ] cleaning up resources for input tensors
+ 14116.2ms [  INFO ] cleaning up resources for output tensors
+ 14119.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14149.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14146.0ms [  INFO ] cleaning up resources for input tensors
+ 14146.0ms [  INFO ] cleaning up resources for output tensors
+ 14149.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14177.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14174.6ms [  INFO ] cleaning up resources for input tensors
+ 14174.6ms [  INFO ] cleaning up resources for output tensors
+ 14178.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14205.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14202.7ms [  INFO ] cleaning up resources for input tensors
+ 14202.8ms [  INFO ] cleaning up resources for output tensors
+ 14206.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14232.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14229.9ms [  INFO ] cleaning up resources for input tensors
+ 14229.9ms [  INFO ] cleaning up resources for output tensors
+ 14233.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14259.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14256.6ms [  INFO ] cleaning up resources for input tensors
+ 14256.6ms [  INFO ] cleaning up resources for output tensors
+ 14260.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14288.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14285.4ms [  INFO ] cleaning up resources for input tensors
+ 14285.4ms [  INFO ] cleaning up resources for output tensors
+ 14289.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14318.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14315.3ms [  INFO ] cleaning up resources for input tensors
+ 14315.3ms [  INFO ] cleaning up resources for output tensors
+ 14319.1ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14349.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14346.7ms [  INFO ] cleaning up resources for input tensors
+ 14346.7ms [  INFO ] cleaning up resources for output tensors
+ 14350.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14381.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14378.2ms [  INFO ] cleaning up resources for input tensors
+ 14378.2ms [  INFO ] cleaning up resources for output tensors
+ 14382.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14414.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14411.7ms [  INFO ] cleaning up resources for input tensors
+ 14411.7ms [  INFO ] cleaning up resources for output tensors
+ 14415.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14445.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14442.6ms [  INFO ] cleaning up resources for input tensors
+ 14442.6ms [  INFO ] cleaning up resources for output tensors
+ 14446.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14476.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14473.0ms [  INFO ] cleaning up resources for input tensors
+ 14473.0ms [  INFO ] cleaning up resources for output tensors
+ 14476.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14507.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14504.1ms [  INFO ] cleaning up resources for input tensors
+ 14504.1ms [  INFO ] cleaning up resources for output tensors
+ 14508.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14538.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14535.7ms [  INFO ] cleaning up resources for input tensors
+ 14535.7ms [  INFO ] cleaning up resources for output tensors
+ 14539.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14570.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14567.6ms [  INFO ] cleaning up resources for input tensors
+ 14567.6ms [  INFO ] cleaning up resources for output tensors
+ 14571.5ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14604.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14601.0ms [  INFO ] cleaning up resources for input tensors
+ 14601.0ms [  INFO ] cleaning up resources for output tensors
+ 14604.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14635.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14632.5ms [  INFO ] cleaning up resources for input tensors
+ 14632.5ms [  INFO ] cleaning up resources for output tensors
+ 14636.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14665.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14662.4ms [  INFO ] cleaning up resources for input tensors
+ 14662.4ms [  INFO ] cleaning up resources for output tensors
+ 14666.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14695.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14692.3ms [  INFO ] cleaning up resources for input tensors
+ 14692.3ms [  INFO ] cleaning up resources for output tensors
+ 14696.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14724.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14721.3ms [  INFO ] cleaning up resources for input tensors
+ 14721.3ms [  INFO ] cleaning up resources for output tensors
+ 14725.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14754.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14752.0ms [  INFO ] cleaning up resources for input tensors
+ 14752.0ms [  INFO ] cleaning up resources for output tensors
+ 14755.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14784.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14781.9ms [  INFO ] cleaning up resources for input tensors
+ 14781.9ms [  INFO ] cleaning up resources for output tensors
+ 14785.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14813.7ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14810.7ms [  INFO ] cleaning up resources for input tensors
+ 14810.7ms [  INFO ] cleaning up resources for output tensors
+ 14814.4ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14843.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14840.3ms [  INFO ] cleaning up resources for input tensors
+ 14840.3ms [  INFO ] cleaning up resources for output tensors
+ 14844.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14873.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14870.5ms [  INFO ] cleaning up resources for input tensors
+ 14870.5ms [  INFO ] cleaning up resources for output tensors
+ 14874.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14902.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14899.9ms [  INFO ] cleaning up resources for input tensors
+ 14899.9ms [  INFO ] cleaning up resources for output tensors
+ 14903.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14931.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14928.2ms [  INFO ] cleaning up resources for input tensors
+ 14928.2ms [  INFO ] cleaning up resources for output tensors
+ 14931.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14959.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14956.2ms [  INFO ] cleaning up resources for input tensors
+ 14956.2ms [  INFO ] cleaning up resources for output tensors
+ 14959.9ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 14987.5ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 14984.6ms [  INFO ] cleaning up resources for input tensors
+ 14984.6ms [  INFO ] cleaning up resources for output tensors
+ 14988.2ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 15015.6ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 15012.7ms [  INFO ] cleaning up resources for input tensors
+ 15012.7ms [  INFO ] cleaning up resources for output tensors
+ 15016.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 15043.1ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 15040.2ms [  INFO ] cleaning up resources for input tensors
+ 15040.2ms [  INFO ] cleaning up resources for output tensors
+ 15043.8ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 15069.9ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 15067.0ms [  INFO ] cleaning up resources for input tensors
+ 15067.0ms [  INFO ] cleaning up resources for output tensors
+ 15070.6ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 15097.4ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 15094.5ms [  INFO ] cleaning up resources for input tensors
+ 15094.5ms [  INFO ] cleaning up resources for output tensors
+ 15098.3ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 15126.0ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 15123.0ms [  INFO ] cleaning up resources for input tensors
+ 15123.0ms [  INFO ] cleaning up resources for output tensors
+ 15126.7ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 15153.3ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 15150.3ms [  INFO ] cleaning up resources for input tensors
+ 15150.3ms [  INFO ] cleaning up resources for output tensors
+ 15154.0ms [  INFO ] [QNN_CPU] QnnGraph execute start
+ 15181.2ms [  INFO ] [QNN_CPU] QnnGraph execute end
+ 15178.2ms [  INFO ] cleaning up resources for input tensors
+ 15178.2ms [  INFO ] cleaning up resources for output tensors
+reEvalMacsParams: Re-evaluated graph statistics after IrOptimizer optimization passes:
+reEvalMacsParams: Total MACs: 23296
+reEvalMacsParams: Total Params Count: 2212
+2026-10-05 10:03:30,067 - 278 - INFO - Saving QNN Model...
+2026-10-05 10:03:30,158 - 278 - INFO - Model CPP saved at: /local/aimet_quantization/out/single_node/qnn/aimet_w8a16.cpp 
+2026-10-05 10:03:30,158 - 278 - INFO - Model BIN saved at: /local/aimet_quantization/out/single_node/qnn/aimet_w8a16.bin 
+2026-10-05 10:03:30,210 - 278 - INFO - Conversion complete!
+ 15571.2ms [  INFO ] Freeing graphsInfo
+ 15571.2ms [WARNING] Profile Logger with name = defaultKey doesn't exist! Returning nullptr
+ 15574.2ms [  INFO ] [QNN_CPU] QnnContext Free start
+ 15589.0ms [  INFO ] [QNN_CPU] QnnContext Free end
+ 15586.6ms [WARNING] Profile Logger with name = defaultKey doesn't exist!
+ 15589.6ms [  INFO ] [QNN_CPU] QnnBackend Free start
+ 15589.6ms [  INFO ] [QNN_CPU] QnnBackend Free end

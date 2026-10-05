@@ -1,0 +1,608 @@
+2026-10-05 09:48:08,647 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[all_sensors_24h] W32A16_noPriors val SQNR  80.71 dB  max|d| 0.0002  (10.4 s)
+2026-10-05 09:48:19,094 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[all_sensors_24h] W8A8_noPriors val SQNR  41.73 dB  max|d| 0.0149  (10.7 s)
+2026-10-05 09:48:29,834 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[all_sensors_24h] W8A16_noPriors val SQNR  43.29 dB  max|d| 0.0144  (10.8 s)
+2026-10-05 09:48:40,628 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[all_sensors_24h] W32A16        val SQNR  80.66 dB  max|d| 0.0002  (9.5 s)
+2026-10-05 09:48:50,080 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[all_sensors_24h] W8A32         val SQNR  44.95 dB  max|d| 0.0102  (3.1 s)
+2026-10-05 09:48:53,150 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[all_sensors_24h] W8A8          val SQNR  41.23 dB  max|d| 0.0162  (8.8 s)
+2026-10-05 09:49:01,917 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[all_sensors_24h] W8A16         val SQNR  43.29 dB  max|d| 0.0144  (4.8 s)
+2026-10-05 09:49:06,707 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[all_sensors_24h] W8A16_pcGemm  val SQNR  46.21 dB  max|d| 0.0126  (9.6 s)
+/home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/scripts/05_aimet_quantize.py:212: DeprecationWarning: [31;21mAdaroundParameters will be deprecated soon in the later versions. Use `aimet_onnx.apply_adaround` instead[0m
+  aq.set_adaround_params(AdaroundParameters(loader, num_batches=len(loader),
+2026-10-05 09:49:16,244 - AutoQuant - WARNING - Encoding version 1.0.0 not supported for aimet_onnx AutoQuant. Falling back to version 0.6.1
+2026-10-05 09:49:16,245 - AutoQuant - INFO - Starting AutoQuant
+2026-10-05 09:49:17,692 - AutoQuant - INFO - Target eval score: 60.000000
+2026-10-05 09:49:17,693 - AutoQuant - INFO - FP32 eval score (W32A32): 100.000000
+/ QuantScheme Selection- QuantScheme Selection                       2026-10-05 09:49:17,736 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+- QuantScheme Selection
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  2%|▏         | 19/1024 [00:00<00:05, 185.31it/s][A
+  4%|▍         | 40/1024 [00:00<00:05, 195.96it/s][A
+  6%|▌         | 60/1024 [00:00<00:05, 190.36it/s][A
+  8%|▊         | 82/1024 [00:00<00:04, 200.38it/s][A\ QuantScheme Selection
+ 10%|█         | 104/1024 [00:00<00:04, 204.04it/s][A
+ 12%|█▏        | 126/1024 [00:00<00:04, 206.72it/s][A
+ 14%|█▍        | 147/1024 [00:00<00:04, 193.79it/s][A
+ 17%|█▋        | 169/1024 [00:00<00:04, 199.65it/s][A| QuantScheme Selection
+ 19%|█▊        | 191/1024 [00:00<00:04, 204.05it/s][A
+ 21%|██        | 213/1024 [00:01<00:03, 206.08it/s][A
+ 23%|██▎       | 235/1024 [00:01<00:03, 208.44it/s][A
+ 25%|██▌       | 257/1024 [00:01<00:03, 209.01it/s][A
+ 27%|██▋       | 278/1024 [00:01<00:03, 202.34it/s][A/ QuantScheme Selection
+ 29%|██▉       | 299/1024 [00:01<00:03, 202.99it/s][A
+ 31%|███▏      | 320/1024 [00:01<00:03, 204.34it/s][A
+ 33%|███▎      | 342/1024 [00:01<00:03, 206.94it/s][A
+ 35%|███▌      | 363/1024 [00:01<00:03, 207.70it/s][A
+ 38%|███▊      | 385/1024 [00:01<00:03, 210.03it/s][A- QuantScheme Selection
+ 40%|███▉      | 407/1024 [00:01<00:02, 209.76it/s][A
+ 42%|████▏     | 428/1024 [00:02<00:02, 205.94it/s][A
+ 44%|████▍     | 450/1024 [00:02<00:02, 207.21it/s][A
+ 46%|████▌     | 471/1024 [00:02<00:02, 207.52it/s][A
+ 48%|████▊     | 492/1024 [00:02<00:02, 206.63it/s][A\ QuantScheme Selection
+ 50%|█████     | 513/1024 [00:02<00:02, 206.83it/s][A
+ 52%|█████▏    | 534/1024 [00:02<00:02, 207.54it/s][A
+ 54%|█████▍    | 555/1024 [00:02<00:02, 207.74it/s][A
+ 56%|█████▋    | 576/1024 [00:02<00:02, 207.92it/s][A
+ 58%|█████▊    | 597/1024 [00:02<00:02, 207.96it/s][A| QuantScheme Selection
+ 60%|██████    | 618/1024 [00:03<00:01, 208.42it/s][A
+ 62%|██████▏   | 639/1024 [00:03<00:01, 208.86it/s][A
+ 65%|██████▍   | 661/1024 [00:03<00:01, 209.31it/s][A
+ 67%|██████▋   | 683/1024 [00:03<00:01, 210.11it/s][A
+ 69%|██████▉   | 705/1024 [00:03<00:01, 206.21it/s][A/ QuantScheme Selection
+ 71%|███████   | 727/1024 [00:03<00:01, 207.45it/s][A
+ 73%|███████▎  | 749/1024 [00:03<00:01, 209.21it/s][A
+ 75%|███████▌  | 771/1024 [00:03<00:01, 210.78it/s][A
+ 77%|███████▋  | 793/1024 [00:03<00:01, 212.10it/s][A
+ 80%|███████▉  | 815/1024 [00:03<00:00, 213.39it/s][A- QuantScheme Selection
+ 82%|████████▏ | 837/1024 [00:04<00:00, 213.77it/s][A
+ 84%|████████▍ | 859/1024 [00:04<00:00, 214.27it/s][A
+ 86%|████████▌ | 881/1024 [00:04<00:00, 213.53it/s][A
+ 88%|████████▊ | 903/1024 [00:04<00:00, 213.48it/s][A\ QuantScheme Selection
+ 90%|█████████ | 925/1024 [00:04<00:00, 210.65it/s][A
+ 92%|█████████▏| 947/1024 [00:04<00:00, 210.32it/s][A
+ 95%|█████████▍| 969/1024 [00:04<00:00, 210.05it/s][A
+ 97%|█████████▋| 991/1024 [00:04<00:00, 210.65it/s][A
+ 99%|█████████▉| 1013/1024 [00:04<00:00, 211.99it/s][A100%|██████████| 1024/1024 [00:04<00:00, 207.66it/s]
+/home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/scripts/05_aimet_quantize.py:134: DeprecationWarning: [31;21mSupport for calling compute_encodings() with forward_pass_callback_args is deprecated and will be removed in the future. [0m
+  sim.compute_encodings(self.forward_pass_callback, None)   # re-calibrate the re-typed quantizers
+
+  0%|          | 0/1024 [00:00<?, ?it/s][A| QuantScheme Selection
+  2%|▏         | 22/1024 [00:00<00:04, 218.91it/s][A
+  4%|▍         | 44/1024 [00:00<00:04, 217.47it/s][A
+  6%|▋         | 66/1024 [00:00<00:04, 218.54it/s][A
+  9%|▊         | 88/1024 [00:00<00:04, 216.29it/s][A
+ 11%|█         | 110/1024 [00:00<00:04, 212.90it/s][A/ QuantScheme Selection
+ 13%|█▎        | 132/1024 [00:00<00:04, 214.88it/s][A
+ 15%|█▌        | 154/1024 [00:00<00:04, 212.82it/s][A
+ 17%|█▋        | 176/1024 [00:00<00:03, 214.37it/s][A
+ 19%|█▉        | 198/1024 [00:00<00:03, 214.72it/s][A
+ 21%|██▏       | 220/1024 [00:01<00:03, 215.30it/s][A- QuantScheme Selection
+ 24%|██▎       | 242/1024 [00:01<00:03, 215.91it/s][A
+ 26%|██▌       | 265/1024 [00:01<00:03, 217.34it/s][A
+ 28%|██▊       | 287/1024 [00:01<00:03, 217.61it/s][A
+ 30%|███       | 309/1024 [00:01<00:03, 217.22it/s][A\ QuantScheme Selection
+ 32%|███▏      | 331/1024 [00:01<00:03, 214.54it/s][A
+ 34%|███▍      | 353/1024 [00:01<00:03, 210.88it/s][A
+ 37%|███▋      | 375/1024 [00:01<00:03, 210.73it/s][A
+ 39%|███▉      | 397/1024 [00:01<00:02, 213.16it/s][A
+ 41%|████      | 420/1024 [00:01<00:02, 215.55it/s][A| QuantScheme Selection
+ 43%|████▎     | 443/1024 [00:02<00:02, 217.49it/s][A
+ 45%|████▌     | 465/1024 [00:02<00:02, 217.13it/s][A
+ 48%|████▊     | 487/1024 [00:02<00:02, 215.81it/s][A
+ 50%|████▉     | 509/1024 [00:02<00:02, 216.46it/s][A
+ 52%|█████▏    | 531/1024 [00:02<00:02, 214.86it/s][A/ QuantScheme Selection
+ 54%|█████▍    | 553/1024 [00:02<00:02, 210.50it/s][A
+ 56%|█████▌    | 575/1024 [00:02<00:02, 212.23it/s][A
+ 58%|█████▊    | 597/1024 [00:02<00:02, 212.44it/s][A
+ 60%|██████    | 619/1024 [00:02<00:01, 211.52it/s][A
+ 63%|██████▎   | 641/1024 [00:02<00:01, 211.20it/s][A- QuantScheme Selection
+ 65%|██████▍   | 663/1024 [00:03<00:01, 211.82it/s][A
+ 67%|██████▋   | 685/1024 [00:03<00:01, 213.46it/s][A
+ 69%|██████▉   | 707/1024 [00:03<00:01, 213.72it/s][A
+ 71%|███████   | 729/1024 [00:03<00:01, 213.49it/s][A
+ 73%|███████▎  | 751/1024 [00:03<00:01, 212.27it/s][A\ QuantScheme Selection
+ 75%|███████▌  | 773/1024 [00:03<00:01, 210.94it/s][A
+ 78%|███████▊  | 795/1024 [00:03<00:01, 212.67it/s][A
+ 80%|███████▉  | 817/1024 [00:03<00:00, 213.27it/s][A
+ 82%|████████▏ | 839/1024 [00:03<00:00, 215.20it/s][A
+ 84%|████████▍ | 861/1024 [00:04<00:00, 214.11it/s][A| QuantScheme Selection
+ 86%|████████▌ | 883/1024 [00:04<00:00, 215.06it/s][A
+ 88%|████████▊ | 905/1024 [00:04<00:00, 216.14it/s][A
+ 91%|█████████ | 927/1024 [00:04<00:00, 215.64it/s][A
+ 93%|█████████▎| 950/1024 [00:04<00:00, 217.62it/s][A/ QuantScheme Selection
+ 95%|█████████▍| 972/1024 [00:04<00:00, 216.21it/s][A
+ 97%|█████████▋| 994/1024 [00:04<00:00, 212.85it/s][A
+ 99%|█████████▉| 1016/1024 [00:04<00:00, 213.48it/s][A100%|██████████| 1024/1024 [00:04<00:00, 214.29it/s]
+- QuantScheme Selection\ QuantScheme Selection| QuantScheme Selection/ QuantScheme Selection- QuantScheme Selection\ QuantScheme Selection                       2026-10-05 09:49:30,683 - AutoQuant - INFO - Evaluation finished: W@tf / A@tf (eval score: 43.289404)
+\ QuantScheme Selection| QuantScheme Selection                       2026-10-05 09:49:30,725 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+| QuantScheme Selection
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  2%|▏         | 23/1024 [00:00<00:04, 223.13it/s][A
+  4%|▍         | 46/1024 [00:00<00:04, 223.33it/s][A
+  7%|▋         | 69/1024 [00:00<00:04, 221.07it/s][A
+  9%|▉         | 92/1024 [00:00<00:04, 219.96it/s][A/ QuantScheme Selection
+ 11%|█         | 114/1024 [00:00<00:04, 219.46it/s][A
+ 13%|█▎        | 137/1024 [00:00<00:04, 220.34it/s][A
+ 16%|█▌        | 160/1024 [00:00<00:03, 220.90it/s][A
+ 18%|█▊        | 183/1024 [00:00<00:03, 219.12it/s][A
+ 20%|██        | 205/1024 [00:00<00:03, 217.49it/s][A- QuantScheme Selection
+ 22%|██▏       | 227/1024 [00:01<00:03, 215.24it/s][A
+ 24%|██▍       | 249/1024 [00:01<00:03, 213.86it/s][A
+ 26%|██▋       | 271/1024 [00:01<00:03, 211.26it/s][A
+ 29%|██▊       | 293/1024 [00:01<00:03, 208.41it/s][A
+ 31%|███       | 314/1024 [00:01<00:03, 203.58it/s][A\ QuantScheme Selection
+ 33%|███▎      | 335/1024 [00:01<00:03, 204.10it/s][A
+ 35%|███▍      | 357/1024 [00:01<00:03, 205.88it/s][A
+ 37%|███▋      | 379/1024 [00:01<00:03, 207.83it/s][A
+ 39%|███▉      | 402/1024 [00:01<00:02, 212.12it/s][A| QuantScheme Selection
+ 42%|████▏     | 425/1024 [00:01<00:02, 215.07it/s][A
+ 44%|████▍     | 448/1024 [00:02<00:02, 216.96it/s][A
+ 46%|████▌     | 471/1024 [00:02<00:02, 218.02it/s][A
+ 48%|████▊     | 494/1024 [00:02<00:02, 219.49it/s][A
+ 50%|█████     | 517/1024 [00:02<00:02, 220.50it/s][A/ QuantScheme Selection
+ 53%|█████▎    | 540/1024 [00:02<00:02, 220.99it/s][A
+ 55%|█████▍    | 563/1024 [00:02<00:02, 221.59it/s][A
+ 57%|█████▋    | 586/1024 [00:02<00:01, 221.94it/s][A
+ 59%|█████▉    | 609/1024 [00:02<00:01, 222.02it/s][A
+ 62%|██████▏   | 632/1024 [00:02<00:01, 221.75it/s][A- QuantScheme Selection
+ 64%|██████▍   | 655/1024 [00:03<00:01, 221.86it/s][A
+ 66%|██████▌   | 678/1024 [00:03<00:01, 221.93it/s][A
+ 68%|██████▊   | 701/1024 [00:03<00:01, 222.18it/s][A
+ 71%|███████   | 724/1024 [00:03<00:01, 222.32it/s][A
+ 73%|███████▎  | 747/1024 [00:03<00:01, 223.63it/s][A\ QuantScheme Selection
+ 75%|███████▌  | 770/1024 [00:03<00:01, 224.21it/s][A
+ 77%|███████▋  | 793/1024 [00:03<00:01, 223.16it/s][A
+ 80%|███████▉  | 816/1024 [00:03<00:00, 221.70it/s][A
+ 82%|████████▏ | 839/1024 [00:03<00:00, 221.88it/s][A
+ 84%|████████▍ | 862/1024 [00:03<00:00, 222.49it/s][A| QuantScheme Selection
+ 86%|████████▋ | 885/1024 [00:04<00:00, 222.80it/s][A
+ 89%|████████▊ | 908/1024 [00:04<00:00, 222.49it/s][A
+ 91%|█████████ | 931/1024 [00:04<00:00, 222.44it/s][A
+ 93%|█████████▎| 954/1024 [00:04<00:00, 222.36it/s][A
+ 95%|█████████▌| 977/1024 [00:04<00:00, 223.00it/s][A/ QuantScheme Selection
+ 98%|█████████▊| 1000/1024 [00:04<00:00, 222.82it/s][A
+100%|█████████▉| 1023/1024 [00:04<00:00, 222.51it/s][A100%|██████████| 1024/1024 [00:04<00:00, 218.87it/s]
+
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  2%|▏         | 23/1024 [00:00<00:04, 221.50it/s][A
+  4%|▍         | 46/1024 [00:00<00:04, 222.77it/s][A- QuantScheme Selection
+  7%|▋         | 69/1024 [00:00<00:04, 221.93it/s][A
+  9%|▉         | 92/1024 [00:00<00:04, 222.46it/s][A
+ 11%|█         | 115/1024 [00:00<00:04, 222.49it/s][A
+ 13%|█▎        | 138/1024 [00:00<00:03, 222.27it/s][A
+ 16%|█▌        | 161/1024 [00:00<00:03, 222.19it/s][A\ QuantScheme Selection
+ 18%|█▊        | 184/1024 [00:00<00:03, 222.65it/s][A
+ 20%|██        | 207/1024 [00:00<00:03, 221.88it/s][A
+ 22%|██▏       | 230/1024 [00:01<00:03, 219.97it/s][A
+ 25%|██▍       | 253/1024 [00:01<00:03, 218.93it/s][A
+ 27%|██▋       | 275/1024 [00:01<00:03, 218.76it/s][A| QuantScheme Selection
+ 29%|██▉       | 298/1024 [00:01<00:03, 220.01it/s][A
+ 31%|███▏      | 321/1024 [00:01<00:03, 221.31it/s][A
+ 34%|███▎      | 344/1024 [00:01<00:03, 222.06it/s][A
+ 36%|███▌      | 367/1024 [00:01<00:02, 222.22it/s][A
+ 38%|███▊      | 390/1024 [00:01<00:02, 222.78it/s][A/ QuantScheme Selection
+ 40%|████      | 413/1024 [00:01<00:02, 223.23it/s][A
+ 43%|████▎     | 436/1024 [00:01<00:02, 224.70it/s][A
+ 45%|████▍     | 459/1024 [00:02<00:02, 226.00it/s][A
+ 47%|████▋     | 482/1024 [00:02<00:02, 225.94it/s][A
+ 49%|████▉     | 505/1024 [00:02<00:02, 225.54it/s][A- QuantScheme Selection
+ 52%|█████▏    | 528/1024 [00:02<00:02, 225.05it/s][A
+ 54%|█████▍    | 551/1024 [00:02<00:02, 224.50it/s][A
+ 56%|█████▌    | 574/1024 [00:02<00:02, 224.63it/s][A
+ 58%|█████▊    | 597/1024 [00:02<00:01, 224.40it/s][A
+ 61%|██████    | 620/1024 [00:02<00:01, 224.29it/s][A\ QuantScheme Selection
+ 63%|██████▎   | 643/1024 [00:02<00:01, 225.12it/s][A
+ 65%|██████▌   | 666/1024 [00:02<00:01, 225.98it/s][A
+ 67%|██████▋   | 689/1024 [00:03<00:01, 225.10it/s][A
+ 70%|██████▉   | 712/1024 [00:03<00:01, 223.67it/s][A
+ 72%|███████▏  | 735/1024 [00:03<00:01, 222.60it/s][A| QuantScheme Selection
+ 74%|███████▍  | 758/1024 [00:03<00:01, 221.33it/s][A
+ 76%|███████▋  | 781/1024 [00:03<00:01, 220.98it/s][A
+ 79%|███████▊  | 804/1024 [00:03<00:00, 220.78it/s][A
+ 81%|████████  | 827/1024 [00:03<00:00, 220.64it/s][A/ QuantScheme Selection
+ 83%|████████▎ | 850/1024 [00:03<00:00, 220.53it/s][A
+ 85%|████████▌ | 873/1024 [00:03<00:00, 220.51it/s][A
+ 88%|████████▊ | 896/1024 [00:04<00:00, 221.64it/s][A
+ 90%|████████▉ | 919/1024 [00:04<00:00, 222.64it/s][A
+ 92%|█████████▏| 942/1024 [00:04<00:00, 222.98it/s][A- QuantScheme Selection
+ 94%|█████████▍| 965/1024 [00:04<00:00, 222.01it/s][A
+ 96%|█████████▋| 988/1024 [00:04<00:00, 220.51it/s][A
+ 99%|█████████▊| 1011/1024 [00:04<00:00, 220.59it/s][A100%|██████████| 1024/1024 [00:04<00:00, 222.39it/s]
+\ QuantScheme Selection| QuantScheme Selection/ QuantScheme Selection- QuantScheme Selection\ QuantScheme Selection| QuantScheme Selection/ QuantScheme Selection                       2026-10-05 09:49:43,721 - AutoQuant - INFO - Evaluation finished: W@tf-enhanced / A@tf (eval score: 44.070797)
+/ QuantScheme Selection                       2026-10-05 09:49:43,723 - AutoQuant - INFO - Best Quant Scheme: W@tf-enhanced / A@tf
+/ QuantScheme Selection/ QuantScheme Selection
+/ W32 Evaluation- W32 Evaluation                2026-10-05 09:49:43,736 - Quant - WARNING - Exporting {dtype} quantization to onnx graph is not supported
+- W32 Evaluation                2026-10-05 09:49:43,770 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+- W32 Evaluation
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  2%|▏         | 25/1024 [00:00<00:04, 244.02it/s][A
+  5%|▍         | 50/1024 [00:00<00:04, 241.72it/s][A
+  7%|▋         | 75/1024 [00:00<00:03, 240.37it/s][A
+ 10%|▉         | 100/1024 [00:00<00:03, 239.90it/s][A\ W32 Evaluation
+ 12%|█▏        | 124/1024 [00:00<00:03, 238.76it/s][A
+ 14%|█▍        | 148/1024 [00:00<00:03, 238.26it/s][A
+ 17%|█▋        | 172/1024 [00:00<00:03, 237.87it/s][A
+ 19%|█▉        | 196/1024 [00:00<00:03, 236.44it/s][A
+ 21%|██▏       | 220/1024 [00:00<00:03, 236.64it/s][A| W32 Evaluation
+ 24%|██▍       | 244/1024 [00:01<00:03, 236.55it/s][A
+ 26%|██▌       | 268/1024 [00:01<00:03, 236.97it/s][A
+ 29%|██▊       | 292/1024 [00:01<00:03, 236.05it/s][A
+ 31%|███       | 316/1024 [00:01<00:03, 235.13it/s][A
+ 33%|███▎      | 340/1024 [00:01<00:02, 234.65it/s][A/ W32 Evaluation
+ 36%|███▌      | 364/1024 [00:01<00:02, 234.28it/s][A
+ 38%|███▊      | 388/1024 [00:01<00:02, 234.04it/s][A
+ 40%|████      | 412/1024 [00:01<00:02, 233.58it/s][A
+ 43%|████▎     | 436/1024 [00:01<00:02, 232.96it/s][A
+ 45%|████▍     | 460/1024 [00:01<00:02, 232.72it/s][A- W32 Evaluation
+ 47%|████▋     | 484/1024 [00:02<00:02, 228.61it/s][A
+ 50%|████▉     | 508/1024 [00:02<00:02, 229.73it/s][A
+ 52%|█████▏    | 532/1024 [00:02<00:02, 230.91it/s][A
+ 54%|█████▍    | 556/1024 [00:02<00:02, 230.13it/s][A\ W32 Evaluation
+ 57%|█████▋    | 580/1024 [00:02<00:01, 231.11it/s][A
+ 59%|█████▉    | 604/1024 [00:02<00:01, 232.17it/s][A
+ 61%|██████▏   | 628/1024 [00:02<00:01, 232.49it/s][A
+ 64%|██████▎   | 652/1024 [00:02<00:01, 232.95it/s][A
+ 66%|██████▌   | 676/1024 [00:02<00:01, 232.96it/s][A| W32 Evaluation
+ 68%|██████▊   | 700/1024 [00:02<00:01, 232.16it/s][A
+ 71%|███████   | 724/1024 [00:03<00:01, 232.51it/s][A
+ 73%|███████▎  | 748/1024 [00:03<00:01, 233.08it/s][A
+ 75%|███████▌  | 772/1024 [00:03<00:01, 233.29it/s][A
+ 78%|███████▊  | 796/1024 [00:03<00:00, 233.40it/s][A/ W32 Evaluation
+ 80%|████████  | 820/1024 [00:03<00:00, 234.38it/s][A
+ 82%|████████▏ | 844/1024 [00:03<00:00, 235.56it/s][A
+ 85%|████████▍ | 868/1024 [00:03<00:00, 236.46it/s][A
+ 87%|████████▋ | 892/1024 [00:03<00:00, 236.46it/s][A
+ 89%|████████▉ | 916/1024 [00:03<00:00, 235.77it/s][A- W32 Evaluation
+ 92%|█████████▏| 940/1024 [00:04<00:00, 236.63it/s][A
+ 94%|█████████▍| 964/1024 [00:04<00:00, 236.98it/s][A
+ 96%|█████████▋| 988/1024 [00:04<00:00, 236.21it/s][A
+ 99%|█████████▉| 1012/1024 [00:04<00:00, 235.19it/s][A100%|██████████| 1024/1024 [00:04<00:00, 234.62it/s]
+\ W32 Evaluation| W32 Evaluation/ W32 Evaluation- W32 Evaluation\ W32 Evaluation| W32 Evaluation/ W32 Evaluation                2026-10-05 09:49:51,638 - AutoQuant - INFO - Evaluation finished: W32A16 (eval score: 90.642395)
+/ W32 Evaluation/ W32 Evaluation
+/ Batchnorm Folding- Batchnorm Folding                   2026-10-05 09:49:51,775 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+- Batchnorm Folding
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  3%|▎         | 31/1024 [00:00<00:03, 307.60it/s][A
+  6%|▌         | 62/1024 [00:00<00:03, 253.54it/s][A
+  9%|▊         | 88/1024 [00:00<00:03, 239.50it/s][A
+ 11%|█         | 113/1024 [00:00<00:03, 233.15it/s][A\ Batchnorm Folding
+ 13%|█▎        | 137/1024 [00:00<00:03, 229.17it/s][A
+ 16%|█▌        | 160/1024 [00:00<00:03, 224.21it/s][A
+ 18%|█▊        | 183/1024 [00:00<00:03, 221.77it/s][A
+ 20%|██        | 206/1024 [00:00<00:03, 220.86it/s][A| Batchnorm Folding
+ 22%|██▏       | 229/1024 [00:01<00:03, 219.49it/s][A
+ 25%|██▍       | 251/1024 [00:01<00:03, 217.19it/s][A
+ 27%|██▋       | 273/1024 [00:01<00:03, 216.16it/s][A
+ 29%|██▉       | 295/1024 [00:01<00:03, 216.23it/s][A
+ 31%|███       | 317/1024 [00:01<00:03, 215.89it/s][A/ Batchnorm Folding
+ 33%|███▎      | 339/1024 [00:01<00:03, 214.47it/s][A
+ 35%|███▌      | 361/1024 [00:01<00:03, 210.49it/s][A
+ 37%|███▋      | 383/1024 [00:01<00:03, 209.50it/s][A
+ 40%|███▉      | 405/1024 [00:01<00:02, 210.54it/s][A
+ 42%|████▏     | 427/1024 [00:01<00:02, 211.27it/s][A- Batchnorm Folding
+ 44%|████▍     | 449/1024 [00:02<00:02, 211.96it/s][A
+ 46%|████▌     | 471/1024 [00:02<00:02, 212.65it/s][A
+ 48%|████▊     | 493/1024 [00:02<00:02, 212.83it/s][A
+ 50%|█████     | 515/1024 [00:02<00:02, 212.85it/s][A
+ 52%|█████▏    | 537/1024 [00:02<00:02, 213.34it/s][A\ Batchnorm Folding
+ 55%|█████▍    | 559/1024 [00:02<00:02, 213.56it/s][A
+ 57%|█████▋    | 581/1024 [00:02<00:02, 211.90it/s][A
+ 59%|█████▉    | 603/1024 [00:02<00:01, 210.88it/s][A
+ 61%|██████    | 625/1024 [00:02<00:01, 210.57it/s][A| Batchnorm Folding
+ 63%|██████▎   | 647/1024 [00:02<00:01, 211.41it/s][A
+ 65%|██████▌   | 669/1024 [00:03<00:01, 212.30it/s][A
+ 67%|██████▋   | 691/1024 [00:03<00:01, 212.75it/s][A
+ 70%|██████▉   | 713/1024 [00:03<00:01, 212.90it/s][A
+ 72%|███████▏  | 735/1024 [00:03<00:01, 213.34it/s][A/ Batchnorm Folding
+ 74%|███████▍  | 757/1024 [00:03<00:01, 213.59it/s][A
+ 76%|███████▌  | 779/1024 [00:03<00:01, 212.79it/s][A
+ 78%|███████▊  | 801/1024 [00:03<00:01, 212.87it/s][A
+ 80%|████████  | 823/1024 [00:03<00:00, 212.47it/s][A
+ 83%|████████▎ | 845/1024 [00:03<00:00, 212.93it/s][A- Batchnorm Folding
+ 85%|████████▍ | 867/1024 [00:04<00:00, 212.52it/s][A
+ 87%|████████▋ | 889/1024 [00:04<00:00, 212.55it/s][A
+ 89%|████████▉ | 911/1024 [00:04<00:00, 211.43it/s][A
+ 91%|█████████ | 933/1024 [00:04<00:00, 211.39it/s][A
+ 93%|█████████▎| 955/1024 [00:04<00:00, 211.98it/s][A\ Batchnorm Folding
+ 95%|█████████▌| 977/1024 [00:04<00:00, 212.54it/s][A
+ 98%|█████████▊| 999/1024 [00:04<00:00, 213.37it/s][A
+100%|█████████▉| 1021/1024 [00:04<00:00, 213.70it/s][A100%|██████████| 1024/1024 [00:04<00:00, 215.80it/s]
+
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  2%|▏         | 22/1024 [00:00<00:04, 211.14it/s][A
+  4%|▍         | 44/1024 [00:00<00:04, 210.99it/s][A| Batchnorm Folding
+  6%|▋         | 66/1024 [00:00<00:04, 211.15it/s][A
+  9%|▊         | 88/1024 [00:00<00:04, 211.27it/s][A
+ 11%|█         | 110/1024 [00:00<00:04, 210.92it/s][A
+ 13%|█▎        | 132/1024 [00:00<00:04, 211.40it/s][A
+ 15%|█▌        | 154/1024 [00:00<00:04, 211.38it/s][A/ Batchnorm Folding
+ 17%|█▋        | 176/1024 [00:00<00:04, 211.61it/s][A
+ 19%|█▉        | 198/1024 [00:00<00:03, 211.60it/s][A
+ 21%|██▏       | 220/1024 [00:01<00:03, 211.61it/s][A
+ 24%|██▎       | 242/1024 [00:01<00:03, 211.68it/s][A- Batchnorm Folding
+ 26%|██▌       | 264/1024 [00:01<00:03, 212.83it/s][A
+ 28%|██▊       | 286/1024 [00:01<00:03, 213.84it/s][A
+ 30%|███       | 308/1024 [00:01<00:03, 214.42it/s][A
+ 32%|███▏      | 330/1024 [00:01<00:03, 213.20it/s][A
+ 34%|███▍      | 352/1024 [00:01<00:03, 212.17it/s][A\ Batchnorm Folding
+ 37%|███▋      | 374/1024 [00:01<00:03, 212.14it/s][A
+ 39%|███▊      | 396/1024 [00:01<00:02, 211.03it/s][A
+ 41%|████      | 418/1024 [00:01<00:02, 210.67it/s][A
+ 43%|████▎     | 440/1024 [00:02<00:02, 210.96it/s][A
+ 45%|████▌     | 462/1024 [00:02<00:02, 211.40it/s][A| Batchnorm Folding
+ 47%|████▋     | 484/1024 [00:02<00:02, 211.03it/s][A
+ 49%|████▉     | 506/1024 [00:02<00:02, 211.10it/s][A
+ 52%|█████▏    | 528/1024 [00:02<00:02, 211.54it/s][A
+ 54%|█████▎    | 550/1024 [00:02<00:02, 211.58it/s][A
+ 56%|█████▌    | 572/1024 [00:02<00:02, 211.50it/s][A/ Batchnorm Folding
+ 58%|█████▊    | 594/1024 [00:02<00:02, 211.81it/s][A
+ 60%|██████    | 616/1024 [00:02<00:01, 211.63it/s][A
+ 62%|██████▏   | 638/1024 [00:03<00:01, 211.91it/s][A
+ 64%|██████▍   | 660/1024 [00:03<00:01, 211.92it/s][A
+ 67%|██████▋   | 682/1024 [00:03<00:01, 211.97it/s][A- Batchnorm Folding
+ 69%|██████▉   | 704/1024 [00:03<00:01, 211.04it/s][A
+ 71%|███████   | 726/1024 [00:03<00:01, 211.59it/s][A
+ 73%|███████▎  | 748/1024 [00:03<00:01, 211.29it/s][A
+ 75%|███████▌  | 770/1024 [00:03<00:01, 210.32it/s][A\ Batchnorm Folding
+ 77%|███████▋  | 792/1024 [00:03<00:01, 209.97it/s][A
+ 79%|███████▉  | 814/1024 [00:03<00:00, 210.42it/s][A
+ 82%|████████▏ | 836/1024 [00:03<00:00, 210.61it/s][A
+ 84%|████████▍ | 858/1024 [00:04<00:00, 210.02it/s][A
+ 86%|████████▌ | 880/1024 [00:04<00:00, 209.23it/s][A| Batchnorm Folding
+ 88%|████████▊ | 902/1024 [00:04<00:00, 209.95it/s][A
+ 90%|█████████ | 923/1024 [00:04<00:00, 209.22it/s][A
+ 92%|█████████▏| 944/1024 [00:04<00:00, 209.29it/s][A
+ 94%|█████████▍| 966/1024 [00:04<00:00, 210.31it/s][A
+ 96%|█████████▋| 988/1024 [00:04<00:00, 210.00it/s][A/ Batchnorm Folding
+ 99%|█████████▊| 1010/1024 [00:04<00:00, 210.12it/s][A100%|██████████| 1024/1024 [00:04<00:00, 211.18it/s]
+- Batchnorm Folding\ Batchnorm Folding| Batchnorm Folding/ Batchnorm Folding- Batchnorm Folding\ Batchnorm Folding| Batchnorm Folding/ Batchnorm Folding                   2026-10-05 09:50:05,291 - AutoQuant - INFO - The results of Batchnorm Folding is saved in /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/all_sensors_24h/autoquant/.trace/batchnorm_folding.onnx and /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/all_sensors_24h/autoquant/.trace/batchnorm_folding.encodings.
+/ Batchnorm Folding                   2026-10-05 09:50:05,294 - AutoQuant - INFO - Session finished: Batchnorm Folding. (eval score: 44.070797). Applied techniques: batchnorm_folding
+/ Batchnorm Folding/ Batchnorm Folding
+/ Cross-Layer Equalization- Cross-Layer Equalization                          2026-10-05 09:50:05,771 - Quant - INFO - High Bias folding is not supported for models without BatchNorm Layers
+- Cross-Layer Equalization                          2026-10-05 09:50:05,793 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+- Cross-Layer Equalization
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  4%|▍         | 44/1024 [00:00<00:02, 438.22it/s][A
+  9%|▊         | 88/1024 [00:00<00:02, 437.80it/s][A
+ 13%|█▎        | 132/1024 [00:00<00:02, 381.26it/s][A\ Cross-Layer Equalization
+ 17%|█▋        | 171/1024 [00:00<00:02, 334.05it/s][A
+ 20%|██        | 206/1024 [00:00<00:02, 308.32it/s][A
+ 23%|██▎       | 238/1024 [00:00<00:02, 291.83it/s][A
+ 26%|██▌       | 268/1024 [00:00<00:02, 283.94it/s][A
+ 29%|██▉       | 297/1024 [00:00<00:02, 277.58it/s][A| Cross-Layer Equalization
+ 32%|███▏      | 325/1024 [00:01<00:02, 273.17it/s][A
+ 34%|███▍      | 353/1024 [00:01<00:02, 271.17it/s][A
+ 37%|███▋      | 381/1024 [00:01<00:02, 269.66it/s][A
+ 40%|███▉      | 408/1024 [00:01<00:02, 268.66it/s][A/ Cross-Layer Equalization
+ 42%|████▏     | 435/1024 [00:01<00:02, 266.15it/s][A
+ 45%|████▌     | 462/1024 [00:01<00:02, 260.64it/s][A
+ 48%|████▊     | 489/1024 [00:01<00:02, 254.91it/s][A
+ 50%|█████     | 515/1024 [00:01<00:02, 252.40it/s][A
+ 53%|█████▎    | 541/1024 [00:01<00:01, 252.47it/s][A- Cross-Layer Equalization
+ 55%|█████▌    | 568/1024 [00:02<00:01, 255.38it/s][A
+ 58%|█████▊    | 595/1024 [00:02<00:01, 258.58it/s][A
+ 61%|██████    | 622/1024 [00:02<00:01, 260.91it/s][A
+ 63%|██████▎   | 649/1024 [00:02<00:01, 262.62it/s][A
+ 66%|██████▌   | 676/1024 [00:02<00:01, 262.50it/s][A\ Cross-Layer Equalization
+ 69%|██████▊   | 703/1024 [00:02<00:01, 263.12it/s][A
+ 71%|███████▏  | 730/1024 [00:02<00:01, 262.63it/s][A
+ 74%|███████▍  | 757/1024 [00:02<00:01, 262.40it/s][A
+ 77%|███████▋  | 784/1024 [00:02<00:00, 262.85it/s][A
+ 79%|███████▉  | 811/1024 [00:02<00:00, 262.27it/s][A| Cross-Layer Equalization
+ 82%|████████▏ | 838/1024 [00:03<00:00, 262.08it/s][A
+ 84%|████████▍ | 865/1024 [00:03<00:00, 263.10it/s][A
+ 87%|████████▋ | 892/1024 [00:03<00:00, 264.05it/s][A
+ 90%|████████▉ | 919/1024 [00:03<00:00, 264.38it/s][A
+ 92%|█████████▏| 946/1024 [00:03<00:00, 264.79it/s][A/ Cross-Layer Equalization
+ 95%|█████████▌| 973/1024 [00:03<00:00, 262.56it/s][A
+ 98%|█████████▊| 1000/1024 [00:03<00:00, 261.57it/s][A100%|██████████| 1024/1024 [00:03<00:00, 273.87it/s]
+
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  3%|▎         | 27/1024 [00:00<00:03, 265.33it/s][A
+  5%|▌         | 54/1024 [00:00<00:03, 265.76it/s][A- Cross-Layer Equalization
+  8%|▊         | 81/1024 [00:00<00:03, 266.03it/s][A
+ 11%|█         | 108/1024 [00:00<00:03, 263.34it/s][A
+ 13%|█▎        | 135/1024 [00:00<00:03, 264.82it/s][A
+ 16%|█▌        | 162/1024 [00:00<00:03, 264.03it/s][A
+ 18%|█▊        | 189/1024 [00:00<00:03, 264.47it/s][A\ Cross-Layer Equalization
+ 21%|██        | 216/1024 [00:00<00:03, 265.11it/s][A
+ 24%|██▎       | 243/1024 [00:00<00:02, 263.11it/s][A
+ 26%|██▋       | 270/1024 [00:01<00:02, 262.89it/s][A
+ 29%|██▉       | 297/1024 [00:01<00:02, 262.77it/s][A
+ 32%|███▏      | 324/1024 [00:01<00:02, 263.39it/s][A| Cross-Layer Equalization
+ 34%|███▍      | 351/1024 [00:01<00:02, 261.71it/s][A
+ 37%|███▋      | 378/1024 [00:01<00:02, 256.55it/s][A
+ 40%|███▉      | 405/1024 [00:01<00:02, 258.01it/s][A
+ 42%|████▏     | 432/1024 [00:01<00:02, 259.67it/s][A/ Cross-Layer Equalization
+ 45%|████▍     | 459/1024 [00:01<00:02, 259.73it/s][A
+ 47%|████▋     | 485/1024 [00:01<00:02, 255.86it/s][A
+ 50%|████▉     | 511/1024 [00:01<00:02, 251.40it/s][A
+ 52%|█████▏    | 537/1024 [00:02<00:01, 248.09it/s][A
+ 55%|█████▍    | 562/1024 [00:02<00:01, 245.11it/s][A- Cross-Layer Equalization
+ 57%|█████▋    | 587/1024 [00:02<00:01, 244.02it/s][A
+ 60%|█████▉    | 612/1024 [00:02<00:01, 245.42it/s][A
+ 62%|██████▏   | 637/1024 [00:02<00:01, 243.83it/s][A
+ 65%|██████▍   | 662/1024 [00:02<00:01, 244.43it/s][A
+ 67%|██████▋   | 688/1024 [00:02<00:01, 246.53it/s][A\ Cross-Layer Equalization
+ 70%|██████▉   | 714/1024 [00:02<00:01, 250.33it/s][A
+ 72%|███████▏  | 741/1024 [00:02<00:01, 254.96it/s][A
+ 75%|███████▌  | 768/1024 [00:02<00:00, 257.44it/s][A
+ 78%|███████▊  | 795/1024 [00:03<00:00, 260.08it/s][A
+ 80%|████████  | 822/1024 [00:03<00:00, 259.37it/s][A| Cross-Layer Equalization
+ 83%|████████▎ | 848/1024 [00:03<00:00, 255.30it/s][A
+ 85%|████████▌ | 874/1024 [00:03<00:00, 251.06it/s][A
+ 88%|████████▊ | 900/1024 [00:03<00:00, 250.57it/s][A
+ 90%|█████████ | 926/1024 [00:03<00:00, 252.37it/s][A
+ 93%|█████████▎| 953/1024 [00:03<00:00, 254.83it/s][A/ Cross-Layer Equalization
+ 96%|█████████▌| 980/1024 [00:03<00:00, 258.06it/s][A
+ 98%|█████████▊| 1006/1024 [00:03<00:00, 257.73it/s][A100%|██████████| 1024/1024 [00:03<00:00, 256.16it/s]
+- Cross-Layer Equalization\ Cross-Layer Equalization| Cross-Layer Equalization/ Cross-Layer Equalization- Cross-Layer Equalization\ Cross-Layer Equalization| Cross-Layer Equalization                          2026-10-05 09:50:16,829 - AutoQuant - INFO - The results of Cross-Layer Equalization is saved in /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/all_sensors_24h/autoquant/.trace/cross_layer_equalization.onnx and /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/all_sensors_24h/autoquant/.trace/cross_layer_equalization.encodings.
+| Cross-Layer Equalization                          2026-10-05 09:50:16,832 - AutoQuant - INFO - Session finished: Cross-Layer Equalization. (eval score: 44.070797). Applied techniques: cross_layer_equalization
+| Cross-Layer Equalization| Cross-Layer Equalization
+/ AdaRound- AdaRound          2026-10-05 09:50:17,305 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+- AdaRound
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  4%|▍         | 46/1024 [00:00<00:02, 451.74it/s][A
+  9%|▉         | 92/1024 [00:00<00:02, 456.39it/s][A
+ 13%|█▎        | 138/1024 [00:00<00:02, 398.25it/s][A\ AdaRound
+ 17%|█▋        | 179/1024 [00:00<00:02, 308.14it/s][A
+ 21%|██        | 213/1024 [00:00<00:02, 270.85it/s][A
+ 24%|██▎       | 242/1024 [00:00<00:03, 250.89it/s][A
+ 26%|██▋       | 269/1024 [00:00<00:03, 238.69it/s][A| AdaRound
+ 29%|██▊       | 294/1024 [00:01<00:03, 227.36it/s][A
+ 31%|███       | 318/1024 [00:01<00:03, 220.68it/s][A
+ 33%|███▎      | 341/1024 [00:01<00:03, 203.66it/s][A
+ 35%|███▌      | 362/1024 [00:01<00:03, 195.65it/s][A/ AdaRound
+ 37%|███▋      | 382/1024 [00:01<00:03, 196.67it/s][A
+ 39%|███▉      | 403/1024 [00:01<00:03, 199.85it/s][A
+ 41%|████▏     | 424/1024 [00:01<00:02, 202.12it/s][A
+ 43%|████▎     | 445/1024 [00:01<00:02, 204.23it/s][A
+ 46%|████▌     | 466/1024 [00:01<00:02, 204.41it/s][A- AdaRound
+ 48%|████▊     | 487/1024 [00:02<00:02, 205.76it/s][A
+ 50%|████▉     | 508/1024 [00:02<00:02, 205.19it/s][A
+ 52%|█████▏    | 530/1024 [00:02<00:02, 206.71it/s][A
+ 54%|█████▍    | 551/1024 [00:02<00:02, 205.77it/s][A
+ 56%|█████▌    | 572/1024 [00:02<00:02, 206.95it/s][A\ AdaRound
+ 58%|█████▊    | 593/1024 [00:02<00:02, 206.34it/s][A
+ 60%|█████▉    | 614/1024 [00:02<00:01, 206.43it/s][A
+ 62%|██████▏   | 635/1024 [00:02<00:01, 204.10it/s][A
+ 64%|██████▍   | 656/1024 [00:02<00:01, 204.18it/s][A
+ 66%|██████▌   | 677/1024 [00:02<00:01, 204.72it/s][A| AdaRound
+ 68%|██████▊   | 698/1024 [00:03<00:01, 203.90it/s][A
+ 70%|███████   | 719/1024 [00:03<00:01, 202.86it/s][A
+ 72%|███████▏  | 740/1024 [00:03<00:01, 201.75it/s][A
+ 74%|███████▍  | 761/1024 [00:03<00:01, 201.57it/s][A/ AdaRound
+ 76%|███████▋  | 782/1024 [00:03<00:01, 197.77it/s][A
+ 78%|███████▊  | 802/1024 [00:03<00:01, 194.93it/s][A
+ 80%|████████  | 822/1024 [00:03<00:01, 196.01it/s][A
+ 82%|████████▏ | 842/1024 [00:03<00:00, 193.88it/s][A
+ 84%|████████▍ | 862/1024 [00:03<00:00, 194.63it/s][A- AdaRound
+ 86%|████████▌ | 882/1024 [00:04<00:00, 194.86it/s][A
+ 88%|████████▊ | 903/1024 [00:04<00:00, 198.08it/s][A
+ 90%|█████████ | 924/1024 [00:04<00:00, 201.16it/s][A
+ 92%|█████████▏| 945/1024 [00:04<00:00, 203.68it/s][A
+ 94%|█████████▍| 966/1024 [00:04<00:00, 200.83it/s][A\ AdaRound
+ 96%|█████████▋| 987/1024 [00:04<00:00, 195.34it/s][A
+ 98%|█████████▊| 1007/1024 [00:04<00:00, 188.13it/s][A100%|██████████| 1024/1024 [00:04<00:00, 214.92it/s]
+
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  2%|▏         | 17/1024 [00:00<00:06, 162.15it/s][A
+  3%|▎         | 34/1024 [00:00<00:06, 162.06it/s][A| AdaRound
+  5%|▍         | 51/1024 [00:00<00:06, 159.93it/s][A
+  7%|▋         | 68/1024 [00:00<00:05, 160.33it/s][A
+  8%|▊         | 85/1024 [00:00<00:05, 159.47it/s][A
+ 10%|▉         | 101/1024 [00:00<00:05, 159.60it/s][A/ AdaRound
+ 12%|█▏        | 124/1024 [00:00<00:04, 180.57it/s][A
+ 16%|█▌        | 159/1024 [00:00<00:03, 231.37it/s][A
+ 19%|█▉        | 196/1024 [00:00<00:03, 273.53it/s][A
+ 23%|██▎       | 234/1024 [00:01<00:02, 304.77it/s][A
+ 27%|██▋       | 272/1024 [00:01<00:02, 325.25it/s][A- AdaRound
+ 30%|███       | 309/1024 [00:01<00:02, 338.54it/s][A
+ 34%|███▎      | 345/1024 [00:01<00:01, 342.86it/s][A
+ 37%|███▋      | 383/1024 [00:01<00:01, 351.38it/s][A
+ 41%|████      | 420/1024 [00:01<00:01, 356.35it/s][A
+ 45%|████▍     | 456/1024 [00:01<00:01, 352.24it/s][A\ AdaRound
+ 48%|████▊     | 494/1024 [00:01<00:01, 359.37it/s][A
+ 52%|█████▏    | 531/1024 [00:01<00:01, 362.49it/s][A
+ 55%|█████▌    | 568/1024 [00:01<00:01, 364.18it/s][A
+ 59%|█████▉    | 605/1024 [00:02<00:01, 361.93it/s][A
+ 63%|██████▎   | 642/1024 [00:02<00:01, 360.28it/s][A| AdaRound
+ 66%|██████▋   | 679/1024 [00:02<00:00, 357.70it/s][A
+ 70%|██████▉   | 715/1024 [00:02<00:00, 355.77it/s][A
+ 73%|███████▎  | 751/1024 [00:02<00:00, 356.35it/s][A
+ 77%|███████▋  | 787/1024 [00:02<00:00, 356.52it/s][A
+ 80%|████████  | 823/1024 [00:02<00:00, 349.53it/s][A/ AdaRound
+ 84%|████████▍ | 859/1024 [00:02<00:00, 352.23it/s][A
+ 87%|████████▋ | 895/1024 [00:02<00:00, 354.12it/s][A
+ 91%|█████████ | 931/1024 [00:02<00:00, 352.15it/s][A
+ 94%|█████████▍| 967/1024 [00:03<00:00, 351.40it/s][A
+ 98%|█████████▊| 1003/1024 [00:03<00:00, 352.37it/s][A- AdaRound100%|██████████| 1024/1024 [00:03<00:00, 315.75it/s]
+          2026-10-05 09:50:25,349 - Utils - INFO - Caching 1024 batches from data loader at path location: /tmp/tmpjzx_43x2
+- AdaRound
+  0%|          | 0/36 [00:00<?, ?it/s][A          
+                                      [A2026-10-05 09:50:25,349 - Quant - INFO - Started Optimizing weight rounding of module: node_linear
+- AdaRound
+  0%|          | 0/36 [00:00<?, ?it/s][A/home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/.venv-aimet/lib/python3.10/site-packages/aimet_onnx/adaround/adaround_optimizer.py:117: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  weights = torch.from_numpy(
+\ AdaRound          
+                                      [A2026-10-05 09:50:25,978 - Quant - WARNING - CUDAExecutionProvider not in ort available providers. use_cuda is set to False
+\ AdaRound
+  0%|          | 0/36 [00:00<?, ?it/s][A| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound/home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/.venv-aimet/lib/python3.10/site-packages/aimet_onnx/adaround/adaround_optimizer.py:229: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  float(total_loss),
+- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound
+ 94%|█████████▍| 34/36 [00:46<00:02,  1.37s/it][A          
+                                               [A2026-10-05 09:51:11,883 - Quant - INFO - Started Optimizing weight rounding of module: node_linear_1
+\ AdaRound
+ 94%|█████████▍| 34/36 [00:46<00:02,  1.37s/it][A          
+                                               [A2026-10-05 09:51:11,890 - Quant - WARNING - CUDAExecutionProvider not in ort available providers. use_cuda is set to False
+\ AdaRound
+ 94%|█████████▍| 34/36 [00:46<00:02,  1.37s/it][A| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound
+100%|██████████| 36/36 [01:34<00:00,  3.11s/it][A100%|██████████| 36/36 [01:34<00:00,  2.62s/it]
+          2026-10-05 09:51:59,663 - Quant - INFO - Completed Adarounding Model
+- AdaRound          2026-10-05 09:51:59,688 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+- AdaRound
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  4%|▍         | 44/1024 [00:00<00:02, 431.62it/s][A
+  9%|▊         | 88/1024 [00:00<00:02, 422.49it/s][A\ AdaRound
+ 13%|█▎        | 131/1024 [00:00<00:02, 419.99it/s][A
+ 17%|█▋        | 174/1024 [00:00<00:02, 414.50it/s][A
+ 21%|██        | 216/1024 [00:00<00:01, 415.35it/s][A
+ 25%|██▌       | 258/1024 [00:00<00:01, 416.68it/s][A
+ 29%|██▉       | 300/1024 [00:00<00:01, 410.26it/s][A| AdaRound
+ 33%|███▎      | 342/1024 [00:00<00:01, 402.66it/s][A
+ 37%|███▋      | 383/1024 [00:00<00:01, 401.33it/s][A
+ 41%|████▏     | 424/1024 [00:01<00:01, 398.92it/s][A
+ 45%|████▌     | 464/1024 [00:01<00:01, 398.74it/s][A
+ 49%|████▉     | 505/1024 [00:01<00:01, 399.77it/s][A/ AdaRound
+ 53%|█████▎    | 547/1024 [00:01<00:01, 403.44it/s][A
+ 58%|█████▊    | 589/1024 [00:01<00:01, 406.58it/s][A
+ 62%|██████▏   | 631/1024 [00:01<00:00, 409.43it/s][A
+ 66%|██████▌   | 673/1024 [00:01<00:00, 412.15it/s][A- AdaRound
+ 70%|██████▉   | 716/1024 [00:01<00:00, 415.37it/s][A
+ 74%|███████▍  | 758/1024 [00:01<00:00, 416.33it/s][A
+ 78%|███████▊  | 801/1024 [00:01<00:00, 417.95it/s][A
+ 82%|████████▏ | 843/1024 [00:02<00:00, 417.89it/s][A
+ 86%|████████▋ | 885/1024 [00:02<00:00, 417.72it/s][A\ AdaRound
+ 91%|█████████ | 928/1024 [00:02<00:00, 419.11it/s][A
+ 95%|█████████▍| 970/1024 [00:02<00:00, 418.77it/s][A
+ 99%|█████████▉| 1012/1024 [00:02<00:00, 418.44it/s][A100%|██████████| 1024/1024 [00:02<00:00, 412.45it/s]
+
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  4%|▍         | 43/1024 [00:00<00:02, 424.94it/s][A
+  8%|▊         | 86/1024 [00:00<00:02, 422.76it/s][A| AdaRound
+ 13%|█▎        | 129/1024 [00:00<00:02, 420.31it/s][A
+ 17%|█▋        | 172/1024 [00:00<00:02, 419.35it/s][A
+ 21%|██        | 215/1024 [00:00<00:01, 419.66it/s][A
+ 25%|██▌       | 257/1024 [00:00<00:01, 419.05it/s][A
+ 29%|██▉       | 300/1024 [00:00<00:01, 419.72it/s][A/ AdaRound
+ 33%|███▎      | 343/1024 [00:00<00:01, 420.10it/s][A
+ 38%|███▊      | 386/1024 [00:00<00:01, 420.28it/s][A
+ 42%|████▏     | 429/1024 [00:01<00:01, 419.73it/s][A
+ 46%|████▌     | 472/1024 [00:01<00:01, 420.18it/s][A
+ 50%|█████     | 515/1024 [00:01<00:01, 419.29it/s][A- AdaRound
+ 54%|█████▍    | 557/1024 [00:01<00:01, 419.24it/s][A
+ 59%|█████▊    | 600/1024 [00:01<00:01, 420.32it/s][A
+ 63%|██████▎   | 643/1024 [00:01<00:00, 420.25it/s][A
+ 67%|██████▋   | 686/1024 [00:01<00:00, 419.86it/s][A
+ 71%|███████   | 729/1024 [00:01<00:00, 420.42it/s][A\ AdaRound
+ 75%|███████▌  | 772/1024 [00:01<00:00, 420.10it/s][A
+ 80%|███████▉  | 815/1024 [00:01<00:00, 419.42it/s][A
+ 84%|████████▍ | 858/1024 [00:02<00:00, 419.95it/s][A
+ 88%|████████▊ | 900/1024 [00:02<00:00, 419.75it/s][A
+ 92%|█████████▏| 942/1024 [00:02<00:00, 419.62it/s][A| AdaRound
+ 96%|█████████▌| 984/1024 [00:02<00:00, 417.89it/s][A100%|██████████| 1024/1024 [00:02<00:00, 419.61it/s]
+/ AdaRound- AdaRound\ AdaRound| AdaRound          2026-10-05 09:52:06,838 - AutoQuant - INFO - The results of AdaRound is saved in /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/all_sensors_24h/autoquant/.trace/adaround.onnx and /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/all_sensors_24h/autoquant/.trace/adaround.encodings.
+| AdaRound          2026-10-05 09:52:06,839 - AutoQuant - INFO - Session finished: AdaRound. (eval score: 47.107320). Applied techniques: batchnorm_folding adaround
+| AdaRound| AdaRound
+2026-10-05 09:52:06,947 - AutoQuant - INFO - Best eval score: 47.107320
+2026-10-05 09:52:06,947 - AutoQuant - INFO - AutoQuant is unable to match the target accuracy. Consider Quantization Aware Training.
+[all_sensors_24h] AutoQuant     val SQNR 47.107319831848145 dB (target 60.00) -> /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/all_sensors_24h/autoquant/.trace/adaround.encodings
+[all_sensors_24h] final W8A16 deliverable: AutoQuant_W8A16

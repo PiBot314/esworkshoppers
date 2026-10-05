@@ -1,0 +1,80 @@
+{
+  "activation_encodings": [
+    {
+      "bw": 8,
+      "dtype": "INT",
+      "enc_type": "PER_TENSOR",
+      "is_sym": false,
+      "name": "input_sequence_all_sensors",
+      "offset": [
+        0.0
+      ],
+      "scale": [
+        0.00392156862745098
+      ]
+    },
+    {
+      "bw": 8,
+      "dtype": "INT",
+      "enc_type": "PER_TENSOR",
+      "is_sym": false,
+      "name": "relu",
+      "offset": [
+        0.0
+      ],
+      "scale": [
+        0.0080780076045616
+      ]
+    },
+    {
+      "bw": 8,
+      "dtype": "INT",
+      "enc_type": "PER_TENSOR",
+      "is_sym": false,
+      "name": "forecast_all_pillars",
+      "offset": [
+        -26.0
+      ],
+      "scale": [
+        0.00474405940841226
+      ]
+    }
+  ],
+  "param_encodings": [
+    {
+      "bw": 8,
+      "dtype": "INT",
+      "enc_type": "PER_TENSOR",
+      "is_sym": true,
+      "name": "fc1.weight",
+      "offset": [
+        -128.0
+      ],
+      "scale": [
+        0.0019680659752339125
+      ]
+    },
+    {
+      "bw": 8,
+      "dtype": "INT",
+      "enc_type": "PER_TENSOR",
+      "is_sym": true,
+      "name": "fc2.weight",
+      "offset": [
+        -128.0
+      ],
+      "scale": [
+        0.001995096525808019
+      ]
+    }
+  ],
+  "quantizer_args": {
+    "activation_bitwidth": 8,
+    "dtype": "int",
+    "is_symmetric": true,
+    "param_bitwidth": 8,
+    "per_channel_quantization": true,
+    "quant_scheme": "min_max"
+  },
+  "version": "1.0.0"
+}

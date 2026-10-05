@@ -1,0 +1,111 @@
+{
+  "W32A16_noPriors": {
+    "val_SQNR_dB": 43.83384704589844,
+    "val_max_abs": 0.03711613640189171,
+    "seconds": 2.4
+  },
+  "W8A8_noPriors": {
+    "val_SQNR_dB": 41.32943153381348,
+    "val_max_abs": 0.03555970638990402,
+    "seconds": 2.2
+  },
+  "W8A16_noPriors": {
+    "val_SQNR_dB": 42.424397468566895,
+    "val_max_abs": 0.03682109713554382,
+    "seconds": 2.3
+  },
+  "W32A16": {
+    "val_SQNR_dB": 77.47987747192383,
+    "val_max_abs": 0.0002186894416809082,
+    "seconds": 2.3,
+    "range_priors": {
+      "val_65": [
+        -1.0,
+        1.0
+      ],
+      "val_128": [
+        -1.0,
+        1.0
+      ],
+      "forecast_all_pillars": [
+        -0.1231,
+        1.0882
+      ]
+    }
+  },
+  "W8A32": {
+    "val_SQNR_dB": 49.18541431427002,
+    "val_max_abs": 0.004030406475067139,
+    "seconds": 1.3
+  },
+  "W8A8": {
+    "val_SQNR_dB": 43.26700210571289,
+    "val_max_abs": 0.009169697761535645,
+    "seconds": 2.2,
+    "range_priors": {
+      "val_65": [
+        -1.0,
+        1.0
+      ],
+      "val_128": [
+        -1.0,
+        1.0
+      ],
+      "forecast_all_pillars": [
+        -0.1245,
+        1.0852
+      ]
+    }
+  },
+  "W8A16": {
+    "val_SQNR_dB": 47.55820274353027,
+    "val_max_abs": 0.0059008002281188965,
+    "seconds": 2.2,
+    "range_priors": {
+      "val_65": [
+        -1.0,
+        1.0
+      ],
+      "val_128": [
+        -1.0,
+        1.0
+      ],
+      "forecast_all_pillars": [
+        -0.1233,
+        1.0865
+      ]
+    }
+  },
+  "W8A16_pcGemm": {
+    "val_SQNR_dB": 49.05688285827637,
+    "val_max_abs": 0.006802171468734741,
+    "seconds": 2.3,
+    "range_priors": {
+      "val_65": [
+        -1.0,
+        1.0
+      ],
+      "val_128": [
+        -1.0,
+        1.0
+      ],
+      "forecast_all_pillars": [
+        -0.1252,
+        1.0871
+      ]
+    }
+  },
+  "AutoQuant_W8A16": {
+    "val_SQNR_dB": 50.299272537231445,
+    "target_dB": 60.0,
+    "encoding_path": "/home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/all_sensors_1h/autoquant/.trace/adaround.encodings",
+    "seconds": 80.7
+  },
+  "final": {
+    "choice": "AutoQuant_W8A16",
+    "candidates": {
+      "W8A16": 47.55820274353027,
+      "AutoQuant_W8A16": 50.299272537231445
+    }
+  }
+}

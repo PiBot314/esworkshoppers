@@ -1,0 +1,244 @@
+2026-10-05 09:52:09,621 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[single_node] W32A16_noPriors val SQNR  62.82 dB  max|d| 0.0068  (1.2 s)
+2026-10-05 09:52:10,775 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[single_node] W8A8_noPriors val SQNR  44.84 dB  max|d| 0.0101  (1.0 s)
+2026-10-05 09:52:11,771 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[single_node] W8A16_noPriors val SQNR  49.94 dB  max|d| 0.0096  (1.0 s)
+2026-10-05 09:52:12,751 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[single_node] W32A16        val SQNR  62.99 dB  max|d| 0.0068  (1.0 s)
+2026-10-05 09:52:13,714 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[single_node] W8A32         val SQNR  48.77 dB  max|d| 0.0042  (0.8 s)
+2026-10-05 09:52:14,491 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[single_node] W8A8          val SQNR  42.44 dB  max|d| 0.0101  (1.3 s)
+2026-10-05 09:52:15,753 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[single_node] W8A16         val SQNR  49.94 dB  max|d| 0.0096  (1.3 s)
+2026-10-05 09:52:17,019 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+[single_node] W8A16_pcGemm  val SQNR  52.89 dB  max|d| 0.0064  (1.8 s)
+/home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/scripts/05_aimet_quantize.py:212: DeprecationWarning: [31;21mAdaroundParameters will be deprecated soon in the later versions. Use `aimet_onnx.apply_adaround` instead[0m
+  aq.set_adaround_params(AdaroundParameters(loader, num_batches=len(loader),
+2026-10-05 09:52:18,751 - AutoQuant - WARNING - Encoding version 1.0.0 not supported for aimet_onnx AutoQuant. Falling back to version 0.6.1
+2026-10-05 09:52:18,751 - AutoQuant - INFO - Starting AutoQuant
+2026-10-05 09:52:19,261 - AutoQuant - INFO - Target eval score: 60.000000
+2026-10-05 09:52:19,262 - AutoQuant - INFO - FP32 eval score (W32A32): 100.000000
+/ QuantScheme Selection- QuantScheme Selection                       2026-10-05 09:52:19,336 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+- QuantScheme Selection
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  2%|▏         | 21/1024 [00:00<00:04, 206.27it/s][A
+  6%|▋         | 66/1024 [00:00<00:02, 344.62it/s][A
+ 12%|█▏        | 123/1024 [00:00<00:02, 444.84it/s][A\ QuantScheme Selection
+ 18%|█▊        | 183/1024 [00:00<00:01, 505.50it/s][A
+ 24%|██▍       | 244/1024 [00:00<00:01, 539.81it/s][A
+ 30%|██▉       | 304/1024 [00:00<00:01, 558.98it/s][A
+ 35%|███▌      | 363/1024 [00:00<00:01, 564.65it/s][A
+ 41%|████      | 420/1024 [00:00<00:01, 525.53it/s][A| QuantScheme Selection
+ 47%|████▋     | 477/1024 [00:00<00:01, 537.90it/s][A
+ 52%|█████▏    | 534/1024 [00:01<00:00, 546.88it/s][A
+ 58%|█████▊    | 590/1024 [00:01<00:00, 535.10it/s][A
+ 63%|██████▎   | 644/1024 [00:01<00:00, 455.41it/s][A/ QuantScheme Selection
+ 68%|██████▊   | 692/1024 [00:01<00:00, 457.87it/s][A
+ 73%|███████▎  | 745/1024 [00:01<00:00, 475.14it/s][A
+ 78%|███████▊  | 800/1024 [00:01<00:00, 495.78it/s][A
+ 83%|████████▎ | 854/1024 [00:01<00:00, 506.42it/s][A
+ 88%|████████▊ | 906/1024 [00:01<00:00, 498.63it/s][A- QuantScheme Selection
+ 94%|█████████▍| 966/1024 [00:01<00:00, 526.12it/s][A100%|██████████| 1024/1024 [00:02<00:00, 506.89it/s]
+/home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/scripts/05_aimet_quantize.py:134: DeprecationWarning: [31;21mSupport for calling compute_encodings() with forward_pass_callback_args is deprecated and will be removed in the future. [0m
+  sim.compute_encodings(self.forward_pass_callback, None)   # re-calibrate the re-typed quantizers
+
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  6%|▌         | 60/1024 [00:00<00:01, 596.07it/s][A
+ 12%|█▏        | 124/1024 [00:00<00:01, 620.25it/s][A
+ 18%|█▊        | 188/1024 [00:00<00:01, 627.48it/s][A\ QuantScheme Selection
+ 25%|██▍       | 253/1024 [00:00<00:01, 633.97it/s][A
+ 31%|███       | 317/1024 [00:00<00:01, 634.16it/s][A
+ 37%|███▋      | 381/1024 [00:00<00:01, 635.38it/s][A
+ 44%|████▎     | 446/1024 [00:00<00:00, 636.93it/s][A
+ 50%|████▉     | 510/1024 [00:00<00:00, 600.26it/s][A| QuantScheme Selection
+ 56%|█████▌    | 573/1024 [00:00<00:00, 608.05it/s][A
+ 62%|██████▏   | 637/1024 [00:01<00:00, 615.79it/s][A
+ 68%|██████▊   | 700/1024 [00:01<00:00, 619.06it/s][A
+ 75%|███████▍  | 763/1024 [00:01<00:00, 608.78it/s][A
+ 81%|████████  | 826/1024 [00:01<00:00, 613.22it/s][A/ QuantScheme Selection
+ 87%|████████▋ | 888/1024 [00:01<00:00, 612.03it/s][A
+ 93%|█████████▎| 953/1024 [00:01<00:00, 620.71it/s][A
+ 99%|█████████▉| 1016/1024 [00:01<00:00, 623.18it/s][A100%|██████████| 1024/1024 [00:01<00:00, 619.91it/s]
+- QuantScheme Selection\ QuantScheme Selection                       2026-10-05 09:52:24,221 - AutoQuant - INFO - Evaluation finished: W@tf / A@tf (eval score: 49.943118)
+\ QuantScheme Selection| QuantScheme Selection                       2026-10-05 09:52:24,279 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+| QuantScheme Selection
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  6%|▋         | 66/1024 [00:00<00:01, 658.39it/s][A
+ 13%|█▎        | 132/1024 [00:00<00:01, 659.26it/s][A
+ 19%|█▉        | 198/1024 [00:00<00:01, 647.78it/s][A
+ 26%|██▌       | 265/1024 [00:00<00:01, 653.81it/s][A/ QuantScheme Selection
+ 33%|███▎      | 333/1024 [00:00<00:01, 660.01it/s][A
+ 39%|███▉      | 401/1024 [00:00<00:00, 664.20it/s][A
+ 46%|████▌     | 469/1024 [00:00<00:00, 666.72it/s][A
+ 52%|█████▏    | 537/1024 [00:00<00:00, 668.43it/s][A
+ 59%|█████▉    | 604/1024 [00:00<00:00, 667.89it/s][A- QuantScheme Selection
+ 66%|██████▌   | 671/1024 [00:01<00:00, 657.71it/s][A
+ 72%|███████▏  | 737/1024 [00:01<00:00, 651.21it/s][A
+ 79%|███████▊  | 804/1024 [00:01<00:00, 654.30it/s][A
+ 85%|████████▌ | 872/1024 [00:01<00:00, 659.53it/s][A
+ 92%|█████████▏| 938/1024 [00:01<00:00, 659.30it/s][A\ QuantScheme Selection
+ 98%|█████████▊| 1004/1024 [00:01<00:00, 652.16it/s][A100%|██████████| 1024/1024 [00:01<00:00, 657.16it/s]
+
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  6%|▋         | 64/1024 [00:00<00:01, 633.54it/s][A
+ 12%|█▎        | 128/1024 [00:00<00:01, 559.99it/s][A
+ 18%|█▊        | 185/1024 [00:00<00:01, 515.03it/s][A| QuantScheme Selection
+ 23%|██▎       | 237/1024 [00:00<00:01, 516.54it/s][A
+ 29%|██▊       | 293/1024 [00:00<00:01, 529.12it/s][A
+ 34%|███▍      | 352/1024 [00:00<00:01, 546.13it/s][A
+ 40%|████      | 414/1024 [00:00<00:01, 567.74it/s][A
+ 47%|████▋     | 477/1024 [00:00<00:00, 586.09it/s][A/ QuantScheme Selection
+ 53%|█████▎    | 542/1024 [00:00<00:00, 605.48it/s][A
+ 59%|█████▉    | 607/1024 [00:01<00:00, 618.58it/s][A
+ 66%|██████▌   | 672/1024 [00:01<00:00, 627.88it/s][A
+ 72%|███████▏  | 737/1024 [00:01<00:00, 634.54it/s][A
+ 78%|███████▊  | 802/1024 [00:01<00:00, 638.79it/s][A- QuantScheme Selection
+ 85%|████████▍ | 867/1024 [00:01<00:00, 640.69it/s][A
+ 91%|█████████ | 932/1024 [00:01<00:00, 643.22it/s][A
+ 97%|█████████▋| 997/1024 [00:01<00:00, 645.06it/s][A100%|██████████| 1024/1024 [00:01<00:00, 604.06it/s]
+\ QuantScheme Selection| QuantScheme Selection/ QuantScheme Selection                       2026-10-05 09:52:28,861 - AutoQuant - INFO - Evaluation finished: W@tf-enhanced / A@tf (eval score: 46.506815)
+/ QuantScheme Selection                       2026-10-05 09:52:28,864 - AutoQuant - INFO - Best Quant Scheme: W@tf / A@tf
+/ QuantScheme Selection/ QuantScheme Selection
+/ W32 Evaluation- W32 Evaluation                2026-10-05 09:52:29,288 - Quant - WARNING - Exporting {dtype} quantization to onnx graph is not supported
+- W32 Evaluation                2026-10-05 09:52:29,318 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+- W32 Evaluation
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+ 10%|▉         | 102/1024 [00:00<00:00, 1014.06it/s][A
+ 20%|█▉        | 204/1024 [00:00<00:00, 911.69it/s] [A
+ 29%|██▉       | 296/1024 [00:00<00:00, 851.85it/s][A
+ 37%|███▋      | 382/1024 [00:00<00:00, 809.76it/s][A\ W32 Evaluation
+ 45%|████▌     | 464/1024 [00:00<00:00, 784.43it/s][A
+ 53%|█████▎    | 543/1024 [00:00<00:00, 759.71it/s][A
+ 61%|██████    | 620/1024 [00:00<00:00, 740.07it/s][A
+ 68%|██████▊   | 695/1024 [00:00<00:00, 726.99it/s][A| W32 Evaluation
+ 75%|███████▌  | 768/1024 [00:00<00:00, 718.57it/s][A
+ 82%|████████▏ | 840/1024 [00:01<00:00, 711.97it/s][A
+ 89%|████████▉ | 912/1024 [00:01<00:00, 707.93it/s][A
+ 96%|█████████▌| 983/1024 [00:01<00:00, 705.10it/s][A100%|██████████| 1024/1024 [00:01<00:00, 750.28it/s]
+/ W32 Evaluation- W32 Evaluation\ W32 Evaluation                2026-10-05 09:52:31,879 - AutoQuant - INFO - Evaluation finished: W32A16 (eval score: 62.962303)
+\ W32 Evaluation\ W32 Evaluation
+/ Batchnorm Folding- Batchnorm Folding                   2026-10-05 09:52:32,331 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+- Batchnorm Folding
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  9%|▊         | 89/1024 [00:00<00:01, 883.33it/s][A
+ 17%|█▋        | 178/1024 [00:00<00:01, 786.55it/s][A
+ 25%|██▌       | 258/1024 [00:00<00:00, 773.28it/s][A
+ 33%|███▎      | 336/1024 [00:00<00:00, 758.61it/s][A\ Batchnorm Folding
+ 40%|████      | 413/1024 [00:00<00:00, 737.57it/s][A
+ 48%|████▊     | 487/1024 [00:00<00:00, 726.45it/s][A
+ 55%|█████▍    | 560/1024 [00:00<00:00, 715.88it/s][A
+ 62%|██████▏   | 632/1024 [00:00<00:00, 712.65it/s][A| Batchnorm Folding
+ 69%|██████▉   | 704/1024 [00:00<00:00, 712.85it/s][A
+ 76%|███████▌  | 776/1024 [00:01<00:00, 696.81it/s][A
+ 83%|████████▎ | 846/1024 [00:01<00:00, 672.86it/s][A
+ 89%|████████▉ | 914/1024 [00:01<00:00, 669.78it/s][A
+ 96%|█████████▌| 985/1024 [00:01<00:00, 679.21it/s][A100%|██████████| 1024/1024 [00:01<00:00, 710.18it/s]
+
+  0%|          | 0/1024 [00:00<?, ?it/s][A/ Batchnorm Folding
+  7%|▋         | 71/1024 [00:00<00:01, 703.85it/s][A
+ 14%|█▍        | 144/1024 [00:00<00:01, 714.75it/s][A
+ 21%|██        | 216/1024 [00:00<00:01, 699.88it/s][A
+ 28%|██▊       | 287/1024 [00:00<00:01, 702.24it/s][A
+ 35%|███▍      | 358/1024 [00:00<00:00, 700.05it/s][A- Batchnorm Folding
+ 42%|████▏     | 429/1024 [00:00<00:00, 646.86it/s][A
+ 48%|████▊     | 495/1024 [00:00<00:00, 585.08it/s][A
+ 55%|█████▌    | 565/1024 [00:00<00:00, 616.37it/s][A
+ 62%|██████▏   | 638/1024 [00:00<00:00, 648.73it/s][A\ Batchnorm Folding
+ 69%|██████▉   | 709/1024 [00:01<00:00, 664.21it/s][A
+ 76%|███████▌  | 780/1024 [00:01<00:00, 675.69it/s][A
+ 83%|████████▎ | 852/1024 [00:01<00:00, 684.27it/s][A
+ 90%|█████████ | 924/1024 [00:01<00:00, 694.50it/s][A
+ 97%|█████████▋| 994/1024 [00:01<00:00, 689.00it/s][A| Batchnorm Folding100%|██████████| 1024/1024 [00:01<00:00, 670.58it/s]
+/ Batchnorm Folding                   2026-10-05 09:52:36,123 - AutoQuant - INFO - The results of Batchnorm Folding is saved in /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/single_node/autoquant/.trace/batchnorm_folding.onnx and /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/single_node/autoquant/.trace/batchnorm_folding.encodings.
+/ Batchnorm Folding                   2026-10-05 09:52:36,125 - AutoQuant - INFO - Session finished: Batchnorm Folding. (eval score: 49.943118). Applied techniques: batchnorm_folding
+/ Batchnorm Folding/ Batchnorm Folding
+/ Cross-Layer Equalization- Cross-Layer Equalization                          2026-10-05 09:52:36,301 - Quant - INFO - High Bias folding is not supported for models without BatchNorm Layers
+- Cross-Layer Equalization                          2026-10-05 09:52:36,320 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+- Cross-Layer Equalization
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+ 16%|█▌        | 160/1024 [00:00<00:00, 1591.05it/s][A
+ 31%|███▏      | 320/1024 [00:00<00:00, 1333.12it/s][A
+ 45%|████▍     | 456/1024 [00:00<00:00, 1263.74it/s][A
+ 59%|█████▊    | 601/1024 [00:00<00:00, 1327.49it/s][A\ Cross-Layer Equalization
+ 73%|███████▎  | 750/1024 [00:00<00:00, 1381.88it/s][A
+ 88%|████████▊ | 900/1024 [00:00<00:00, 1417.82it/s][A100%|██████████| 1024/1024 [00:00<00:00, 1391.65it/s]
+
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+ 14%|█▍        | 148/1024 [00:00<00:00, 1476.93it/s][A
+ 29%|██▉       | 296/1024 [00:00<00:00, 1478.10it/s][A| Cross-Layer Equalization
+ 43%|████▎     | 445/1024 [00:00<00:00, 1480.84it/s][A
+ 58%|█████▊    | 594/1024 [00:00<00:00, 1481.22it/s][A
+ 73%|███████▎  | 743/1024 [00:00<00:00, 1474.39it/s][A
+ 87%|████████▋ | 892/1024 [00:00<00:00, 1476.39it/s][A100%|██████████| 1024/1024 [00:00<00:00, 1477.71it/s]
+/ Cross-Layer Equalization- Cross-Layer Equalization                          2026-10-05 09:52:38,320 - AutoQuant - INFO - The results of Cross-Layer Equalization is saved in /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/single_node/autoquant/.trace/cross_layer_equalization.onnx and /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/single_node/autoquant/.trace/cross_layer_equalization.encodings.
+- Cross-Layer Equalization                          2026-10-05 09:52:38,322 - AutoQuant - INFO - Session finished: Cross-Layer Equalization. (eval score: 49.943118). Applied techniques: cross_layer_equalization
+- Cross-Layer Equalization- Cross-Layer Equalization
+/ AdaRound- AdaRound          2026-10-05 09:52:38,821 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+- AdaRound
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+ 17%|█▋        | 174/1024 [00:00<00:00, 1737.26it/s][A
+ 34%|███▍      | 350/1024 [00:00<00:00, 1749.21it/s][A
+ 51%|█████▏    | 525/1024 [00:00<00:00, 1748.21it/s][A
+ 68%|██████▊   | 700/1024 [00:00<00:00, 1748.50it/s][A\ AdaRound
+ 85%|████████▌ | 875/1024 [00:00<00:00, 1740.97it/s][A100%|██████████| 1024/1024 [00:00<00:00, 1741.76it/s]
+
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+ 17%|█▋        | 173/1024 [00:00<00:00, 1725.01it/s][A
+ 34%|███▍      | 346/1024 [00:00<00:00, 1719.39it/s][A
+ 51%|█████     | 519/1024 [00:00<00:00, 1721.31it/s][A| AdaRound
+ 68%|██████▊   | 694/1024 [00:00<00:00, 1730.61it/s][A
+ 85%|████████▍ | 868/1024 [00:00<00:00, 1727.78it/s][A100%|██████████| 1024/1024 [00:00<00:00, 1727.93it/s]
+          2026-10-05 09:52:40,025 - Utils - INFO - Caching 1024 batches from data loader at path location: /tmp/tmpm1ju2ygj
+| AdaRound
+  0%|          | 0/30 [00:00<?, ?it/s][A
+                                      [A          2026-10-05 09:52:40,025 - Quant - INFO - Started Optimizing weight rounding of module: node_linear
+
+  0%|          | 0/30 [00:00<?, ?it/s][A| AdaRound/home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/.venv-aimet/lib/python3.10/site-packages/aimet_onnx/adaround/adaround_optimizer.py:117: UserWarning: The given NumPy array is not writable, and PyTorch does not support non-writable tensors. This means writing to this tensor will result in undefined behavior. You may want to copy the array to protect its data or make it writable before converting it to a tensor. This type of warning will be suppressed for the rest of this program. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/utils/tensor_numpy.cpp:213.)
+  weights = torch.from_numpy(
+/ AdaRound
+                                      [A          2026-10-05 09:52:40,531 - Quant - WARNING - CUDAExecutionProvider not in ort available providers. use_cuda is set to False
+
+  0%|          | 0/30 [00:00<?, ?it/s][A/ AdaRound- AdaRound/home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/.venv-aimet/lib/python3.10/site-packages/aimet_onnx/adaround/adaround_optimizer.py:229: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /__w/pytorch/pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:820.)
+  float(total_loss),
+\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound
+ 93%|█████████▎| 28/30 [00:05<00:00,  5.06it/s][A
+                                               [A          2026-10-05 09:52:45,561 - Quant - INFO - Started Optimizing weight rounding of module: node_linear_1
+
+ 93%|█████████▎| 28/30 [00:05<00:00,  5.06it/s][A\ AdaRound
+                                               [A          2026-10-05 09:52:45,561 - Quant - WARNING - CUDAExecutionProvider not in ort available providers. use_cuda is set to False
+
+ 93%|█████████▎| 28/30 [00:05<00:00,  5.06it/s][A\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound| AdaRound/ AdaRound- AdaRound\ AdaRound
+100%|██████████| 30/30 [00:09<00:00,  2.69it/s][A100%|██████████| 30/30 [00:09<00:00,  3.10it/s]
+          2026-10-05 09:52:49,718 - Quant - INFO - Completed Adarounding Model
+\ AdaRound          2026-10-05 09:52:49,740 - Quant - INFO - Selecting DefaultOpInstanceConfigGenerator to compute the specialized config. hw_version:V75
+\ AdaRound
+  0%|          | 0/1024 [00:00<?, ?it/s][A| AdaRound
+ 18%|█▊        | 185/1024 [00:00<00:00, 1841.78it/s][A
+ 36%|███▌      | 370/1024 [00:00<00:00, 1518.28it/s][A
+ 51%|█████▏    | 526/1024 [00:00<00:00, 1286.74it/s][A
+ 64%|██████▍   | 659/1024 [00:00<00:00, 1171.56it/s][A/ AdaRound
+ 76%|███████▌  | 779/1024 [00:00<00:00, 1090.55it/s][A
+ 87%|████████▋ | 890/1024 [00:00<00:00, 983.29it/s] [A
+ 97%|█████████▋| 990/1024 [00:00<00:00, 901.51it/s][A100%|██████████| 1024/1024 [00:00<00:00, 1065.36it/s]
+
+  0%|          | 0/1024 [00:00<?, ?it/s][A
+  9%|▊         | 88/1024 [00:00<00:01, 873.85it/s][A- AdaRound
+ 17%|█▋        | 176/1024 [00:00<00:01, 847.38it/s][A
+ 26%|██▌       | 267/1024 [00:00<00:00, 871.74it/s][A
+ 35%|███▍      | 357/1024 [00:00<00:00, 881.22it/s][A
+ 44%|████▍     | 452/1024 [00:00<00:00, 904.67it/s][A
+ 54%|█████▎    | 550/1024 [00:00<00:00, 928.83it/s][A\ AdaRound
+ 63%|██████▎   | 643/1024 [00:00<00:00, 920.78it/s][A
+ 72%|███████▏  | 741/1024 [00:00<00:00, 937.61it/s][A
+ 82%|████████▏ | 839/1024 [00:00<00:00, 950.07it/s][A
+ 92%|█████████▏| 939/1024 [00:01<00:00, 963.26it/s][A100%|██████████| 1024/1024 [00:01<00:00, 929.10it/s]
+| AdaRound/ AdaRound          2026-10-05 09:52:52,548 - AutoQuant - INFO - The results of AdaRound is saved in /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/single_node/autoquant/.trace/adaround.onnx and /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/single_node/autoquant/.trace/adaround.encodings.
+/ AdaRound          2026-10-05 09:52:52,550 - AutoQuant - INFO - Session finished: AdaRound. (eval score: 51.097317). Applied techniques: batchnorm_folding adaround
+/ AdaRound/ AdaRound
+2026-10-05 09:52:52,846 - AutoQuant - INFO - Best eval score: 51.097317
+2026-10-05 09:52:52,846 - AutoQuant - INFO - AutoQuant is unable to match the target accuracy. Consider Quantization Aware Training.
+[single_node] AutoQuant     val SQNR 51.09731674194336 dB (target 60.00) -> /home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/mideval/aimet_quantization/out/single_node/autoquant/.trace/adaround.encodings
+[single_node] final W8A16 deliverable: AutoQuant_W8A16

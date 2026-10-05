@@ -1,0 +1,17 @@
+---
+timestamp: 18715175334
+command: ./bin/qnn-net-run --backend lib/libQnnHtp.so --model single_node/models/libaimet_w8a8.so --input_list single_node/test_list.txt --output_dir single_node/out_htp_aimet_w8a8 --perf_profile burst --profiling_level basic
+execution_mode: synchronous
+inferences_completed: 4861
+graphs:
+  - graph_name: aimet_w8a8
+    input_tensors:
+    - tensor_name: input_sequence
+      id: 1
+      datatype: QNN_DATATYPE_UFIXED_POINT_8
+      dimensions: [1,96,10]
+    output_tensors:
+    - tensor_name: forecast_horizon
+      id: 4257
+      datatype: QNN_DATATYPE_UFIXED_POINT_8
+      dimensions: [1,4]

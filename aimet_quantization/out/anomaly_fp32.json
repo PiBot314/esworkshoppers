@@ -1,0 +1,43 @@
+{
+  "K": 4.0,
+  "FLOOR_FRAC": 0.02,
+  "models": {
+    "all_sensors_1h": {
+      "natural_flag_rate": {
+        "Solar": 0.02297185430463576,
+        "Grid": 0.009312913907284769,
+        "Demand": 0.49503311258278143
+      },
+      "injected_detection_rate": 0.5333333333333333,
+      "by_kind": {
+        "sensor_dropout_zero": 0.69,
+        "sensor_spike": 0.91,
+        "panel_damage_40pct": 0.0
+      }
+    },
+    "all_sensors_24h": {
+      "natural_flag_rate": {
+        "Solar": 0.011181434599156118,
+        "Grid": 0.002320675105485232,
+        "Demand": 0.16434599156118143
+      },
+      "injected_detection_rate": 0.12666666666666668,
+      "by_kind": {
+        "sensor_dropout_zero": 0.08,
+        "sensor_spike": 0.3,
+        "panel_damage_40pct": 0.0
+      }
+    },
+    "single_node": {
+      "natural_flag_rate": {
+        "Solar_PL00": 0.027154906397860522
+      },
+      "injected_detection_rate": 0.64,
+      "by_kind": {
+        "sensor_dropout_zero": 0.92,
+        "sensor_spike": 0.83,
+        "panel_damage_40pct": 0.17
+      }
+    }
+  }
+}

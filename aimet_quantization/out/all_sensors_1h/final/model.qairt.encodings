@@ -1,0 +1,70 @@
+{
+  "activation_encodings": {
+    "forecast_all_pillars": [
+      {
+        "bitwidth": 16,
+        "dtype": "int",
+        "is_symmetric": "False",
+        "max": 1.0873904812251383,
+        "min": -0.12393257141959126,
+        "offset": -6705,
+        "scale": 1.8483604984279083e-05
+      }
+    ],
+    "input_sequence_all_sensors": [
+      {
+        "bitwidth": 16,
+        "dtype": "int",
+        "is_symmetric": "False",
+        "max": 1.0,
+        "min": 0.0,
+        "offset": 0,
+        "scale": 1.5259021896696422e-05
+      }
+    ],
+    "relu": [
+      {
+        "bitwidth": 16,
+        "dtype": "int",
+        "is_symmetric": "False",
+        "max": 2.0567102432250977,
+        "min": 0.0,
+        "offset": 0,
+        "scale": 3.138338663653159e-05
+      }
+    ]
+  },
+  "param_encodings": {
+    "fc1.weight": [
+      {
+        "bitwidth": 8,
+        "dtype": "int",
+        "is_symmetric": "True",
+        "max": 0.2511870367452502,
+        "min": -0.2531648874282837,
+        "offset": -128,
+        "scale": 0.0019778506830334663
+      }
+    ],
+    "fc2.weight": [
+      {
+        "bitwidth": 8,
+        "dtype": "int",
+        "is_symmetric": "True",
+        "max": 0.25098744267597795,
+        "min": -0.25296372175216675,
+        "offset": -128,
+        "scale": 0.0019762790761888027
+      }
+    ]
+  },
+  "quantizer_args": {
+    "activation_bitwidth": 16,
+    "dtype": "int",
+    "is_symmetric": true,
+    "param_bitwidth": 8,
+    "per_channel_quantization": true,
+    "quant_scheme": "min_max"
+  },
+  "version": "0.6.1"
+}

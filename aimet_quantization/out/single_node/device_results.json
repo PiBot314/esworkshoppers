@@ -1,0 +1,102 @@
+{
+  "cpu_fp32": {
+    "vs_fp32": {
+      "SQNR_dB": 100.0,
+      "max_abs": 2.980232238769531e-07,
+      "mean_abs": 2.6470724279192837e-08
+    },
+    "vs_aimet_sim": {
+      "SQNR_dB": 51.74731731414795,
+      "max_abs": 0.00543869286775589,
+      "mean_abs": 0.0005579792195931077
+    },
+    "metrics": {
+      "Solar_PL00": {
+        "MAE_W": 1962.5567897302983,
+        "RMSE_W": 4017.493173426693,
+        "nMAE_pct": 2.982239602644888,
+        "R2": 0.949851512725034
+      }
+    },
+    "headline_R2": 0.949851512725034,
+    "fp32_headline_R2": 0.9498515109210374,
+    "flag_agreement_natural": 1.0,
+    "flag_agreement_injected": 1.0,
+    "injected_detection_rate": 0.64
+  },
+  "htp_aimet_w8a16": {
+    "vs_fp32": {
+      "SQNR_dB": 52.14890480041504,
+      "max_abs": 0.00453861802816391,
+      "mean_abs": 0.0006161235505715013
+    },
+    "vs_aimet_sim": {
+      "SQNR_dB": 54.56595420837402,
+      "max_abs": 0.0024947822093963623,
+      "mean_abs": 0.0004886359092779458
+    },
+    "metrics": {
+      "Solar_PL00": {
+        "MAE_W": 1965.5013802842136,
+        "RMSE_W": 4021.4745108857824,
+        "nMAE_pct": 2.986714109884328,
+        "R2": 0.9497520691302905
+      }
+    },
+    "headline_R2": 0.9497520691302905,
+    "fp32_headline_R2": 0.9498515109210374,
+    "flag_agreement_natural": 0.9991771240485496,
+    "flag_agreement_injected": 0.9991771240485496,
+    "injected_detection_rate": 0.64
+  },
+  "htp_qairt_w8a16": {
+    "vs_fp32": {
+      "SQNR_dB": 46.26338005065918,
+      "max_abs": 0.006475985050201416,
+      "mean_abs": 0.0013415551511570811
+    },
+    "vs_aimet_sim": {
+      "SQNR_dB": 45.15150547027588,
+      "max_abs": 0.0063855648040771484,
+      "mean_abs": 0.0014316277811303735
+    },
+    "metrics": {
+      "Solar_PL00": {
+        "MAE_W": 1971.2262298354458,
+        "RMSE_W": 4030.2115346077926,
+        "nMAE_pct": 2.9954134112957354,
+        "R2": 0.9495334954376672
+      }
+    },
+    "headline_R2": 0.9495334954376672,
+    "fp32_headline_R2": 0.9498515109210374,
+    "flag_agreement_natural": 0.9989714050606872,
+    "flag_agreement_injected": 0.9987656860728246,
+    "injected_detection_rate": 0.6433333333333333
+  },
+  "htp_aimet_w8a8": {
+    "vs_fp32": {
+      "SQNR_dB": 36.201584339141846,
+      "max_abs": 0.03679589182138443,
+      "mean_abs": 0.0034348033368587494
+    },
+    "vs_aimet_sim": {
+      "SQNR_dB": 36.06003999710083,
+      "max_abs": 0.03825080394744873,
+      "mean_abs": 0.003484245389699936
+    },
+    "metrics": {
+      "Solar_PL00": {
+        "MAE_W": 2017.4136946275164,
+        "RMSE_W": 4081.196429402262,
+        "nMAE_pct": 3.06559843084241,
+        "R2": 0.948248548142691
+      }
+    },
+    "headline_R2": 0.948248548142691,
+    "fp32_headline_R2": 0.9498515109210374,
+    "flag_agreement_natural": 0.9987656860728246,
+    "flag_agreement_injected": 0.9983542480970994,
+    "injected_detection_rate": 0.64
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "node_id": "SL-PL00-00",
+  "input_tensor_name": "input_sequence",
+  "input_shape": [
+    1,
+    96,
+    10
+  ],
+  "output_tensor_name": "forecast_horizon",
+  "output_shape": [
+    1,
+    4
+  ],
+  "feature_order": [
+    "active_power_W",
+    "reactive_power_VAr",
+    "voltage_avg_V",
+    "neutral_current_A",
+    "hod_sin",
+    "hod_cos",
+    "dow_sin",
+    "dow_cos",
+    "doy_sin",
+    "doy_cos"
+  ],
+  "target_col": "active_power_W",
+  "scaler_min_W": 0.0,
+  "scaler_max_W": 65808.15263769371,
+  "test_rmse_W": 3719.470458984375,
+  "test_mae_W": 1857.5186767578125,
+  "test_r2": 0.9568317532539368
+}

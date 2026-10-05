@@ -1,0 +1,224 @@
+{
+  "freq": "15min",
+  "normalization": "MinMaxScaler(feature_range=(0, 1))",
+  "nodes": {
+    "SR-EM-KH04-00": {
+      "target": "power_W",
+      "target_raw_min": 0.0,
+      "target_raw_max": 29980.886285714285,
+      "features": [
+        "power_W",
+        "hod_sin",
+        "hod_cos",
+        "dow_sin",
+        "dow_cos",
+        "doy_sin",
+        "doy_cos",
+        "was_imputed"
+      ],
+      "rows": 35040,
+      "null_count": 0
+    },
+    "SR-EM-KH04-01": {
+      "target": "power_W",
+      "target_raw_min": 0.0,
+      "target_raw_max": 129.1025,
+      "features": [
+        "power_W",
+        "voltage_V",
+        "current_A",
+        "frequency_Hz",
+        "hod_sin",
+        "hod_cos",
+        "dow_sin",
+        "dow_cos",
+        "doy_sin",
+        "doy_cos",
+        "was_imputed"
+      ],
+      "rows": 35040,
+      "null_count": 0
+    },
+    "SR-EM-KH04-02": {
+      "target": "power_W",
+      "target_raw_min": 0.0,
+      "target_raw_max": 81.46,
+      "features": [
+        "power_W",
+        "voltage_V",
+        "current_A",
+        "frequency_Hz",
+        "hod_sin",
+        "hod_cos",
+        "dow_sin",
+        "dow_cos",
+        "doy_sin",
+        "doy_cos",
+        "was_imputed"
+      ],
+      "rows": 35040,
+      "null_count": 0
+    },
+    "EM-CR-KH95-00": {
+      "target": "power_total_W",
+      "target_raw_min": 0.0,
+      "target_raw_max": 1739.4,
+      "features": [
+        "power_total_W",
+        "power_R_W",
+        "power_B_W",
+        "voltage_V",
+        "power_factor",
+        "hod_sin",
+        "hod_cos",
+        "dow_sin",
+        "dow_cos",
+        "doy_sin",
+        "doy_cos",
+        "was_imputed"
+      ],
+      "rows": 34036,
+      "null_count": 0
+    },
+    "EM-CR-SB00-00": {
+      "target": "gd_power_W",
+      "target_raw_min": 0.0,
+      "target_raw_max": 886356.0968833333,
+      "features": [
+        "gd_power_W",
+        "t1_power_W",
+        "t2_power_W",
+        "hv_voltage_VLL",
+        "lt1_voltage_VLN",
+        "lt2_voltage_VLN",
+        "hod_sin",
+        "hod_cos",
+        "dow_sin",
+        "dow_cos",
+        "doy_sin",
+        "doy_cos",
+        "was_imputed"
+      ],
+      "rows": 32889,
+      "null_count": 0
+    },
+    "SL-PL00-00": {
+      "target": "active_power_W",
+      "target_raw_min": 0.0,
+      "target_raw_max": 64246.00000000001,
+      "features": [
+        "voltage_avg_V",
+        "neutral_current_A",
+        "hod_sin",
+        "hod_cos",
+        "dow_sin",
+        "dow_cos",
+        "doy_sin",
+        "doy_cos",
+        "active_power_W",
+        "reactive_power_VAr",
+        "was_imputed"
+      ],
+      "rows": 33058,
+      "null_count": 0
+    },
+    "SL-VN95-00": {
+      "target": "active_power_W",
+      "target_raw_min": 0.0,
+      "target_raw_max": 155980.0,
+      "features": [
+        "voltage_avg_V",
+        "neutral_current_A",
+        "hod_sin",
+        "hod_cos",
+        "dow_sin",
+        "dow_cos",
+        "doy_sin",
+        "doy_cos",
+        "active_power_W",
+        "reactive_power_VAr",
+        "was_imputed"
+      ],
+      "rows": 35041,
+      "null_count": 0
+    },
+    "SL-NI01-00": {
+      "target": "active_power_W",
+      "target_raw_min": 0.0,
+      "target_raw_max": 130793.48,
+      "features": [
+        "active_power_W",
+        "reactive_power_VAr",
+        "voltage_avg_V",
+        "neutral_current_A",
+        "hod_sin",
+        "hod_cos",
+        "dow_sin",
+        "dow_cos",
+        "doy_sin",
+        "doy_cos",
+        "was_imputed"
+      ],
+      "rows": 33060,
+      "null_count": 0
+    },
+    "SL-NI03-00": {
+      "target": "active_power_W",
+      "target_raw_min": 0.0,
+      "target_raw_max": 69863.81111111112,
+      "features": [
+        "active_power_W",
+        "ac_voltage_avg_V",
+        "pv_voltage_avg_V",
+        "hod_sin",
+        "hod_cos",
+        "dow_sin",
+        "dow_cos",
+        "doy_sin",
+        "doy_cos",
+        "was_imputed"
+      ],
+      "rows": 34994,
+      "null_count": 0
+    },
+    "SL-NI03-01": {
+      "target": "active_power_W",
+      "target_raw_min": 0.0,
+      "target_raw_max": 69249.15555555555,
+      "features": [
+        "active_power_W",
+        "ac_voltage_avg_V",
+        "pv_voltage_avg_V",
+        "hod_sin",
+        "hod_cos",
+        "dow_sin",
+        "dow_cos",
+        "doy_sin",
+        "doy_cos",
+        "was_imputed"
+      ],
+      "rows": 34992,
+      "null_count": 0
+    },
+    "SL-VN02-01": {
+      "target": "active_power_W",
+      "target_raw_min": 0.0,
+      "target_raw_max": 71350.04545454546,
+      "features": [
+        "active_power_W",
+        "ac_voltage_avg_V",
+        "pv_voltage_avg_V",
+        "hod_sin",
+        "hod_cos",
+        "dow_sin",
+        "dow_cos",
+        "doy_sin",
+        "doy_cos",
+        "was_imputed"
+      ],
+      "rows": 34992,
+      "null_count": 0
+    }
+  },
+  "excluded": {}
+}
