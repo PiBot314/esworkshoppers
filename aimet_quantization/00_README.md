@@ -21,6 +21,7 @@ Planning record for post-training-quantizing the existing (frozen, **not retrain
 | 15 | [Summary, lessons, next steps](15_summary_lessons_and_next_steps.md) | Deliverables, plan vs reality, limitations |
 | 16 | [Dashboard plan](16_dashboard_plan.md) | Live demo GUI served by the QIDK: options, decisions, revised fast plan (§7) |
 | 17 | [Dashboard build log](17_dashboard_build_log.md) | Data pack, device server, frontend, launcher, verification |
+| 18 | [Future revisions and ideas](18_future_revisions_and_ideas.md) | Living doc: evolving models, weather/almanac inputs, QAT, scalable per-node anomaly detection |
 | – | [README.md](README.md) · [README_DETAILED.md](README_DETAILED.md) · [TECHNICAL_QA.md](TECHNICAL_QA.md) | Final concise / complete readmes, technical Q&A |
 
 ## Decisions already taken (2026-10-05)

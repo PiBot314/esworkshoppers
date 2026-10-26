@@ -57,3 +57,12 @@ Plan: doc 16 §7 (fast build with on-demand live NPU inference). Files: `scripts
 
 ## Time spent
 Plan revision → working, verified dashboard: roughly 45–60 minutes of execution, in line with the estimate given before starting (not precisely timed).
+
+## F5 — Android app (added 2026-10-27)
+The dashboard as an installable app (`dashboard/bin/nz_demo.apk`, package `dev.netzero.qidk`, label "Net-Zero NPU"), for presenting from the QIDK's own screen (1080×2400) or any Android phone.
+* **Source:** `dashboard/android/` — `src/.../MainActivity.java` (WebView shell), `web/` (phone layout: `index.html`, `mobile.css`, `mobile-bridge.js`, `mobile-ui.js`), `build.sh`. `app.js`, `style.css`, uPlot and `data/` are copied from `dashboard/www` at build time, **unchanged**, so desktop and app show the same numbers.
+* **How it works:** the bundled page is served from `https://appassets.androidplatform.net/` out of the APK, so Campus, Plant, Day-ahead and Pipeline work with no server or network. `fetch("api/…")` is routed through a Java bridge to the `nz_dashboard` server (default `http://127.0.0.1:8080` = the server on the same QIDK; ⚙ sets another address, e.g. the QIDK's Wi-Fi IP from a phone). CSV template → Downloads; CSV upload → system file picker. Fullscreen, screen stays on, Back returns to the Campus tab.
+* **Phone layout:** bottom tab bar, sticky time/transport bar (◀ Play ▶, speed, "Next anomaly"), charts first, 2×2 fault buttons, compact verdict tables, scrollable KPI strip.
+* **Build:** `dashboard/android/build.sh [--install]`, without Gradle (aapt2 → javac → d8 → zipalign → apksigner). Needs the Android SDK `platforms;android-35` + `build-tools;36.0.0` in `~/Android/Sdk` (installed with cmdline-tools) and Java with `jdk.compiler`. Signed with a local debug key `android/debug.keystore`.
+* **Verified on the QIDK:** all five tabs render; live NPU run from the app 5.20 ms execute, 2.18 s round trip, max |Δ| vs recorded 4.6e-7; Solar dropout injection → ANOMALY (−417.3 kW vs ±274.6 kW), as in F3.
+* **Presenting:** start the server (`scripts/14_dashboard_start.sh`), open "Net-Zero NPU" on the QIDK. To project, mirror the QIDK screen (e.g. scrcpy) or use the browser dashboard.

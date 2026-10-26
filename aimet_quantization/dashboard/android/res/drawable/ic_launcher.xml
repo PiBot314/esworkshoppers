@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Launcher icon: a sun over a chip outline (solar forecasting on the NPU). -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <path android:fillColor="#0f1419" android:pathData="M0,0h108v108h-108z" />
+    <path android:strokeColor="#58a6ff" android:strokeWidth="4" android:fillColor="#171e26"
+        android:pathData="M30,38h48a4,4 0,0 1,4 4v36a4,4 0,0 1,-4 4h-48a4,4 0,0 1,-4 -4v-36a4,4 0,0 1,4 -4z" />
+    <path android:strokeColor="#58a6ff" android:strokeWidth="4"
+        android:pathData="M38,82v8M54,82v8M70,82v8M18,52h8M18,68h8M82,52h8M82,68h8" />
+    <path android:fillColor="#f5b83d" android:pathData="M54,60m-12,0a12,12 0,1 1,24 0a12,12 0,1 1,-24 0" />
+    <path android:strokeColor="#f5b83d" android:strokeWidth="4"
+        android:pathData="M54,18v10M30,28l6,7M78,28l-6,7" />
+    <path android:strokeColor="#3fb950" android:strokeWidth="4"
+        android:pathData="M34,74l10,-6l10,4l10,-10l10,4" />
+</vector>

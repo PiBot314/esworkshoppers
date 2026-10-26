@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Net-Zero NPU</title>
+<link rel="stylesheet" href="vendor/uPlot.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="mobile.css">
+<!-- Mobile build of dashboard/www. Element ids/classes match app.js, which is shared unchanged. -->
+</head>
+<body>
+<div id="splash"><div class="spin"></div><div>Loading recorded NPU runs…</div></div>
+
+<header>
+  <div class="brand">
+    <div class="title">Net-Zero Edge AI</div>
+    <div class="sub">LSTM forecasters · AIMET W8A16 · Hexagon NPU</div>
+  </div>
+  <button id="settings" aria-label="NPU server settings">
+    <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M19.4 13a7.5 7.5 0 0 0 0-2l2.1-1.6-2-3.5-2.5 1a7.6 7.6 0 0 0-1.7-1L15 3h-4l-.4 2.9a7.6 7.6 0 0 0-1.7 1l-2.5-1-2 3.5L6.6 11a7.5 7.5 0 0 0 0 2l-2.1 1.6 2 3.5 2.5-1c.5.4 1.1.7 1.7 1L11 21h4l.4-2.9c.6-.3 1.2-.6 1.7-1l2.5 1 2-3.5zM13 15.5a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7z"/></svg>
+  </button>
+  <div class="device" id="device">connecting…</div>
+  <div class="kpis" id="kpis"></div>
+</header>
+
+<main>
+<section id="tab-replay" class="tab active"></section>
+<section id="tab-plant" class="tab"></section>
+
+<template id="replay-tpl">
+  <div class="card controls-card">
+    <div class="clock"><span class="now"></span></div>
+    <input type="range" class="slider" min="0" value="0">
+    <div class="transport">
+      <button class="back" aria-label="Back 15 min">◀︎</button>
+      <button class="play">▶ Play</button>
+      <button class="fwd" aria-label="Forward 15 min">▶︎</button>
+      <select class="speed" aria-label="Speed"><option value="1">1×</option><option value="4" selected>4×</option><option value="16">16×</option><option value="64">64×</option></select>
+      <button class="next-anom" aria-label="Next anomaly">⚠ Next</button>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="charts"></div>
+    <aside class="side">
+      <h3>Reading at <span class="t-target"></span></h3>
+      <table class="verdicts"></table>
+      <h3>Inject a fault <small>into <select class="inj-domain"></select> for <select class="inj-len"><option value="1">1</option><option value="4" selected>4</option><option value="8">8</option><option value="16">16</option></select> steps</small></h3>
+      <div class="inject">
+        <button data-fault="dropout">Dropout → 0 W</button>
+        <button data-fault="spike">Spike +50 %</button>
+        <button data-fault="stuck">Stuck value</button>
+        <button data-fault="panel">Panel −40 %</button>
+        <button class="clear">Clear faults</button>
+      </div>
+      <div class="inj-list"></div>
+    </aside>
+    <aside class="side">
+      <h3>Forecast from this window (recorded NPU)</h3>
+      <table class="fc"></table>
+      <p class="hint">Band = forecast + typical error for this hour of day (median ± 4·robust σ from validation data). Points outside the band are flagged as anomalous.</p>
+      <button class="to-live primary">Run this window live on the NPU →</button>
+    </aside>
+    <aside class="side">
+      <h3>Jump to</h3>
+      <div class="transport">
+        <select class="moments"><option value="">A notable natural anomaly…</option></select>
+        <div class="jump-label">…or a date and time (IST)</div>
+        <input type="datetime-local" class="jump" aria-label="Jump to time (IST)">
+      </div>
+    </aside>
+  </div>
+</template>
+
+<section id="tab-dayahead" class="tab">
+  <div class="card controls-card">
+    <div class="clock"><span id="da-time" class="now"></span></div>
+    <input type="range" id="da-slider" min="0" value="0">
+    <div class="transport">
+      <button class="da-step" data-k="-96">−1 day</button>
+      <button class="da-step" data-k="-4">−1 h</button>
+      <button class="da-step" data-k="4">+1 h</button>
+      <button class="da-step" data-k="96">+1 day</button>
+    </div>
+  </div>
+  <div class="grid2">
+    <div><div id="da-chart"></div><div id="da-net"></div></div>
+    <aside class="side"><h3>Next 24 h energy</h3><table id="da-energy"></table></aside>
+    <aside class="side">
+      <h3>What a typical day looks like</h3>
+      <div id="typ-chart"></div>
+      <p class="hint">P10–P90 band and median of actual campus solar by hour of day (IST), validation + test period. The forecasted day is overlaid.</p>
+    </aside>
+  </div>
+</section>
+
+<section id="tab-live" class="tab">
+  <div class="card">
+    <div class="row">
+      <select id="lv-model" aria-label="Model">
+        <option value="all_sensors_1h">Campus 1 h (58 features)</option>
+        <option value="all_sensors_24h">Campus 24 h (58 features)</option>
+        <option value="single_node">Plant SL-PL00-00 (10 features)</option>
+      </select>
+      <label>Window <input type="number" id="lv-index" min="0" value="0" inputmode="numeric"></label>
+    </div>
+    <div id="lv-time" class="now small"></div>
+  </div>
+  <div class="card run-card">
+    <div class="row">
+      <button id="lv-run-npu" class="primary big">▶ Run on NPU <small>HTP · W8A16</small></button>
+      <button id="lv-run-cpu" class="big">FP32 on CPU <small>reference</small></button>
+    </div>
+    <div id="lv-status"></div>
+    <h3>Last live run</h3><table id="lv-timing"></table>
+  </div>
+  <div class="card"><div id="lv-chart"></div></div>
+  <div class="card">
+    <h3>Forecast</h3><table id="lv-fc"></table>
+    <h3>Anomaly check of the next reading</h3><table id="lv-anom"></table>
+  </div>
+  <div class="card">
+    <h3>Edit a sensor channel <small>(physical units)</small></h3>
+    <select id="ed-feature" class="wide" aria-label="Sensor feature"></select>
+    <div class="row">
+      <select id="ed-op" aria-label="Edit">
+        <option value="zero">set to 0 (dropout)</option>
+        <option value="scale">scale × k</option>
+        <option value="freeze">freeze (stuck)</option>
+        <option value="spike">add spike (+k × max)</option>
+      </select>
+      <label>k <input type="number" id="ed-k" value="0.6" step="0.1" inputmode="decimal"></label>
+      <label>last <input type="number" id="ed-steps" value="16" min="1" max="96" inputmode="numeric"> steps</label>
+    </div>
+    <div class="row"><button id="ed-apply" class="primary">Apply edit</button><button id="lv-reset">Reset to test window</button></div>
+    <div id="ed-chart"></div>
+    <h3>Input window <small id="lv-source">(test window from the replay data)</small></h3>
+    <div class="row">
+      <button id="lv-template">Save CSV template</button>
+      <label class="file">Load CSV… <input type="file" id="lv-file" accept=".csv,text/csv,text/plain,*/*"></label>
+      <label><input type="checkbox" id="lv-normalized"> already normalized</label>
+    </div>
+    <div id="lv-msg" class="msg"></div>
+    <p class="hint">CSV format: 96 rows (15-min steps, oldest first) with a <code>timestamp</code> column and one column per sensor feature, named as in the template (saved to Downloads). Cyclic time features are computed from the timestamps; <code>was_imputed</code> defaults to 0. Optional row 97 = the reading that arrived next (used for the anomaly check).</p>
+  </div>
+</section>
+
+<section id="tab-hood" class="tab">
+  <div class="card"><h3>Verification on the QIDK <small>(held-out test period)</small></h3><table id="hood-table"></table></div>
+  <div class="card"><h3>Pipeline</h3>
+    <ol class="pipeline">
+      <li><b>Trained FP32 ONNX</b> — frozen, no retraining</li>
+      <li><b>AIMET 2.12</b> — HTP v75 config · 1,024 calibration windows · range priors (LSTM h ∈ [−1,1], output +10 %) · AutoQuant → AdaRound</li>
+      <li><b>W8A16</b> — 8-bit LSTM &amp; dense weights, 16-bit activations</li>
+      <li><b>qnn-onnx-converter</b> — encodings, LSTM expanded per step, I/O layout preserved → <b>qnn-model-lib-generator</b> → lib*_w8a16.so</li>
+      <li><b>QIDK (SM8650)</b> — nz_dashboard → qnn-net-run → Hexagon HTP v75</li>
+    </ol>
+  </div>
+  <div class="card"><h3>Recorded NPU vs FP32 <small id="hood-model"></small></h3><div id="hood-chart"></div>
+    <p class="hint">Max absolute difference between the NPU (W8A16) and the original FP32 model per window, in % of capacity, campus 1 h model.</p></div>
+  <div class="card"><h3>Anomaly rule</h3>
+    <p class="hint">r = actual − forecast(+15 min). Flag if |r − median<sub>h</sub>| &gt; 4 · 1.4826 · MAD<sub>h</sub> (min. 2 % of capacity), with median/MAD per IST hour from validation data. No extra model: the forecaster is the reference.</p></div>
+  <div class="card"><h3>This app</h3><p class="hint" id="app-info"></p></div>
+</section>
+</main>
+
+<nav id="tabs">
+  <button data-tab="replay" class="active"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6"/></svg><span>Campus</span></button>
+  <button data-tab="plant"><svg viewBox="0 0 24 24"><path d="M4 18l2-9h12l2 9zM9 9l-1 9M15 9l1 9M5 13.5h14M12 3v2M6 4l1 1.5M18 4l-1 1.5"/></svg><span>Plant</span></button>
+  <button data-tab="dayahead"><svg viewBox="0 0 24 24"><path d="M4 6h16v14H4zM4 10h16M8 3v4M16 3v4M8 15l3-2 2 2 3-3"/></svg><span>Day-ahead</span></button>
+  <button data-tab="live"><svg viewBox="0 0 24 24"><path d="M7 7h10v10H7zM10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></svg><span>Run on NPU</span></button>
+  <button data-tab="hood"><svg viewBox="0 0 24 24"><path d="M12 3l9 5-9 5-9-5zM3 13l9 5 9-5M3 17.5l9 5 9-5"/></svg><span>Pipeline</span></button>
+</nav>
+
+<script src="mobile-bridge.js"></script>
+<script src="vendor/uPlot.iife.min.js"></script>
+<script src="app.js"></script>
+<script src="mobile-ui.js"></script>
+</body>
+</html>

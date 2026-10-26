@@ -40,4 +40,4 @@ Tabs: campus replay with typical band and anomaly flags · plant model · day-ah
 6. **Demo dashboard** (`13–14`, `dashboard/`): native web server on the QIDK, live NPU runs on request.
 
 Release files: `release/<model>/` (NPU library, AIMET ONNX + encodings, anomaly thresholds, metadata).
-Details: `README_DETAILED.md` · Q&A: `TECHNICAL_QA.md` · Step-by-step logs: `00`–`17_*.md`.
+Details: `README_DETAILED.md` · Q&A: `TECHNICAL_QA.md` · Step-by-step logs: `00`–`17_*.md` · Ideas: `18_future_revisions_and_ideas.md`.
