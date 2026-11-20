@@ -1,0 +1,32 @@
+{
+ "all_sensors_1h": {
+  "in_sample_flag_rate": 0.0185,
+  "limit_kW_mean_2025": 132.1,
+  "limit_kW_mean_api": 222.4
+ },
+ "baseline_h4": {
+  "in_sample_flag_rate": 0.0178,
+  "limit_kW_mean_2025": 161.1,
+  "limit_kW_mean_api": 240.7
+ },
+ "guided_h4": {
+  "in_sample_flag_rate": 0.0226,
+  "limit_kW_mean_2025": 141.7,
+  "limit_kW_mean_api": 173.3
+ },
+ "baseline_24h": {
+  "in_sample_flag_rate": 0.0093,
+  "limit_kW_mean_2025": 233.9,
+  "limit_kW_mean_api": 323.9
+ },
+ "guided_24h": {
+  "in_sample_flag_rate": 0.0122,
+  "limit_kW_mean_2025": 188.4,
+  "limit_kW_mean_api": 296.8
+ },
+ "cnn_lstm_24h": {
+  "in_sample_flag_rate": 0.008,
+  "limit_kW_mean_2025": 262.5,
+  "limit_kW_mean_api": 367.7
+ }
+}

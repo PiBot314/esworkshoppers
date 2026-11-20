@@ -1,0 +1,52 @@
+{
+  "model_type": "Day_Ahead_24h_All_Sensors_Campus_Forecaster",
+  "input_tensor_name": "input_sequence_all_sensors_24h",
+  "input_shape": [
+    1,
+    96,
+    58
+  ],
+  "output_tensor_name": "forecast_all_pillars_24h",
+  "output_shape": [
+    1,
+    288
+  ],
+  "lookback_hours": 24,
+  "horizon_hours": 24,
+  "step_interval_min": 15,
+  "feature_count": 58,
+  "domains": [
+    "Solar",
+    "Grid",
+    "Demand"
+  ],
+  "capacities_W": {
+    "solar_max_W": 546010.301548849,
+    "grid_max_W": 887250.8468833333,
+    "demand_max_W": 30045.698059048744
+  },
+  "physics_equations": {
+    "net_energy_balance_W": "Campus_Demand_W - Solar_Generation_W",
+    "solar_self_sufficiency_pct": "(Solar_Generation_W / Campus_Demand_W) * 100",
+    "net_zero_condition": "Solar_Generation_W >= Campus_Demand_W (Surplus or 0 grid draw)"
+  },
+  "test_metrics_24h": {
+    "Solar": {
+      "MAE_W": 41741.9,
+      "RMSE_W": 66490.2,
+      "nMAE_pct": 7.64,
+      "R2": 0.8045
+    },
+    "Grid": {
+      "MAE_W": 74348.3,
+      "RMSE_W": 108051.6,
+      "nMAE_pct": 8.38,
+      "R2": 0.7410
+    },
+    "Demand": {
+      "MAE_W": 4068.7,
+      "RMSE_W": 4820.2,
+      "nMAE_pct": 13.54
+    }
+  }
+}

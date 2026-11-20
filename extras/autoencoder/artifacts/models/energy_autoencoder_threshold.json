@@ -1,0 +1,28 @@
+{
+  "threshold": 14.794133186340332,
+  "feature_columns": [
+    "Voltage_mean",
+    "Voltage_max",
+    "R Current_mean",
+    "R Current_max",
+    "Y Current_mean",
+    "Y Current_max",
+    "B Current_mean",
+    "B Current_max",
+    "R Power_mean",
+    "R Power_max",
+    "Y Power_mean",
+    "Y Power_max",
+    "B Power_mean",
+    "B Power_max",
+    "Frequency_mean",
+    "Frequency_max",
+    "Power Factor_mean",
+    "Power Factor_max",
+    "Total Energy_mean",
+    "Total Energy_max"
+  ],
+  "mean_score": 0.9832497835159302,
+  "p99": 9.357967376708984,
+  "num_anomalies": 170
+}

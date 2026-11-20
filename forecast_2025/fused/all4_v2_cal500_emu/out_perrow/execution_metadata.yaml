@@ -1,0 +1,73 @@
+---
+timestamp: 65326854538
+command: qnn-net-run --backend /Tools/qairt_docker/qairt/qairt/2.47.0.260601/lib/x86_64-linux-clang/libQnnHtp.so --model lib_perrow/x86_64-linux-clang/libperrow.so --input_list /local/forecast_2025/fused/all4_v2_cal500_emu/raw_test.txt --output_dir out_perrow
+execution_mode: synchronous
+inferences_completed: 50
+graphs:
+  - graph_name: perrow
+    input_tensors:
+    - tensor_name: past_0
+      id: 1
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,96,8]
+    - tensor_name: future_0
+      id: 2
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,4,4]
+    - tensor_name: node_0
+      id: 3
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,6]
+    - tensor_name: past_1
+      id: 4
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,96,8]
+    - tensor_name: future_1
+      id: 5
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,96,4]
+    - tensor_name: node_1
+      id: 6
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,6]
+    - tensor_name: past_2
+      id: 7
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,96,15]
+    - tensor_name: future_2
+      id: 8
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,4,14]
+    - tensor_name: node_2
+      id: 9
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,1]
+    - tensor_name: past_3
+      id: 10
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,96,15]
+    - tensor_name: future_3
+      id: 11
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,96,14]
+    - tensor_name: node_3
+      id: 12
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,1]
+    output_tensors:
+    - tensor_name: forecast_0
+      id: 4293
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,4]
+    - tensor_name: forecast_1
+      id: 4311
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,96]
+    - tensor_name: forecast_2
+      id: 4321
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,4]
+    - tensor_name: forecast_3
+      id: 4331
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,96]

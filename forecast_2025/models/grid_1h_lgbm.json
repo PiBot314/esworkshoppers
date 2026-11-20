@@ -1,0 +1,133 @@
+{
+ "horizon": "1h",
+ "H": 4,
+ "rounds": 90,
+ "num_leaves": 63,
+ "test_R2_blocked": 0.9303,
+ "reload_max_abs_diff": 0.0,
+ "predict_ms_1row_1thread_x86": 0.581,
+ "file_kB": 525.3,
+ "units": "MW (SB00 gd_power)",
+ "features": [
+  {
+   "name": "y_t",
+   "live_source": "SB00 gd_power history (campus API), MW"
+  },
+  {
+   "name": "y_t1",
+   "live_source": "SB00 gd_power history (campus API), MW"
+  },
+  {
+   "name": "y_t2",
+   "live_source": "SB00 gd_power history (campus API), MW"
+  },
+  {
+   "name": "y_t4",
+   "live_source": "SB00 gd_power history (campus API), MW"
+  },
+  {
+   "name": "y_mean1h",
+   "live_source": "SB00 gd_power history (campus API), MW"
+  },
+  {
+   "name": "y_mean24h",
+   "live_source": "SB00 gd_power history (campus API), MW"
+  },
+  {
+   "name": "y_yday",
+   "live_source": "SB00 gd_power history (campus API), MW"
+  },
+  {
+   "name": "y_week",
+   "live_source": "SB00 gd_power history (campus API), MW"
+  },
+  {
+   "name": "hod_sin",
+   "live_source": "clock"
+  },
+  {
+   "name": "hod_cos",
+   "live_source": "clock"
+  },
+  {
+   "name": "dow_sin",
+   "live_source": "clock"
+  },
+  {
+   "name": "dow_cos",
+   "live_source": "clock"
+  },
+  {
+   "name": "doy_sin",
+   "live_source": "clock"
+  },
+  {
+   "name": "doy_cos",
+   "live_source": "clock"
+  },
+  {
+   "name": "is_weekend",
+   "live_source": "clock"
+  },
+  {
+   "name": "in_session",
+   "live_source": "academic calendar (campus_calendar.py, from the almanac)"
+  },
+  {
+   "name": "holiday",
+   "live_source": "academic calendar"
+  },
+  {
+   "name": "exam",
+   "live_source": "academic calendar"
+  },
+  {
+   "name": "event",
+   "live_source": "academic calendar"
+  },
+  {
+   "name": "cs_T",
+   "live_source": "clear-sky model (clearsky.py, computed)"
+  },
+  {
+   "name": "zen_T",
+   "live_source": "sun position (computed)"
+  },
+  {
+   "name": "fc15_shortwave_radiation",
+   "live_source": "Open-Meteo 15-min forecast (minutely_15), latest run"
+  },
+  {
+   "name": "fc15_direct_radiation",
+   "live_source": "Open-Meteo 15-min forecast (minutely_15), latest run"
+  },
+  {
+   "name": "fc15_diffuse_radiation",
+   "live_source": "Open-Meteo 15-min forecast (minutely_15), latest run"
+  },
+  {
+   "name": "fc15_temperature_2m",
+   "live_source": "Open-Meteo 15-min forecast (minutely_15), latest run"
+  },
+  {
+   "name": "fc_cloud_cover",
+   "live_source": "Open-Meteo hourly forecast, latest run"
+  },
+  {
+   "name": "fc_cloud_cover_low",
+   "live_source": "Open-Meteo hourly forecast, latest run"
+  },
+  {
+   "name": "fc_relative_humidity_2m",
+   "live_source": "Open-Meteo hourly forecast, latest run"
+  },
+  {
+   "name": "fc_precipitation",
+   "live_source": "Open-Meteo hourly forecast, latest run"
+  },
+  {
+   "name": "fc_wind_speed_10m",
+   "live_source": "Open-Meteo hourly forecast, latest run"
+  }
+ ]
+}

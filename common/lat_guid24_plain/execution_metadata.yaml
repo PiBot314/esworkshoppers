@@ -1,0 +1,17 @@
+---
+timestamp: 7697023312
+command: bin/qnn-net-run --backend lib/libQnnHtp.so --dlc_path /data/local/tmp/my_models/guid24_plain_w8a8.dlc --input_list all_sensors_24h/one.txt --num_inferences 300 --keep_num_outputs 1 --perf_profile burst --profiling_level basic --output_dir /data/local/tmp/my_models/lat_guid24_plain
+execution_mode: synchronous
+inferences_completed: 300
+graphs:
+  - graph_name: guid24_plain_fp
+    input_tensors:
+    - tensor_name: input_sequence_all_sensors
+      id: 6
+      datatype: QNN_DATATYPE_UFIXED_POINT_8
+      dimensions: [1,96,58]
+    output_tensors:
+    - tensor_name: forecast_all_pillars
+      id: 2930
+      datatype: QNN_DATATYPE_UFIXED_POINT_8
+      dimensions: [1,288]

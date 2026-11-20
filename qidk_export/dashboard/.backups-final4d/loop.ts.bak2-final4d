@@ -1,0 +1,360 @@
+// The live loop (plan_reduced_shortterm.md §4.3). Every 15 minutes:
+//   fetch new readings from the campus API -> build windows (features.ts) -> run the EXISTING models on the
+//   board's NPU through nz_dashboard (POST /api/run) -> apply the EXISTING anomaly rule (detect.ts) -> event log.
+// Time comes from the API's replay clock, never from this machine's clock (the QIDK's clock is wrong).
+// Enabled with LIVE=1. Everything here is in memory, plus an append-only events.jsonl.
+import { appendFileSync, existsSync, mkdirSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { actuals, buildFrames, ESTIMATED_INPUTS, featureMatrix, istHour, NODES, STEP, windowAt, type Frames, type ModelMeta, type Reading } from './features.ts';
+import { check, inject, type FaultKind } from './detect.ts';
+
+const API = (process.env.LIVE_API ?? 'http://10.2.203.214:9999').replace(/\/$/, '');
+const NPU = (process.env.NPU_URL ?? 'http://127.0.0.1:8080').replace(/\/$/, '');
+const DIR = process.env.LIVE_DIR ?? 'live';
+const GRACE = 120; // s after a bin closes before it is processed (readings arrive every ~10 min)
+const KEEP = 50 * 3600; // s of raw readings kept (24 h of history + the 24 h window before it)
+const HIST = 48 * 3600; // s of actual-vs-forecast history kept (and loaded from history.jsonl)
+const IST = 19800;
+const MODELS = ['all_sensors_1h', 'single_node'] as const;
+
+export type Signal = 'grid' | 'pl00';
+export const SIGNALS: Record<Signal, { model: (typeof MODELS)[number]; domain: number; label: string; natural_flag_rate: string }> = {
+	grid: { model: 'all_sensors_1h', domain: 1, label: 'campus grid draw (substation + KH95)', natural_flag_rate: 'about 2-3 % of readings (verified on 15 days of API data)' },
+	pl00: { model: 'single_node', domain: 0, label: 'Palash solar plant SL-PL00-00', natural_flag_rate: 'about 0.3-0.9 % of readings (verified on 15 days of API data)' }
+};
+
+export interface LiveEvent {
+	id: number; t: number; time: string; signal: Signal; label: string;
+	actual_kW: number; forecast_kW: number; residual_kW: number; median_kW: number; limit_kW: number; excess_kW: number;
+	flagged: boolean; injected: FaultKind | null; hour: number;
+	model: string; variant: string; npu_ms: number | null;
+	recent_kW: number[]; peers: Record<string, number | null>; estimated_inputs?: string[];
+}
+interface Forecast { end: number; out_W: number[][]; variant: string; npu_ms: number | null; wall_ms: number }
+/** One checked 15-min reading: actual vs the forecast made one bin earlier, and the normal range around it. */
+export interface HistPoint {
+	signal: Signal; t: number; actual_kW: number; forecast_kW: number; lo_kW: number; hi_kW: number;
+	flagged: boolean; injected: FaultKind | null; variant: string; npu_ms: number | null; backfill?: boolean;
+}
+
+const S = {
+	started: false, running: false,
+	raw: Object.fromEntries(NODES.map((n) => [n, [] as Reading[]])) as Record<string, Reading[]>,
+	seen: Object.fromEntries(NODES.map((n) => [n, new Set<number>()])) as Record<string, Set<number>>,
+	offset: 0, // API clock - monotonic clock, seconds
+	synced: false, // offset known (until the first /synthetic/status answer, "now" is unknown)
+	metas: {} as Record<string, ModelMeta>,
+	forecasts: new Map<string, Forecast>(),
+	events: [] as LiveEvent[], nextId: 1,
+	history: { grid: [] as HistPoint[], pl00: [] as HistPoint[] } as Record<Signal, HistPoint[]>,
+	backfill: 'pending' as 'pending' | 'running' | 'done' | 'failed',
+	pending: {} as Partial<Record<Signal, { kind: FaultKind; left: number }>>,
+	lastBin: null as number | null, lastCycleAt: null as number | null, nextCycleAt: null as number | null,
+	api: { ok: false, error: null as string | null },
+	npu: { ok: false, variant: null as string | null, last_ms: null as number | null, error: null as string | null },
+	latest: {} as Record<string, unknown>
+};
+
+const g = globalThis as unknown as { __nzLive?: typeof S };
+const state = (g.__nzLive ??= S); // one loop per process, even across Vite hot reloads
+
+export const enabled = () => process.env.LIVE === '1';
+// monotonic, so a jump in the board's wall clock (e.g. 2023 -> network time) can't shift "now"
+const mono = () => performance.now() / 1000;
+const apiNow = () => mono() + state.offset;
+const istTime = (t: number) => new Date((t + IST) * 1000).toISOString().slice(0, 16).replace('T', ' ') + ' IST';
+const isoIst = (t: number) => new Date((t + IST) * 1000).toISOString().slice(0, 19) + '+05:30';
+const kW = (w: number) => Math.round(w / 100) / 10;
+const kW0 = (w: number) => kW(Math.max(0, w)); // for displaying forecasts (the anomaly check uses the raw output)
+const log = (...a: unknown[]) => console.log(new Date().toISOString(), '[live]', ...a);
+
+async function getJson(url: string, ms = 20000) {
+	const r = await fetch(url, { signal: AbortSignal.timeout(ms) });
+	if (!r.ok) throw new Error(`${url} -> HTTP ${r.status}`);
+	return r.json();
+}
+
+async function syncClock() {
+	const s = (await getJson(`${API}/synthetic/status`)) as { replay_now: string };
+	state.offset = Date.parse(s.replay_now) / 1000 - mono();
+	state.synced = true;
+}
+
+async function loadMetas() {
+	for (const m of MODELS) if (!state.metas[m]) state.metas[m] = (await getJson(`${NPU}/data/${m}/meta.json`)) as ModelMeta;
+}
+
+async function fetchNew(now: number) {
+	for (const node of NODES) {
+		const list = state.raw[node];
+		const from = Math.max(now - KEEP, (list.at(-1)?.t ?? 0) - 1800);
+		const q = new URLSearchParams({ from: isoIst(from), to: isoIst(now), node_id: node });
+		const body = (await getJson(`${API}/verticals/all/temporal?${q}`)) as Record<string, { data: Record<string, unknown>[] }>;
+		const rows = Object.values(body)[0]?.data ?? [];
+		for (const row of rows) {
+			const t = Date.parse(String(row.created_at)) / 1000;
+			if (!Number.isFinite(t) || state.seen[node].has(t)) continue;
+			state.seen[node].add(t);
+			list.push({ t, row });
+		}
+		list.sort((a, b) => a.t - b.t);
+		while (list.length && list[0].t < now - KEEP) state.seen[node].delete(list.shift()!.t);
+	}
+}
+
+async function runNpu(model: string, win: Float32Array): Promise<Omit<Forecast, 'end' | 'out_W'> & { out: number[] }> {
+	let lastErr = '';
+	for (const variant of ['aimet_w8a16', 'fp32']) {
+		try {
+			const t0 = performance.now();
+			const r = await fetch(`${NPU}/api/run?model=${model}&variant=${variant}`, {
+				method: 'POST', headers: { 'content-type': 'application/octet-stream' },
+				body: win.buffer as ArrayBuffer /* windowAt returns a copy that owns its buffer */, signal: AbortSignal.timeout(180000)
+			});
+			const j = (await r.json()) as { ok: boolean; out?: number[]; execute_us?: number; error?: string };
+			if (!j.ok || !j.out) throw new Error(j.error ?? `HTTP ${r.status}`);
+			const npu_ms = j.execute_us != null && j.execute_us >= 0 ? j.execute_us / 1000 : null;
+			state.npu = { ok: true, variant, last_ms: npu_ms, error: variant === 'fp32' ? `NPU failed, used CPU: ${lastErr}` : null };
+			return { out: j.out, variant, npu_ms, wall_ms: performance.now() - t0 };
+		} catch (e) {
+			lastErr = e instanceof Error ? e.message : String(e);
+		}
+	}
+	state.npu = { ok: false, variant: null, last_ms: null, error: lastErr };
+	throw new Error(`nz_dashboard not reachable at ${NPU}: ${lastErr}`);
+}
+
+async function forecastAt(model: string, X: Float64Array, F: number, gridT0: number, end: number): Promise<Forecast> {
+	const key = `${model}@${end}`;
+	const have = state.forecasts.get(key);
+	if (have) return have;
+	const meta = state.metas[model];
+	const r = await runNpu(model, windowAt(X, F, (end - gridT0) / STEP, meta.lookback));
+	const D = meta.domains.length;
+	const out_W = Array.from({ length: r.out.length / D }, (_, s) => meta.model_capacities_W.map((c, d) => r.out[s * D + d] * c));
+	const f = { end, out_W, variant: r.variant, npu_ms: r.npu_ms, wall_ms: r.wall_ms };
+	state.forecasts.set(key, f);
+	return f;
+}
+
+function record(ev: Omit<LiveEvent, 'id'>) {
+	const e = { id: state.nextId++, ...ev };
+	state.events.push(e);
+	const cutoff = e.t - 7 * 86400;
+	while (state.events.length && state.events[0].t < cutoff) state.events.shift();
+	try { appendFileSync(join(DIR, 'events.jsonl'), JSON.stringify(e) + '\n'); } catch (err) { log('cannot write events.jsonl', err); }
+	log(`event #${e.id} ${e.signal} ${e.time} actual ${e.actual_kW} kW vs forecast ${e.forecast_kW} kW (limit ±${e.limit_kW})${e.flagged ? ' FLAGGED' : ''}${e.injected ? ` injected ${e.injected}` : ''}`);
+}
+
+/** Add (or replace) one history point, keep HIST seconds, and append it to history.jsonl. */
+function addPoint(p: HistPoint, persist = true) {
+	const h = state.history[p.signal];
+	const i = h.findIndex((q) => q.t === p.t);
+	if (i >= 0) h[i] = p;
+	else { h.push(p); if (h.length > 1 && h[h.length - 2].t > p.t) h.sort((a, b) => a.t - b.t); }
+	const cutoff = (h.at(-1)?.t ?? p.t) - HIST;
+	while (h.length && h[0].t < cutoff) h.shift();
+	if (persist) try { appendFileSync(join(DIR, 'history.jsonl'), JSON.stringify(p) + '\n'); } catch (err) { log('cannot write history.jsonl', err); }
+}
+
+function point(signal: Signal, t: number, actual: number, forecast: number, c: ReturnType<typeof check>, injected: FaultKind | null, f: { variant: string; npu_ms: number | null }, backfill = false): HistPoint {
+	return {
+		signal, t, actual_kW: kW(actual), forecast_kW: kW(forecast), lo_kW: kW(forecast + c.median - c.limit), hi_kW: kW(forecast + c.median + c.limit),
+		flagged: c.flagged, injected, variant: f.variant, npu_ms: f.npu_ms, ...(backfill ? { backfill: true } : {})
+	};
+}
+
+/**
+ * Once after start-up: fill the last 24 h of history that history.jsonl doesn't already have, by running the same
+ * models and the same check on past windows. Runs between cycles; nz_dashboard serialises NPU jobs anyway.
+ * Backfilled points are natural readings (no injection) and are never turned into events.
+ */
+async function backfill() {
+	if (state.backfill !== 'pending' || !state.synced || state.lastBin == null) return;
+	state.backfill = 'running';
+	try {
+		const T = state.lastBin, H = 96, n = H + 96 + 2, gridT0 = T - (n - 1) * STEP;
+		const frames = buildFrames(state.raw, gridT0, n);
+		const act = actuals(frames, n);
+		let done = 0;
+		for (const model of MODELS) {
+			const meta = state.metas[model];
+			const X = featureMatrix(frames, meta, gridT0, n);
+			const F = meta.features.length;
+			const sigs = (Object.keys(SIGNALS) as Signal[]).filter((s) => SIGNALS[s].model === model);
+			for (let b = n - 1 - H; b < n - 1; b++) {
+				const t = gridT0 + b * STEP;
+				const todo = sigs.filter((s) => !state.history[s].some((p) => p.t === t) && !Number.isNaN(act[s][b]));
+				if (!todo.length) continue;
+				const r = await runNpu(model, windowAt(X, F, b - 1, meta.lookback));
+				for (const s of todo) {
+					const d = SIGNALS[s].domain, forecast = r.out[d] * meta.model_capacities_W[d];
+					addPoint(point(s, t, act[s][b], forecast, check(meta, d, istHour(t), act[s][b], forecast), null, r, true));
+				}
+				done++;
+			}
+		}
+		state.backfill = 'done';
+		log(`backfill: ${done} past windows forecast`);
+	} catch (e) {
+		state.backfill = 'failed';
+		log('backfill failed:', e instanceof Error ? e.message : String(e));
+	}
+}
+
+function peers(frames: Frames, b: number, signal: Signal): Record<string, number | null> {
+	const v = (node: string, col: string, i = b) => { const x = frames[node]?.[col]?.[i]; return x == null || Number.isNaN(x) ? null : kW(x); };
+	if (signal === 'pl00') return {
+		'SL-NI01-00 now kW': v('SL-NI01-00', 'active_power_W'), 'SL-NI01-00 15 min earlier kW': v('SL-NI01-00', 'active_power_W', b - 1),
+		'SL-VN95-00 now kW': v('SL-VN95-00', 'active_power_W'), 'SL-VN95-00 15 min earlier kW': v('SL-VN95-00', 'active_power_W', b - 1)
+	};
+	return {
+		'substation T1 kW': v('EM-CR-SB00-00', 't1_power_W'), 'substation T2 kW': v('EM-CR-SB00-00', 't2_power_W'),
+		'KH95 kW': v('EM-CR-KH95-00', 'power_total_W'), 'grid 15 min earlier kW': v('EM-CR-SB00-00', 'gd_power_W', b - 1)
+	};
+}
+
+async function cycle() {
+	if (state.running) return;
+	state.running = true;
+	try {
+		await syncClock();
+		await loadMetas();
+		const now = apiNow();
+		await fetchNew(now);
+		state.api = { ok: true, error: null };
+		const T = Math.floor(now / STEP) * STEP - STEP; // start of the last complete bin
+		const n = 110, gridT0 = T - (n - 1) * STEP;
+		const frames = buildFrames(state.raw, gridT0, n);
+		const act = actuals(frames, n);
+		const bT = n - 1;
+		for (const model of MODELS) {
+			const meta = state.metas[model];
+			const X = featureMatrix(frames, meta, gridT0, n);
+			const F = meta.features.length;
+			// forecast made one bin ago (for checking bin T) and the new one (for the next bin)
+			const prev = await forecastAt(model, X, F, gridT0, T - STEP);
+			const next = await forecastAt(model, X, F, gridT0, T);
+			for (const sig of Object.keys(SIGNALS) as Signal[]) {
+				const s = SIGNALS[sig];
+				if (s.model !== model || state.lastBin === T) continue;
+				let actual = act[sig][bT];
+				if (sig === 'grid' && (Number.isNaN(actual) || Number.isNaN(act.grid[bT - 1]))) { log(`bin ${istTime(T)}: no substation data, ${sig} not checked`); continue; }
+				const p = state.pending[sig];
+				let injected: FaultKind | null = null;
+				if (p && p.left > 0) {
+					actual = inject(p.kind, actual, meta.model_capacities_W[s.domain]);
+					injected = p.kind;
+					if (--p.left === 0) delete state.pending[sig];
+				}
+				const forecast = prev.out_W[0][s.domain];
+				const hour = istHour(T);
+				const c = check(meta, s.domain, hour, actual, forecast);
+				addPoint(point(sig, T, actual, forecast, c, injected, prev));
+				state.latest[sig] = {
+					reading_time: istTime(T), actual_kW: kW(actual), forecast_for_this_reading_kW: kW0(forecast), limit_kW: kW(c.limit), flagged: c.flagged,
+					next_hour_forecast_kW: next.out_W.map((o, i) => ({ time: istTime(T + (i + 1) * STEP), kW: kW0(o[s.domain]) }))
+				};
+				if (c.flagged || injected) {
+					const recent: number[] = [];
+					for (let i = bT - 4; i < bT; i++) recent.push(kW(act[sig][i]));
+					record({
+						t: T, time: istTime(T), signal: sig, label: s.label,
+						actual_kW: kW(actual), forecast_kW: kW(forecast), residual_kW: kW(c.residual), median_kW: kW(c.median), limit_kW: kW(c.limit),
+						excess_kW: kW(c.excess), flagged: c.flagged, injected, hour, model, variant: prev.variant, npu_ms: prev.npu_ms,
+						recent_kW: recent, peers: peers(frames, bT, sig), ...(sig === 'grid' ? { estimated_inputs: ESTIMATED_INPUTS } : {})
+					});
+				}
+			}
+			if (model === 'all_sensors_1h')
+				state.latest.campus_solar = {
+					note: 'Forecast only. 3 of the 6 solar meters it covers are not served by the API, so it cannot be checked live.',
+					next_hour_forecast_kW: next.out_W.map((o, i) => ({ time: istTime(T + (i + 1) * STEP), kW: kW0(o[0]) }))
+				};
+		}
+		state.lastBin = T;
+		for (const k of state.forecasts.keys()) if (Number(k.split('@')[1]) < T - 4 * STEP) state.forecasts.delete(k);
+		state.lastCycleAt = now;
+	} catch (e) {
+		const msg = e instanceof Error ? e.message : String(e);
+		if (!state.npu.error || !msg.includes('nz_dashboard')) state.api = { ok: false, error: msg };
+		log('cycle failed:', msg);
+	} finally {
+		state.running = false;
+	}
+}
+
+/** For the replay test (scripts/live_replay.ts): one cycle, driven by a fake API clock. */
+export const runCycleForTest = cycle;
+
+function schedule() {
+	const now = apiNow();
+	const next = (Math.floor(now / STEP) + 1) * STEP + GRACE;
+	const delay = state.api.ok ? next - now : Math.min(60, next - now); // retry within a minute after a failure
+	state.nextCycleAt = now + delay;
+	// unref: the timer must not keep the process alive, or a graceful shutdown (SIGTERM) leaves a process with no server
+	setTimeout(async () => { await cycle(); schedule(); void backfill(); /* no-op unless still pending */ }, Math.max(1, delay) * 1000).unref?.();
+}
+
+export function startLive() {
+	if (!enabled() || state.started) return;
+	state.started = true;
+	mkdirSync(DIR, { recursive: true });
+	const f = join(DIR, 'events.jsonl');
+	if (existsSync(f)) {
+		for (const line of readFileSync(f, 'utf8').split('\n')) {
+			try { const e = JSON.parse(line) as LiveEvent; state.events.push(e); state.nextId = Math.max(state.nextId, e.id + 1); } catch { /* skip */ }
+		}
+		state.events = state.events.slice(-2000);
+	}
+	const hf = join(DIR, 'history.jsonl');
+	if (existsSync(hf)) {
+		for (const line of readFileSync(hf, 'utf8').split('\n')) {
+			try { const p = JSON.parse(line) as HistPoint; if (state.history[p.signal]) addPoint(p, false); } catch { /* skip */ }
+		}
+	}
+	log(`starting: API ${API}, NPU ${NPU}, ${state.events.length} earlier events, ${state.history.grid.length + state.history.pl00.length} history points`);
+	cycle().then(() => { schedule(); void backfill(); });
+}
+
+export function requestInject(signal: Signal, kind: FaultKind, steps: number) {
+	state.pending[signal] = { kind, left: Math.max(1, Math.min(4, Math.round(steps))) };
+	return { ok: true, signal, kind, steps: state.pending[signal]!.left, applies_from: state.lastBin != null ? istTime(state.lastBin + STEP) : 'next reading' };
+}
+
+export function liveStatus() {
+	const known = state.synced;
+	const now = apiNow();
+	const age = Object.fromEntries(NODES.map((n) => { const t = state.raw[n].at(-1)?.t; return [n, t && known ? Math.round((now - t) / 60) : null]; }));
+	const day = state.events.filter((e) => e.t > (known ? now : (state.events.at(-1)?.t ?? 0)) - 86400);
+	return {
+		enabled: enabled(), source: `${API} (synthetic 2026 data replayed in real time)`,
+		api: state.api, npu: state.npu, now: known ? istTime(now) : null,
+		last_reading_checked: state.lastBin != null ? istTime(state.lastBin) : null,
+		next_check: state.nextCycleAt && known ? istTime(state.nextCycleAt) : null,
+		minutes_since_last_reading: age,
+		latest: state.latest,
+		last_24h: { natural_flags: day.filter((e) => e.flagged && !e.injected).length, injected_faults: day.filter((e) => e.injected).length },
+		pending_injection: state.pending
+	};
+}
+
+export const liveEvents = (sinceId = 0) => state.events.filter((e) => e.id > sinceId);
+export const eventById = (id: number) => state.events.find((e) => e.id === id);
+
+/** Events in the last `hours` of API time, newest first. */
+export function recentEvents(hours: number, signal?: Signal) {
+	// before the first clock sync, measure back from the newest event instead
+	const from = (state.synced ? apiNow() : (state.events.at(-1)?.t ?? 0)) - hours * 3600;
+	return state.events.filter((e) => e.t >= from && (!signal || e.signal === signal)).reverse();
+}
+
+/** Actual vs forecast for the last `hours` (of the newest point), per signal, oldest first. */
+export function liveHistory(hours = 24) {
+	const out = {} as Record<Signal, HistPoint[]>;
+	for (const sig of Object.keys(SIGNALS) as Signal[]) {
+		const h = state.history[sig], from = (h.at(-1)?.t ?? 0) - hours * 3600;
+		out[sig] = h.filter((p) => p.t > from);
+	}
+	return { backfill: state.backfill, signals: Object.fromEntries((Object.keys(SIGNALS) as Signal[]).map((s) => [s, { ...SIGNALS[s], points: out[s] }])) };
+}

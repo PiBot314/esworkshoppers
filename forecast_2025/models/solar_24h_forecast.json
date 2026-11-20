@@ -1,0 +1,42 @@
+{
+ "inputs": {
+  "past": [
+   "y",
+   "missing",
+   "clearsky",
+   "ghi_obs",
+   "hod_sin",
+   "hod_cos",
+   "doy_sin",
+   "doy_cos"
+  ],
+  "future": [
+   "clearsky",
+   "ghi_fc",
+   "cloud_fc",
+   "temp_fc"
+  ],
+  "node": 6
+ },
+ "lookback": 96,
+ "horizon": 96,
+ "params": 122848,
+ "family": "solar",
+ "variant": "forecast",
+ "test": {
+  "last_step": {
+   "R2": 0.8126998543739319,
+   "nMAE": 0.21016888320446014,
+   "MSE": 0.015901584178209305,
+   "n": 11836
+  },
+  "all_steps": {
+   "R2": 0.8040685057640076,
+   "nMAE": 0.21614181995391846,
+   "MSE": 0.01668107882142067,
+   "n": 1142337
+  },
+  "train_s": 30
+ },
+ "units": "per kWp (W / est. capacity)"
+}

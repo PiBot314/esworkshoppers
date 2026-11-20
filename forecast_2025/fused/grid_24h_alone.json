@@ -1,0 +1,22 @@
+{
+ "models": [
+  "models/grid_24h_forecast.onnx"
+ ],
+ "hidden": [
+  64
+ ],
+ "input_width": [
+  15
+ ],
+ "fused_hidden": 64,
+ "max_abs_diff_vs_original": [
+  0.0
+ ],
+ "lstm_params_separate": 54016,
+ "lstm_params_fused_incl_zero_blocks": 54016,
+ "inputs": [
+  "past_0",
+  "future_0",
+  "node_0"
+ ]
+}

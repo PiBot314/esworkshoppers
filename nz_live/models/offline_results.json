@@ -1,0 +1,422 @@
+{
+ "split": "2025 test split, 4740 windows from 2025-11-11 04:00:00+00:00 UTC",
+ "horizons": [
+  "15min",
+  "1h",
+  "24h"
+ ],
+ "rows": [
+  {
+   "id": "persistence",
+   "kind": "baseline",
+   "15min": {
+    "Solar": {
+     "R2": 0.9781,
+     "skill_vs_persistence": 0.0
+    },
+    "Grid": {
+     "R2": 0.9371,
+     "skill_vs_persistence": 0.0
+    }
+   },
+   "1h": {
+    "Solar": {
+     "R2": 0.9145,
+     "skill_vs_persistence": 0.0
+    },
+    "Grid": {
+     "R2": 0.8635,
+     "skill_vs_persistence": 0.0
+    }
+   },
+   "24h": {
+    "Solar": {
+     "R2": -0.9917,
+     "skill_vs_persistence": 0.0
+    },
+    "Grid": {
+     "R2": -0.4868,
+     "skill_vs_persistence": 0.0
+    }
+   }
+  },
+  {
+   "id": "yesterday",
+   "kind": "baseline",
+   "15min": {
+    "Solar": {
+     "R2": 0.9165,
+     "skill_vs_persistence": -2.82
+    },
+    "Grid": {
+     "R2": -0.0448,
+     "skill_vs_persistence": -15.598
+    }
+   },
+   "1h": {
+    "Solar": {
+     "R2": 0.9164,
+     "skill_vs_persistence": 0.022
+    },
+    "Grid": {
+     "R2": -0.0449,
+     "skill_vs_persistence": -6.655
+    }
+   },
+   "24h": {
+    "Solar": {
+     "R2": 0.9151,
+     "skill_vs_persistence": 0.957
+    },
+    "Grid": {
+     "R2": -0.0535,
+     "skill_vs_persistence": 0.291
+    }
+   }
+  },
+  {
+   "id": "all_sensors_1h",
+   "kind": "model",
+   "horizon_steps": 4,
+   "15min": {
+    "Solar": {
+     "R2": 0.9656,
+     "skill_vs_persistence": -0.571
+    },
+    "Grid": {
+     "R2": 0.8281,
+     "skill_vs_persistence": -1.731
+    }
+   },
+   "1h": {
+    "Solar": {
+     "R2": 0.9429,
+     "skill_vs_persistence": 0.332
+    },
+    "Grid": {
+     "R2": 0.7671,
+     "skill_vs_persistence": -0.706
+    }
+   }
+  },
+  {
+   "id": "baseline_h4",
+   "kind": "model",
+   "horizon_steps": 4,
+   "15min": {
+    "Solar": {
+     "R2": 0.9291,
+     "skill_vs_persistence": -2.24
+    },
+    "Grid": {
+     "R2": 0.6691,
+     "skill_vs_persistence": -4.258
+    }
+   },
+   "1h": {
+    "Solar": {
+     "R2": 0.909,
+     "skill_vs_persistence": -0.064
+    },
+    "Grid": {
+     "R2": 0.614,
+     "skill_vs_persistence": -1.828
+    }
+   }
+  },
+  {
+   "id": "guided_h4",
+   "kind": "model",
+   "horizon_steps": 4,
+   "15min": {
+    "Solar": {
+     "R2": 0.9644,
+     "skill_vs_persistence": -0.628
+    },
+    "Grid": {
+     "R2": 0.7824,
+     "skill_vs_persistence": -2.457
+    }
+   },
+   "1h": {
+    "Solar": {
+     "R2": 0.9533,
+     "skill_vs_persistence": 0.454
+    },
+    "Grid": {
+     "R2": 0.7285,
+     "skill_vs_persistence": -0.989
+    }
+   }
+  },
+  {
+   "id": "baseline_24h",
+   "kind": "model",
+   "horizon_steps": 96,
+   "15min": {
+    "Solar": {
+     "R2": 0.9168,
+     "skill_vs_persistence": -2.806
+    },
+    "Grid": {
+     "R2": 0.68,
+     "skill_vs_persistence": -4.084
+    }
+   },
+   "1h": {
+    "Solar": {
+     "R2": 0.9144,
+     "skill_vs_persistence": -0.0
+    },
+    "Grid": {
+     "R2": 0.6249,
+     "skill_vs_persistence": -1.748
+    }
+   },
+   "24h": {
+    "Solar": {
+     "R2": 0.7768,
+     "skill_vs_persistence": 0.888
+    },
+    "Grid": {
+     "R2": -0.0604,
+     "skill_vs_persistence": 0.287
+    }
+   }
+  },
+  {
+   "id": "guided_24h",
+   "kind": "model",
+   "horizon_steps": 96,
+   "15min": {
+    "Solar": {
+     "R2": 0.9052,
+     "skill_vs_persistence": -3.337
+    },
+    "Grid": {
+     "R2": 0.7429,
+     "skill_vs_persistence": -3.085
+    }
+   },
+   "1h": {
+    "Solar": {
+     "R2": 0.9002,
+     "skill_vs_persistence": -0.167
+    },
+    "Grid": {
+     "R2": 0.685,
+     "skill_vs_persistence": -1.308
+    }
+   },
+   "24h": {
+    "Solar": {
+     "R2": 0.7999,
+     "skill_vs_persistence": 0.9
+    },
+    "Grid": {
+     "R2": -0.0685,
+     "skill_vs_persistence": 0.281
+    }
+   }
+  },
+  {
+   "id": "cnn_lstm_24h",
+   "kind": "model",
+   "horizon_steps": 96,
+   "15min": {
+    "Solar": {
+     "R2": 0.8959,
+     "skill_vs_persistence": -3.759
+    },
+    "Grid": {
+     "R2": -0.8759,
+     "skill_vs_persistence": -28.802
+    }
+   },
+   "1h": {
+    "Solar": {
+     "R2": 0.8622,
+     "skill_vs_persistence": -0.611
+    },
+    "Grid": {
+     "R2": -1.0043,
+     "skill_vs_persistence": -13.684
+    }
+   },
+   "24h": {
+    "Solar": {
+     "R2": 0.7358,
+     "skill_vs_persistence": 0.867
+    },
+    "Grid": {
+     "R2": -1.7764,
+     "skill_vs_persistence": -0.867
+    }
+   }
+  },
+  {
+   "id": "lightgbm_24h",
+   "kind": "model",
+   "horizon_steps": 96,
+   "15min": {
+    "Solar": {
+     "R2": 0.8409,
+     "skill_vs_persistence": -6.276
+    },
+    "Grid": {
+     "R2": 0.9359,
+     "skill_vs_persistence": -0.019
+    }
+   },
+   "1h": {
+    "Solar": {
+     "R2": 0.8805,
+     "skill_vs_persistence": -0.397
+    },
+    "Grid": {
+     "R2": 0.8556,
+     "skill_vs_persistence": -0.058
+    }
+   },
+   "24h": {
+    "Solar": {
+     "R2": 0.7513,
+     "skill_vs_persistence": 0.875
+    },
+    "Grid": {
+     "R2": 0.1978,
+     "skill_vs_persistence": 0.46
+    }
+   }
+  }
+ ],
+ "importance": {
+  "source": "LightGBM 24 h, gain importance (normalised; the same weights gate the guided LSTMs' inputs). Not SHAP.",
+  "by_node": [
+   [
+    "time of day/week/year",
+    0.5813
+   ],
+   [
+    "EM-CR-SB00-00",
+    0.1737
+   ],
+   [
+    "SR-EM-KH04-00",
+    0.0573
+   ],
+   [
+    "SL-VN02-01",
+    0.038
+   ],
+   [
+    "SL-NI03-00",
+    0.0349
+   ],
+   [
+    "EM-CR-KH95-00",
+    0.0331
+   ],
+   [
+    "SR-EM-KH04-02",
+    0.0229
+   ],
+   [
+    "SL-PL00-00",
+    0.0191
+   ],
+   [
+    "SL-VN95-00",
+    0.0144
+   ],
+   [
+    "SL-NI03-01",
+    0.0123
+   ],
+   [
+    "SR-EM-KH04-01",
+    0.0071
+   ],
+   [
+    "SL-NI01-00",
+    0.0058
+   ]
+  ],
+  "by_quantity": [
+   [
+    "time features",
+    0.5813
+   ],
+   [
+    "power",
+    0.3044
+   ],
+   [
+    "voltage",
+    0.0854
+   ],
+   [
+    "current",
+    0.0233
+   ],
+   [
+    "frequency_Hz",
+    0.003
+   ],
+   [
+    "imputed flag",
+    0.0026
+   ]
+  ],
+  "top_features": [
+   [
+    "hod_sin",
+    0.2192
+   ],
+   [
+    "hod_cos",
+    0.1532
+   ],
+   [
+    "EM-CR-SB00-00__gd_power_W",
+    0.1495
+   ],
+   [
+    "doy_sin",
+    0.1133
+   ],
+   [
+    "doy_cos",
+    0.0583
+   ],
+   [
+    "SR-EM-KH04-00__power_W",
+    0.0572
+   ],
+   [
+    "dow_sin",
+    0.0291
+   ],
+   [
+    "SL-VN02-01__pv_voltage_avg_V",
+    0.023
+   ],
+   [
+    "SR-EM-KH04-02__power_W",
+    0.0148
+   ],
+   [
+    "EM-CR-KH95-00__power_total_W",
+    0.0142
+   ],
+   [
+    "SL-NI03-00__active_power_W",
+    0.0139
+   ],
+   [
+    "SL-NI03-00__ac_voltage_avg_V",
+    0.0104
+   ]
+  ]
+ }
+}

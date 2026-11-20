@@ -1,0 +1,734 @@
+{
+ "grid_1h": {
+  "days": 293,
+  "rows": 26477,
+  "R2": {
+   "LSTM forecast": {
+    "point": 0.7844,
+    "ci95": [
+     0.7492,
+     0.8145
+    ]
+   },
+   "LSTM noweather": {
+    "point": 0.7883,
+    "ci95": [
+     0.7527,
+     0.8193
+    ]
+   },
+   "baseline persistence": {
+    "point": 0.845,
+    "ci95": [
+     0.8313,
+     0.8565
+    ]
+   },
+   "baseline same_time_yesterday": {
+    "point": 0.4683,
+    "ci95": [
+     0.3793,
+     0.5436
+    ]
+   },
+   "baseline same_time_last_week": {
+    "point": 0.6379,
+    "ci95": [
+     0.5709,
+     0.693
+    ]
+   },
+   "LightGBM noweather": {
+    "point": 0.8875,
+    "ci95": [
+     0.8759,
+     0.897
+    ]
+   },
+   "LightGBM forecast": {
+    "point": 0.8883,
+    "ci95": [
+     0.8773,
+     0.8978
+    ]
+   }
+  },
+  "diff": {
+   "LSTM forecast  \u2212  LSTM noweather": {
+    "point": -0.0039,
+    "ci95": [
+     -0.0122,
+     0.0044
+    ],
+    "p_le_0": 0.812
+   },
+   "LightGBM forecast  \u2212  LightGBM noweather": {
+    "point": 0.0008,
+    "ci95": [
+     -0.0014,
+     0.0031
+    ],
+    "p_le_0": 0.242
+   },
+   "LSTM forecast  \u2212  LightGBM forecast": {
+    "point": -0.1039,
+    "ci95": [
+     -0.1352,
+     -0.0772
+    ],
+    "p_le_0": 1.0
+   }
+  },
+  "per_month": {
+   "3": {
+    "LSTM forecast": 0.448,
+    "LSTM noweather": 0.435,
+    "baseline persistence": 0.835,
+    "baseline same_time_yesterday": 0.325,
+    "baseline same_time_last_week": 0.526,
+    "LightGBM noweather": 0.735,
+    "LightGBM forecast": 0.751,
+    "n": 2055
+   },
+   "4": {
+    "LSTM forecast": 0.535,
+    "LSTM noweather": 0.521,
+    "baseline persistence": 0.838,
+    "baseline same_time_yesterday": 0.38,
+    "baseline same_time_last_week": 0.767,
+    "LightGBM noweather": 0.827,
+    "LightGBM forecast": 0.829,
+    "n": 2335
+   },
+   "5": {
+    "LSTM forecast": 0.704,
+    "LSTM noweather": 0.746,
+    "baseline persistence": 0.814,
+    "baseline same_time_yesterday": 0.467,
+    "baseline same_time_last_week": 0.691,
+    "LightGBM noweather": 0.883,
+    "LightGBM forecast": 0.884,
+    "n": 2914
+   },
+   "6": {
+    "LSTM forecast": 0.699,
+    "LSTM noweather": 0.723,
+    "baseline persistence": 0.799,
+    "baseline same_time_yesterday": 0.29,
+    "baseline same_time_last_week": 0.729,
+    "LightGBM noweather": 0.879,
+    "LightGBM forecast": 0.878,
+    "n": 2672
+   },
+   "7": {
+    "LSTM forecast": 0.856,
+    "LSTM noweather": 0.848,
+    "baseline persistence": 0.767,
+    "baseline same_time_yesterday": 0.352,
+    "baseline same_time_last_week": 0.548,
+    "LightGBM noweather": 0.869,
+    "LightGBM forecast": 0.875,
+    "n": 2456
+   },
+   "8": {
+    "LSTM forecast": 0.851,
+    "LSTM noweather": 0.826,
+    "baseline persistence": 0.798,
+    "baseline same_time_yesterday": 0.216,
+    "baseline same_time_last_week": 0.369,
+    "LightGBM noweather": 0.875,
+    "LightGBM forecast": 0.869,
+    "n": 2719
+   },
+   "9": {
+    "LSTM forecast": 0.839,
+    "LSTM noweather": 0.844,
+    "baseline persistence": 0.799,
+    "baseline same_time_yesterday": 0.214,
+    "baseline same_time_last_week": 0.549,
+    "LightGBM noweather": 0.901,
+    "LightGBM forecast": 0.897,
+    "n": 2820
+   },
+   "10": {
+    "LSTM forecast": 0.889,
+    "LSTM noweather": 0.888,
+    "baseline persistence": 0.813,
+    "baseline same_time_yesterday": 0.361,
+    "baseline same_time_last_week": 0.19,
+    "LightGBM noweather": 0.898,
+    "LightGBM forecast": 0.898,
+    "n": 2853
+   },
+   "11": {
+    "LSTM forecast": 0.885,
+    "LSTM noweather": 0.886,
+    "baseline persistence": 0.813,
+    "baseline same_time_yesterday": 0.521,
+    "baseline same_time_last_week": 0.565,
+    "LightGBM noweather": 0.882,
+    "LightGBM forecast": 0.883,
+    "n": 2766
+   },
+   "12": {
+    "LSTM forecast": 0.87,
+    "LSTM noweather": 0.887,
+    "baseline persistence": 0.84,
+    "baseline same_time_yesterday": 0.439,
+    "baseline same_time_last_week": 0.501,
+    "LightGBM noweather": 0.883,
+    "LightGBM forecast": 0.875,
+    "n": 2887
+   }
+  }
+ },
+ "grid_24h": {
+  "days": 286,
+  "rows": 24545,
+  "R2": {
+   "LSTM forecast": {
+    "point": 0.7045,
+    "ci95": [
+     0.6754,
+     0.7306
+    ]
+   },
+   "LSTM noweather": {
+    "point": 0.7008,
+    "ci95": [
+     0.6682,
+     0.7293
+    ]
+   },
+   "baseline persistence": {
+    "point": 0.4445,
+    "ci95": [
+     0.3469,
+     0.5291
+    ]
+   },
+   "baseline same_time_yesterday": {
+    "point": 0.4445,
+    "ci95": [
+     0.3469,
+     0.5291
+    ]
+   },
+   "baseline same_time_last_week": {
+    "point": 0.6265,
+    "ci95": [
+     0.5515,
+     0.6844
+    ]
+   },
+   "LightGBM noweather": {
+    "point": 0.6962,
+    "ci95": [
+     0.6547,
+     0.733
+    ]
+   },
+   "LightGBM forecast": {
+    "point": 0.7129,
+    "ci95": [
+     0.6713,
+     0.7475
+    ]
+   }
+  },
+  "diff": {
+   "LSTM forecast  \u2212  LSTM noweather": {
+    "point": 0.0037,
+    "ci95": [
+     -0.0123,
+     0.0209
+    ],
+    "p_le_0": 0.324
+   },
+   "LightGBM forecast  \u2212  LightGBM noweather": {
+    "point": 0.0167,
+    "ci95": [
+     0.0057,
+     0.0268
+    ],
+    "p_le_0": 0.003
+   },
+   "LSTM forecast  \u2212  LightGBM forecast": {
+    "point": -0.0084,
+    "ci95": [
+     -0.0411,
+     0.0265
+    ],
+    "p_le_0": 0.688
+   }
+  },
+  "per_month": {
+   "3": {
+    "LSTM forecast": 0.618,
+    "LSTM noweather": 0.634,
+    "baseline persistence": 0.278,
+    "baseline same_time_yesterday": 0.278,
+    "baseline same_time_last_week": 0.517,
+    "LightGBM noweather": 0.377,
+    "LightGBM forecast": 0.383,
+    "n": 1871
+   },
+   "4": {
+    "LSTM forecast": 0.489,
+    "LSTM noweather": 0.585,
+    "baseline persistence": 0.32,
+    "baseline same_time_yesterday": 0.32,
+    "baseline same_time_last_week": 0.775,
+    "LightGBM noweather": 0.202,
+    "LightGBM forecast": 0.288,
+    "n": 1963
+   },
+   "5": {
+    "LSTM forecast": 0.564,
+    "LSTM noweather": 0.675,
+    "baseline persistence": 0.426,
+    "baseline same_time_yesterday": 0.426,
+    "baseline same_time_last_week": 0.667,
+    "LightGBM noweather": 0.697,
+    "LightGBM forecast": 0.74,
+    "n": 2780
+   },
+   "6": {
+    "LSTM forecast": 0.706,
+    "LSTM noweather": 0.575,
+    "baseline persistence": 0.247,
+    "baseline same_time_yesterday": 0.247,
+    "baseline same_time_last_week": 0.707,
+    "LightGBM noweather": 0.81,
+    "LightGBM forecast": 0.806,
+    "n": 2486
+   },
+   "7": {
+    "LSTM forecast": 0.703,
+    "LSTM noweather": 0.739,
+    "baseline persistence": 0.308,
+    "baseline same_time_yesterday": 0.308,
+    "baseline same_time_last_week": 0.539,
+    "LightGBM noweather": 0.748,
+    "LightGBM forecast": 0.781,
+    "n": 2234
+   },
+   "8": {
+    "LSTM forecast": 0.695,
+    "LSTM noweather": 0.596,
+    "baseline persistence": 0.123,
+    "baseline same_time_yesterday": 0.123,
+    "baseline same_time_last_week": 0.318,
+    "LightGBM noweather": 0.716,
+    "LightGBM forecast": 0.7,
+    "n": 2422
+   },
+   "9": {
+    "LSTM forecast": 0.629,
+    "LSTM noweather": 0.662,
+    "baseline persistence": 0.272,
+    "baseline same_time_yesterday": 0.272,
+    "baseline same_time_last_week": 0.561,
+    "LightGBM noweather": 0.811,
+    "LightGBM forecast": 0.815,
+    "n": 2688
+   },
+   "10": {
+    "LSTM forecast": 0.713,
+    "LSTM noweather": 0.685,
+    "baseline persistence": 0.342,
+    "baseline same_time_yesterday": 0.342,
+    "baseline same_time_last_week": 0.185,
+    "LightGBM noweather": 0.689,
+    "LightGBM forecast": 0.673,
+    "n": 2688
+   },
+   "11": {
+    "LSTM forecast": 0.753,
+    "LSTM noweather": 0.709,
+    "baseline persistence": 0.513,
+    "baseline same_time_yesterday": 0.513,
+    "baseline same_time_last_week": 0.567,
+    "LightGBM noweather": 0.67,
+    "LightGBM forecast": 0.711,
+    "n": 2623
+   },
+   "12": {
+    "LSTM forecast": 0.623,
+    "LSTM noweather": 0.372,
+    "baseline persistence": 0.397,
+    "baseline same_time_yesterday": 0.397,
+    "baseline same_time_last_week": 0.458,
+    "LightGBM noweather": 0.556,
+    "LightGBM forecast": 0.562,
+    "n": 2790
+   }
+  }
+ },
+ "solar_1h": {
+  "days": 303,
+  "rows": 83508,
+  "R2": {
+   "LSTM forecast": {
+    "point": 0.7832,
+    "ci95": [
+     0.7614,
+     0.8022
+    ]
+   },
+   "LSTM noweather": {
+    "point": 0.7699,
+    "ci95": [
+     0.7463,
+     0.7901
+    ]
+   },
+   "baseline persistence": {
+    "point": 0.5508,
+    "ci95": [
+     0.5269,
+     0.5718
+    ]
+   },
+   "baseline same_time_yesterday": {
+    "point": 0.5978,
+    "ci95": [
+     0.5567,
+     0.6368
+    ]
+   },
+   "baseline csi_persistence": {
+    "point": 0.7435,
+    "ci95": [
+     0.7191,
+     0.7665
+    ]
+   },
+   "LightGBM noweather": {
+    "point": 0.7928,
+    "ci95": [
+     0.7744,
+     0.81
+    ]
+   },
+   "LightGBM forecast": {
+    "point": 0.8022,
+    "ci95": [
+     0.7843,
+     0.8197
+    ]
+   }
+  },
+  "diff": {
+   "LSTM forecast  \u2212  LSTM noweather": {
+    "point": 0.0133,
+    "ci95": [
+     0.0029,
+     0.024
+    ],
+    "p_le_0": 0.005
+   },
+   "LightGBM forecast  \u2212  LightGBM noweather": {
+    "point": 0.0093,
+    "ci95": [
+     0.0033,
+     0.0155
+    ],
+    "p_le_0": 0.001
+   },
+   "LSTM forecast  \u2212  LightGBM forecast": {
+    "point": -0.019,
+    "ci95": [
+     -0.0296,
+     -0.0091
+    ],
+    "p_le_0": 1.0
+   }
+  },
+  "per_month": {
+   "3": {
+    "LSTM forecast": 0.893,
+    "LSTM noweather": 0.888,
+    "baseline persistence": 0.658,
+    "baseline same_time_yesterday": 0.903,
+    "baseline csi_persistence": 0.902,
+    "LightGBM noweather": 0.931,
+    "LightGBM forecast": 0.925,
+    "n": 7515
+   },
+   "4": {
+    "LSTM forecast": 0.897,
+    "LSTM noweather": 0.908,
+    "baseline persistence": 0.668,
+    "baseline same_time_yesterday": 0.781,
+    "baseline csi_persistence": 0.878,
+    "LightGBM noweather": 0.906,
+    "LightGBM forecast": 0.899,
+    "n": 7501
+   },
+   "5": {
+    "LSTM forecast": 0.662,
+    "LSTM noweather": 0.7,
+    "baseline persistence": 0.572,
+    "baseline same_time_yesterday": 0.605,
+    "baseline csi_persistence": 0.744,
+    "LightGBM noweather": 0.778,
+    "LightGBM forecast": 0.796,
+    "n": 8856
+   },
+   "6": {
+    "LSTM forecast": 0.662,
+    "LSTM noweather": 0.566,
+    "baseline persistence": 0.435,
+    "baseline same_time_yesterday": 0.397,
+    "baseline csi_persistence": 0.603,
+    "LightGBM noweather": 0.668,
+    "LightGBM forecast": 0.672,
+    "n": 9273
+   },
+   "7": {
+    "LSTM forecast": 0.714,
+    "LSTM noweather": 0.642,
+    "baseline persistence": 0.452,
+    "baseline same_time_yesterday": 0.412,
+    "baseline csi_persistence": 0.61,
+    "LightGBM noweather": 0.664,
+    "LightGBM forecast": 0.667,
+    "n": 9503
+   },
+   "8": {
+    "LSTM forecast": 0.696,
+    "LSTM noweather": 0.68,
+    "baseline persistence": 0.454,
+    "baseline same_time_yesterday": 0.358,
+    "baseline csi_persistence": 0.613,
+    "LightGBM noweather": 0.655,
+    "LightGBM forecast": 0.665,
+    "n": 9026
+   },
+   "9": {
+    "LSTM forecast": 0.676,
+    "LSTM noweather": 0.663,
+    "baseline persistence": 0.435,
+    "baseline same_time_yesterday": 0.282,
+    "baseline csi_persistence": 0.595,
+    "LightGBM noweather": 0.68,
+    "LightGBM forecast": 0.697,
+    "n": 8366
+   },
+   "10": {
+    "LSTM forecast": 0.686,
+    "LSTM noweather": 0.69,
+    "baseline persistence": 0.357,
+    "baseline same_time_yesterday": 0.29,
+    "baseline csi_persistence": 0.563,
+    "LightGBM noweather": 0.697,
+    "LightGBM forecast": 0.705,
+    "n": 8112
+   },
+   "11": {
+    "LSTM forecast": 0.862,
+    "LSTM noweather": 0.845,
+    "baseline persistence": 0.563,
+    "baseline same_time_yesterday": 0.747,
+    "baseline csi_persistence": 0.816,
+    "LightGBM noweather": 0.841,
+    "LightGBM forecast": 0.884,
+    "n": 8000
+   },
+   "12": {
+    "LSTM forecast": 0.951,
+    "LSTM noweather": 0.954,
+    "baseline persistence": 0.636,
+    "baseline same_time_yesterday": 0.903,
+    "baseline csi_persistence": 0.918,
+    "LightGBM noweather": 0.953,
+    "LightGBM forecast": 0.955,
+    "n": 7356
+   }
+  }
+ },
+ "solar_24h": {
+  "days": 290,
+  "rows": 79055,
+  "R2": {
+   "LSTM forecast": {
+    "point": 0.7505,
+    "ci95": [
+     0.7253,
+     0.7744
+    ]
+   },
+   "LSTM noweather": {
+    "point": 0.7021,
+    "ci95": [
+     0.6656,
+     0.7341
+    ]
+   },
+   "baseline persistence": {
+    "point": 0.597,
+    "ci95": [
+     0.5544,
+     0.6381
+    ]
+   },
+   "baseline same_time_yesterday": {
+    "point": 0.597,
+    "ci95": [
+     0.5544,
+     0.6381
+    ]
+   },
+   "baseline csi_persistence": {
+    "point": 0.5979,
+    "ci95": [
+     0.5552,
+     0.6387
+    ]
+   },
+   "LightGBM noweather": {
+    "point": 0.6816,
+    "ci95": [
+     0.6475,
+     0.7126
+    ]
+   },
+   "LightGBM forecast": {
+    "point": 0.744,
+    "ci95": [
+     0.7189,
+     0.7676
+    ]
+   }
+  },
+  "diff": {
+   "LSTM forecast  \u2212  LSTM noweather": {
+    "point": 0.0484,
+    "ci95": [
+     0.0331,
+     0.0662
+    ],
+    "p_le_0": 0.0
+   },
+   "LightGBM forecast  \u2212  LightGBM noweather": {
+    "point": 0.0624,
+    "ci95": [
+     0.0455,
+     0.0804
+    ],
+    "p_le_0": 0.0
+   },
+   "LSTM forecast  \u2212  LightGBM forecast": {
+    "point": 0.0065,
+    "ci95": [
+     -0.0066,
+     0.0204
+    ],
+    "p_le_0": 0.167
+   }
+  },
+  "per_month": {
+   "3": {
+    "LSTM forecast": 0.91,
+    "LSTM noweather": 0.915,
+    "baseline persistence": 0.9,
+    "baseline same_time_yesterday": 0.9,
+    "baseline csi_persistence": 0.899,
+    "LightGBM noweather": 0.909,
+    "LightGBM forecast": 0.917,
+    "n": 7275
+   },
+   "4": {
+    "LSTM forecast": 0.866,
+    "LSTM noweather": 0.871,
+    "baseline persistence": 0.778,
+    "baseline same_time_yesterday": 0.778,
+    "baseline csi_persistence": 0.778,
+    "LightGBM noweather": 0.872,
+    "LightGBM forecast": 0.873,
+    "n": 7256
+   },
+   "5": {
+    "LSTM forecast": 0.761,
+    "LSTM noweather": 0.641,
+    "baseline persistence": 0.598,
+    "baseline same_time_yesterday": 0.598,
+    "baseline csi_persistence": 0.599,
+    "LightGBM noweather": 0.62,
+    "LightGBM forecast": 0.709,
+    "n": 8539
+   },
+   "6": {
+    "LSTM forecast": 0.529,
+    "LSTM noweather": 0.334,
+    "baseline persistence": 0.361,
+    "baseline same_time_yesterday": 0.361,
+    "baseline csi_persistence": 0.361,
+    "LightGBM noweather": 0.554,
+    "LightGBM forecast": 0.592,
+    "n": 8940
+   },
+   "7": {
+    "LSTM forecast": 0.678,
+    "LSTM noweather": 0.649,
+    "baseline persistence": 0.411,
+    "baseline same_time_yesterday": 0.411,
+    "baseline csi_persistence": 0.411,
+    "LightGBM noweather": 0.522,
+    "LightGBM forecast": 0.517,
+    "n": 9119
+   },
+   "8": {
+    "LSTM forecast": 0.594,
+    "LSTM noweather": 0.51,
+    "baseline persistence": 0.347,
+    "baseline same_time_yesterday": 0.347,
+    "baseline csi_persistence": 0.348,
+    "LightGBM noweather": 0.502,
+    "LightGBM forecast": 0.582,
+    "n": 8409
+   },
+   "9": {
+    "LSTM forecast": 0.556,
+    "LSTM noweather": 0.557,
+    "baseline persistence": 0.275,
+    "baseline same_time_yesterday": 0.275,
+    "baseline csi_persistence": 0.278,
+    "LightGBM noweather": 0.538,
+    "LightGBM forecast": 0.587,
+    "n": 7669
+   },
+   "10": {
+    "LSTM forecast": 0.638,
+    "LSTM noweather": 0.547,
+    "baseline persistence": 0.289,
+    "baseline same_time_yesterday": 0.289,
+    "baseline csi_persistence": 0.293,
+    "LightGBM noweather": 0.343,
+    "LightGBM forecast": 0.648,
+    "n": 7442
+   },
+   "11": {
+    "LSTM forecast": 0.848,
+    "LSTM noweather": 0.834,
+    "baseline persistence": 0.758,
+    "baseline same_time_yesterday": 0.758,
+    "baseline csi_persistence": 0.759,
+    "LightGBM noweather": 0.772,
+    "LightGBM forecast": 0.853,
+    "n": 7581
+   },
+   "12": {
+    "LSTM forecast": 0.919,
+    "LSTM noweather": 0.917,
+    "baseline persistence": 0.932,
+    "baseline same_time_yesterday": 0.932,
+    "baseline csi_persistence": 0.932,
+    "LightGBM noweather": 0.944,
+    "LightGBM forecast": 0.953,
+    "n": 6825
+   }
+  }
+ }
+}

@@ -1,0 +1,11 @@
+# Starts the nz_live supervisor at boot, as user shell (same context as `adb shell`).
+# Install once (userdebug): adb root; adb remount; adb push nz_live.rc /system/etc/init/; adb shell chmod 644 /system/etc/init/nz_live.rc; adb unroot; adb reboot
+# Undo: adb root && adb remount && adb shell rm /system/etc/init/nz_live.rc && adb reboot
+service nz_live /system/bin/sh /data/local/tmp/nz_live/start.sh
+    user shell
+    group shell inet log readproc
+    seclabel u:r:shell:s0
+    disabled
+
+on property:sys.boot_completed=1
+    start nz_live

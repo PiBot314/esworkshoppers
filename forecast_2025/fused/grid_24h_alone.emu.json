@@ -1,0 +1,14 @@
+{
+ "windows": 50,
+ "models": [
+  "models/grid_24h_forecast.onnx"
+ ],
+ "sqnr_db": {
+  "pertensor": [
+   37.09
+  ],
+  "perrow": [
+   37.17
+  ]
+ }
+}

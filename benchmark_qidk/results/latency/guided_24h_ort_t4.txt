@@ -1,0 +1,1 @@
+load_ms=9.7 runs=1000 mean_ms=0.8604 p50_ms=0.8581 p95_ms=0.8971 min_ms=0.7805

@@ -1,0 +1,81 @@
+# Edge AI for Net-Zero — what git tracks: code, docs, configs, small results.
+# Data, builds, vendor runtimes and model binaries are NOT tracked; model binaries are
+# fingerprinted in MODELS_SHA256.txt instead (regenerate: ./make_model_manifest.sh). Decided 20 Nov 2026.
+
+# --- vendor code / SDKs / third-party builds
+qidk/
+nz_live/third_party/
+nz_live/build/
+benchmark_qidk/third_party/
+aimet_quantization/runtime_*/
+**/node_modules/
+qidk_export/dashboard/build/
+qidk_export/dashboard/.svelte-kit/
+
+# --- data (raw dumps, fetched history, derived windows)
+datasets/esw/
+datasets/esw-netzero/
+datasets/Water/
+datasets/raw_data/
+datasets/api_2026/nodes/
+qidk_export/data/
+aimet_quantization/data/
+benchmark_qidk/data/
+verify_api_lstm/raw/
+
+# --- model stores and build outputs (binaries; see MODELS_SHA256.txt)
+qidk_export/models/
+aimet_quantization/out/
+aimet_quantization/release/**/*
+!aimet_quantization/release/**/
+!aimet_quantization/release/**/*.md
+!aimet_quantization/release/**/SHA256SUMS
+benchmark_qidk/models/
+archive/forecast_2025_emulator_work/
+
+# --- binary / large file types anywhere
+*.onnx
+*.onnx.data
+*.data
+*.pt
+*.pth
+*.pkl
+*.so
+*.bin
+*.dlc
+*.npy
+*.npz
+*.raw
+*.f32
+*.f64
+*.parquet
+*.csv.gz
+*.json.gz
+*.gguf
+*.apk
+*.tar
+*.tar.gz
+*.zip
+forecast_2025/models/*_lgbm.txt
+
+# --- generated / caches / logs
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+*.log
+.venv/
+venv/
+.DS_Store
+
+# --- secrets (never)
+.env
+.env.*
+*.pem
+*.key
+
+# --- compiled binaries and backups
+aimet_quantization/dashboard/bin/
+nz_live/runner/bin/
+benchmark_qidk/tools/bin/
+*.bak
+*.bak-*

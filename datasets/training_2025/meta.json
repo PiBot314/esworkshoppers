@@ -1,0 +1,213 @@
+{
+ "solar": {
+  "SL-PL00-00": {
+   "column": "solar_PL00_00_W",
+   "sign_applied": -1,
+   "night_offset_removed_W": 0.0,
+   "est_capacity_W": 59011.58555555555,
+   "daytime_coverage": 0.9215134282979562,
+   "filled_bins": 11
+  },
+  "SL-VN95-00": {
+   "column": "solar_VN95_00_W",
+   "sign_applied": 1,
+   "night_offset_removed_W": 0.0,
+   "est_capacity_W": 141237.19999999998,
+   "daytime_coverage": 0.9707223692359664,
+   "filled_bins": 1
+  },
+  "SL-NI01-00": {
+   "column": "solar_NI01_00_W",
+   "sign_applied": -1,
+   "night_offset_removed_W": 0.0,
+   "est_capacity_W": 128285.90289999999,
+   "daytime_coverage": 0.6947243961488655,
+   "filled_bins": 59
+  },
+  "SL-NI03-00": {
+   "column": "solar_NI03_00_W",
+   "sign_applied": 1,
+   "night_offset_removed_W": 0.0,
+   "est_capacity_W": 64099.05964583333,
+   "daytime_coverage": 0.9061426721468385,
+   "filled_bins": 1
+  },
+  "SL-NI03-01": {
+   "column": "solar_NI03_01_W",
+   "sign_applied": 1,
+   "night_offset_removed_W": 0.0,
+   "est_capacity_W": 61995.58291666664,
+   "daytime_coverage": 0.9918360452677214,
+   "filled_bins": 2
+  },
+  "SL-VN02-01": {
+   "column": "solar_VN02_01_W",
+   "sign_applied": 1,
+   "night_offset_removed_W": 0.0,
+   "est_capacity_W": 61931.55227272706,
+   "daytime_coverage": 0.9997184843195766,
+   "filled_bins": 1
+  }
+ },
+ "grid": {
+  "EM-CR-SB00-00": {
+   "coverage": 0.8349885844748859,
+   "filled_bins": 61
+  },
+  "EM-CR-KH95-00": {
+   "coverage": 0.7387271689497716,
+   "filled_bins": 2415
+  }
+ },
+ "solar_status_counts": {
+  "PL00_00": {
+   "ok": 325,
+   "unknown": 29,
+   "degraded": 10,
+   "outage": 1
+  },
+  "VN95_00": {
+   "ok": 355,
+   "unknown": 10
+  },
+  "NI01_00": {
+   "ok": 217,
+   "unknown": 107,
+   "outage": 27,
+   "degraded": 14
+  },
+  "NI03_00": {
+   "ok": 326,
+   "unknown": 39
+  },
+  "NI03_01": {
+   "ok": 360,
+   "unknown": 5
+  },
+  "VN02_01": {
+   "ok": 361,
+   "unknown": 3,
+   "degraded": 1
+  }
+ },
+ "splits": {
+  "seed": 0,
+  "weeks": {
+   "train": 37,
+   "val": 8,
+   "test": 8
+  },
+  "rows": {
+   "train": 20448,
+   "test": 5376,
+   "val": 4800,
+   "gap": 4416
+  },
+  "gap_days": 2
+ },
+ "built": "2026-11-20T08:07:27",
+ "rows": 35040,
+ "span": [
+  "2025-01-01 00:15:00",
+  "2026-01-01 00:00:00"
+ ],
+ "convention": "IST naive; value at t = mean over (t-15 min, t]; power W, generation positive",
+ "columns": [
+  "ghi_clearsky",
+  "zenith_deg",
+  "solar_PL00_00_W",
+  "solar_PL00_00_filled",
+  "solar_PL00_00_csi",
+  "solar_VN95_00_W",
+  "solar_VN95_00_filled",
+  "solar_VN95_00_csi",
+  "solar_NI01_00_W",
+  "solar_NI01_00_filled",
+  "solar_NI01_00_csi",
+  "solar_NI03_00_W",
+  "solar_NI03_00_filled",
+  "solar_NI03_00_csi",
+  "solar_NI03_01_W",
+  "solar_NI03_01_filled",
+  "solar_NI03_01_csi",
+  "solar_VN02_01_W",
+  "solar_VN02_01_filled",
+  "solar_VN02_01_csi",
+  "solar_PL00_00_status",
+  "solar_PL00_00_peer_ratio",
+  "solar_VN95_00_status",
+  "solar_VN95_00_peer_ratio",
+  "solar_NI01_00_status",
+  "solar_NI01_00_peer_ratio",
+  "solar_NI03_00_status",
+  "solar_NI03_00_peer_ratio",
+  "solar_NI03_01_status",
+  "solar_NI03_01_peer_ratio",
+  "solar_VN02_01_status",
+  "solar_VN02_01_peer_ratio",
+  "grid_W",
+  "grid_filled",
+  "kh95_W",
+  "kh95_filled",
+  "fc15_shortwave_radiation",
+  "fc15_direct_radiation",
+  "fc15_diffuse_radiation",
+  "fc15_temperature_2m",
+  "fc_cloud_cover",
+  "fc_cloud_cover_low",
+  "fc_relative_humidity_2m",
+  "fc_precipitation",
+  "fc_wind_speed_10m",
+  "d1_shortwave_radiation",
+  "d1_cloud_cover",
+  "d1_temperature_2m",
+  "d1_relative_humidity_2m",
+  "d1_precipitation",
+  "d2_shortwave_radiation",
+  "d2_cloud_cover",
+  "d2_temperature_2m",
+  "d2_relative_humidity_2m",
+  "d2_precipitation",
+  "era5_shortwave_radiation",
+  "era5_direct_radiation",
+  "era5_diffuse_radiation",
+  "era5_direct_normal_irradiance",
+  "era5_cloud_cover",
+  "era5_cloud_cover_low",
+  "era5_cloud_cover_mid",
+  "era5_cloud_cover_high",
+  "era5_temperature_2m",
+  "era5_relative_humidity_2m",
+  "era5_precipitation",
+  "era5_wind_speed_10m",
+  "clim_ghi_day",
+  "clim_temp_day",
+  "clim_cloud_day",
+  "clim_rh_day",
+  "anom_ghi_d1",
+  "anom_temp_d1",
+  "anom_cloud_d1",
+  "hod_sin",
+  "hod_cos",
+  "dow_sin",
+  "dow_cos",
+  "doy_sin",
+  "doy_cos",
+  "is_weekend",
+  "in_session",
+  "holiday",
+  "exam",
+  "event",
+  "term",
+  "split_blocked",
+  "month"
+ ],
+ "inputs_sha256": {
+  "archive_era5.json.gz": "dd3dc0fc04c88719",
+  "clearsky_15min.csv.gz": "fa3de6f422c8d3d4",
+  "era5_2015_2024.json.gz": "47e4013808b2a2bd",
+  "hist_forecast.json.gz": "14eb31b8cb03fbd3",
+  "nasa_power.json.gz": "f3e23a796420af0c",
+  "previous_day1.json.gz": "19ce351593455da9"
+ }
+}

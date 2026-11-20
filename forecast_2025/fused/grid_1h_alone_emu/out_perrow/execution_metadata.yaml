@@ -1,0 +1,25 @@
+---
+timestamp: 54941673028
+command: qnn-net-run --backend /Tools/qairt_docker/qairt/qairt/2.47.0.260601/lib/x86_64-linux-clang/libQnnHtp.so --model lib_perrow/x86_64-linux-clang/libperrow.so --input_list /local/forecast_2025/fused/grid_1h_alone_emu/raw_test.txt --output_dir out_perrow
+execution_mode: synchronous
+inferences_completed: 50
+graphs:
+  - graph_name: perrow
+    input_tensors:
+    - tensor_name: past_0
+      id: 1
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,96,15]
+    - tensor_name: future_0
+      id: 2
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,4,12]
+    - tensor_name: node_0
+      id: 3
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,1]
+    output_tensors:
+    - tensor_name: forecast_0
+      id: 4262
+      datatype: QNN_DATATYPE_UFIXED_POINT_16
+      dimensions: [1,4]
