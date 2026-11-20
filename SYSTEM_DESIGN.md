@@ -1,6 +1,6 @@
 # NZ-Edge: system design (as built)
 
-*Last updated 2026-11-17. Describes what runs on the QIDK today. For what comes next, see [plan_integrated.md](archive/plan_integrated.md). For how the dashboard's map, Net zero page and assistant work in detail, see [qidk_export/dashboard/HOW_IT_WORKS.md](qidk_export/dashboard/HOW_IT_WORKS.md).*
+*Last updated 2026-11-20. Describes what runs on the QIDK today. For current status and what comes next, see [STATUS.md](STATUS.md). For how the dashboard's map, Net zero page and assistant work in detail, see [qidk_export/dashboard/HOW_IT_WORKS.md](qidk_export/dashboard/HOW_IT_WORKS.md).*
 
 ---
 
@@ -10,8 +10,9 @@ One Qualcomm QIDK board (Snapdragon 8 Gen 3, SM8650, Android 14) that, unattende
 
 1. **Fetches** campus readings from the mentors' API every 15 minutes (synthetic 2026 data, replayed in real time).
 2. **Forecasts** campus grid draw and the Palash solar plant on the **Hexagon NPU** (LSTMs, AIMET W8A16, ~5 ms).
-3. **Flags** readings far from the forecast (per-hour limits fitted on 2025 validation data).
-4. **Shows** it all in a dashboard served from the board (Live · Map · Net zero · NPU lab), and **explains** it through an assistant (Qwen3-4B on the board's CPU).
+3. **Flags** readings far from the forecast (per-hour limits fitted on 2025 validation data; limits refitted on API
+   data are prepared but not yet on the board: §9.4).
+4. **Shows** it all in a dashboard served from the board (Live · Map · Net zero · Results · NPU lab), and **explains** it through an assistant (Qwen3-4B on the board's CPU).
 
 It only measures and explains; it doesn't control any equipment ([plan_integrated.md](archive/plan_integrated.md) §2.1). Live flags on synthetic data are false alarms by construction, so demos use fault injection.
 
@@ -20,7 +21,7 @@ It only measures and explains; it doesn't control any equipment ([plan_integrate
 ```mermaid
 flowchart LR
     API["Mentors' API<br/>10.2.203.214:9999"]
-    LAP["Laptop: Wi-Fi hotspot QIDK_DevNet<br/>NAT to IIIT-LAN (router only)"]
+    LAP["Laptop: Wi-Fi hotspot QIDK_DevNet<br/>NAT to IIIT-LAN (API + internet)"]
     USB["Laptop: USB fallback<br/>adb reverse :19999 → socat relay<br/>(nz-usb-uplink.service)"]
     subgraph QIDK["QIDK 10.42.0.237 · started by init (nz_live.rc), user shell"]
         SUP["start.sh supervisor"]
@@ -49,15 +50,15 @@ flowchart LR
 * `/system/etc/init/nz_live.rc` (source: [nz_live/board/nz_live.rc](nz_live/board/nz_live.rc)) starts `/data/local/tmp/nz_live/start.sh` on `sys.boot_completed=1` as `shell` (`u:r:shell:s0`). Init restarts the supervisor if it dies.
 * [start.sh](nz_live/board/start.sh) starts the three processes in the foreground, restarts any that exit (back-off 2–60 s), and logs to `nz_live/logs/`.
 * Power cycle → everything back, with the API and NPU OK, within ~5.5 min (test A5).
-* Details, network setup and undo commands: [nz_live/STATUS_boot_network.md](nz_live/STATUS_boot_network.md).
+* Network, setup changes and how to undo them: §9.2–9.3.
 
 ## 4. The live loop (`qidk_export/dashboard/src/lib/server/live/`)
 
-Runs inside the Bun server when `LIVE=1`. One cycle per 15-minute bin, 2 minutes after the bin closes:
+Runs inside the Bun server when `LIVE=1`. One cycle per 15-minute bin, 2 minutes after the bin closes (`GRACE`):
 
 | Step | What | Code |
 |---|---|---|
-| Clock | "Now" = the API's `replay_now`, tracked against a monotonic clock (the board's wall clock is unreliable) | `loop.ts` `syncClock` |
+| Clock | "Now" = the API's `replay_now`, tracked against a monotonic clock (the board's wall clock starts at 2023 after a reboot until NTP sets it, §9.2) | `loop.ts` `syncClock` |
 | Ingest | Last 50 h of raw readings for the 7 served nodes; same mapping and cleaning as training (signs, units, swapped fields) | `features.ts` |
 | Features | 15-min UTC means → ffill(4) + `was_imputed` → min-max per feature from the model's `meta.json` → IST cyclic features. **3 unserved solar nodes are neighbour copies, KH04-00 = 0** | `features.ts` |
 | Warm-up | 20 s before each check: `POST :8080/api/warm?models=<active + shadow>&ttl=45`; the runners exit 45 s after their last request | `loop.ts` `warm` |
@@ -100,6 +101,19 @@ The built-in models (`all_sensors_1h`, `all_sensors_24h`, `single_node`) keep th
 
 **How the newer models' files were made:** [nz_live/scripts/build_model_meta.py](nz_live/scripts/build_model_meta.py) builds each `meta.json` (features in the model's own training order; same scaler as the deployed models; limits fitted with the same rule as `anomaly.py`). [check_models_on_board.py](nz_live/scripts/check_models_on_board.py) runs the on-device SQNR check. The QNN libraries are the benchmark's builds (`benchmark_qidk`), copied into `nz_live/models/<id>/`.
 
+**Limits in `meta.json`.** Since 20 Nov the local copies of all six registered models' `meta.json` carry grid limits
+refitted on API data (`anomaly`), with the 2025 ones kept as `anomaly_2025` (`datasets/api_2026/apply_api_limits.py`,
+`--undo` restores). The board still has the 2025 limits until they are pushed (§9.4); with those, every model flags
+3–14 % of normal API readings instead of ≤ 3 % ([datasets/api_2026/README.md](datasets/api_2026/README.md)).
+
+**How good these models are.** The R² above is each model's own +15-minute score. Scored on the identical 2025 test
+weeks as the new models (20 Nov), the default `all_sensors_1h` is no better than persistence at +1 h on grid (0.862 vs
+0.866); see [STATUS.md](STATUS.md).
+
+**New models (20 Nov, `forecast_2025/`) are not in the registry.** They take different inputs (`past` / `future` /
+`node`, with weather, clear-sky and calendar) that the live loop doesn't build yet:
+[forecast_2025/LIVE_INPUTS.md](forecast_2025/LIVE_INPUTS.md).
+
 **Switching.** On the Live page's Grid card, or `POST /api/live/models {signal, model}` (UI only; the assistant can list models but never switch them). The loop loads the meta, saves the choice in `active_models.json` (it survives restarts), re-forecasts the last 24 h with the new model, and uses it from the next cycle.
 
 ## 6. Dashboard (`qidk_export/dashboard/`, SvelteKit on Bun)
@@ -119,14 +133,15 @@ The built-in models (`all_sensors_1h`, `all_sensors_24h`, `single_node`) keep th
 | `GET /api/live/results?hours=` | Live shadow scores + offline 2025 results + per-hour limits (Results tab) |
 | `POST /api/live/inject` | Fault injection (UI) |
 | `POST /api/chat` | Assistant (streams; tool calls) |
+| `GET /api/node/[id]`, `/api/node/[id]/series`, `GET /api/whatif` | Map node details and history; Net zero calculator |
 | `/npu-app/*` | Relay to `nz_dashboard` |
 
 ## 7. Assistant
 
 Qwen3-4B (Q4_0, llama.cpp, 6 threads on the board's CPU; ~6 tok/s; 13–39 s per answer). It answers only by calling tools:
-* **6 database tools:** overview, search, node details, statistics, compare, show on map
-* **`what_if`:** net-zero calculator
-* **5 live tools:** `live_status` (now says which model forecasts), `recent_anomalies`, `explain_anomaly`, `list_models`, `model_results` (accuracy vs the baselines, live and 2025; input importance)
+* **6 database tools:** `data_overview`, `search_nodes`, `get_node`, `get_stats`, `compare_nodes`, `show_node` (on the map)
+* **`net_zero`:** net-zero calculator
+* **5 live tools:** `live_status` (says which model forecasts), `recent_anomalies`, `explain_anomaly`, `list_models`, `model_results` (accuracy vs the baselines, live and 2025; input importance)
 
 The prompt routes by keywords and requires a tool call. It never calls a flag a confirmed fault, and it can't switch models or inject faults.
 
@@ -143,49 +158,116 @@ The prompt routes by keywords and requires a tool call. It never calls a flag a 
 | Switcher | Switch / reject / persist across restart / 24 h model | Passed on the stand-in server, 17 Nov |
 | Persistence | Every model vs persistence and same-time-yesterday (`nz_live/scripts/offline_results.py`) | 2025 +15 min: persistence wins (Grid 0.937 vs best model 0.936); models win for 1 h solar (+0.45) and 24 h grid; yesterday wins 24 h solar |
 | Runner | Resident vs one-shot | 3–5 ms vs ~1.8 s per window; same output |
+| M4 | Natural grid flag rate on the full API history (1 Jan–19 Nov 2026), every registered model (`datasets/api_2026/m4_flag_rates.py`, 20 Nov) | **All fail with 2025 limits** (3.4–13.7 %; default 9.1 %); all pass with API-fitted limits (0.8–2.2 %), not yet on the board |
+| Identical-row comparison | Registered models vs the 20 Nov models and baselines on the 2025 test weeks (`forecast_2025/e1_compare.py`) | Default no better than persistence at +1 h grid (0.862 vs 0.866) |
 
 ## 9. Operations
 
+*Checked against the laptop and the board on 20 Nov 2026.*
+
+### 9.1 Setting up from scratch
+
+1. **Python environments.** The scripts expect `.venv` and `.venv-aimet` in this folder. **Neither is here now**
+   (copies exist in sibling folders, e.g. `../mideval/.venv-aimet`); the 20 Nov work in `forecast_2025/` and
+   `datasets/` ran on the system `python3` (PyTorch 2.14 + CUDA 13, LightGBM, ONNX Runtime). To recreate them:
+   ```bash
+   uv venv --python 3.10 .venv-aimet
+   uv pip install --python .venv-aimet --index-strategy unsafe-best-match \
+     --extra-index-url https://download.pytorch.org/whl/cpu -r env/requirements-aimet.txt
+   uv venv .venv && uv pip install --python .venv -r env/requirements-main.txt
+   ```
+2. **QAIRT Docker image** (only to convert models for the NPU or run the x86 HTP emulator): build `qairt:latest` with
+   `qidk/Tools/qairt_docker/README.md`, then `docker build -f env/Dockerfile.qairt-fixed -t qairt-fixed:2.47 .`
+   (why: `archive/aimet_quantization/04_environment_remediation.md`). Both images are on this laptop (~18 GB each).
+3. **October pipeline:** `aimet_quantization/scripts/01_…` to `14_…` in order; script 01 reads `datasets/`. To
+   regenerate `parquet_sorted/` from the dump, run `python nodesort.py` inside `datasets/esw/nodes/`.
+4. **Board:** the QIDK with adb access. `aimet_quantization/scripts/14_dashboard_start.sh` pushes the runtime and starts
+   the :8080 dashboard; the live system's own files are in `/data/local/tmp/nz_live` (§3).
+
+### 9.2 Network: how the board reaches the API and the internet
+
+The laptop is the board's only way out. Two routes to the campus API; the live loop picks one per cycle.
+
+**Route 1: the laptop hotspot (Wi-Fi).** The laptop runs the NetworkManager profile `Hotspot` (SSID `QIDK_DevNet`,
+`ipv4.method shared`, 10.42.0.1/24, autoconnect) on its Wi-Fi card `wlp0s20f3`; the board joins as 10.42.0.237 and
+uses the laptop's own uplink (wired `IIIT-LAN`). This route also gives the board the internet (Open-Meteo HTTPS works
+from the board, 20 Nov). Open the live dashboard from the laptop at `http://10.42.0.237:5173`.
+
+Docker 29 sets the kernel's `FORWARD` policy to `DROP`, so the laptop drops everything the board sends on. **After
+every laptop reboot or firewalld reload**, run:
+```bash
+sudo iptables -I DOCKER-USER -i wlp0s20f3 -j ACCEPT
+sudo iptables -I DOCKER-USER -o wlp0s20f3 -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
+```
+(`wlp0s20f3` is this laptop's Wi-Fi card; on another machine check `nmcli d`.) Check from the board:
+`adb shell curl -sI http://10.2.203.214:9999/` (expect 200).
+
+The **permanent fix is still not applied** (no `/etc/docker/daemon.json` on 20 Nov): tell Docker not to drop forwarded
+traffic, then restart it (if the file exists by then, add the key instead of overwriting):
+```bash
+echo '{"ip-forward-no-drop": true}' | sudo tee /etc/docker/daemon.json
+sudo systemctl restart docker
+```
+
+**Route 2: USB fallback (since 19 Nov).** On the board `127.0.0.1:19999` → `adb reverse` over the cable → laptop
+`127.0.0.1:19999` → `socat` → API. [nz_live/laptop/usb_uplink.sh](nz_live/laptop/usb_uplink.sh) runs the relay and
+re-adds the reverse after a replug (every 10 s), as the systemd **user** service `nz-usb-uplink.service`
+([unit](nz_live/laptop/nz-usb-uplink.service), installed in `~/.config/systemd/user/`, enabled). The laptop opens the
+API connection itself, so Docker's `FORWARD` drop doesn't affect it. It carries the API only, not the internet.
+Needs the cable, adb authorized, and the laptop awake on a campus network.
+
+**How the loop chooses.** `LIVE_API` (comma-separated; `start.sh` sets `http://10.2.203.214:9999,http://127.0.0.1:19999`,
+overridable by `live_api.url` on the board) is the ordered route list, and `loop.ts` always appends the USB route
+unless `LIVE_USB=0`. At the start of every cycle the clock sync probes them in order (6 s each) and the cycle uses the
+first that answers: it moves to USB within one cycle and back to Wi-Fi as soon as that works. Every switch is logged
+(`API route: …`); the Live page's data-feed tile and `/api/live/status` (`api.route`) show the route in use. After a
+board reboot the loop can stay on USB while the hotspot also works; that is harmless.
+
+Tested 19 Nov: A2 replay unchanged (Grid 41/41, PL00 12/12, injected 20/20); direct route refused → USB in < 1 s,
+silent → USB after ~7 s, working → direct; and for real when the hotspot went down: the loop picked USB, caught up the 2
+missed checks and kept running.
+
+**The board's clock.** It starts at 20 Sep 2023 after every reboot and is set by NTP (`time.android.com`, automatic
+time on) once the hotspot route reaches the internet: on 20 Nov this took ~7 min after boot. The live loop doesn't
+depend on it (it takes the time from the API), but HTTPS does: until NTP succeeds every certificate is "not yet
+valid", so anything fetching over HTTPS (e.g. a weather fetch) must retry rather than give up.
+
+**Also needed:** the laptop must stay awake while it is the router (lid closed must not suspend on power).
+adb over Wi-Fi isn't enabled (`adb tcpip 5555` was denied on 16 Nov), so board-side checks need the USB cable.
+
+### 9.3 Setup changes and how to undo them
+
+| Where | Change | Undo |
+|---|---|---|
+| Laptop | NetworkManager profile `Hotspot` (above), priority 100 | `nmcli c down Hotspot; nmcli c modify Hotspot connection.autoconnect no` |
+| Laptop | `DOCKER-USER` iptables rules (above) | gone after a reboot / firewalld reload |
+| Laptop | `nz-usb-uplink.service` (systemd user service) | `systemctl --user disable --now nz-usb-uplink; rm ~/.config/systemd/user/nz-usb-uplink.service` |
+| Board | Joined `QIDK_DevNet` (saved network) | `adb root; adb shell cmd wifi forget-network <id>` |
+| Board | `settings put global captive_portal_mode 0` (else Android marks the intranet-only hotspot "no internet" and won't rejoin after a reboot; checked 20 Nov: `0`) | `adb shell settings put global captive_portal_mode 1` |
+| Board | Boot service `/system/etc/init/nz_live.rc` ([nz_live/board/nz_live.rc](nz_live/board/nz_live.rc)): runs `/data/local/tmp/nz_live/start.sh` as `shell` on `sys.boot_completed=1` | `adb root && adb remount && adb shell rm /system/etc/init/nz_live.rc && adb reboot` |
+| Board | `start.sh` lists both API routes (old copy `start.sh.bak-19nov`) | copy the backup back |
+
+### 9.4 Routine tasks
+
 | Task | How |
 |---|---|
-| Deploy a dashboard build | `bun --bun vite build`; push `build/` to `nz_live/dashboard/build.new`, swap, `kill $(cat nz_live/run/dashboard.child.pid)` (the supervisor restarts it; history is backfilled) |
-| Add a switchable model | Its QNN `libw8a16.so`/`libfp32.so` + `meta.json` in `nz_live/models/<id>/`; a line in `registry.txt`; an entry in `registry.json`; restart `nz_dashboard` (kill its child pid) |
+| Is everything up? | `adb shell curl -s http://127.0.0.1:5173/api/live/status` (`api.ok`, `api.route`, `npu.ok`, `next_check`); ports :8080 / :8090 `/health` / :5173 |
 | Restart everything | `adb root; adb shell stop nz_live; adb shell start nz_live; adb unroot` |
-| Logs | `/data/local/tmp/nz_live/logs/{supervisor,nz_dashboard,llama-server,dashboard}.log` |
-| Undo the boot service | `adb root && adb remount && adb shell rm /system/etc/init/nz_live.rc && adb reboot` |
-
-## 9a. API routes and the USB fallback (19 Nov)
-
-The live loop has an ordered list of routes to the API (`LIVE_API`, comma-separated; `start.sh` sets
-`http://10.2.203.214:9999,http://127.0.0.1:19999`, and `loop.ts` always appends the USB route unless `LIVE_USB=0`).
-At the start of every cycle the clock sync probes them in order (6 s each) and the whole cycle uses the first that
-answers, so the loop moves to USB within one cycle and back to Wi-Fi as soon as that works again. Every switch is
-logged (`API route: …`), and the Live page's data-feed tile and `/api/live/status` (`api.route`) show the route in use.
-
-The USB route: on the board `127.0.0.1:19999` → `adb reverse` over the cable → laptop `127.0.0.1:19999` → `socat` →
-API. [nz_live/laptop/usb_uplink.sh](nz_live/laptop/usb_uplink.sh) runs the relay and re-adds the reverse after a replug
-(every 10 s); it runs as the systemd **user** service `nz-usb-uplink.service`
-([unit](nz_live/laptop/nz-usb-uplink.service), installed in `~/.config/systemd/user/`, enabled). The laptop opens the API
-connection itself, so Docker's `FORWARD` drop doesn't affect this route. Needs the cable, adb authorized, and the
-laptop awake and on a campus network (wired or `wifi@iiith`).
-
-Tested 19 Nov: A2 replay unchanged (Grid 41/41, PL00 12/12, injected 20/20); direct route refused → USB in < 1 s, silent
-→ USB after ~7 s, working → direct; then for real on the board when the laptop moved to `wifi@iiith` and the hotspot
-went down: the loop picked USB, caught up the 2 missed checks and kept running.
-
-| Task | How |
-|---|---|
-| Status | `systemctl --user status nz-usb-uplink`; `adb reverse --list` shows `tcp:19999` |
-| Logs | `journalctl --user -u nz-usb-uplink` |
-| Stop / disable | `systemctl --user disable --now nz-usb-uplink` |
+| Logs (board) | `/data/local/tmp/nz_live/logs/{supervisor,nz_dashboard,llama-server,dashboard}.log` |
+| USB route status / logs | `systemctl --user status nz-usb-uplink`; `adb reverse --list` shows `tcp:19999`; `journalctl --user -u nz-usb-uplink` |
+| Deploy a dashboard build | `bun --bun vite build`; push `build/` to `nz_live/dashboard/build.new`, swap, `kill $(cat nz_live/run/dashboard.child.pid)` (the supervisor restarts it; history is backfilled) |
+| Add a switchable model | its QNN `libw8a16.so` / `libfp32.so` + `meta.json` in `nz_live/models/<id>/`; a line in `registry.txt`; an entry in `registry.json`; restart `nz_dashboard` (kill its child pid) |
+| Push changed anomaly limits (e.g. the API-fitted ones from `datasets/api_2026/apply_api_limits.py`) | `adb push nz_live/models/<id>/meta.json /data/local/tmp/nz_live/models/<id>/` for the 5 switchable models; `adb push aimet_quantization/dashboard/www/data/all_sensors_1h/meta.json /data/local/tmp/nz_aimet/dashboard/www/data/all_sensors_1h/`; then restart the Bun dashboard (`kill $(cat /data/local/tmp/nz_live/run/dashboard.child.pid)`): the live loop caches each model's `meta.json` in memory |
+| Undo the boot service | see §9.3 |
 
 ## 10. Known limits
 
 * The laptop is still the only way to the API: over the hotspot (whose forwarding rule is lost on a laptop reboot until the `daemon.json` fix is applied) or, since 19 Nov, over the USB fallback. Both stop if the laptop sleeps.
 * 4 of 11 campus-model inputs aren't served (neighbour copies / zero); campus solar and KH04 room load ("Demand") can't be checked live.
 * Grid −40 % faults at morning load fall inside the limit.
-* The one-shot `qnn-net-run` (used when no runner is warm) often crashes with SIGSEGV while exiting, after writing its output: harmless to results, but it leaves a crash report each time. The live loop avoids it by warming runners before each cycle and before catch-up (WORKLOG_2026-11-19 §3).
-* Per check, starting the 7 runners takes ~10.8 s of CPU work (more while the assistant is busy); per window the NPU is 3–5 ms vs 0.3–0.5 ms for ONNX Runtime on the CPU (WORKLOG_2026-11-19 §5).
-* The switchable models' limits are fitted on 2025 validation data (FP32) but not yet checked on API data the way the default was (M4); their live flag rates are unverified.
+* The one-shot `qnn-net-run` (used when no runner is warm) often crashes with SIGSEGV while exiting, after writing its output: harmless to results, but it leaves a crash report each time. The live loop avoids it by warming runners before each cycle and before catch-up (`archive/worklogs/WORKLOG_2026-11-19.md` §3).
+* Per check, starting the 7 runners takes ~10.8 s of CPU work (more while the assistant is busy); per window the NPU is 3–5 ms vs 0.3–0.5 ms for ONNX Runtime on the CPU (`archive/worklogs/WORKLOG_2026-11-19.md` §5).
+* The limits on the board are the 2025 ones, and with them every model over-flags normal API readings (M4 above); the API-fitted limits are ready locally and need pushing (§9.4).
 * Synthetic data: no real events or drift; every live flag on normal data is a false alarm.
-* NPU is slower than the CPU at batch 1 for these models ([benchmark_qidk/RESULTS.md](benchmark_qidk/RESULTS.md)); the batch-sweep and CPU-contention measurements are planned (W6).
+* After a board reboot, HTTPS from the board fails until NTP sets the clock (§9.2); the current live loop uses plain HTTP and isn't affected.
+* NPU is slower than the CPU at batch 1 for these models ([benchmark_qidk/RESULTS.md](benchmark_qidk/RESULTS.md)); fused and batched NPU calls are where the NPU should pay off; their timing on the board is open ([STATUS.md](STATUS.md) items 4a/4b).

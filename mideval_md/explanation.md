@@ -390,7 +390,7 @@ Why this design ([doc 16](../archive/aimet_quantization/16_dashboard_plan.md)):
 
 ### 9.3 Starting and stopping
 ```bash
-cd mideval/aimet_quantization
+cd aimet_quantization          # from final/ (see aimet_quantization/README.md for the venv and the live-board caveat)
 scripts/14_dashboard_start.sh          # → http://localhost:8080
 scripts/14_dashboard_start.sh --stop
 ```
@@ -554,7 +554,7 @@ Bugs fixed during the build: the launcher hung on `adb shell` (→ `--daemon`); 
 
 ## 10. Using the deployed models without the dashboard
 ```bash
-cd mideval/aimet_quantization
+cd aimet_quantization          # from final/ (see aimet_quantization/README.md for the venv and the live-board caveat)
 ../.venv-aimet/bin/python scripts/12_qidk_forecast.py --model all_sensors_1h --test-index 10
 ../.venv-aimet/bin/python scripts/12_qidk_forecast.py --model all_sensors_1h --test-index 10 --inject sensor_dropout_zero
 ../.venv-aimet/bin/python scripts/12_qidk_forecast.py --model single_node --input my_window.npy     # [1, 96, F] float32, normalized

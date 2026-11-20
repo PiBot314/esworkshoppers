@@ -1,5 +1,11 @@
 # QIDK benchmark: baseline vs guided LSTM (interim results, 11 Nov 2026)
 
+> **Status (20 Nov 2026):** speed (§1) and power (§3) are still current for single windows (batch 1). Accuracy (§2)
+> uses each model's own chronological test split; to compare models with each other, with baselines and with the
+> 20 Nov models, use [forecast_2025/results/e1_compare.md](../forecast_2025/results/e1_compare.md) (identical rows).
+> Not measured yet: fused and batched NPU calls, the case where the NPU should beat the CPU ([STATUS.md](../STATUS.md)
+> items 4a/4b).
+
 Board: Qualcomm QIDK, Snapdragon 8 Gen 3 (SM8650), Android 14, QAIRT 2.47. Models: the four LSTMs in `common/`
 (baseline and guided, 1 h and 24 h), plus the CNN-LSTM and LightGBM for reference. One input window (96 × 58), batch 1.
 
@@ -16,7 +22,7 @@ FP16 is 12–20× slower than W8A16 on this NPU (it is built for integer maths).
 checked live in the app (Benchmark → NPU W8A8 → Accuracy check). Power numbers are preliminary (see section 3).
 
 **Update, 19 Nov:** a partial check on the live system (7 models per check, resident NPU runners, the assistant on the
-CPU) is in [WORKLOG_2026-11-19.md](../WORKLOG_2026-11-19.md) §5, with scripts and raw output in
+CPU) is in [WORKLOG_2026-11-19.md](../archive/worklogs/WORKLOG_2026-11-19.md) §5, with scripts and raw output in
 [live_eval_2026-11-19/](live_eval_2026-11-19/). It agrees with this page: per window, ONNX Runtime on the CPU is
 ~5–10× faster than the NPU.
 

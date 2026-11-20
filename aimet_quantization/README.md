@@ -1,5 +1,12 @@
 # Campus Energy Forecaster + Anomaly Check on the Qualcomm QIDK (AIMET-quantized)
 
+> **Status (20 Nov 2026):** the record of the October quantization, and still the NPU builds the live system runs
+> (`all_sensors_1h`, `single_node`). The fidelity numbers below stand. For accuracy, superseded: on the identical 2025
+> test weeks `all_sensors_1h` is no better than persistence at +1 h grid, and the current forecasters are in
+> [forecast_2025/](../forecast_2025/) ([STATUS.md](../STATUS.md)). On the live board the supervisor already runs
+> `nz_dashboard` on :8080 at boot; `14_dashboard_start.sh` kills it and starts its own copy, which the supervisor will
+> then compete with (not tested): use it only on a board without the live system.
+
 Three LSTM forecasters (campus solar / grid / demand) quantized with **Qualcomm AIMET** (post-training, no retraining) and running on the **QIDK's Hexagon NPU**. A residual check on the forecasts flags anomalous sensor readings.
 
 | Model | Input → Output | On-NPU latency | Fidelity to FP32 | R² (FP32 → INT8/16) |
@@ -9,10 +16,10 @@ Three LSTM forecasters (campus solar / grid / demand) quantized with **Qualcomm 
 | `single_node` | 24 h × 10 features → next 1 h (Palash plant) | 3.9 ms | 52.1 dB | 0.950 → 0.950 |
 
 ## Run it
-Requirements: QIDK connected over USB (`adb devices` lists it), Python env `../.venv-aimet`, the runtime already on the device (`/data/local/tmp/nz_aimet`; to re-install: `adb push release/qidk_runtime_2.47/{bin,lib} /data/local/tmp/nz_aimet/`).
+Requirements: QIDK connected over USB (`adb devices` lists it), Python env `../.venv-aimet` (not in the folder now: recreate it, [SYSTEM_DESIGN.md](../SYSTEM_DESIGN.md) §9.1), the runtime already on the device (`/data/local/tmp/nz_aimet`; to re-install: `adb push release/qidk_runtime_2.47/{bin,lib} /data/local/tmp/nz_aimet/`).
 
 ```bash
-cd mideval/aimet_quantization
+cd aimet_quantization          # from final/
 # forecast for a test window, on the NPU, with the anomaly verdict
 ../.venv-aimet/bin/python scripts/12_qidk_forecast.py --model all_sensors_1h --test-index 10
 # same window with a simulated faulty solar sensor (reads 0 W) -> ANOMALY
@@ -24,7 +31,7 @@ Output: forecast in Watts per 15-min step and, if the actual reading is known, `
 
 ## Live demo dashboard (served by the QIDK)
 ```bash
-cd mideval/aimet_quantization
+cd aimet_quantization          # from final/
 scripts/14_dashboard_start.sh        # QIDK on USB: starts the server on the QIDK, forwards port 8080, opens the browser
 # -> http://localhost:8080   (or http://<QIDK-Wi-Fi-IP>:8080 on the same network; also works in the QIDK's own Chrome)
 scripts/14_dashboard_start.sh --stop

@@ -2,7 +2,7 @@
 # USB fallback route from the QIDK to the campus API (19 Nov). The live loop (loop.ts) tries the API directly over
 # Wi-Fi first, then http://127.0.0.1:19999 on the board. This script makes that second address work:
 #   board 127.0.0.1:19999 --adb reverse (USB)--> laptop 127.0.0.1:19999 --socat--> campus API
-# The laptop opens the connection to the API itself, so Docker's FORWARD=DROP (README, "Temporary fix") doesn't apply.
+# The laptop opens the connection to the API itself, so Docker's FORWARD=DROP (SYSTEM_DESIGN.md §9.2) doesn't apply.
 # Runs as the systemd user service nz-usb-uplink.service (see README.md here); re-adds the reverse after a replug.
 set -u
 SERIAL=${SERIAL:-d42f06b}

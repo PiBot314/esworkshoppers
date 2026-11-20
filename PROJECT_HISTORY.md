@@ -2,7 +2,7 @@
 
 One page to get oriented: what was built, in what order, by whom, which slide comes from which piece of work, and which numbers belong together.
 
-*Written 2026-10-15, updated 2026-11-17 (timeline rows from 11 Nov, §6, §7). Dates before October are approximate (from file dates).*
+*Written 2026-10-15, updated 2026-11-20 (TL;DR, timeline to 20 Nov). Dates before October are approximate (from file dates).*
 
 ---
 
@@ -16,15 +16,13 @@ One page to get oriented: what was built, in what order, by whom, which slide co
   4. **AIMET quantization + QIDK deployment + dashboard** (`aimet_quantization/`), scored with **SQNR** against the FP32 model (this workspace)
 * **Separate and out of scope:** an autoencoder anomaly detector in `../project/`.
 * **New direction (15 Oct):** "decisions, not metrics". Next comes solar sizing and load shifting, measured in kWh and rupees.
-* **Since mid-November:** a fifth piece, the **live system**. The QIDK runs everything by itself:
-  * live API data
-  * NPU forecasts
-  * anomaly flags
-  * an on-board assistant
-  * a Live / Map / Net zero / NPU lab interface
-  * a switcher over 7 forecasting models
-
-  How it's built: [SYSTEM_DESIGN.md](SYSTEM_DESIGN.md). What comes next, with read-only access (measure, diagnose, recommend): [plan_integrated.md](archive/plan_integrated.md).
+* **Since mid-November:** a fifth piece, the **live system**. The QIDK runs by itself: live API data, NPU forecasts,
+  anomaly flags, an on-board assistant, a Live / Map / Net zero / Results / NPU lab interface and switchable models.
+  How it's built: [SYSTEM_DESIGN.md](SYSTEM_DESIGN.md).
+* **Since 20 Nov:** a sixth piece, **new forecasters on real 2025 data** with weather and the academic calendar
+  (`forecast_2025/`). LightGBM is the most accurate; they beat the deployed models clearly but can't run live yet.
+  Write-up: [reports/WRITEUP_2026-11-20.md](reports/WRITEUP_2026-11-20.md). Current state and next steps:
+  [STATUS.md](STATUS.md).
 
 ---
 
@@ -46,14 +44,16 @@ One page to get oriented: what was built, in what order, by whom, which slide co
 | 15 Oct 2026 | Models re-pushed to the QIDK. oneM2M portal 400 errors explained. **Project reframed: decisions, not metrics** | doc 18 §7 |
 | 11 Nov 2026 | **QIDK benchmark** of the teammate models (baseline/guided LSTM 1 h and 24 h, CNN-LSTM, LightGBM): NPU vs CPU speed, accuracy, power. The CPU (ONNX Runtime) is 5–12× faster than the NPU at batch 1 | `benchmark_qidk/RESULTS.md` |
 | 12 Nov 2026 | **Post-mideval direction:** flexible-load scheduler, fault detection, distillation, CPU vs NPU energy | `archive/NZ-Edge Project Direction (post-mideval).md` |
-| 16 Nov 2026 | Feasibility plan tying together the scheduler, SLM, grouped models and the mentors' API. **Short-term build done the same day:** the board runs the existing LSTMs on the live API, flags anomalies, runs Qwen3-4B, and starts by itself at boot; laptop is only a Wi-Fi hotspot. Tests A1–A8 | `archive/plan.md`, `archive/plan_reduced_shortterm.md`, `nz_live/`, `nz_live/runs/RESULTS_2026-11-16.md`, `nz_live/STATUS_boot_network.md` |
+| 16 Nov 2026 | Feasibility plan tying together the scheduler, SLM, grouped models and the mentors' API. **Short-term build done the same day:** the board runs the existing LSTMs on the live API, flags anomalies, runs Qwen3-4B, and starts by itself at boot; laptop is only a Wi-Fi hotspot. Tests A1–A8 | `archive/plan.md`, `archive/plan_reduced_shortterm.md`, `nz_live/`, `nz_live/runs/RESULTS_2026-11-16.md`, `archive/worklogs/STATUS_boot_network_2026-11-16_19.md` |
 | 17 Nov 2026 | 24 h live result (Grid 1.0 % natural flags, PL00 0 %). **Interface reworked:** Live NPU forecasting page first; map at `/map`; the :8080 dashboard as "NPU lab". **Model switcher:** 5 more models on the board with their own limits (NPU vs FP32 44–48 dB); scored the same way, the deployed `all_sensors_1h` keeps the best Grid R² (0.82 at +15 min). **Integrated plan** with read-only reframing and an assessment of every workstream | `SYSTEM_DESIGN.md`, `archive/plan_integrated.md`, `archive/plan_model_switcher.md`, `nz_live/models/` |
 | 17 Nov 2026 (evening) | **Persistence test:** on 2025 test data, "next reading = current" beats every model at +15 min (Grid 0.937 vs 0.936 at best). Models add skill for 1 h solar (guided LSTM +0.45) and 24 h grid; "same time yesterday" beats every model for 24 h solar (no weather inputs). **Built:** resident NPU runner (3–5 ms per window instead of ~1.8 s), shadow mode, Results tab, `model_results` tool. Plan revised after an outside review: QAT cut, CPU contention first, three headline results, weather/irradiance plan | `archive/plan_integrated.md` §12, `nz_live/runner/`, `nz_live/scripts/offline_results.py` |
-| 19 Nov 2026 | **Android app v1.1** opens the live dashboard. **18–19 Nov outage** (~24 h, laptop side) caught up correctly; catch-up now warms the NPU runners (~1 min instead of ~11) and stops triggering `qnn-net-run` exit crashes. **USB fallback route** to the API (switches by itself; carried the system when the hotspot went down). Partial NPU vs CPU check on the live system: CPU faster per window, runner start-up dominates each check. Docs: 33 files to `archive/` | `archive/worklogs/WORKLOG_2026-11-19.md`, `SYSTEM_DESIGN.md` §9a, `benchmark_qidk/live_eval_2026-11-19/` |
+| 19 Nov 2026 | **Android app v1.1** opens the live dashboard. **18–19 Nov outage** (~24 h, laptop side) caught up correctly; catch-up now warms the NPU runners (~1 min instead of ~11) and stops triggering `qnn-net-run` exit crashes. **USB fallback route** to the API (switches by itself; carried the system when the hotspot went down). Partial NPU vs CPU check on the live system: CPU faster per window, runner start-up dominates each check. Docs: 33 files to `archive/` | `archive/worklogs/WORKLOG_2026-11-19.md`, `SYSTEM_DESIGN.md` §9.2, `benchmark_qidk/live_eval_2026-11-19/` |
+| 20 Nov 2026 | **New forecasters on real 2025 data** (weather forecasts, clear-sky, academic calendar): weather helps a day ahead (solar 24 h +0.055 R²), not an hour ahead; **LightGBM** is better than the LSTM in 4 of 8 comparisons and never worse. Scored on identical test weeks, the new models beat the deployed ones (grid 24 h 0.873 vs 0.660; the live 1 h grid model is no better than persistence). Pre-training on 10 simulated years: no gain. **M4:** every registered model over-flags the API with its 2025 limits; API-fitted limits prepared. **NPU (emulator):** solar 1 h + 24 h fused in one graph, 52.9 / 46.5 dB; grid fixed by a wider calibration set (51.3 / 48.6 dB) but can't share a graph with solar; board packages built | `forecast_2025/`, `datasets/training_2025/`, `datasets/api_2026/`, `reports/WRITEUP_2026-11-20.md`, `archive/worklogs/WORKLOG_2026-11-20.md` |
+| 20 Nov 2026 | Board reaches the internet over the hotspot; its clock now set by NTP. **Workspace in git** (code and docs; data and model binaries ignored, checksums in `MODELS_SHA256.txt`); docs reorganised (4 top-level docs, `STATUS.md` as the current state, plans and worklogs to `archive/`) | `STATUS.md`, `SYSTEM_DESIGN.md` §9 |
 
 ---
 
-## 2. The four pieces of work
+## 2. The pieces of work
 
 ### 2.1 Data cleaning and EDA (team) · slides 4–14
 * **Source:** IIIT-H oneM2M testbed exports. 11 usable nodes: 6 solar, 2 grid/substation, 3 room meters.
@@ -105,6 +105,20 @@ One page to get oriented: what was built, in what order, by whom, which slide co
 
 **Out of scope:** the `../project/` autoencoder. It's a real anomaly detector, already on the QIDK, but you chose to work on the LSTMs instead.
 
+### 2.5 The live system (`nz_live/`, `qidk_export/`) · since 16 Nov
+The board runs by itself: fetches the mentors' API every 15 min, forecasts on the NPU with the deployed and switchable
+LSTMs, flags readings far from the forecast, and explains them through Qwen3-4B on the board's CPU. Built and operated
+as described in [SYSTEM_DESIGN.md](SYSTEM_DESIGN.md). The API data are synthetic, so the live system is calibrated on
+them, never trained on them.
+
+### 2.6 Forecasters on real 2025 data (`forecast_2025/`) · 20 Nov
+**Question:** do weather forecasts and the academic calendar help, and which model family fits our data size?
+LightGBM and a guided LSTM, one model per family (solar per kWp over 6 plants; grid = substation SB00), 1 h and 24 h,
+on blocked test weeks and rolling-origin, every method on identical rows with 95 % intervals. Weather helps at 24 h,
+LightGBM is the most accurate, and the new models beat the deployed ones. NPU: fused solar graph and per-family
+calibration in the emulator. Results: [forecast_2025/README.md](forecast_2025/README.md); write-up:
+[reports/WRITEUP_2026-11-20.md](reports/WRITEUP_2026-11-20.md).
+
 ---
 
 ## 3. The deck, slide by slide
@@ -153,6 +167,10 @@ Revised deck, 27 slides: `Edge AI for Net-Zero (revised).pptx`.
 | "Anomaly detector" | The LSTMs are forecasters. Flags come from forecast error | Why: inherited forecasters, no retraining allowed, no labels |
 | 3.42 ms vs 5.1 ms vs ~2 s | NPU only · plus CPU↔DSP transfer · plus graph preparation on each dashboard run | – |
 | "≈4× smaller" | Measured 3.8× (biases and some tensors stay higher precision) | – |
+| Benchmark LightGBM (slide 17) vs 20 Nov LightGBM | Per-node, WAPE, no weather vs one model per family, R², weather + calendar | Different questions; don't merge the numbers |
+| R² in the registry vs R² in `forecast_2025` | Each old model's own +15-min score on its chronological test split vs every method on identical test rows at +1 h / +24 h | Only the identical-row numbers compare models fairly (the default model is no better than persistence there) |
+| Blocked vs rolling-origin | Test weeks spread over the year (model has seen every season) vs each month predicted from earlier months only | Rolling-origin is 0.04–0.16 lower: what unseen seasons cost |
+| Emulator SQNR vs board SQNR | x86 HTP emulator (20 Nov) vs measured on the QIDK | Emulator was within 2 dB on 19 Nov; 20 Nov graphs aren't yet confirmed on the board |
 
 ---
 
@@ -168,48 +186,33 @@ Revised deck, 27 slides: `Edge AI for Net-Zero (revised).pptx`.
 | **Detection rate** | % of injected faults caught | Slide 21 |
 | **False-flag rate** | % of normal readings flagged (Solar ≈2–3 %, Grid ≈1 %) | Slide 21 |
 | **Robust σ** = 1.4826 × MAD | Spread that ignores outliers; used for the thresholds | Slide 21 formula |
+| **Skill** = 1 − MSE ÷ MSE(best baseline) | Improvement over the best simple baseline on the same rows | `forecast_2025` |
+| **95 % interval** (day-block bootstrap) | Range of R² (or of a difference) when test days are resampled; a difference whose interval includes 0 isn't a finding | `forecast_2025` |
+| **M4** | Natural grid flag rate on the API history; must be ≤ 3 % | `datasets/api_2026` |
 
 ---
 
 ## 6. Where things live
 
-| Path (relative to `mideval/`) | What |
+Folder map: [README.md](README.md). How to run things: [SYSTEM_DESIGN.md](SYSTEM_DESIGN.md) §9 (live system) and
+[aimet_quantization/README.md](aimet_quantization/README.md) (one forecast on the board, the :8080 dashboard).
+History documents not in the folder map:
+
+| Path | What |
 |---|---|
-| `model2/` | The team's deployed LSTMs (ONNX, training scripts, original report). **Don't modify** |
-| `aimet_quantization/` | All quantization and deployment work. Start at `README.md` |
-| `aimet_quantization/00–15_*.md` | Plan and logs, in order |
-| `aimet_quantization/16–17_*.md` | Dashboard plan and build |
-| `archive/aimet_quantization/18_future_revisions_and_ideas.md` | Future ideas. **§7 = project direction** |
-| `aimet_quantization/scripts/` | Pipeline scripts 00–14 |
-| `mideval_md/explanation.md` | Full technical explanation of the deployment work |
+| `archive/aimet_quantization/00–17_*.md` | The October quantization plan and logs, in order (16–17: the dashboard) |
+| `archive/aimet_quantization/18_future_revisions_and_ideas.md` | Future ideas; **§7 = the October project direction** |
 | `archive/mideval_md/deck_revision.md` | How the revised deck was assembled |
 | `archive/mideval_md/presentation_flow.md`, `recording_flow.md` | Talk script, demo recording script |
 | `archive/mideval_md/viva_questions.md` / `_choices.md`, `mideval_md/viva_questions_deck.md` | Question banks: theory, slides, "why this number" |
 | `archive/mideval_md/reading_list.md` | Papers |
-| `../README.md` | The per-node benchmark write-up |
+| `archive/plan_integrated.md`, `archive/plan_19112026.md`, `archive/plan_20112026.md` | The finished plans (16–20 Nov), for the reasoning behind decisions |
+| `archive/worklogs/` | Day-by-day worklogs |
+| `../README.md`, `../report.md` | The per-node benchmark write-up (workspace folder, outside this repo) |
 | `../project/` | The autoencoder (out of scope) |
-| QIDK `/data/local/tmp/nz_aimet` | Runtime, models, test data, dashboard on the board |
-| `SYSTEM_DESIGN.md` | **The live system as built** (board, processes, live loop, models and switcher, UI, assistant, tests, operations) |
-| `archive/plan_integrated.md` | **The roadmap (finished)**: 9 workstreams, 5 phases, how the older plans fit together |
-| `nz_live/` | Board setup (boot service, supervisor), live-run logs, `models/` (switchable models, registry) and `scripts/` |
-| `qidk_export/dashboard/` | The SvelteKit dashboard + live loop + assistant tools, served from the board |
-| QIDK `/data/local/tmp/nz_live` | The live system on the board (dashboard build, Bun, llama-server, models, logs, events and history) |
-
-**Run one forecast on the board** (from `aimet_quantization/`):
-```bash
-../.venv-aimet/bin/python scripts/12_qidk_forecast.py --model all_sensors_1h --test-index 10
-```
-**Start the dashboard:** `scripts/14_dashboard_start.sh`, then open http://localhost:8080.
-
----
 
 ## 7. Where it goes next
 
-**Current roadmap: [plan_integrated.md](archive/plan_integrated.md)** (17 Nov). It supersedes the order below, which is kept for history. The October version follows; full text in doc 18 §7.
-
-1. **Solar sizing what-if:** load forecast plus irradiance feed a small LP that answers how much X kW of panels covers, what's wasted, and the payback. Needs an irradiance data source first.
-2. **Load shifting:** move flexible loads into solar hours, replayed on logged data to give kWh saved.
-3. **Water treatment scheduling:** only if that data turns out to be usable.
-4. **Supporting ML:** leave-one-node-out generalisation, drift handling. The test for all of it: *does forecast error change the recommendation?*
-
-**Pitch:** "We built the monitoring and forecasting layer. Waste is the cheapest cut, and the same forecasts drive solar sizing and load shifting next."
+Open items, decisions and dependencies: [STATUS.md](STATUS.md). Earlier directions, kept for history: the October
+ideas (solar sizing, load shifting, water scheduling) in `archive/aimet_quantization/18_future_revisions_and_ideas.md`
+§7, and the 17 Nov roadmap in [archive/plan_integrated.md](archive/plan_integrated.md).

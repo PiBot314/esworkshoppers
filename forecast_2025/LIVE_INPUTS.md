@@ -23,9 +23,10 @@ them, more than the NPU.
    (minutely_15 + hourly, `past_days=1`, `forecast_days=2`) and one `previous-runs` request, both ~2–3 s, cached.
    Align exactly as `datasets/training_2025/build_dataset.py` does (IST, value at *t* = mean over (*t* − 15 min, *t*]);
    a 15-min shift here is the kind of bug that silently costs R² (the old dataset was start-labelled, see E1).
-   **Fallback when Open-Meteo is unreachable**: the board reaches the campus API through the hotspot; whether it reaches
-   the internet is not confirmed. Without weather, use the `noweather` variants (on identical rows they lose
-   ≤ 0.01 R² at 1 h and 0.01–0.06 at 24 h, `results/e1_compare.md`).
+   **Fallback when Open-Meteo is unreachable**: the board reaches the internet through the hotspot (HTTPS to both
+   Open-Meteo endpoints returned 200 from the board on 20 Nov), but not over the USB fallback, and after a reboot
+   HTTPS fails until NTP has set the clock (SYSTEM_DESIGN.md §9.2): retry, then fall back. Without weather, use the
+   `noweather` variants (on identical rows they lose ≤ 0.01 R² at 1 h and 0.01–0.06 at 24 h, `results/e1_compare.md`).
 2. **The 2026 calendar** (`campus_calendar_2026.csv`), from the almanac.
 3. **The clear-sky table** for 2026 on the board (or the formula in TypeScript).
 4. **The new input layout**: `past [1, 96, F]`, `future [1, H, C]`, `node [1, n]` instead of the old single

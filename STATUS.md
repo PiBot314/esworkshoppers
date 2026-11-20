@@ -8,11 +8,11 @@ those changes.
 
 | Part | State |
 |---|---|
-| Board (QIDK, `d42f06b`) | Connected over USB (through the hub) and on the laptop hotspot `QIDK_DevNet` (10.42.0.237). Starts its services on boot (`nz_live.rc`). Clock set by NTP over the hotspot (it falls back to 2023 after a reboot until NTP gets through, so HTTPS waits for that) |
-| Board → campus API | Two routes, both working: hotspot (`10.2.203.214:9999`, needs the laptop's `DOCKER-USER` iptables rules, which a reboot clears) and USB fallback (`adb reverse` + `nz-usb-uplink.service`) |
+| Board (QIDK, `d42f06b`) | On the laptop hotspot `QIDK_DevNet` (10.42.0.237) and on USB through the hub, but **adb reports "no permissions" since the afternoon of 20 Nov** (replug, or `adb kill-server` and accept the prompt on the board). Starts its services on boot (`nz_live.rc`). Clock set by NTP over the hotspot (it falls back to 2023 after a reboot until NTP gets through, so HTTPS waits for that) |
+| Board → campus API | Two routes: hotspot (`10.2.203.214:9999`; needs the laptop's `DOCKER-USER` iptables rules, which a reboot clears, because Docker's permanent fix is **not applied**) and USB fallback (`adb reverse` + `nz-usb-uplink.service`; **down while adb has no permissions**). Both worked on 20 Nov morning. Setup and fixes: [SYSTEM_DESIGN.md](SYSTEM_DESIGN.md) §9.2 |
 | Board → internet | Works over the hotspot (Open-Meteo HTTPS 200 from the board, 20 Nov). No proxy over USB (not needed for now) |
 | Live loop | Every 15 min: API → NPU forecast → anomaly flags. Grid: `all_sensors_1h` (AIMET W8A16 on the HTP, ~5 ms); PL00: `single_node`. Dashboard :5173, assistant :8090, NPU server :8080 |
-| Anomaly limits | Refitted on API data for all 6 registered models **in the local `meta.json` files only**: not yet pushed to the board, so the board still over-flags (2025 limits) |
+| Anomaly limits | Refitted on API data for all 6 registered models **in the local `meta.json` files only**: not yet pushed to the board, so the board still over-flags (2025 limits). How to push: SYSTEM_DESIGN §9.4 |
 
 ## Models
 
@@ -58,6 +58,8 @@ None can run live yet: they need weather, clear-sky and calendar inputs the live
 | Deployment design: grid on the board CPU with LightGBM, solar on the NPU (recommended), pending item 8 below | user |
 | 2026 academic calendar (almanac PDFs), needed for the grid models' calendar inputs | user |
 | Report framing: LightGBM as the accuracy reference, the NPU model matched to it under a hardware constraint | user |
+| `topic.png` (a screenshot of the proposal's "proposed contributions") and `latest.json` (campus network nodes with map coordinates and link stats) at the top level, from the team's problem-statement commit (20 Aug): list them in the README or move them (e.g. `reports/`); `extras/autoencoder/topic.png` is an identical copy | user |
+| A sentence on which real meters have stopped reporting was removed from `datasets/api_2026/README.md` (it looked like it came from the private oneM2M material): restore it if it came from somewhere else | user |
 
 ## Open items
 
@@ -66,8 +68,8 @@ Numbers as used in the 20 Nov discussion. ★ = recommended next.
 | # | Item | Needs |
 |---|---|---|
 | **Board** | | |
-| 1 ★ | Run the board packages (`forecast_2025/fused/{solar_1h24h,grid_1h_v2_cal500}_board/run_on_board.sh`), score with `b5_score_board.py`, gate ≥ 44 dB | – |
-| 2 ★ | Push the refitted anomaly limits to the board | – |
+| 1 ★ | Run the board packages (`forecast_2025/fused/{solar_1h24h,grid_1h_v2_cal500}_board/run_on_board.sh`), score with `b5_score_board.py`, gate ≥ 44 dB | 27 |
+| 2 ★ | Push the refitted anomaly limits to the board (SYSTEM_DESIGN §9.4) | 27 |
 | 3 | Per-row weights confirmed on the device (A5) | 1 |
 | 4a / 4b | Fused vs separate call timing (C1); batching plants into one call (C2) | 1; 4b also a batch > 1 build |
 | 5 | Resident runner (C3) | 4a/4b |
@@ -90,6 +92,10 @@ Numbers as used in the 20 Nov discussion. ★ = recommended next.
 | 19 | Per-family calibration as the default in `c1_emulator.py` / `b5_board_package.sh` | – |
 | 20 | Fix or disable the converter's simplifier (`onnxsim` fails to import in the container on every graph) | – |
 | 21 | AdaRound for margin on solar 24 h | 1, if the device margin is thin |
+| 25 | `demo_setup.sh` / `14_dashboard_start.sh` kill the supervisor's `nz_dashboard` and start their own: check on the board, or make them skip when the live system runs | 1 (board) |
+| **Laptop** | | |
+| 26 | Apply Docker's permanent forwarding fix (`/etc/docker/daemon.json`, sudo; SYSTEM_DESIGN §9.2), so a reboot doesn't cut the hotspot route | user |
+| 27 | Restore adb permissions on the board's USB link | user |
 | **Decisions** | | |
 | 22 | 2026 academic calendar | user |
 | 23 | Deployment design | 1, 8 (or 9), 11, 12 |

@@ -15,7 +15,7 @@
 |---|---|---|
 | **[DIR]** | [NZ-Edge Project Direction (post-mideval).md](NZ-Edge%20Project%20Direction%20%28post-mideval%29.md) (12 Nov) | Thesis: flexible-load scheduler (MPC, LP/MILP), fault detection, distillation, CPU vs NPU energy, water, examiner fixes |
 | **[PLAN]** | [plan.md](plan.md) (16 Nov) | How the four threads fit: scheduler, SLM, grouped models (nodes = batch), mentors' API. Two-modes rule, batch sweep, cut lines |
-| **[ST]** | [plan_reduced_shortterm.md](plan_reduced_shortterm.md) + [nz_live/runs/RESULTS_2026-11-16.md](../nz_live/runs/RESULTS_2026-11-16.md) + [nz_live/STATUS_boot_network.md](../nz_live/STATUS_boot_network.md) | **Built:** self-contained QIDK on the live API, existing LSTMs on the NPU, anomaly flags, on-board SLM, boot start. Tests A1–A8 |
+| **[ST]** | [plan_reduced_shortterm.md](plan_reduced_shortterm.md) + [nz_live/runs/RESULTS_2026-11-16.md](../nz_live/runs/RESULTS_2026-11-16.md) + [nz_live/STATUS_boot_network.md](worklogs/STATUS_boot_network_2026-11-16_19.md) | **Built:** self-contained QIDK on the live API, existing LSTMs on the NPU, anomaly flags, on-board SLM, boot start. Tests A1–A8 |
 | **[SLM]** | [qidk_export/INTEGRATION_PLAN.md](qidk_export/INTEGRATION_PLAN.md) | SLM phases 1–6: board build, tools, dashboard on the board, speed, evaluation, app |
 | **[D18]** | [aimet_quantization/18_future_revisions_and_ideas.md](aimet_quantization/18_future_revisions_and_ideas.md) | Models that evolve (drift, bias correction, head refit, champion/challenger), weather, almanac, QAT, scalable per-node detection, "decisions, not metrics" |
 | **[BQ]** | [benchmark_qidk/RESULTS.md](../benchmark_qidk/RESULTS.md) | Measured: 9 models on the board, NPU vs CPU speed, accuracy, power (preliminary) |

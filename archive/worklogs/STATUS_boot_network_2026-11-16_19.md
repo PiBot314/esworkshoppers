@@ -1,5 +1,7 @@
 # nz_live: boot start + network (tasks 1–2, test A5)
 
+*Archived 20 Nov 2026: the 16–19 Nov record of the boot and network setup. Current version: [SYSTEM_DESIGN.md](../../SYSTEM_DESIGN.md) §9.*
+
 *2026-11-16. Covers plan_reduced_shortterm.md §4.1, §4.5, work-order tasks 1–2 and acceptance test A5.*
 
 ## What was set up
@@ -10,7 +12,7 @@
 | Laptop | Forwarding fix (run by the user): `iptables -I DOCKER-USER -i wlp0s20f3 -j ACCEPT` + the RELATED,ESTABLISHED return rule. Needed because Docker 29 sets the FORWARD policy to DROP | Rules vanish on reboot / firewalld reload |
 | Board | Joined `QIDK_DevNet` (saved network, 10.42.0.237 via DHCP) | `adb root; adb shell cmd wifi forget-network <id>` |
 | Board | `settings put global captive_portal_mode 0`: without it Android marked the intranet-only hotspot "no internet (permanent)" and refused to reconnect after reboot | `adb shell settings put global captive_portal_mode 1` |
-| Board | `/system/etc/init/nz_live.rc` ([board/nz_live.rc](board/nz_live.rc)): runs `/data/local/tmp/nz_live/start.sh` as `shell`, `u:r:shell:s0`, on `sys.boot_completed=1` | `adb root && adb remount && adb shell rm /system/etc/init/nz_live.rc && adb reboot` |
+| Board | `/system/etc/init/nz_live.rc` ([board/nz_live.rc](../../nz_live/board/nz_live.rc)): runs `/data/local/tmp/nz_live/start.sh` as `shell`, `u:r:shell:s0`, on `sys.boot_completed=1` | `adb root && adb remount && adb shell rm /system/etc/init/nz_live.rc && adb reboot` |
 
 ## Results
 
@@ -35,7 +37,7 @@ After A5, USB didn't come back until a replug at 10:34. Then: `init.svc.nz_live=
 The board now has a second way to the API that doesn't depend on the hotspot or Docker's forwarding: the live loop
 falls back to `http://127.0.0.1:19999` on the board, which `adb reverse` carries over the USB cable to a `socat` relay on
 the laptop (`nz_live/laptop/usb_uplink.sh`, systemd user service `nz-usb-uplink.service`). Setup, tests and commands:
-[SYSTEM_DESIGN.md](../SYSTEM_DESIGN.md) §9a.
+[SYSTEM_DESIGN.md](../../SYSTEM_DESIGN.md) §9a.
 
 | Where | Change | Undo |
 |---|---|---|

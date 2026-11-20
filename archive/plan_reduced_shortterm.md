@@ -1,7 +1,7 @@
 # Short-term plan: self-contained QIDK. Existing LSTMs on the live API, with an assistant that explains anomalies
 
 *Written 2026-11-16, revised the same day for "everything on the board".*
-*Status, 2026-11-16 11:25 IST: **built and running on the board, starting by itself at boot.** Work-order steps 1–6 are done. A1, A2, A5 and A7 pass. A3 passed as a shortened 2-hour morning run (the evening peak isn't covered yet). A4: 7 of 8 injected faults caught. A6 not run; A8 partly checked (§6). Results: [nz_live/runs/RESULTS_2026-11-16.md](../nz_live/runs/RESULTS_2026-11-16.md) (A1–A4, A7, A8) and [nz_live/STATUS_boot_network.md](../nz_live/STATUS_boot_network.md) (network, boot start, A5). System changes made today: §8.*
+*Status, 2026-11-16 11:25 IST: **built and running on the board, starting by itself at boot.** Work-order steps 1–6 are done. A1, A2, A5 and A7 pass. A3 passed as a shortened 2-hour morning run (the evening peak isn't covered yet). A4: 7 of 8 injected faults caught. A6 not run; A8 partly checked (§6). Results: [nz_live/runs/RESULTS_2026-11-16.md](../nz_live/runs/RESULTS_2026-11-16.md) (A1–A4, A7, A8) and [nz_live/STATUS_boot_network.md](worklogs/STATUS_boot_network_2026-11-16_19.md) (network, boot start, A5). System changes made today: §8.*
 *Long-term context: [plan.md](plan.md). SLM details: [qidk_export/INTEGRATION_PLAN.md](qidk_export/INTEGRATION_PLAN.md).*
 
 ---
@@ -132,7 +132,7 @@ The temporary test folders on the board were deleted afterwards.
 
 ### 2.6 Verified on 16 Nov (previously unverified)
 
-Details: [nz_live/STATUS_boot_network.md](../nz_live/STATUS_boot_network.md) and [nz_live/runs/RESULTS_2026-11-16.md](../nz_live/runs/RESULTS_2026-11-16.md).
+Details: [nz_live/STATUS_boot_network.md](worklogs/STATUS_boot_network_2026-11-16_19.md) and [nz_live/runs/RESULTS_2026-11-16.md](../nz_live/runs/RESULTS_2026-11-16.md).
 
 | Item | Result |
 |---|---|
@@ -294,7 +294,7 @@ The riskiest unknowns come first, so a failure shows up before the rest is built
 
 ## 8. System changes made on 16 Nov
 
-Full list with undo commands: [nz_live/STATUS_boot_network.md](../nz_live/STATUS_boot_network.md).
+Full list with undo commands: [nz_live/STATUS_boot_network.md](worklogs/STATUS_boot_network_2026-11-16_19.md).
 
 | Where | Change | Survives a reboot? | Undo |
 |---|---|---|---|

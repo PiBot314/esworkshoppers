@@ -1,5 +1,11 @@
 # Running the demo on the QIDK
 
+> **Status (20 Nov 2026):** the offline benchmark demo (app + :8080, 11 Nov). Since 16 Nov the board starts
+> `nz_dashboard` and the live dashboard by itself at boot ([SYSTEM_DESIGN.md](../SYSTEM_DESIGN.md) §3), and the live
+> dashboard (http://10.42.0.237:5173) is the main demo. `demo_setup.sh` calls `14_dashboard_start.sh`, which kills
+> the supervisor's `nz_dashboard` and starts its own (not tested alongside the live system): on the live board, use
+> only `demo_setup.sh --check` and install the app by hand if needed.
+
 Everything runs on the board. The PC is only needed once after each reboot of the board, to start the server.
 
 ## Before the eval (2 minutes)

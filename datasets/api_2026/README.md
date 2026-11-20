@@ -1,7 +1,9 @@
 # Mentors' API history (synthetic 2026)
 
 Everything the campus API (`http://10.2.203.214:9999`) serves, from its first day (2026-01-01) to yesterday, fetched by
-[fetch_api_history.py](fetch_api_history.py) for training the next models ([plan_19112026.md](../../archive/plan_19112026.md) B1).
+[fetch_api_history.py](fetch_api_history.py) ([plan_19112026.md](../../archive/plan_19112026.md) B1). It is synthetic (below), so it
+calibrates the live system and is never used for training. **Fetch complete** (20 Nov 07:24): 9 node folders, 7,752
+hourly files, ~255 MB; rerunning tops up new days only.
 
 | Folder | Contents | Request size |
 |---|---|---|
@@ -13,10 +15,10 @@ Everything the campus API (`http://10.2.203.214:9999`) serves, from its first da
 irradiance r = 0.21 for 2026 (no month above 0.46), against r = 0.80 for the real 2025 data. It isn't a shifted copy of
 2025 either. The weather station `WE-VN04-00` is synthetic too (and empty in April–May). So use it for the live
 system's behaviour (shadow scores, API-fitted limits, replays), not for weather experiments; weather-aware models need
-real data. Several nodes it serves (all SR-AC, the SB00 grid meter, SR-EM KH04) have stopped reporting in reality.
+real data.
 Readings every ~10 min; don't use energy counters as model inputs.
 
-**Running it** (adaptive: up to 6 requests in parallel while response times stay normal, halving on slowdowns or failures, pauses only if it's still slow at 1; stops after 5 consecutive failures; resumable. Details in the script's docstring):
+**Running it again** (adaptive: up to 6 requests in parallel while response times stay normal, halving on slowdowns or failures, pauses only if it's still slow at 1; stops after 5 consecutive failures; resumable. Details in the script's docstring):
 
 | Task | Command |
 |---|---|
@@ -24,7 +26,7 @@ Readings every ~10 min; don't use energy counters as model inputs.
 | Progress | `tail fetch.log`; `find nodes all -name '*.json.gz' \| wc -l` |
 | Stop | `systemctl --user stop nz-api-fetch` |
 
-Started 19 Nov 18:33 one request at a time; adaptive since 19:05. Observed: the API keeps normal response times up to ~3–5 requests in parallel and slows 2–3× at 6; the script settles around that. Phase 1 ≈ 2,900 node-days at ~2 per second; phase 2 ≈ 7,700 hourly requests of ~5.5 s each (~3–5 h at 3–4 in parallel).
+History: started 19 Nov 18:33, finished 20 Nov 07:24. Observed: the API keeps normal response times up to ~3–5 requests in parallel and slows 2–3× at 6; the script settles around that. Phase 1 ≈ 2,900 node-days at ~2 per second; phase 2 ≈ 7,700 hourly requests of ~5.5 s each (~3–5 h at 3–4 in parallel).
 
 ## Calibration set and M4 (20 Nov)
 
@@ -35,12 +37,12 @@ with injected grid faults (actual × 1.2 and × 0.6) for catch rates. Results: `
 
 | Model | Grid R² on API | Flag rate, 2025 limits | Catch +20 % / −40 % | Flag rate, API-fitted limits* | Catch +20 % / −40 % |
 |---|---|---|---|---|---|
-| all_sensors_1h (deployed) | 0.69 | 9.1 % ✗ | 49 / 73 % | 1.9 % ✓ | 11 / 45 % |
-| baseline_h4 | 0.65 | 12.9 % ✗ | 58 / 38 % | 1.8 % ✓ | 9 / 33 % |
-| **guided_h4** | **0.75** | 6.8 % ✗ | 58 / 68 % | **2.2 % ✓** | **19 / 70 %** |
-| baseline_24h | 0.52 | 3.4 % ✗ | 14 / 38 % | 0.9 % ✓ | 3 / 3 % |
-| guided_24h | 0.56 | 13.7 % ✗ | 46 / 28 % | 1.3 % ✓ | 6 / 9 % |
-| cnn_lstm_24h | 0.38 | 7.3 % ✗ | 26 / 20 % | 0.8 % ✓ | 2 / 3 % |
+| all_sensors_1h (deployed) | 0.69 | 9.10 % ✗ | 49 / 73 % | 1.87 % ✓ | 11 / 45 % |
+| baseline_h4 | 0.65 | 12.87 % ✗ | 58 / 38 % | 1.77 % ✓ | 9 / 33 % |
+| **guided_h4** | **0.75** | 6.83 % ✗ | 58 / 68 % | **2.24 % ✓** | **19 / 70 %** |
+| baseline_24h | 0.52 | 3.36 % ✗ | 14 / 38 % | 0.95 % ✓ | 3 / 3 % |
+| guided_24h | 0.56 | 13.66 % ✗ | 46 / 28 % | 1.26 % ✓ | 6 / 9 % |
+| cnn_lstm_24h | 0.38 | 7.25 % ✗ | 26 / 20 % | 0.83 % ✓ | 2 / 3 % |
 
 \* Same rule as `anomaly.py` (per IST hour: median, max(4 × 1.4826 × MAD, 2 % of capacity)), fitted on API residuals,
 scored out-of-sample (2-fold, alternate weeks).
@@ -50,7 +52,7 @@ scored out-of-sample (2-fold, alternate weeks).
   were fitted on Aug–Oct validation residuals and don't cover the hot season.
 * With API-fitted limits every model passes M4, but the 24 h models only by going blind (≤ 9 % of −40 % faults).
   **`guided_h4` with API-fitted limits is the best detector** (2.2 % false flags, 70 % of −40 % caught).
-* ~~Not applied to the live `meta.json` files~~ **Applied 20 Nov** (second pass), see below.
+* The API-fitted limits are now in the models' `meta.json` files: next section.
 
 ### API-fitted limits applied (20 Nov)
 
@@ -61,16 +63,16 @@ Summary: `api_limits_applied.json`.
 
 | Model | Mean grid limit, 2025 → API (kW) | In-sample flag rate | Out-of-sample (M4 table above) |
 |---|---|---|---|
-| all_sensors_1h | 132 → 222 | 1.9 % | 1.9 % |
-| baseline_h4 | 161 → 241 | 1.8 % | 1.8 % |
-| guided_h4 | 142 → 173 | 2.3 % | 2.2 % |
-| baseline_24h | 234 → 324 | 0.9 % | 0.9 % |
-| guided_24h | 188 → 297 | 1.2 % | 1.3 % |
-| cnn_lstm_24h | 263 → 368 | 0.8 % | 0.8 % |
+| all_sensors_1h | 132 → 222 | 1.85 % | 1.87 % |
+| baseline_h4 | 161 → 241 | 1.78 % | 1.77 % |
+| guided_h4 | 142 → 173 | 2.26 % | 2.24 % |
+| baseline_24h | 234 → 324 | 0.93 % | 0.95 % |
+| guided_24h | 188 → 297 | 1.22 % | 1.26 % |
+| cnn_lstm_24h | 263 → 368 | 0.80 % | 0.83 % |
 
 * The files changed are local copies (`nz_live/models/*/meta.json`,
   `aimet_quantization/dashboard/www/data/all_sensors_1h/meta.json`). The live loop reads them **from the board**
-  (`MODELS_DIR` / the NPU server), so they take effect on the next push; the board wasn't connected on 20 Nov.
+  (`MODELS_DIR` / the NPU server): **not pushed yet**. How to push them: [SYSTEM_DESIGN.md](../../SYSTEM_DESIGN.md) §9.4.
 * Wider limits mean fewer false flags and fewer catches: the 24 h models catch ≤ 9 % of −40 % faults with them.
   For detection use `guided_h4` (70 % of −40 % faults, 2.2 % false flags).
 * The API data are synthetic; these limits calibrate the live demo, not the real campus. Refit when real data
