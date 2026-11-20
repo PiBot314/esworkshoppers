@@ -1,0 +1,145 @@
+[
+ {
+  "id": "all_sensors_1h",
+  "label": "Team LSTM, 1 h (deployed)",
+  "family": "lstm",
+  "horizon": 4,
+  "signals": [
+   "grid"
+  ],
+  "runtime": "htp",
+  "features": 58,
+  "val_first_step_R2": {
+   "Solar": 0.9209,
+   "Grid": 0.8619,
+   "Demand": 0.7794
+  },
+  "test_first_step_R2": {
+   "Solar": 0.9656,
+   "Grid": 0.8243,
+   "Demand": -0.7131
+  }
+ },
+ {
+  "id": "baseline_h4",
+  "label": "LSTM (common setup), 1 h",
+  "family": "lstm",
+  "horizon": 4,
+  "signals": [
+   "grid"
+  ],
+  "runtime": "htp",
+  "features": 58,
+  "val_first_step_R2": {
+   "Solar": 0.9079,
+   "Grid": 0.7764,
+   "Demand": 0.7742
+  },
+  "test_first_step_R2": {
+   "Solar": 0.9283,
+   "Grid": 0.6658,
+   "Demand": 0.1128
+  },
+  "val_grid_flag_rate": 0.0149,
+  "sqnr_db": 47.7,
+  "npu_ms": 4.77
+ },
+ {
+  "id": "guided_h4",
+  "label": "Guided LSTM (LightGBM-gated), 1 h",
+  "family": "lstm-guided",
+  "horizon": 4,
+  "signals": [
+   "grid"
+  ],
+  "runtime": "htp",
+  "features": 58,
+  "val_first_step_R2": {
+   "Solar": 0.9222,
+   "Grid": 0.7721,
+   "Demand": 0.8153
+  },
+  "test_first_step_R2": {
+   "Solar": 0.9642,
+   "Grid": 0.7784,
+   "Demand": 0.2764
+  },
+  "val_grid_flag_rate": 0.0122,
+  "sqnr_db": 47.5,
+  "npu_ms": 4.55
+ },
+ {
+  "id": "baseline_24h",
+  "label": "LSTM (common setup), 24 h",
+  "family": "lstm",
+  "horizon": 96,
+  "signals": [
+   "grid"
+  ],
+  "runtime": "htp",
+  "features": 58,
+  "val_first_step_R2": {
+   "Solar": 0.8482,
+   "Grid": 0.7413,
+   "Demand": 0.4663
+  },
+  "test_first_step_R2": {
+   "Solar": 0.9168,
+   "Grid": 0.68,
+   "Demand": -2.6195
+  },
+  "val_grid_flag_rate": 0.003,
+  "sqnr_db": 44.5,
+  "npu_ms": 4.95
+ },
+ {
+  "id": "guided_24h",
+  "label": "Guided LSTM (LightGBM-gated), 24 h",
+  "family": "lstm-guided",
+  "horizon": 96,
+  "signals": [
+   "grid"
+  ],
+  "runtime": "htp",
+  "features": 58,
+  "val_first_step_R2": {
+   "Solar": 0.8338,
+   "Grid": 0.7294,
+   "Demand": 0.4986
+  },
+  "test_first_step_R2": {
+   "Solar": 0.9052,
+   "Grid": 0.7429,
+   "Demand": -2.9977
+  },
+  "val_grid_flag_rate": 0.0207,
+  "sqnr_db": 45.4,
+  "npu_ms": 4.5
+ },
+ {
+  "id": "cnn_lstm_24h",
+  "label": "CNN-LSTM hybrid, 24 h",
+  "family": "cnn-lstm",
+  "horizon": 96,
+  "signals": [
+   "grid"
+  ],
+  "runtime": "htp",
+  "features": 58,
+  "val_first_step_R2": {
+   "Solar": 0.7521,
+   "Grid": 0.0433,
+   "Demand": -0.1355
+  },
+  "test_first_step_R2": {
+   "Solar": 0.8959,
+   "Grid": -0.8759,
+   "Demand": -4.0667
+  },
+  "val_grid_flag_rate": 0.0224,
+  "sqnr_db": 44.1,
+  "npu_ms": 3.13,
+  "comparison_only": true,
+  "note": "Grid R\u00b2 below zero on the 2025 test split: shadow and comparison only"
+ }
+]

@@ -1,0 +1,1040 @@
+{
+ "accuracy": {
+  "baseline_h4": {
+   "pc_onnx_fp32": {
+    "metrics": {
+     "Solar": {
+      "MAE_W": 26375.1,
+      "RMSE_W": 45454.5,
+      "nMAE_pct": 4.92,
+      "R2": 0.9089
+     },
+     "Grid": {
+      "MAE_W": 49997.2,
+      "RMSE_W": 63703.8,
+      "nMAE_pct": 5.64,
+      "R2": 0.6072
+     },
+     "Demand": {
+      "MAE_W": 1628.8,
+      "RMSE_W": 2053.5,
+      "nMAE_pct": 5.42,
+      "R2": -0.0045
+     }
+    }
+   },
+   "htp_w8a16": {
+    "sqnr_db_vs_fp32": 46.5,
+    "max_abs_diff": 0.0088764987885952,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 26329.3,
+      "RMSE_W": 45528.1,
+      "nMAE_pct": 4.91,
+      "R2": 0.9086
+     },
+     "Grid": {
+      "MAE_W": 49351.3,
+      "RMSE_W": 63066.7,
+      "nMAE_pct": 5.56,
+      "R2": 0.615
+     },
+     "Demand": {
+      "MAE_W": 1597.1,
+      "RMSE_W": 2023.0,
+      "nMAE_pct": 5.32,
+      "R2": 0.0251
+     }
+    }
+   },
+   "cpu_fp32": {
+    "sqnr_db_vs_fp32": 136.0,
+    "max_abs_diff": 3.5762786865234375e-07,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 26375.1,
+      "RMSE_W": 45454.5,
+      "nMAE_pct": 4.92,
+      "R2": 0.9089
+     },
+     "Grid": {
+      "MAE_W": 49997.2,
+      "RMSE_W": 63703.8,
+      "nMAE_pct": 5.64,
+      "R2": 0.6072
+     },
+     "Demand": {
+      "MAE_W": 1628.8,
+      "RMSE_W": 2053.5,
+      "nMAE_pct": 5.42,
+      "R2": -0.0045
+     }
+    }
+   },
+   "ort_fp32": {
+    "sqnr_db_vs_fp32": 141.6,
+    "max_abs_diff": 2.384185791015625e-07,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 26375.1,
+      "RMSE_W": 45454.5,
+      "nMAE_pct": 4.92,
+      "R2": 0.9089
+     },
+     "Grid": {
+      "MAE_W": 49997.2,
+      "RMSE_W": 63703.8,
+      "nMAE_pct": 5.64,
+      "R2": 0.6072
+     },
+     "Demand": {
+      "MAE_W": 1628.8,
+      "RMSE_W": 2053.5,
+      "nMAE_pct": 5.42,
+      "R2": -0.0045
+     }
+    }
+   }
+  },
+  "guided_h4": {
+   "pc_onnx_fp32": {
+    "metrics": {
+     "Solar": {
+      "MAE_W": 18705.1,
+      "RMSE_W": 32470.6,
+      "nMAE_pct": 3.49,
+      "R2": 0.9535
+     },
+     "Grid": {
+      "MAE_W": 40005.0,
+      "RMSE_W": 53701.7,
+      "nMAE_pct": 4.51,
+      "R2": 0.7208
+     },
+     "Demand": {
+      "MAE_W": 1836.5,
+      "RMSE_W": 2307.4,
+      "nMAE_pct": 6.11,
+      "R2": -0.2682
+     }
+    }
+   },
+   "htp_w8a16": {
+    "sqnr_db_vs_fp32": 44.9,
+    "max_abs_diff": 0.013569295406341553,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 18614.3,
+      "RMSE_W": 32339.7,
+      "nMAE_pct": 3.47,
+      "R2": 0.9539
+     },
+     "Grid": {
+      "MAE_W": 40375.2,
+      "RMSE_W": 53939.4,
+      "nMAE_pct": 4.55,
+      "R2": 0.7184
+     },
+     "Demand": {
+      "MAE_W": 1850.3,
+      "RMSE_W": 2323.4,
+      "nMAE_pct": 6.16,
+      "R2": -0.2859
+     }
+    }
+   },
+   "cpu_fp32": {
+    "sqnr_db_vs_fp32": 136.4,
+    "max_abs_diff": 4.76837158203125e-07,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 18705.1,
+      "RMSE_W": 32470.6,
+      "nMAE_pct": 3.49,
+      "R2": 0.9535
+     },
+     "Grid": {
+      "MAE_W": 40005.0,
+      "RMSE_W": 53701.7,
+      "nMAE_pct": 4.51,
+      "R2": 0.7208
+     },
+     "Demand": {
+      "MAE_W": 1836.5,
+      "RMSE_W": 2307.4,
+      "nMAE_pct": 6.11,
+      "R2": -0.2682
+     }
+    }
+   },
+   "ort_fp32": {
+    "sqnr_db_vs_fp32": 142.0,
+    "max_abs_diff": 2.384185791015625e-07,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 18705.1,
+      "RMSE_W": 32470.6,
+      "nMAE_pct": 3.49,
+      "R2": 0.9535
+     },
+     "Grid": {
+      "MAE_W": 40005.0,
+      "RMSE_W": 53701.7,
+      "nMAE_pct": 4.51,
+      "R2": 0.7208
+     },
+     "Demand": {
+      "MAE_W": 1836.5,
+      "RMSE_W": 2307.4,
+      "nMAE_pct": 6.11,
+      "R2": -0.2682
+     }
+    }
+   }
+  },
+  "baseline_24h": {
+   "pc_onnx_fp32": {
+    "metrics": {
+     "Solar": {
+      "MAE_W": 41837.5,
+      "RMSE_W": 70702.2,
+      "nMAE_pct": 7.81,
+      "R2": 0.7778
+     },
+     "Grid": {
+      "MAE_W": 69874.3,
+      "RMSE_W": 104589.8,
+      "nMAE_pct": 7.88,
+      "R2": -0.0604
+     },
+     "Demand": {
+      "MAE_W": 3412.0,
+      "RMSE_W": 4064.7,
+      "nMAE_pct": 11.36,
+      "R2": -2.9179
+     }
+    },
+    "metrics_first60": {
+     "Solar": {
+      "MAE_W": 27821.5,
+      "RMSE_W": 43964.9,
+      "nMAE_pct": 5.19,
+      "R2": 0.9154
+     },
+     "Grid": {
+      "MAE_W": 48218.1,
+      "RMSE_W": 62085.6,
+      "nMAE_pct": 5.43,
+      "R2": 0.6249
+     },
+     "Demand": {
+      "MAE_W": 3088.0,
+      "RMSE_W": 3811.8,
+      "nMAE_pct": 10.28,
+      "R2": -2.429
+     }
+    }
+   },
+   "htp_w8a16": {
+    "sqnr_db_vs_fp32": 44.4,
+    "max_abs_diff": 0.01122516393661499,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 41843.3,
+      "RMSE_W": 70795.7,
+      "nMAE_pct": 7.81,
+      "R2": 0.7772
+     },
+     "Grid": {
+      "MAE_W": 70093.6,
+      "RMSE_W": 104906.0,
+      "nMAE_pct": 7.9,
+      "R2": -0.0668
+     },
+     "Demand": {
+      "MAE_W": 3403.7,
+      "RMSE_W": 4058.3,
+      "nMAE_pct": 11.33,
+      "R2": -2.9055
+     }
+    },
+    "metrics_first60": {
+     "Solar": {
+      "MAE_W": 27872.7,
+      "RMSE_W": 43876.2,
+      "nMAE_pct": 5.2,
+      "R2": 0.9157
+     },
+     "Grid": {
+      "MAE_W": 48147.1,
+      "RMSE_W": 62051.9,
+      "nMAE_pct": 5.43,
+      "R2": 0.6253
+     },
+     "Demand": {
+      "MAE_W": 3069.1,
+      "RMSE_W": 3795.3,
+      "nMAE_pct": 10.21,
+      "R2": -2.3994
+     }
+    }
+   },
+   "cpu_fp32": {
+    "sqnr_db_vs_fp32": 134.9,
+    "max_abs_diff": 4.76837158203125e-07,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 41837.5,
+      "RMSE_W": 70702.2,
+      "nMAE_pct": 7.81,
+      "R2": 0.7778
+     },
+     "Grid": {
+      "MAE_W": 69874.3,
+      "RMSE_W": 104589.8,
+      "nMAE_pct": 7.88,
+      "R2": -0.0604
+     },
+     "Demand": {
+      "MAE_W": 3412.0,
+      "RMSE_W": 4064.7,
+      "nMAE_pct": 11.36,
+      "R2": -2.9179
+     }
+    },
+    "metrics_first60": {
+     "Solar": {
+      "MAE_W": 27821.5,
+      "RMSE_W": 43964.9,
+      "nMAE_pct": 5.19,
+      "R2": 0.9154
+     },
+     "Grid": {
+      "MAE_W": 48218.1,
+      "RMSE_W": 62085.6,
+      "nMAE_pct": 5.43,
+      "R2": 0.6249
+     },
+     "Demand": {
+      "MAE_W": 3088.0,
+      "RMSE_W": 3811.8,
+      "nMAE_pct": 10.28,
+      "R2": -2.429
+     }
+    }
+   },
+   "ort_fp32": {
+    "sqnr_db_vs_fp32": 139.6,
+    "max_abs_diff": 2.980232238769531e-07,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 41837.5,
+      "RMSE_W": 70702.2,
+      "nMAE_pct": 7.81,
+      "R2": 0.7778
+     },
+     "Grid": {
+      "MAE_W": 69874.3,
+      "RMSE_W": 104589.8,
+      "nMAE_pct": 7.88,
+      "R2": -0.0604
+     },
+     "Demand": {
+      "MAE_W": 3412.0,
+      "RMSE_W": 4064.7,
+      "nMAE_pct": 11.36,
+      "R2": -2.9179
+     }
+    },
+    "metrics_first60": {
+     "Solar": {
+      "MAE_W": 27821.5,
+      "RMSE_W": 43964.9,
+      "nMAE_pct": 5.19,
+      "R2": 0.9154
+     },
+     "Grid": {
+      "MAE_W": 48218.1,
+      "RMSE_W": 62085.6,
+      "nMAE_pct": 5.43,
+      "R2": 0.6249
+     },
+     "Demand": {
+      "MAE_W": 3088.0,
+      "RMSE_W": 3811.8,
+      "nMAE_pct": 10.28,
+      "R2": -2.429
+     }
+    }
+   }
+  },
+  "guided_24h": {
+   "pc_onnx_fp32": {
+    "metrics": {
+     "Solar": {
+      "MAE_W": 38956.4,
+      "RMSE_W": 66994.7,
+      "nMAE_pct": 7.27,
+      "R2": 0.8005
+     },
+     "Grid": {
+      "MAE_W": 66247.5,
+      "RMSE_W": 104935.1,
+      "nMAE_pct": 7.47,
+      "R2": -0.0674
+     },
+     "Demand": {
+      "MAE_W": 3856.2,
+      "RMSE_W": 4589.5,
+      "nMAE_pct": 12.83,
+      "R2": -3.9949
+     }
+    },
+    "metrics_first60": {
+     "Solar": {
+      "MAE_W": 28866.0,
+      "RMSE_W": 47612.6,
+      "nMAE_pct": 5.39,
+      "R2": 0.9008
+     },
+     "Grid": {
+      "MAE_W": 40499.3,
+      "RMSE_W": 56790.2,
+      "nMAE_pct": 4.56,
+      "R2": 0.6862
+     },
+     "Demand": {
+      "MAE_W": 3308.9,
+      "RMSE_W": 4017.3,
+      "nMAE_pct": 11.01,
+      "R2": -2.8086
+     }
+    }
+   },
+   "htp_w8a16": {
+    "sqnr_db_vs_fp32": 44.3,
+    "max_abs_diff": 0.00971066951751709,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 38923.0,
+      "RMSE_W": 66950.2,
+      "nMAE_pct": 7.26,
+      "R2": 0.8007
+     },
+     "Grid": {
+      "MAE_W": 66083.1,
+      "RMSE_W": 104760.6,
+      "nMAE_pct": 7.45,
+      "R2": -0.0639
+     },
+     "Demand": {
+      "MAE_W": 3860.2,
+      "RMSE_W": 4592.8,
+      "nMAE_pct": 12.85,
+      "R2": -4.002
+     }
+    },
+    "metrics_first60": {
+     "Solar": {
+      "MAE_W": 28861.4,
+      "RMSE_W": 47207.7,
+      "nMAE_pct": 5.39,
+      "R2": 0.9024
+     },
+     "Grid": {
+      "MAE_W": 40442.1,
+      "RMSE_W": 56835.2,
+      "nMAE_pct": 4.56,
+      "R2": 0.6857
+     },
+     "Demand": {
+      "MAE_W": 3324.6,
+      "RMSE_W": 4037.9,
+      "nMAE_pct": 11.07,
+      "R2": -2.8478
+     }
+    }
+   },
+   "cpu_fp32": {
+    "sqnr_db_vs_fp32": 134.8,
+    "max_abs_diff": 4.76837158203125e-07,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 38956.4,
+      "RMSE_W": 66994.7,
+      "nMAE_pct": 7.27,
+      "R2": 0.8005
+     },
+     "Grid": {
+      "MAE_W": 66247.5,
+      "RMSE_W": 104935.2,
+      "nMAE_pct": 7.47,
+      "R2": -0.0674
+     },
+     "Demand": {
+      "MAE_W": 3856.2,
+      "RMSE_W": 4589.5,
+      "nMAE_pct": 12.83,
+      "R2": -3.9949
+     }
+    },
+    "metrics_first60": {
+     "Solar": {
+      "MAE_W": 28866.0,
+      "RMSE_W": 47612.6,
+      "nMAE_pct": 5.39,
+      "R2": 0.9008
+     },
+     "Grid": {
+      "MAE_W": 40499.3,
+      "RMSE_W": 56790.2,
+      "nMAE_pct": 4.56,
+      "R2": 0.6862
+     },
+     "Demand": {
+      "MAE_W": 3308.9,
+      "RMSE_W": 4017.3,
+      "nMAE_pct": 11.01,
+      "R2": -2.8086
+     }
+    }
+   },
+   "ort_fp32": {
+    "sqnr_db_vs_fp32": 139.7,
+    "max_abs_diff": 3.5762786865234375e-07,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 38956.4,
+      "RMSE_W": 66994.7,
+      "nMAE_pct": 7.27,
+      "R2": 0.8005
+     },
+     "Grid": {
+      "MAE_W": 66247.5,
+      "RMSE_W": 104935.1,
+      "nMAE_pct": 7.47,
+      "R2": -0.0674
+     },
+     "Demand": {
+      "MAE_W": 3856.2,
+      "RMSE_W": 4589.5,
+      "nMAE_pct": 12.83,
+      "R2": -3.9949
+     }
+    },
+    "metrics_first60": {
+     "Solar": {
+      "MAE_W": 28866.0,
+      "RMSE_W": 47612.6,
+      "nMAE_pct": 5.39,
+      "R2": 0.9008
+     },
+     "Grid": {
+      "MAE_W": 40499.3,
+      "RMSE_W": 56790.2,
+      "nMAE_pct": 4.56,
+      "R2": 0.6862
+     },
+     "Demand": {
+      "MAE_W": 3308.9,
+      "RMSE_W": 4017.3,
+      "nMAE_pct": 11.01,
+      "R2": -2.8086
+     }
+    }
+   }
+  },
+  "cnn_lstm_24h": {
+   "pc_onnx_fp32": {
+    "metrics": {
+     "Solar": {
+      "MAE_W": 49361.4,
+      "RMSE_W": 76611.7,
+      "nMAE_pct": 9.21,
+      "R2": 0.7391
+     },
+     "Grid": {
+      "MAE_W": 139929.3,
+      "RMSE_W": 169237.7,
+      "nMAE_pct": 15.77,
+      "R2": -1.7764
+     },
+     "Demand": {
+      "MAE_W": 5037.3,
+      "RMSE_W": 5784.0,
+      "nMAE_pct": 16.77,
+      "R2": -6.9332
+     }
+    },
+    "metrics_first60": {
+     "Solar": {
+      "MAE_W": 38795.1,
+      "RMSE_W": 55932.3,
+      "nMAE_pct": 7.24,
+      "R2": 0.863
+     },
+     "Grid": {
+      "MAE_W": 128448.6,
+      "RMSE_W": 143518.0,
+      "nMAE_pct": 14.48,
+      "R2": -1.0043
+     },
+     "Demand": {
+      "MAE_W": 4046.1,
+      "RMSE_W": 4613.7,
+      "nMAE_pct": 13.47,
+      "R2": -4.0236
+     }
+    }
+   },
+   "htp_w8a16": {
+    "sqnr_db_vs_fp32": 44.2,
+    "max_abs_diff": 0.014452040195465088,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 49523.4,
+      "RMSE_W": 76795.3,
+      "nMAE_pct": 9.24,
+      "R2": 0.7378
+     },
+     "Grid": {
+      "MAE_W": 140108.3,
+      "RMSE_W": 169389.1,
+      "nMAE_pct": 15.79,
+      "R2": -1.7814
+     },
+     "Demand": {
+      "MAE_W": 5086.3,
+      "RMSE_W": 5836.2,
+      "nMAE_pct": 16.93,
+      "R2": -7.0772
+     }
+    },
+    "metrics_first60": {
+     "Solar": {
+      "MAE_W": 38755.3,
+      "RMSE_W": 56120.0,
+      "nMAE_pct": 7.23,
+      "R2": 0.8621
+     },
+     "Grid": {
+      "MAE_W": 129012.2,
+      "RMSE_W": 144058.2,
+      "nMAE_pct": 14.54,
+      "R2": -1.0194
+     },
+     "Demand": {
+      "MAE_W": 4066.0,
+      "RMSE_W": 4634.3,
+      "nMAE_pct": 13.53,
+      "R2": -4.0685
+     }
+    }
+   },
+   "cpu_fp32": {
+    "sqnr_db_vs_fp32": 134.7,
+    "max_abs_diff": 5.066394805908203e-07,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 49361.4,
+      "RMSE_W": 76611.7,
+      "nMAE_pct": 9.21,
+      "R2": 0.7391
+     },
+     "Grid": {
+      "MAE_W": 139929.3,
+      "RMSE_W": 169237.7,
+      "nMAE_pct": 15.77,
+      "R2": -1.7764
+     },
+     "Demand": {
+      "MAE_W": 5037.3,
+      "RMSE_W": 5784.0,
+      "nMAE_pct": 16.77,
+      "R2": -6.9332
+     }
+    },
+    "metrics_first60": {
+     "Solar": {
+      "MAE_W": 38795.1,
+      "RMSE_W": 55932.3,
+      "nMAE_pct": 7.24,
+      "R2": 0.863
+     },
+     "Grid": {
+      "MAE_W": 128448.6,
+      "RMSE_W": 143517.9,
+      "nMAE_pct": 14.48,
+      "R2": -1.0043
+     },
+     "Demand": {
+      "MAE_W": 4046.1,
+      "RMSE_W": 4613.7,
+      "nMAE_pct": 13.47,
+      "R2": -4.0236
+     }
+    }
+   },
+   "ort_fp32": {
+    "sqnr_db_vs_fp32": 137.3,
+    "max_abs_diff": 4.172325134277344e-07,
+    "metrics": {
+     "Solar": {
+      "MAE_W": 49361.4,
+      "RMSE_W": 76611.7,
+      "nMAE_pct": 9.21,
+      "R2": 0.7391
+     },
+     "Grid": {
+      "MAE_W": 139929.3,
+      "RMSE_W": 169237.7,
+      "nMAE_pct": 15.77,
+      "R2": -1.7764
+     },
+     "Demand": {
+      "MAE_W": 5037.3,
+      "RMSE_W": 5784.0,
+      "nMAE_pct": 16.77,
+      "R2": -6.9332
+     }
+    },
+    "metrics_first60": {
+     "Solar": {
+      "MAE_W": 38795.1,
+      "RMSE_W": 55932.3,
+      "nMAE_pct": 7.24,
+      "R2": 0.863
+     },
+     "Grid": {
+      "MAE_W": 128448.6,
+      "RMSE_W": 143518.0,
+      "nMAE_pct": 14.48,
+      "R2": -1.0043
+     },
+     "Demand": {
+      "MAE_W": 4046.1,
+      "RMSE_W": 4613.7,
+      "nMAE_pct": 13.47,
+      "R2": -4.0236
+     }
+    }
+   }
+  },
+  "lightgbm_24h": {
+   "pc_onnx_fp32": {
+    "metrics": {
+     "Solar": {
+      "MAE_W": 40669.9,
+      "RMSE_W": 74745.4,
+      "nMAE_pct": 7.59,
+      "R2": 0.7516
+     },
+     "Grid": {
+      "MAE_W": 60599.4,
+      "RMSE_W": 90970.9,
+      "nMAE_pct": 6.83,
+      "R2": 0.1978
+     },
+     "Demand": {
+      "MAE_W": 2727.5,
+      "RMSE_W": 3390.8,
+      "nMAE_pct": 9.08,
+      "R2": -1.7265
+     }
+    },
+    "metrics_first60": {
+     "Solar": {
+      "MAE_W": 28516.7,
+      "RMSE_W": 52250.1,
+      "nMAE_pct": 5.32,
+      "R2": 0.8805
+     },
+     "Grid": {
+      "MAE_W": 21883.6,
+      "RMSE_W": 38524.4,
+      "nMAE_pct": 2.47,
+      "R2": 0.8556
+     },
+     "Demand": {
+      "MAE_W": 1701.5,
+      "RMSE_W": 2277.6,
+      "nMAE_pct": 5.66,
+      "R2": -0.2242
+     }
+    }
+   }
+  }
+ },
+ "latency": {
+  "baseline_24h": {
+   "cpu_fp32": {
+    "netrun_ms": 30.193,
+    "accel_exec_ms": null,
+    "qnn_exec_ms": null,
+    "ips": 33.0729,
+    "per_inference_ms": 30.193
+   },
+   "htp_w8a16": {
+    "netrun_ms": 5.02,
+    "accel_exec_ms": 3.47,
+    "qnn_exec_ms": 4.984,
+    "ips": 171.9094,
+    "per_inference_ms": 5.02
+   },
+   "ort_t1": {
+    "load_ms": 8.0,
+    "runs": 1000.0,
+    "mean_ms": 1.0459,
+    "p50_ms": 1.0472,
+    "p95_ms": 1.0785,
+    "min_ms": 0.9828,
+    "per_inference_ms": 1.0459
+   },
+   "ort_t4": {
+    "load_ms": 9.1,
+    "runs": 1000.0,
+    "mean_ms": 0.8627,
+    "p50_ms": 0.861,
+    "p95_ms": 0.9021,
+    "min_ms": 0.7833,
+    "per_inference_ms": 0.8627
+   }
+  },
+  "baseline_h4": {
+   "cpu_fp32": {
+    "netrun_ms": 16.129,
+    "accel_exec_ms": null,
+    "qnn_exec_ms": null,
+    "ips": 61.8502,
+    "per_inference_ms": 16.129
+   },
+   "htp_w8a16": {
+    "netrun_ms": 4.855,
+    "accel_exec_ms": 3.297,
+    "qnn_exec_ms": 4.819,
+    "ips": 176.7061,
+    "per_inference_ms": 4.855
+   },
+   "ort_t1": {
+    "load_ms": 7.2,
+    "runs": 1000.0,
+    "mean_ms": 0.5882,
+    "p50_ms": 0.59,
+    "p95_ms": 0.6074,
+    "min_ms": 0.5369,
+    "per_inference_ms": 0.5882
+   },
+   "ort_t4": {
+    "load_ms": 11.3,
+    "runs": 1000.0,
+    "mean_ms": 0.5322,
+    "p50_ms": 0.5289,
+    "p95_ms": 0.5509,
+    "min_ms": 0.5157,
+    "per_inference_ms": 0.5322
+   }
+  },
+  "cnn_lstm_24h": {
+   "cpu_fp32": {
+    "netrun_ms": 3.544,
+    "accel_exec_ms": null,
+    "qnn_exec_ms": null,
+    "ips": 280.5458,
+    "per_inference_ms": 3.544
+   },
+   "htp_w8a16": {
+    "netrun_ms": 1.868,
+    "accel_exec_ms": 0.973,
+    "qnn_exec_ms": 1.84,
+    "ips": 408.4867,
+    "per_inference_ms": 1.868
+   },
+   "ort_t1": {
+    "load_ms": 6.7,
+    "runs": 1000.0,
+    "mean_ms": 0.1573,
+    "p50_ms": 0.1524,
+    "p95_ms": 0.2378,
+    "min_ms": 0.1406,
+    "per_inference_ms": 0.1573
+   },
+   "ort_t4": {
+    "load_ms": 8.6,
+    "runs": 1000.0,
+    "mean_ms": 0.1752,
+    "p50_ms": 0.168,
+    "p95_ms": 0.2659,
+    "min_ms": 0.1665,
+    "per_inference_ms": 0.1752
+   }
+  },
+  "guided_24h": {
+   "cpu_fp32": {
+    "netrun_ms": 30.911,
+    "accel_exec_ms": null,
+    "qnn_exec_ms": null,
+    "ips": 32.3051,
+    "per_inference_ms": 30.911
+   },
+   "htp_w8a16": {
+    "netrun_ms": 5.05,
+    "accel_exec_ms": 3.489,
+    "qnn_exec_ms": 5.013,
+    "ips": 170.3092,
+    "per_inference_ms": 5.05
+   },
+   "htp_w8a16_powersaver": {
+    "netrun_ms": 5.052,
+    "accel_exec_ms": 3.494,
+    "qnn_exec_ms": 5.016,
+    "ips": 170.0248,
+    "per_inference_ms": 5.052
+   },
+   "ort_t1": {
+    "load_ms": 8.3,
+    "runs": 1000.0,
+    "mean_ms": 1.0558,
+    "p50_ms": 1.0531,
+    "p95_ms": 1.0891,
+    "min_ms": 0.9965,
+    "per_inference_ms": 1.0558
+   },
+   "ort_t4": {
+    "load_ms": 9.7,
+    "runs": 1000.0,
+    "mean_ms": 0.8604,
+    "p50_ms": 0.8581,
+    "p95_ms": 0.8971,
+    "min_ms": 0.7805,
+    "per_inference_ms": 0.8604
+   }
+  },
+  "guided_h4": {
+   "cpu_fp32": {
+    "netrun_ms": 16.262,
+    "accel_exec_ms": null,
+    "qnn_exec_ms": null,
+    "ips": 61.3935,
+    "per_inference_ms": 16.262
+   },
+   "htp_w8a16": {
+    "netrun_ms": 4.807,
+    "accel_exec_ms": 3.283,
+    "qnn_exec_ms": 4.774,
+    "ips": 178.9625,
+    "per_inference_ms": 4.807
+   },
+   "ort_t1": {
+    "load_ms": 7.3,
+    "runs": 1000.0,
+    "mean_ms": 0.6107,
+    "p50_ms": 0.6118,
+    "p95_ms": 0.6342,
+    "min_ms": 0.5354,
+    "per_inference_ms": 0.6107
+   },
+   "ort_t4": {
+    "load_ms": 11.4,
+    "runs": 1000.0,
+    "mean_ms": 0.5481,
+    "p50_ms": 0.5477,
+    "p95_ms": 0.5729,
+    "min_ms": 0.5216,
+    "per_inference_ms": 0.5481
+   }
+  },
+  "lightgbm_24h": {
+   "ort_t1": {
+    "load_ms": 1448.7,
+    "runs": 1000.0,
+    "mean_ms": 2.07,
+    "p50_ms": 2.0596,
+    "p95_ms": 2.1181,
+    "min_ms": 2.0105,
+    "per_inference_ms": 2.07
+   },
+   "ort_t4": {
+    "load_ms": 1484.8,
+    "runs": 1000.0,
+    "mean_ms": 1.9359,
+    "p50_ms": 1.9099,
+    "p95_ms": 2.1448,
+    "min_ms": 1.6955,
+    "per_inference_ms": 1.9359
+   }
+  }
+ },
+ "power": {},
+ "data": {
+  "features": [
+   "SR-EM-KH04-00__power_W",
+   "SR-EM-KH04-00__was_imputed",
+   "SR-EM-KH04-01__power_W",
+   "SR-EM-KH04-01__voltage_V",
+   "SR-EM-KH04-01__current_A",
+   "SR-EM-KH04-01__frequency_Hz",
+   "SR-EM-KH04-01__was_imputed",
+   "SR-EM-KH04-02__power_W",
+   "SR-EM-KH04-02__voltage_V",
+   "SR-EM-KH04-02__current_A",
+   "SR-EM-KH04-02__frequency_Hz",
+   "SR-EM-KH04-02__was_imputed",
+   "EM-CR-KH95-00__power_total_W",
+   "EM-CR-KH95-00__power_R_W",
+   "EM-CR-KH95-00__power_B_W",
+   "EM-CR-KH95-00__voltage_V",
+   "EM-CR-KH95-00__power_factor",
+   "EM-CR-KH95-00__was_imputed",
+   "EM-CR-SB00-00__gd_power_W",
+   "EM-CR-SB00-00__t1_power_W",
+   "EM-CR-SB00-00__t2_power_W",
+   "EM-CR-SB00-00__hv_voltage_VLL",
+   "EM-CR-SB00-00__lt1_voltage_VLN",
+   "EM-CR-SB00-00__lt2_voltage_VLN",
+   "EM-CR-SB00-00__was_imputed",
+   "SL-PL00-00__active_power_W",
+   "SL-PL00-00__reactive_power_VAr",
+   "SL-PL00-00__voltage_avg_V",
+   "SL-PL00-00__neutral_current_A",
+   "SL-PL00-00__was_imputed",
+   "SL-VN95-00__active_power_W",
+   "SL-VN95-00__reactive_power_VAr",
+   "SL-VN95-00__voltage_avg_V",
+   "SL-VN95-00__neutral_current_A",
+   "SL-VN95-00__was_imputed",
+   "SL-NI01-00__active_power_W",
+   "SL-NI01-00__reactive_power_VAr",
+   "SL-NI01-00__voltage_avg_V",
+   "SL-NI01-00__neutral_current_A",
+   "SL-NI01-00__was_imputed",
+   "SL-NI03-00__active_power_W",
+   "SL-NI03-00__ac_voltage_avg_V",
+   "SL-NI03-00__pv_voltage_avg_V",
+   "SL-NI03-00__was_imputed",
+   "SL-NI03-01__active_power_W",
+   "SL-NI03-01__ac_voltage_avg_V",
+   "SL-NI03-01__pv_voltage_avg_V",
+   "SL-NI03-01__was_imputed",
+   "SL-VN02-01__active_power_W",
+   "SL-VN02-01__ac_voltage_avg_V",
+   "SL-VN02-01__pv_voltage_avg_V",
+   "SL-VN02-01__was_imputed",
+   "hod_sin",
+   "hod_cos",
+   "dow_sin",
+   "dow_cos",
+   "doy_sin",
+   "doy_cos"
+  ],
+  "n_test_h4": 4832,
+  "n_test_h96": 4740,
+  "n_calib": 512,
+  "capacities": [
+   535813.358399029,
+   887250.7668833333,
+   30045.697428571428
+  ],
+  "test_start": "2025-11-10 04:00:00+00:00",
+  "data_dir": "/home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/final/aimet_quantization/data/lstm_normalized"
+ }
+}

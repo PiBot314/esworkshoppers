@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QIDK Net-Zero Demo</title>
+<link rel="stylesheet" href="vendor/uPlot.min.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <div class="brand">
+    <div class="title">Campus Net-Zero Forecasting &amp; Sensor Anomaly Detection</div>
+    <div class="sub">LSTM forecasters · AIMET W8A16 · running on the Qualcomm QIDK Hexagon NPU</div>
+  </div>
+  <div class="kpis" id="kpis"></div>
+  <div class="device" id="device">connecting…</div>
+</header>
+
+<nav id="tabs">
+  <button data-tab="replay" class="active">Campus replay <kbd>1</kbd></button>
+  <button data-tab="plant">Plant SL-PL00-00 <kbd>2</kbd></button>
+  <button data-tab="dayahead">Day-ahead 24 h <kbd>3</kbd></button>
+  <button data-tab="live">Run on NPU <kbd>4</kbd></button>
+  <button data-tab="hood">Under the hood <kbd>5</kbd></button>
+</nav>
+
+<main>
+<!-- ============================ REPLAY (1 h) / PLANT (single) share one template ============================ -->
+<section id="tab-replay" class="tab active"></section>
+<section id="tab-plant" class="tab"></section>
+
+<template id="replay-tpl">
+  <div class="controls">
+    <button class="play" title="Space">▶ Play</button>
+    <label>Speed <select class="speed"><option value="1">1×</option><option value="4" selected>4×</option><option value="16">16×</option><option value="64">64×</option></select> steps/s</label>
+    <input type="range" class="slider" min="0" value="0">
+    <input type="datetime-local" class="jump">
+    <select class="moments"><option value="">Jump to moment…</option></select>
+    <span class="now"></span>
+  </div>
+  <div class="grid2">
+    <div class="charts"></div>
+    <aside class="side">
+      <h3>Reading at <span class="t-target"></span></h3>
+      <table class="verdicts"></table>
+      <h3>Inject a fault <small>(next readings of <select class="inj-domain"></select>)</small></h3>
+      <div class="inject">
+        <button data-fault="dropout">Sensor dropout → 0 W</button>
+        <button data-fault="spike">Spike +50 % cap.</button>
+        <button data-fault="stuck">Stuck at current value</button>
+        <button data-fault="panel">Panel damage −40 %</button>
+        <label>for <select class="inj-len"><option value="1">1</option><option value="4" selected>4</option><option value="8">8</option><option value="16">16</option></select> steps</label>
+        <button class="clear">Clear faults</button>
+      </div>
+      <div class="inj-list"></div>
+      <h3>Forecast from this window (recorded NPU)</h3>
+      <table class="fc"></table>
+      <p class="hint">Band = forecast + typical error for this hour of day (median ± 4·robust σ from validation data). Points outside the band are flagged as anomalous.</p>
+      <button class="to-live">Run this window live on the NPU →</button>
+    </aside>
+  </div>
+</template>
+
+<!-- ============================ DAY-AHEAD ============================ -->
+<section id="tab-dayahead" class="tab">
+  <div class="controls">
+    <label>Forecast issued at</label>
+    <input type="range" id="da-slider" min="0" value="0">
+    <span id="da-time" class="now"></span>
+  </div>
+  <div class="grid2">
+    <div><div id="da-chart"></div><div id="da-net"></div></div>
+    <aside class="side">
+      <h3>Next 24 h energy</h3><table id="da-energy"></table>
+      <h3>What a typical day looks like</h3>
+      <div id="typ-chart"></div>
+      <p class="hint">P10–P90 band and median of actual campus solar by hour of day (IST), validation + test period. The forecasted day is overlaid.</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================ LIVE NPU ============================ -->
+<section id="tab-live" class="tab">
+  <div class="grid2">
+    <div>
+      <div class="controls">
+        <label>Model <select id="lv-model">
+          <option value="all_sensors_1h">all_sensors_1h (58 features → 1 h)</option>
+          <option value="all_sensors_24h">all_sensors_24h (58 features → 24 h)</option>
+          <option value="single_node">single_node (10 features → 1 h)</option>
+        </select></label>
+        <label>Window <input type="number" id="lv-index" min="0" value="0" style="width:6em"></label>
+        <span id="lv-time" class="now"></span>
+      </div>
+      <div class="card">
+        <h3>1 · Input window <small id="lv-source">(test window from the replay data)</small></h3>
+        <div class="row">
+          <button id="lv-template">Download as CSV template</button>
+          <label class="file">Upload CSV <input type="file" id="lv-file" accept=".csv,text/csv"></label>
+          <label><input type="checkbox" id="lv-normalized"> values already normalized</label>
+          <button id="lv-reset">Reset to test window</button>
+        </div>
+        <div id="lv-msg" class="msg"></div>
+        <h3>2 · Edit a sensor channel <small>(physical units)</small></h3>
+        <div class="row">
+          <select id="ed-feature"></select>
+          <select id="ed-op">
+            <option value="zero">set to 0 (dropout)</option>
+            <option value="scale">scale × k</option>
+            <option value="freeze">freeze (stuck sensor)</option>
+            <option value="spike">add spike (+k × max)</option>
+          </select>
+          <label>k <input type="number" id="ed-k" value="0.6" step="0.1" style="width:5em"></label>
+          <label>last <input type="number" id="ed-steps" value="16" min="1" max="96" style="width:4em"> of 96 steps</label>
+          <button id="ed-apply">Apply edit</button>
+        </div>
+        <div id="ed-chart"></div>
+      </div>
+      <div class="card">
+        <h3>3 · Run</h3>
+        <div class="row">
+          <button id="lv-run-npu" class="primary">▶ Run on NPU (HTP, AIMET W8A16)</button>
+          <button id="lv-run-cpu">Run FP32 on CPU (reference)</button>
+          <span id="lv-status"></span>
+        </div>
+        <div id="lv-chart"></div>
+      </div>
+    </div>
+    <aside class="side">
+      <h3>Last live run</h3><table id="lv-timing"></table>
+      <h3>Forecast</h3><table id="lv-fc"></table>
+      <h3>Anomaly check of the next reading</h3><table id="lv-anom"></table>
+      <p class="hint">CSV format: 96 rows (15-min steps, oldest first) with a <code>timestamp</code> column (ISO, UTC or with offset) and one column per sensor feature, named exactly as in the template. Cyclic time features are computed from the timestamps; <code>was_imputed</code> columns default to 0. Optional row 97 = the reading that actually arrived next (used for the anomaly check).</p>
+    </aside>
+  </div>
+</section>
+
+<!-- ============================ UNDER THE HOOD ============================ -->
+<section id="tab-hood" class="tab">
+  <div class="grid2">
+    <div>
+      <div class="card"><h3>Pipeline</h3><pre class="pipe">
+trained FP32 ONNX (frozen, no retraining)
+   │  AIMET 2.12: HTP v75 config · 1,024 calibration windows · range priors (LSTM h ∈ [−1,1], output +10 %)
+   │              8-bit LSTM & dense weights · AutoQuant → AdaRound · 16-bit activations
+   ▼
+model.onnx + model.encodings ──► qnn-onnx-converter (overrides + calibration, LSTM expanded per step,
+                                  I/O layout preserved) ──► qnn-model-lib-generator ──► lib*_w8a16.so
+   ▼
+QIDK (SM8650): nz_dashboard (this server) ──► qnn-net-run ──► Hexagon HTP v75   ·   browser via USB adb forward</pre></div>
+      <div class="card"><h3>Recorded NPU vs FP32 over the whole test period <small id="hood-model"></small></h3><div id="hood-chart"></div>
+        <p class="hint">Max absolute difference between the NPU (W8A16) and the original FP32 model per window, in % of capacity, for the campus 1 h model.</p></div>
+    </div>
+    <aside class="side">
+      <h3>Verification (on the QIDK, held-out test period)</h3><table id="hood-table"></table>
+      <h3>Anomaly rule</h3>
+      <p class="hint">r = actual − forecast(+15 min). Flag if |r − median<sub>h</sub>| &gt; 4 · 1.4826 · MAD<sub>h</sub> (min. 2 % of capacity), with median/MAD per IST hour from validation data. No extra model: the forecaster is the reference.</p>
+      <h3>Keyboard</h3>
+      <p class="hint"><kbd>1</kbd>–<kbd>5</kbd> tabs · <kbd>Space</kbd> play/pause · <kbd>←</kbd>/<kbd>→</kbd> step · <kbd>Shift</kbd>+arrows ±1 day · <kbd>D</kbd> dropout · <kbd>S</kbd> spike · <kbd>F</kbd> stuck · <kbd>P</kbd> panel damage · <kbd>C</kbd> clear · <kbd>N</kbd> next anomaly · <kbd>R</kbd> run window on NPU</p>
+    </aside>
+  </div>
+</section>
+</main>
+
+<script src="vendor/uPlot.iife.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

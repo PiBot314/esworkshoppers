@@ -1,0 +1,26 @@
+{
+ "windows": 50,
+ "calibration": {
+  "split": "val",
+  "windows": 100
+ },
+ "models": [
+  "forecast_2025/models/grid_1h_forecast.onnx"
+ ],
+ "sqnr_db": {
+  "pertensor": [
+   33.79
+  ],
+  "perrow": [
+   34.68
+  ]
+ },
+ "sqnr_db_per_window_median": {
+  "pertensor": [
+   48.97
+  ],
+  "perrow": [
+   52.75
+  ]
+ }
+}

@@ -1,0 +1,59 @@
+{
+ "inputs": {
+  "past": [
+   "y",
+   "missing",
+   "clearsky",
+   "ghi_obs",
+   "temp_obs",
+   "hod_sin",
+   "hod_cos",
+   "dow_sin",
+   "dow_cos",
+   "doy_sin",
+   "doy_cos",
+   "in_session",
+   "holiday",
+   "exam",
+   "event"
+  ],
+  "future": [
+   "clearsky",
+   "ghi_fc",
+   "temp_fc",
+   "rh_fc",
+   "hod_sin",
+   "hod_cos",
+   "dow_sin",
+   "dow_cos",
+   "in_session",
+   "holiday",
+   "exam",
+   "event",
+   "y_yday",
+   "y_week"
+  ],
+  "node": 1
+ },
+ "lookback": 96,
+ "horizon": 4,
+ "params": 70156,
+ "family": "grid",
+ "variant": "noweather_skip",
+ "test": {
+  "last_step": {
+   "R2": 0.9079769253730774,
+   "nMAE": 0.06361375749111176,
+   "MSE": 0.0016612152103334665,
+   "n": 3968
+  },
+  "all_steps": {
+   "R2": 0.9234906435012817,
+   "nMAE": 0.05803554505109787,
+   "MSE": 0.0013803632464259863,
+   "n": 15932
+  },
+  "train_s": 17
+ },
+ "units": "MW"
+}

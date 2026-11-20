@@ -1,0 +1,220 @@
+{
+  "timestamp": "2026-09-30T04:40:00",
+  "data_io_benchmark": [
+    {
+      "node_id": "SR-EM-KH04-00",
+      "rows": 35040,
+      "parquet_size_kb": 576.8212890625,
+      "csv_size_kb": 5095.6630859375,
+      "compression_ratio": 8.83404129244157,
+      "parquet_load_ms": 19.519578335651506,
+      "csv_load_ms": 34.45606533205137,
+      "io_speedup": 1.7652054127172991
+    },
+    {
+      "node_id": "SR-EM-KH04-01",
+      "rows": 35040,
+      "parquet_size_kb": 817.3466796875,
+      "csv_size_kb": 6818.060546875,
+      "compression_ratio": 8.341699692817961,
+      "parquet_load_ms": 7.67568299973694,
+      "csv_load_ms": 40.936435000427686,
+      "io_speedup": 5.333262851244724
+    },
+    {
+      "node_id": "SR-EM-KH04-02",
+      "rows": 35040,
+      "parquet_size_kb": 794.892578125,
+      "csv_size_kb": 6805.9326171875,
+      "compression_ratio": 8.562078454979913,
+      "parquet_load_ms": 4.448974000600477,
+      "csv_load_ms": 41.970430664756954,
+      "io_speedup": 9.433732509808378
+    },
+    {
+      "node_id": "EM-CR-KH95-00",
+      "rows": 34029,
+      "parquet_size_kb": 984.4287109375,
+      "csv_size_kb": 6819.052734375,
+      "compression_ratio": 6.926913710065423,
+      "parquet_load_ms": 4.8424130024310825,
+      "csv_load_ms": 43.265245335836276,
+      "io_speedup": 8.934645870584648
+    },
+    {
+      "node_id": "EM-CR-SB00-00",
+      "rows": 32889,
+      "parquet_size_kb": 1931.6826171875,
+      "csv_size_kb": 7577.28125,
+      "compression_ratio": 3.922632622243298,
+      "parquet_load_ms": 32.620556996941254,
+      "csv_load_ms": 46.763481664432526,
+      "io_speedup": 1.4335586504184283
+    },
+    {
+      "node_id": "SL-PL00-00",
+      "rows": 32982,
+      "parquet_size_kb": 970.0673828125,
+      "csv_size_kb": 6798.76171875,
+      "compression_ratio": 7.008545838371005,
+      "parquet_load_ms": 5.91253700258676,
+      "csv_load_ms": 40.61431666680922,
+      "io_speedup": 6.869186044677655
+    },
+    {
+      "node_id": "SL-VN95-00",
+      "rows": 35041,
+      "parquet_size_kb": 657.9765625,
+      "csv_size_kb": 6582.625,
+      "compression_ratio": 10.004345709502381,
+      "parquet_load_ms": 7.608214335050434,
+      "csv_load_ms": 42.39711333260251,
+      "io_speedup": 5.572544550602682
+    },
+    {
+      "node_id": "SL-NI01-00",
+      "rows": 33055,
+      "parquet_size_kb": 664.9560546875,
+      "csv_size_kb": 5816.3642578125,
+      "compression_ratio": 8.746990446678367,
+      "parquet_load_ms": 17.138643335783854,
+      "csv_load_ms": 37.63457366342967,
+      "io_speedup": 2.1958898919876737
+    },
+    {
+      "node_id": "SL-NI03-00",
+      "rows": 32928,
+      "parquet_size_kb": 732.3193359375,
+      "csv_size_kb": 5625.4794921875,
+      "compression_ratio": 7.6817301088819105,
+      "parquet_load_ms": 4.29285400120231,
+      "csv_load_ms": 35.79173166751085,
+      "io_speedup": 8.337514310406684
+    },
+    {
+      "node_id": "SL-NI03-01",
+      "rows": 34992,
+      "parquet_size_kb": 785.1396484375,
+      "csv_size_kb": 5991.7470703125,
+      "compression_ratio": 7.631441212065429,
+      "parquet_load_ms": 5.298976000631228,
+      "csv_load_ms": 37.607190330163576,
+      "io_speedup": 7.097067494867632
+    },
+    {
+      "node_id": "SL-VN02-01",
+      "rows": 34992,
+      "parquet_size_kb": 791.2890625,
+      "csv_size_kb": 5999.2783203125,
+      "compression_ratio": 7.581652021523424,
+      "parquet_load_ms": 5.123276331384356,
+      "csv_load_ms": 37.68347600028695,
+      "io_speedup": 7.355347157334481
+    }
+  ],
+  "edge_inference_benchmark": {
+    "total_parameters": 54948,
+    "onnx_size_kb": 248.5302734375,
+    "pytorch_latency_ms": {
+      "mean": 0.5149360977811739,
+      "median": 0.4839515022467822,
+      "p95": 0.70967399442452,
+      "fps": 1941.9885385952448
+    },
+    "onnx_latency_ms": {
+      "mean": 0.28613444793154486,
+      "median": 0.2783884992823005,
+      "p95": 0.36370650195749477,
+      "fps": 3494.8605707175852
+    }
+  },
+  "accuracy_benchmark": {
+    "SL-PL00-00": {
+      "label": "Solar Plant (Palash)",
+      "domain": "Solar Generation",
+      "capacity_W": 65808.15263769371,
+      "Persistence": {
+        "MAE_W": 2763.327392578125,
+        "RMSE_W": 5156.9326171875,
+        "nMAE_pct": 4.199065437669407,
+        "R2": 0.9170177578926086
+      },
+      "Seasonal_24h": {
+        "MAE_W": 1702.204833984375,
+        "RMSE_W": 4007.830322265625,
+        "nMAE_pct": 2.586616955129938,
+        "R2": 0.9498788714408875
+      },
+      "Moving_Avg": {
+        "MAE_W": 4140.0107421875,
+        "RMSE_W": 7116.033203125,
+        "nMAE_pct": 6.291030178252075,
+        "R2": 0.8419923782348633
+      },
+      "LSTM": {
+        "MAE_W": 1857.5186767578125,
+        "RMSE_W": 3719.470458984375,
+        "nMAE_pct": 2.8226269881550508,
+        "R2": 0.9568317532539368
+      }
+    },
+    "EM-CR-SB00-00": {
+      "label": "Substation Main Incomer",
+      "domain": "Grid Draw",
+      "capacity_W": 886356.0968833333,
+      "Persistence": {
+        "MAE_W": 19225.5,
+        "RMSE_W": 39131.6328125,
+        "nMAE_pct": 2.1690492193376945,
+        "R2": 0.8516016006469727
+      },
+      "Seasonal_24h": {
+        "MAE_W": 50651.94140625,
+        "RMSE_W": 104126.8125,
+        "nMAE_pct": 5.714626613880794,
+        "R2": -0.05074739456176758
+      },
+      "Moving_Avg": {
+        "MAE_W": 25409.93359375,
+        "RMSE_W": 44567.70703125,
+        "nMAE_pct": 2.866786123895144,
+        "R2": 0.8075075149536133
+      },
+      "LSTM": {
+        "MAE_W": 23053.552734375,
+        "RMSE_W": 39436.49609375,
+        "nMAE_pct": 2.6009357655955094,
+        "R2": 0.8492803573608398
+      }
+    },
+    "SR-EM-KH04-00": {
+      "label": "Lab Room Main (KH04)",
+      "domain": "Room Demand",
+      "capacity_W": 29980.886285714285,
+      "Persistence": {
+        "MAE_W": 722.387451171875,
+        "RMSE_W": 1403.387939453125,
+        "nMAE_pct": 2.409493316133514,
+        "R2": 0.5256563425064087
+      },
+      "Seasonal_24h": {
+        "MAE_W": 1223.203369140625,
+        "RMSE_W": 2014.5216064453125,
+        "nMAE_pct": 4.079943993261715,
+        "R2": 0.022579431533813477
+      },
+      "Moving_Avg": {
+        "MAE_W": 787.0447998046875,
+        "RMSE_W": 1397.143798828125,
+        "nMAE_pct": 2.6251552149067376,
+        "R2": 0.5298680067062378
+      },
+      "LSTM": {
+        "MAE_W": 1089.794921875,
+        "RMSE_W": 1507.6807861328125,
+        "nMAE_pct": 3.634965662753875,
+        "R2": 0.45253491401672363
+      }
+    }
+  }
+}

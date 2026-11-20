@@ -1,0 +1,1 @@
+Built with the 500 train+val calibration: solar 1 h 40.8 dB in the emulator (fails 44). Use ../solar_1h24h_board (100 val windows, 52.9 / 46.5 dB) instead.

@@ -1,0 +1,52 @@
+{
+  "model_type": "Fair_baseline_LSTM_h4",
+  "mode": "baseline",
+  "horizon_steps": 4,
+  "onnx_path": "/home/claryfray29/esw/model/common/baseline_lstm_qidk_h4.onnx",
+  "capacities_W": {
+    "solar_max_W": 546010.2593596554,
+    "grid_max_W": 887250.7668833333,
+    "demand_max_W": 30045.697428571428
+  },
+  "evaluation_summary": {
+    "Solar": {
+      "MAE_W": 20685.4,
+      "RMSE_W": 36332.3,
+      "nMAE_pct": 3.79,
+      "R2": 0.9421
+    },
+    "Grid": {
+      "MAE_W": 36141.3,
+      "RMSE_W": 50169.2,
+      "nMAE_pct": 4.07,
+      "R2": 0.7564
+    },
+    "Demand": {
+      "MAE_W": 1183.5,
+      "RMSE_W": 1627.6,
+      "nMAE_pct": 3.94,
+      "R2": 0.369
+    }
+  },
+  "evaluation_summary_first_60min": {
+    "Solar": {
+      "MAE_W": 20685.4,
+      "RMSE_W": 36332.3,
+      "nMAE_pct": 3.79,
+      "R2": 0.9421
+    },
+    "Grid": {
+      "MAE_W": 36141.3,
+      "RMSE_W": 50169.2,
+      "nMAE_pct": 4.07,
+      "R2": 0.7564
+    },
+    "Demand": {
+      "MAE_W": 1183.5,
+      "RMSE_W": 1627.6,
+      "nMAE_pct": 3.94,
+      "R2": 0.369
+    }
+  },
+  "exported_seed": 42
+}

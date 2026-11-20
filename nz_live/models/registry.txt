@@ -1,0 +1,5 @@
+baseline_h4 58 /data/local/tmp/nz_live/models/baseline_h4
+guided_h4 58 /data/local/tmp/nz_live/models/guided_h4
+baseline_24h 58 /data/local/tmp/nz_live/models/baseline_24h
+guided_24h 58 /data/local/tmp/nz_live/models/guided_24h
+cnn_lstm_24h 58 /data/local/tmp/nz_live/models/cnn_lstm_24h

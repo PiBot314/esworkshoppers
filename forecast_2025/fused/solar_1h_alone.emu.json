@@ -1,0 +1,14 @@
+{
+ "windows": 50,
+ "models": [
+  "models/solar_1h_forecast.onnx"
+ ],
+ "sqnr_db": {
+  "pertensor": [
+   43.43
+  ],
+  "perrow": [
+   49.37
+  ]
+ }
+}

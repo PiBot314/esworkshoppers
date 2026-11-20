@@ -1,0 +1,12 @@
+[Unit]
+Description=QIDK live loop: USB fallback route to the campus API (adb reverse + socat relay)
+
+[Service]
+ExecStart=/home/radmeerkat62445/Documents/Uni/Sem3/EmbeddedSystemWorkshop/final/nz_live/laptop/usb_uplink.sh
+Restart=always
+RestartSec=5
+# leave the adb server running if the service stops (it is shared with interactive adb use)
+KillMode=process
+
+[Install]
+WantedBy=default.target

@@ -1,0 +1,31 @@
+{
+ "windows": 50,
+ "calibration": {
+  "split": "train+val",
+  "windows": 500
+ },
+ "models": [
+  "models/solar_1h_forecast.onnx",
+  "models/solar_24h_forecast.onnx"
+ ],
+ "sqnr_db": {
+  "pertensor": [
+   37.52,
+   42.95
+  ],
+  "perrow": [
+   40.76,
+   49.45
+  ]
+ },
+ "sqnr_db_per_window_median": {
+  "pertensor": [
+   17.4,
+   43.56
+  ],
+  "perrow": [
+   20.24,
+   49.68
+  ]
+ }
+}

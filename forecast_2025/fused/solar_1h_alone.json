@@ -1,0 +1,22 @@
+{
+ "models": [
+  "models/solar_1h_forecast.onnx"
+ ],
+ "hidden": [
+  64
+ ],
+ "input_width": [
+  8
+ ],
+ "fused_hidden": 64,
+ "max_abs_diff_vs_original": [
+  0.0
+ ],
+ "lstm_params_separate": 52224,
+ "lstm_params_fused_incl_zero_blocks": 52224,
+ "inputs": [
+  "past_0",
+  "future_0",
+  "node_0"
+ ]
+}

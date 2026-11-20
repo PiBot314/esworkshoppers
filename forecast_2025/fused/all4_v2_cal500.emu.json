@@ -1,0 +1,41 @@
+{
+ "windows": 50,
+ "calibration": {
+  "split": "train+val",
+  "windows": 500
+ },
+ "models": [
+  "forecast_2025/models/solar_1h_forecast.onnx",
+  "forecast_2025/models/solar_24h_forecast.onnx",
+  "forecast_2025/models/grid_1h_forecast.onnx",
+  "forecast_2025/models/grid_24h_forecast.onnx"
+ ],
+ "sqnr_db": {
+  "pertensor": [
+   36.93,
+   42.72,
+   19.32,
+   26.11
+  ],
+  "perrow": [
+   40.68,
+   49.34,
+   19.02,
+   26.02
+  ]
+ },
+ "sqnr_db_per_window_median": {
+  "pertensor": [
+   17.94,
+   43.11,
+   19.38,
+   28.1
+  ],
+  "perrow": [
+   20.21,
+   49.58,
+   18.97,
+   28.23
+  ]
+ }
+}
